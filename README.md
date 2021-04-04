@@ -23,6 +23,8 @@
     - Java, Python, SpringBoot
     - Database(MySQL)
 
+<br>
+
 ### ✏ 기획 & 설계
   - [`기능 명세서`](https://www.notion.so/16d5feb864d5481285a5ff3c2ae9c2c6)
 
