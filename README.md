@@ -26,15 +26,20 @@
 <br>
 
 ### ✏ 기획 & 설계
+  - [`프로젝트 칸반(Kanban)`](https://github.com/JuHyun419/one-line-course/projects/1)
+
   - [`기능 명세서`](https://www.notion.so/16d5feb864d5481285a5ff3c2ae9c2c6)
 
-  - [`페이지 기획`](https://whimsical.com/EJVQx82R8nCTGsRbzWGyH8)
+  - [`UI 페이지 기획`](https://whimsical.com/EJVQx82R8nCTGsRbzWGyH8)
 
 ![image](https://user-images.githubusercontent.com/50076031/113499953-26c2ee00-9555-11eb-8556-05d918647848.png)
 
-<br>
+<br><br>
 
   - [`DB 설계`](https://www.notion.so/DB-1f0520006f2a4ca582e0cef0a34623ae)
+
+<img width="550" alt="ERD 다이어그램 수정" src="https://user-images.githubusercontent.com/50076031/113580289-793d0100-9660-11eb-9807-7d12242eceb7.PNG">
+
 
 <br>
 
