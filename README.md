@@ -20,7 +20,7 @@
       - 스타일링: ant
       - 라우팅 (router ..)
   - Back End - [`방소연`](https://github.com/bsy3764), [`이주현`](https://github.com/JuHyun419)
-    - Java, Python, SpringBoot
+    - Java, Python(크롤링), SpringBoot, JPA
     - Database(MySQL)
 
 <br>
