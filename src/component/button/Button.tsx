@@ -3,6 +3,7 @@ import React from "react";
 import "./Button.scss";
 
 import { EButtonType } from "./EButtonType";
+import { joinClasses } from "../../common/StyleHelper";
 
 interface Props {
   width: number;
@@ -19,7 +20,7 @@ const Button: React.FC<Props> = ({
 }: Props) => (
   <React.Fragment>
     <div
-      // className={CSSHelper.joinClasses("button", btnType.toString())}
+      className={joinClasses("button", btnType.toString())}
       onClick={onClick}
     ></div>
   </React.Fragment>
