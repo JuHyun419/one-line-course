@@ -16,10 +16,13 @@
 
 ## 📗 기술 스택
   - Front End - [`이윤상`](https://github.com/olcw78)
-    - React.js, TypeScript
-      - 상태 관리 라이브러리(context, redux)
-      - 스타일링: ant
-      - 라우팅 (router ..)
+    - Typescript  
+    - React.js
+      - context, redux-hook
+      - react-router
+    - SCSS
+    - Axios
+    - Parcel-bundler
   - Back End - [`방소연`](https://github.com/bsy3764), [`이주현`](https://github.com/JuHyun419)
     - Java, Python(크롤링), SpringBoot, Spring Data JPA
     - Database(MySQL)
