@@ -1,19 +1,19 @@
-### 👨‍👨‍👧 원라인코스 안녕
+## 👨‍👨‍👧 원라인코스 안녕
   - 본인에게 적합한 개발 관련 온라인 강의를 전부 통합해 검색할 수 있는 웹 사이트
 
 <br>
 
-### 🤷‍♂️ 사용자
+## 🤷‍♂️ 사용자
   - 인프런, 유튜브, 유데미 등의 온라인 강의 플랫폼에서 강의를 검색하고자 하는 유저
   - 비슷한 강의들을 검색 & 비교하여 본인에게 적합한 강의를 선택하고자 하는 유저
 
 <br>
 
-### 📆 2021.04
+## 📆 2021.04
 
 <br>
 
-### 📗 Skill Stacks
+## 📗 기술 스택
   - Front End - [`이윤상`](https://github.com/olcw78)
     - React.js
       - 상태 관리 라이브러리(context, redux)
@@ -25,7 +25,7 @@
 
 <br>
 
-### ✏ 기획 & 설계
+## ✏ 기획 & 설계
   - [`프로젝트 칸반(Kanban)`](https://github.com/JuHyun419/one-line-course/projects/1)
 
   - [`기능 명세서`](https://www.notion.so/16d5feb864d5481285a5ff3c2ae9c2c6)
@@ -38,7 +38,6 @@
 
   - [`DB 설계`](https://www.notion.so/DB-1f0520006f2a4ca582e0cef0a34623ae)
 
-<img width="550" alt="ERD 다이어그램 수정" src="https://user-images.githubusercontent.com/50076031/113580289-793d0100-9660-11eb-9807-7d12242eceb7.PNG">
 
 
 <br>
