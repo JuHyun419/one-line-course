@@ -1,0 +1,52 @@
+@import "../../common/ColorScheme";
+
+@mixin make-btn($width: 100, $height: 40, $color: $color-primary) {
+  width: #{$width}px;
+  height: #{$height}px;
+  background-color: $color;
+  border: 1px solid #000;
+
+  @content;
+}
+
+.btn {
+  @include make-btn();
+
+  font: {
+    family: inherit;
+  }
+
+  margin: 5px;
+
+  /*
+  * by size
+  */
+  &-small {
+  }
+
+  &-medium {
+  }
+
+  &-large {
+  }
+}
+
+.btn-primary {
+  @extend .btn;
+  background-color: $color-primary;
+}
+
+.btn-alt {
+  @extend .btn;
+  background-color: $color-alt;
+}
+
+.btn-warning {
+  @extend .btn;
+  background-color: $color-warning;
+}
+
+.btn-danger {
+  @extend .btn;
+  background-color: $color-danger;
+}
