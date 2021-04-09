@@ -3,4 +3,4 @@ export enum EButtonType {
   Alternative = "alternative",
   Warning = "warning",
   Danger = "danger",
-}
+};

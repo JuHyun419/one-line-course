@@ -1,17 +1,10 @@
 import React from "react";
 
-import "./Button.scss";
+import "./_Button.scss";
 
+import { ButtonProps } from "./ButtonProps";
 import { EButtonType } from "./EButtonType";
 import { joinClasses } from "../../common/StyleHelper";
-
-interface Props {
-  width: number;
-  height: number;
-  btnType?: EButtonType;
-  children?: any;
-  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
-}
 
 /**
  *
@@ -21,20 +14,22 @@ interface Props {
  * @children mainly text inside the button
  * @returns JSX of button
  */
-const Button: React.FC<Props> = ({
+const Button: React.FC<ButtonProps> = ({
   width,
   height,
   btnType = EButtonType.Primary,
   onClick,
   children,
-}: Props) => (
-  <div
-    className={joinClasses("button", btnType.toString())}
-    style={{ width, height }} // width, height re-def
-    onClick={onClick}
-  >
-    {children}
-  </div>
-);
+}) => {
+  return (
+    <div
+      className={joinClasses("btn", btnType.toString())}
+      style={{ width, height }} // width, height re-def
+      onClick={onClick}
+    >
+      {children}
+    </div>
+  );
+};
 
 export default Button;

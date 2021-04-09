@@ -4,6 +4,7 @@
   width: #{$width}px;
   height: #{$height}px;
   background-color: $color;
+  color: #fff;
   border: 1px solid #000;
 
   @content;
