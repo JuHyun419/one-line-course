@@ -1,3 +1,4 @@
 [submodule "front"]
 	path = front
 	url = https://github.com/olcw78/front-olc.git
+        branch = master
