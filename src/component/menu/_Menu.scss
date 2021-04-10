@@ -1,0 +1,13 @@
+@import "../../common/ColorScheme";
+
+.menu {
+}
+
+.menu {
+  &.hamburger {
+    width: 30px;
+    height: 4px;
+    margin-bottom: 5px;
+    background-color: $color-black;
+  }
+}
