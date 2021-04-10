@@ -4,6 +4,9 @@ import Menu from "./component/menu/Menu";
 import Button from "./component/button/Button";
 import { EButtonSize } from "./component/button/EButtonSize";
 import { EButtonType } from "./component/button/EButtonType";
+import { EMenuMode } from "./component/menu/EMenuMode";
+import Separator from "./component/separator/Separator";
+import { ESeparatorDirection } from "./component/separator/ESeparatorDirection";
 
 const App = () => {
   return (
@@ -36,7 +39,9 @@ const App = () => {
       >
         Log out
       </Button>
-      <Menu/>
+      <Menu menuMode={EMenuMode.AfterLogin} />
+      {/* <Separator direction={ESeparatorDirection.Vertical} /> */}
+      {/* <Separator direction={ESeparatorDirection.Horizontal} /> */}
     </div>
   );
 };
