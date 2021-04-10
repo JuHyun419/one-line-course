@@ -22,7 +22,6 @@ const useToggleProvider = <TContextData extends {}>(
       } as TContextData),
     [isOn, onToggle]
   );
-  console.log(providerValue);
 
   return { providerValue };
 };

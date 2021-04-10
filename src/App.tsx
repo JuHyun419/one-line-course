@@ -39,9 +39,9 @@ const App = () => {
       >
         Log out
       </Button>
-      <Menu menuMode={EMenuMode.BeforeLogin} />
-      <Separator direction={ESeparatorDirection.Vertical} />
-      <Separator direction={ESeparatorDirection.Horizontal} />
+      <Menu menuMode={EMenuMode.AfterLogin} />
+      {/* <Separator direction={ESeparatorDirection.Vertical} /> */}
+      {/* <Separator direction={ESeparatorDirection.Horizontal} /> */}
     </div>
   );
 };

@@ -4,7 +4,7 @@ import ViewModeContextData from "./ViewModeContextData";
 
 export const ViewModeContext = React.createContext<ViewModeContextData>({
   isGrid: true,
-  toggleBetweenGridAndListMode: () => {},
+  toggleViewMode: () => {},
 });
 
 const ViewModeContextProvider: React.FC<{
@@ -12,7 +12,7 @@ const ViewModeContextProvider: React.FC<{
 }> = ({ children }) => {
   const { providerValue } = useToggleProvider<ViewModeContextData>(
     "isGrid",
-    "toggleBetweenGridAndListMode"
+    "toggleViewMode"
   );
 
   return (

@@ -1,6 +1,6 @@
 interface ViewModeContextData {
   isGrid: boolean;
-  toggleBetweenGridAndListMode: () => void;
+  toggleViewMode: () => void;
 }
 
 export default ViewModeContextData;
