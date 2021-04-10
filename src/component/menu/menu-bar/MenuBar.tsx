@@ -14,11 +14,9 @@ const MenuBar: React.FC<MenuBarProps> = ({ menuMode }: MenuBarProps) => {
   const darkModeCtx = useContext(DarkModeContext);
   return (
     <div>
-      {makeMenuBarItems(
-        menuMode,
-        darkModeCtx.isDark,
-        darkModeCtx.toggleDarkMode
-      )}
+      {makeDarkModeIndicator(darkModeCtx.isDark)}
+      {makeMenuBarItems(menuMode, darkModeCtx.toggleDarkMode)}
+      {makeViewModeIndicator(true)}
     </div>
   );
 };
@@ -32,7 +30,6 @@ export default MenuBar;
  */
 const makeMenuBarItems = (
   menuMode: EMenuMode,
-  isDark: boolean,
   toggleDarkMode: () => void
 ): JSX.Element => {
   let jsx: JSX.Element;
@@ -61,3 +58,7 @@ const makeMenuBarItems = (
   }
   return jsx;
 };
+
+const makeDarkModeIndicator = (isDark: boolean) => {};
+
+const makeViewModeIndicator = (isGrid: boolean) => {};

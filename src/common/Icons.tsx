@@ -1,5 +1,8 @@
 import { joinClasses } from "./StyleHelper";
 
+/** 
+ * Font-Awesome static class
+*/
 class Icons {
   static GridIcon = () => <i className={joinClasses("fas", "fa-th")}></i>;
   static SunIcon = () => <i className={joinClasses("fas", "fa-sun")}></i>;

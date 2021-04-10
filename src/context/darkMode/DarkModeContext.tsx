@@ -1,25 +1,19 @@
 import React from "react";
+import useToggleProvider from "../../hooks/useToggleProvider";
+
 import DarkModeContextData from "./DarkModeContextData";
-import DarkModeProps from "./DarkModeProps";
 
 export const DarkModeContext = React.createContext<DarkModeContextData>({
   isDark: false,
   toggleDarkMode: () => {},
 });
 
-const DarkModeContextProvider = ({ children }: DarkModeProps) => {
-  const [isDark, setIsDark] = React.useState(false);
-
-  const onToggleDarkMode = React.useCallback(() => setIsDark(prv => !prv), [
-    setIsDark,
-  ]);
-
-  const providerValue = React.useMemo(
-    () => ({
-      isDark,
-      toggleDarkMode: onToggleDarkMode,
-    }),
-    [isDark, onToggleDarkMode]
+const DarkModeContextProvider: React.FC<{
+  children?: JSX.Element | null | undefined;
+}> = ({ children }) => {
+  const { providerValue } = useToggleProvider<DarkModeContextData>(
+    "isDark",
+    "toggleDarkMode"
   );
 
   return (
