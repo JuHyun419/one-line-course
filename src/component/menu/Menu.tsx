@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from "react";
 
+import DarkModeContextProvider from "../../context/darkMode/DarkModeContext";
+
 import MenuHamburger from "./MenuHamburger";
 import MenuProps from "./MenuProps";
 import { EMenuMode } from "./EMenuMode";
@@ -20,7 +22,9 @@ const Menu: React.FC<MenuProps> = ({
       <MenuHamburger />
       <MenuHamburger />
       <MenuHamburger />
-      {isMenuOpen ?? <MenuBar menuMode={menuMode} />}
+      <DarkModeContextProvider>
+        {isMenuOpen ? <MenuBar menuMode={menuMode} /> : null}
+      </DarkModeContextProvider>
     </div>
   );
 };
