@@ -27,22 +27,22 @@
   */
   &-small {
     @include make-btn() {
-      width: 150px;
-      height: 40px;
+      width: 100px;
+      height: 30px;
     }
   }
 
   &-medium {
     @include make-btn() {
-      width: 200px;
-      height: 60px;
+      width: 120px;
+      height: 40px;
     }
   }
 
   &-large {
     @include make-btn() {
-      width: 250px;
-      height: 70px;
+      width: 150px;
+      height: 50px;
     }
   }
 
