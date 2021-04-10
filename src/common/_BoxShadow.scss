@@ -1,0 +1,13 @@
+@import "./ColorScheme";
+
+@mixin make-box-shadow(
+  $x-offset: 2,
+  $y-offset: 6,
+  $blur-radius: 5,
+  $spread-radius: 2,
+  $color: $color-box-shadow
+) {
+  box-shadow: #{$x-offset}px #{$y-offset}px #{$blur-radius}px #{$spread-radius}px #{$color};
+
+  @content;
+}

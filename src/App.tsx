@@ -1,4 +1,5 @@
 import React from "react";
+import Menu from "./component/menu/Menu";
 
 import Button from "./component/button/Button";
 import { EButtonSize } from "./component/button/EButtonSize";
@@ -35,6 +36,7 @@ const App = () => {
       >
         Log out
       </Button>
+      <Menu/>
     </div>
   );
 };
