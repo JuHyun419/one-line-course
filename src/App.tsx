@@ -4,6 +4,7 @@ import Menu from "./component/menu/Menu";
 import Button from "./component/button/Button";
 import { EButtonSize } from "./component/button/EButtonSize";
 import { EButtonType } from "./component/button/EButtonType";
+import { EMenuMode } from "./component/menu/EMenuMode";
 
 const App = () => {
   return (
@@ -36,7 +37,7 @@ const App = () => {
       >
         Log out
       </Button>
-      <Menu/>
+      <Menu menuMode={EMenuMode.BeforeLogin} />
     </div>
   );
 };
