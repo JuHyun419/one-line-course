@@ -25,7 +25,7 @@
     - Parcel-bundler
   - Back End - [`방소연`](https://github.com/bsy3764), [`이주현`](https://github.com/JuHyun419)
     - Java, Python(크롤링), SpringBoot, Spring Data JPA
-    - Database(MySQL)
+    - AWS RDS DB(MySQL)
 
 <br>
 
@@ -46,7 +46,7 @@
 
 <br>
 
-  - [`API 설계`](https://www.notion.so/API-5f3c607a8217420495aa60182f90a2c5)
+  - [`RESTful API 설계`](https://www.notion.so/API-5f3c607a8217420495aa60182f90a2c5)
 
 <br>
 
@@ -105,5 +105,14 @@
 <br><br>
 
 ### References
+
+#### RESTful API
+  - https://sas-study.tistory.com/265
+
+<br>
+
+#### Git Commit
   - https://medium.com/hashbox/git-commit-%EB%A9%94%EC%84%B8%EC%A7%80-%EA%B7%9C%EC%B9%99-conventional-commits-71710f7f53c
   - https://meetup.toast.com/posts/106
+
+<br>
