@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import "./entry.scss";
+import "./index.scss";
 
 import "./hot-module";
 

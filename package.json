@@ -2,25 +2,32 @@
   "name": "olc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "concurrently -k \"tsc --watch --noEmit\" \"parcel serve ./src/index.html\"",
-    "build": "concurrently -k \"tsc\" \"parcel build ./src/index.html\""
+    "build": "parcel build ./src/index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "browserslist": [
+    "defaults",
+    "> 0.2%"
+  ],
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
-    "@parcel/transformer-sass": "^2.0.0-beta.2",
+    "@parcel/runtime-react-refresh": "^2.0.0-alpha.3",
+    "@parcel/transformer-react-refresh-babel": "^2.0.0-alpha.3",
+    "@parcel/transformer-react-refresh-wrap": "^2.0.0-alpha.3",
+    "@parcel/transformer-sass": "^2.0.0-nightly.638",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/react-router": "^5.1.13",
     "babel-loader": "^8.2.2",
-    "typescript": "^4.2.4"
+    "concurrently": "^6.0.1",
+    "parcel": "^2.0.0-beta.2"
   },
   "dependencies": {
     "node-sass": "^5.0.0",

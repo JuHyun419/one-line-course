@@ -1,8 +1,8 @@
 import { EButtonType } from "./EButtonType";
+import { EButtonSize } from "./EButtonSize";
 
 export interface ButtonProps {
-  width: number;
-  height: number;
+  btnSize?: EButtonSize | undefined;
   btnType?: EButtonType | undefined;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void | undefined;
   children?: any | undefined;

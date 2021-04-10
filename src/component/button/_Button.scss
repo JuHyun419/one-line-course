@@ -5,49 +5,87 @@
   height: #{$height}px;
   background-color: $color;
   color: #fff;
-  border: 1px solid #000;
+
+  border-radius: 5px;
+
+  box-shadow: 2px 6px 5px 0px #d3d3d3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 
   @content;
 }
 
 .btn {
-  @include make-btn();
-
-  font: {
-    family: inherit;
-  }
-
   margin: 5px;
 
   /*
   * by size
   */
   &-small {
+    @include make-btn() {
+      width: 150px;
+      height: 40px;
+    }
   }
 
   &-medium {
+    @include make-btn() {
+      width: 200px;
+      height: 60px;
+    }
   }
 
   &-large {
+    @include make-btn() {
+      width: 250px;
+      height: 70px;
+    }
+  }
+
+  &.primary {
+    background-color: $color-primary;
+  }
+
+  &.alt {
+    background-color: $color-alt;
+  }
+
+  &.warning {
+    background-color: $color-warning;
+  }
+
+  &.danger {
+    background-color: $color-danger;
   }
 }
 
-.btn-primary {
-  @extend .btn;
-  background-color: $color-primary;
-}
+.btn {
+  & span {
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
 
-.btn-alt {
-  @extend .btn;
-  background-color: $color-alt;
-}
+  & span:after {
+    content: "\00bb";    
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -5px;
+    transition: 0.5s;
+  }
 
-.btn-warning {
-  @extend .btn;
-  background-color: $color-warning;
-}
+  &:hover span {
+    padding-right: 15px;
+    transition: 0.5s;
+  }
 
-.btn-danger {
-  @extend .btn;
-  background-color: $color-danger;
+  &:hover span:after {
+    opacity: 1;
+    right: 0;
+    transition: 0.5s;
+  }
 }

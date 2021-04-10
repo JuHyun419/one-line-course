@@ -1,6 +1,6 @@
 export enum EButtonType {
   Primary = "primary",
-  Alternative = "alternative",
+  Alt = "alt",
   Warning = "warning",
   Danger = "danger",
 };
