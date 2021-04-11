@@ -106,8 +106,10 @@
 [`좋은 git 커밋 메시지를 작성하기 위한 7가지 약속`](https://meetup.toast.com/posts/106)
 
 
+<br>
 
-
+## 💡 Issues
+  - [`서로 다른 OS(Mac, Window)에서 함께 Git 작업할 시 발생하는 LF, CRLF 문제`](https://zzang9ha.tistory.com/324)
 
 
 
