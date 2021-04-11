@@ -5,8 +5,6 @@ import Button from "./component/button/Button";
 import { EButtonSize } from "./component/button/EButtonSize";
 import { EButtonType } from "./component/button/EButtonType";
 import { EMenuMode } from "./component/menu/EMenuMode";
-import Separator from "./component/separator/Separator";
-import { ESeparatorDirection } from "./component/separator/ESeparatorDirection";
 
 const App = () => {
   return (
