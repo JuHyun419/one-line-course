@@ -58,6 +58,8 @@
     - [ ] 북마크(Bookmark)
     - [ ] 유저(User)
 
+<br>
+
 ## 🎵 Git 커밋 메시지 규칙
 
 ```html
