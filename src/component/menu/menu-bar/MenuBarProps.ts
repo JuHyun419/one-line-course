@@ -1,7 +1,8 @@
 import { EMenuMode } from "../EMenuMode";
 
 interface MenuBarProps {
-  menuMode: EMenuMode
+  menuMode: EMenuMode;
+  isMenuOpen: boolean;
 }
 
 export default MenuBarProps;

@@ -24,14 +24,15 @@ const Menu: React.FC<MenuProps> = ({
 
   return (
     <Fragment>
-      <div onClick={onClickMenu}>
+      <div className="menu" onClick={onClickMenu}>
         <MenuHamburger />
         <MenuHamburger />
         <MenuHamburger />
       </div>
       <DarkModeContextProvider>
         <ViewModeContextProvider>
-          {isMenuOpen ? <MenuBar menuMode={menuMode} /> : null}
+          {/* TODO: open, close animation */}
+          <MenuBar menuMode={menuMode} isMenuOpen={isMenuOpen} />
         </ViewModeContextProvider>
       </DarkModeContextProvider>
     </Fragment>
