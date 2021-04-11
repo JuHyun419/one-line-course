@@ -33,7 +33,7 @@ public class Comments {
     private LocalDateTime updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lecture_id")
+    @JoinColumn(name = "lectures_id")
     private Lectures lectures;
 
     /*@ManyToOne(fetch = FetchType.LAZY)

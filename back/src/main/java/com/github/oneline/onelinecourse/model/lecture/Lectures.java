@@ -61,7 +61,7 @@ public class Lectures {
     @Column
     private String skills;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "lecture")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "lectures")
     private List<Comments> comments;
 
     @Override
