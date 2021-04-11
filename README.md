@@ -124,6 +124,7 @@
 
 #### RESTful API
   - https://sas-study.tistory.com/265
+  - https://m.blog.naver.com/genycho/221309436556
 
 <br>
 
