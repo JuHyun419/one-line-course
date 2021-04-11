@@ -3,11 +3,10 @@
 .icon {
 }
 @for $i from 0 through 40 {
-  .placed-randomly:nth-child(#{$i}) {    
+  .placed-randomly:nth-child(#{$i}) {
     display: inline-block;
     position: absolute;
-    left: getRandomWithinRadius("x", $i);
-    top: getRandomWithinRadius("y", $i);
+    left: getRandomWithinRadius("x");
+    top: getRandomWithinRadius("y");
   }
 }
-

@@ -1,20 +1,15 @@
 $random-radius: 50;
-$random-origin-x: 50vw;
-$random-origin-y: 50vh;
+$random-origin-x: 50;
+$random-origin-y: 50;
 
-@function getRandomWithinRadius($direction: "x" or "y", $i) {
-  $res: 0;
+@function getRandomWithinRadius($direction: "x" or "y") {
   $r: $random-radius;
-  // $r = $r * 2;
   $x: $random-origin-x;
-  $y: $random-origin-y;   
+  $y: $random-origin-y;
 
   @if ($direction == "x") {
-    $randNum: $x + (random($r) - $r);
-    $res: max(0, min($r, $randNum));
+    @return $x + (random($r * 2) - $r) * 1%;
   } @else {
-    $randNum: $y + (random($r) - $r);
-    $res: max(0, min($r, $randNum));
+    @return $y + (random($r * 2) - $r) * 1%;
   }
-  @return #{$res};          
 }
