@@ -36,13 +36,16 @@ const makeMenuBarItems = (
   viewModeCtx: ViewModeContextData
 ): JSX.Element => {
   const iconBasicStyles = {
-    fontSize: "2rem",
+    fontSize: "1.8rem",
     boxSize: "border-box",
-    // transition: "0.5s",
+    borderRadius: "10px",
+    transition: "0.5s ease-in-out",
   };
 
+  const indicatorBorder = "2px dashed #b2b2b2";
+
   const darkIndicatorForSun = {
-    border: !darkModeCtx.isDark ? "2px dashed #000" : "0",
+    border: !darkModeCtx.isDark ? indicatorBorder : "0",
   };
 
   const sunIconStyles = {
@@ -51,7 +54,7 @@ const makeMenuBarItems = (
   };
 
   const darkIndicatorForMoon = {
-    border: darkModeCtx.isDark ? "2px dashed #000" : "0",
+    border: darkModeCtx.isDark ? indicatorBorder : "0",
   };
 
   const moonIconStyles = {
@@ -69,7 +72,7 @@ const makeMenuBarItems = (
 
     case EMenuMode.AfterLogin:
       const viewModeIndicatorForGrid = {
-        border: viewModeCtx.isGrid ? "2px dashed #000" : "0",
+        border: viewModeCtx.isGrid ? indicatorBorder : "0",
       };
 
       const gridIconStyles = {
@@ -78,7 +81,7 @@ const makeMenuBarItems = (
       };
 
       const viewModeIndicatorForList = {
-        border: !viewModeCtx.isGrid ? "2px dashed #000" : "0",
+        border: !viewModeCtx.isGrid ? indicatorBorder : "0",
       };
 
       const listIconStyles = {
