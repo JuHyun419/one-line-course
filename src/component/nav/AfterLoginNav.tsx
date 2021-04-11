@@ -6,7 +6,7 @@ import { EButtonType } from "../button/EButtonType";
 
 import "./_Nav.scss";
 
-const AfterLoginNav = () => {
+const AfterLoginNav: React.FC<{ children?: JSX.Element }> = ({ children }) => {
   // TODO: link onClick with Router -> redirect to /signIn
   const redirectToMainPage = () => {};
   const redirectToCommentsPage = () => {};
@@ -14,7 +14,7 @@ const AfterLoginNav = () => {
   const logout = () => {};
 
   return (
-    <div className="nav-landing">
+    <div className="nav-afterLogin">
       {/* #01 Main */}
       <Button
         btnSize={EButtonSize.Medium}
@@ -47,6 +47,7 @@ const AfterLoginNav = () => {
       >
         Log Out
       </Button>
+      {children}
     </div>
   );
 };

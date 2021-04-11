@@ -6,7 +6,7 @@ import { EButtonType } from "../button/EButtonType";
 
 import "./_Nav.scss";
 
-const LandingNav = () => {
+const LandingNav: React.FC<{ children?: JSX.Element }> = ({ children }) => {
   // TODO: link onClick with Router -> redirect to /signIn
   const redirectToSignInPage = () => {};
 
@@ -19,6 +19,7 @@ const LandingNav = () => {
       >
         Sign In
       </Button>
+      {children}
     </div>
   );
 };

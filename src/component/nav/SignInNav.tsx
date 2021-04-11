@@ -1,12 +1,9 @@
-import React from 'react'
+import React from "react";
 
-const SignInNav = () => {
-  // const randomIcons = 
-  return (
-    <div>
-      
-    </div>
-  )
-}
+import "./_Nav.scss";
 
-export default SignInNav
+const SignInNav: React.FC<{ children?: JSX.Element }> = ({ children }) => {
+  return <div className="nav-signIn">{children}</div>;
+};
+
+export default SignInNav;

@@ -31,22 +31,32 @@ export const getIcon = (
 };
 
 export const getIconsRandomlyWithinRadius = (
+  count: number,
   additionalStyles?: TIconStyles
 ): JSX.Element | null | undefined => {
+  if (count > 30 || count < 0) {
+    throw new Error("random icons can't be under 0 or over 30!");
+  }
+
+  const asArr = Array.from(IconClassNames.values());
   const iconsJSX: Array<JSX.Element> = [];
-  Array.from(IconClassNames.values()).forEach(val => {
+
+  for (let i = 0, j = 0; i < count; ++i, ++j) {
+    if (j >= IconClassNames.size) {
+      j = 0;
+    }
+
+    const val = asArr[j]!;
     const [el1, el2] = val;
-    const iconClassName = `${el1} ${el2}`;
-    console.log(iconClassName);
+
     iconsJSX.push(
       <i
-        key={`${el1}--${el2}`}
-        className={joinClasses("icon", "placed-randomly", iconClassName)}
+        key={`${i}--${el2}`}
+        className={joinClasses("icon", "placed-randomly", `${el1} ${el2}`)}
         style={additionalStyles}
       />
     );
-    console.log(iconsJSX);
-  });
+  }
 
   return <div>{iconsJSX}</div>;
 };

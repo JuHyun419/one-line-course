@@ -1,7 +1,5 @@
-enum ENavType {
+export enum ENavType {
   Landing,
   SignIn,
   AfterLogin,
 }
-
-export default ENavType;

@@ -8,11 +8,17 @@ import { EMenuMode } from "./component/menu/EMenuMode";
 
 import { getIconsRandomlyWithinRadius } from "./common/Icons";
 
+import NavFactory from "./component/nav/nav-factory/NavFactory";
+import { ENavType } from "./component/nav/ENavType";
+
 import "./app.scss";
 
 const App = () => {
   return (
     <div className={"app"}>
+      <NavFactory navType={ENavType.Landing} />
+      <NavFactory navType={ENavType.SignIn} />
+      <NavFactory navType={ENavType.AfterLogin} />
       <Button
         btnSize={EButtonSize.Small}
         btnType={EButtonType.Primary}
@@ -42,9 +48,7 @@ const App = () => {
         Log out
       </Button>
       <Menu menuMode={EMenuMode.AfterLogin} />
-      {getIconsRandomlyWithinRadius({ fontSize: "3rem" })}
-      {/* <Separator direction={ESeparatorDirection.Vertical} /> */}
-      {/* <Separator direction={ESeparatorDirection.Horizontal} /> */}
+      {getIconsRandomlyWithinRadius(30, { fontSize: "3rem" })}
     </div>
   );
 };

@@ -1,8 +1,11 @@
 @import "./Common";
 
-.icon {
+.placed-randomly {
+  opacity: 0.3;
+  z-index: -9999;
 }
-@for $i from 0 through 40 {
+
+@for $i from 0 through 30 {
   .placed-randomly:nth-child(#{$i}) {
     display: inline-block;
     position: absolute;
