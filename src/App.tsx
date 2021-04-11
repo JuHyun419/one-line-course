@@ -6,9 +6,13 @@ import { EButtonSize } from "./component/button/EButtonSize";
 import { EButtonType } from "./component/button/EButtonType";
 import { EMenuMode } from "./component/menu/EMenuMode";
 
+import { getIconsRandomlyWithinRadius } from "./common/Icons";
+
+import "./app.scss";
+
 const App = () => {
   return (
-    <div>
+    <div className={"app"}>
       <Button
         btnSize={EButtonSize.Small}
         btnType={EButtonType.Primary}
@@ -38,6 +42,7 @@ const App = () => {
         Log out
       </Button>
       <Menu menuMode={EMenuMode.AfterLogin} />
+      {getIconsRandomlyWithinRadius({ fontSize: "3rem" })}
       {/* <Separator direction={ESeparatorDirection.Vertical} /> */}
       {/* <Separator direction={ESeparatorDirection.Horizontal} /> */}
     </div>

@@ -1,0 +1,34 @@
+@import "../../common/ColorScheme";
+@import "../button/Button";
+
+@mixin nav-common {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @content;
+}
+
+.nav {
+  position: relative;
+  display: flex;
+
+  &-landing {
+    @include nav-common {
+      position: absolute;
+    }
+  }
+
+  &-signIn {
+    @include nav-common {
+      position: absolute;
+    }
+    justify-content: space-around;
+  }
+
+  &-afterLogin {
+    @include nav-common;
+    // TODO: Locate Icons randomly within the range of
+    // square + mask
+  }
+}
