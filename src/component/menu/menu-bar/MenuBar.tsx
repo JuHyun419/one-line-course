@@ -1,5 +1,6 @@
 import React, { Fragment, useContext } from "react";
 
+import { joinClasses } from "../../../common/StyleHelper";
 import MenuBarProps from "./MenuBarProps";
 import { EMenuMode } from "../EMenuMode";
 import { DarkModeContext } from "../../../context/darkMode/DarkModeContext";
@@ -7,20 +8,23 @@ import { ViewModeContext } from "../../../context/viewMode/ViewModeContext";
 import { getIcon } from "../../../common/Icons";
 import Separator from "../../../component/separator/Separator";
 import { ESeparatorDirection } from "../../../component/separator/ESeparatorDirection";
-import "./_MenuBar.scss";
 import ViewModeContextData from "../../../context/viewMode/ViewModeContextData";
 import DarkModeContextData from "../../../context/darkMode/DarkModeContextData";
+import "./_MenuBar.scss";
 
 /**
  *
  * @returns
  */
-const MenuBar: React.FC<MenuBarProps> = ({ menuMode }: MenuBarProps) => {
+const MenuBar: React.FC<MenuBarProps> = ({
+  menuMode,
+  isMenuOpen,
+}: MenuBarProps) => {
   const darkModeCtx = useContext(DarkModeContext);
   const viewModeCtx = useContext(ViewModeContext);
 
   return (
-    <div className="menu-bar">
+    <div className={joinClasses("menu-bar", isMenuOpen ? "open" : "closed")}>
       {makeMenuBarItems(menuMode, darkModeCtx, viewModeCtx)}
     </div>
   );
@@ -31,7 +35,11 @@ const makeMenuBarItems = (
   darkModeCtx: DarkModeContextData,
   viewModeCtx: ViewModeContextData
 ): JSX.Element => {
-  const iconBasicStyles = { fontSize: "2rem", boxSize: "border-box" };
+  const iconBasicStyles = {
+    fontSize: "2rem",
+    boxSize: "border-box",
+    // transition: "0.5s",
+  };
 
   const darkIndicatorForSun = {
     border: !darkModeCtx.isDark ? "2px dashed #000" : "0",

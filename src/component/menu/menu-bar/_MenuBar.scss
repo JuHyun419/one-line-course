@@ -17,7 +17,50 @@
     color: $color-primary;
   }
 
-  // & .separator-vertical {
-  //   padding-bottom: 15px;
-  // }
+  &.open {
+    // animation: 0.5s ease-in 0.1s 1 normal both anim-open;
+    animation: {
+      name: anim-open;
+      duration: 0.5s;
+      delay: 0.1s;
+      iteration-count: 1;
+      direction: normal;
+      timing-function: ease-in;
+      fill-mode: both;
+    }
+  }
+
+  &.closed {
+    // animation: 0.5s ease-out 0.1s 1 normal both anim-close;
+    animation: {
+      name: anim-close;
+      duration: 0.5s;
+      delay: 0.3s;
+      iteration-count: 1;
+      direction: normal;
+      timing-function: ease-in-out;
+      fill-mode: both;
+    }
+  }
+}
+
+@keyframes anim-open {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes anim-close {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }
