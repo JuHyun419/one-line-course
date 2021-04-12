@@ -5,12 +5,20 @@ import Button from "./component/button/Button";
 import { EButtonSize } from "./component/button/EButtonSize";
 import { EButtonType } from "./component/button/EButtonType";
 import { EMenuMode } from "./component/menu/EMenuMode";
-import Separator from "./component/separator/Separator";
-import { ESeparatorDirection } from "./component/separator/ESeparatorDirection";
+
+import { getIconsRandomlyWithinRadius } from "./common/Icons";
+
+import NavFactory from "./component/nav/nav-factory/NavFactory";
+import { ENavType } from "./component/nav/ENavType";
+
+import "./app.scss";
 
 const App = () => {
   return (
-    <div>
+    <div className={"app"}>
+      <NavFactory navType={ENavType.Landing} />
+      <NavFactory navType={ENavType.SignIn} />
+      <NavFactory navType={ENavType.AfterLogin} />
       <Button
         btnSize={EButtonSize.Small}
         btnType={EButtonType.Primary}
@@ -40,8 +48,7 @@ const App = () => {
         Log out
       </Button>
       <Menu menuMode={EMenuMode.AfterLogin} />
-      {/* <Separator direction={ESeparatorDirection.Vertical} /> */}
-      {/* <Separator direction={ESeparatorDirection.Horizontal} /> */}
+      {getIconsRandomlyWithinRadius(30, { fontSize: "3rem" })}
     </div>
   );
 };

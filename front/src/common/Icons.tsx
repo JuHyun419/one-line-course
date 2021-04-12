@@ -1,5 +1,5 @@
 import React from "react";
-import { joinClasses } from "./StyleHelper";
+import { joinClasses, setCSSVariable } from "./StyleHelper";
 import { IconClassNames } from "./IconsResources";
 
 import "./_Icons.scss";
@@ -26,6 +26,37 @@ export const getIcon = (
       className={joinClasses("icon", ...classes)}
       style={additionalStyles}
       onClick={onClick}
-    ></i>
+    />
   ) : null;
+};
+
+export const getIconsRandomlyWithinRadius = (
+  count: number,
+  additionalStyles?: TIconStyles
+): JSX.Element | null | undefined => {
+  if (count > 30 || count < 0) {
+    throw new Error("random icons can't be under 0 or over 30!");
+  }
+
+  const asArr = Array.from(IconClassNames.values());
+  const iconsJSX: Array<JSX.Element> = [];
+
+  for (let i = 0, j = 0; i < count; ++i, ++j) {
+    if (j >= IconClassNames.size) {
+      j = 0;
+    }
+
+    const val = asArr[j]!;
+    const [el1, el2] = val;
+
+    iconsJSX.push(
+      <i
+        key={`${i}--${el2}`}
+        className={joinClasses("icon", "placed-randomly", `${el1} ${el2}`)}
+        style={additionalStyles}
+      />
+    );
+  }
+
+  return <div>{iconsJSX}</div>;
 };
