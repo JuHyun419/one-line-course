@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
 
-const SignIn = () => {
+import { ENavType } from "../../component/nav/ENavType";
+import NavFactory from "../../component/nav/nav-factory/NavFactory";
+import "./_SignIn.scss";
+
+const SignIn: React.FC<{}> = () => {
   return (
-    <div>
+    <div className={["page", "signIn"].join(" ")}>
+      <NavFactory navType={ENavType.SignIn} />
       Sign In !!
     </div>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;

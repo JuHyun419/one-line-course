@@ -2,7 +2,7 @@ import { ENavType } from "../ENavType";
 
 interface NavFactoryProps {
   navType: ENavType;
-  history: any;
+  history?: any;
 }
 
 export default NavFactoryProps;

@@ -7,7 +7,7 @@ import "./_Landing.scss";
 
 const Landing: React.FC<{ history: any }> = ({ history }) => {
   return (
-    <div className="landing">
+    <div className={["page", "landing"].join(" ")}>
       <NavFactory navType={ENavType.Landing} history={history} />
       Landing!!
     </div>

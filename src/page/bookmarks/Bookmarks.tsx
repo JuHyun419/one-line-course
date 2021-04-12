@@ -1,8 +1,10 @@
 import React from 'react'
 
+import "./_Bookmarks.scss";
+
 const Bookmarks = () => {
   return (
-    <div>
+    <div className={["page", "bookmarks"].join(" ")}>
       Bookmarks!!
     </div>
   )

@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { Fragment } from "react";
+import { Redirect } from "react-router-dom";
 
 const LogOut = () => {
+  // TODO: Resource disposal (oAuth)
   return (
-    <div>
-      Log Out!!
-    </div>
-  )
-}
+    <Fragment>
+      <Redirect to="/" />
+    </Fragment>
+  );
+};
 
-export default LogOut
+export default LogOut;

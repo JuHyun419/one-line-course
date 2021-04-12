@@ -18,9 +18,14 @@ const App = () => {
   let routeJSX = (
     <Switch>
       <Route path="/signIn" component={SignIn} />
+      <Route path="/main" component={Main} />
+      <Route path="/comments" component={Comments} />
+      <Route path="/bookmarks" component={Bookmarks} />
+      <Route path="/logout" component={LogOut} />
+
       <Route path="/" exact component={Landing} />
-      <Route path="/:id" component={NotFound} />
-      <Redirect to="/" />
+      <Redirect to="/notFound" />
+      <Route path="/notFound" component={NotFound} />
     </Switch>
   );
 

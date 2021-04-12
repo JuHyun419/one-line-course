@@ -31,7 +31,6 @@ const Menu: React.FC<MenuProps> = ({
       </div>
       <DarkModeCtxProvider>
         <ViewModeCtxProvider>
-          {/* TODO: open, close animation */}
           <MenuBar menuMode={menuMode} isMenuOpen={isMenuOpen} />
         </ViewModeCtxProvider>
       </DarkModeCtxProvider>
