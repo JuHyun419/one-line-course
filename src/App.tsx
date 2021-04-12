@@ -1,4 +1,5 @@
 import React from "react";
+
 import Menu from "./component/menu/Menu";
 
 import Button from "./component/button/Button";
@@ -10,6 +11,8 @@ import { getIconsRandomlyWithinRadius } from "./common/Icons";
 
 import NavFactory from "./component/nav/nav-factory/NavFactory";
 import { ENavType } from "./component/nav/ENavType";
+
+import Footer from "./component/footer/Footer";
 
 import "./app.scss";
 
@@ -49,6 +52,7 @@ const App = () => {
       </Button>
       <Menu menuMode={EMenuMode.AfterLogin} />
       {getIconsRandomlyWithinRadius(30, { fontSize: "3rem" })}
+      <Footer />
     </div>
   );
 };

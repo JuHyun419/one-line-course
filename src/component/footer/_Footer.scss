@@ -1,0 +1,20 @@
+@import "../../common/ColorScheme";
+
+@mixin footer-dev-card-common {
+  //
+}
+
+.footer {
+  position: relative;
+  display: flex;
+
+  width: 100vw;
+  height: 15vh;
+  background-color: $color-footer;
+  border: 1px dashed #eee;
+
+  .footer-dev-card {
+    display: flex;
+    flex-direction: row;
+  }
+}
