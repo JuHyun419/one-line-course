@@ -30,7 +30,7 @@ export const getIcon = (
   ) : null;
 };
 
-export const getIconsRandomlyWithinRadius = (
+export const placeIconsRandomly = (
   count: number,
   additionalStyles?: TIconStyles
 ): JSX.Element | null | undefined => {
