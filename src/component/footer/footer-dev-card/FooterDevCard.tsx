@@ -1,24 +1,35 @@
 import React, { Fragment } from "react";
 
-import Data from "./FooterDevCardData";
+import { TFooterDevCardData, FooterDevCardData } from "./FooterDevCardData";
 
+import { getIcon } from "../../../common/Icons";
 import "../_Footer.scss";
-import { getIcon } from "~common/Icons";
+import Separator from "../../separator/Separator";
+import { ESeparatorDirection } from "../../separator/ESeparatorDirection";
 
-const FooterDevCard = () => {
-  return (
-    <div className="footer-dev-card">
-      {Data.map(d => (
-        <Fragment key={d.name}>
-          <h2>{d.name}</h2>
+const FooterDevCard: React.FC<{}> = () => {
+  const devCardsJSX: Array<JSX.Element> = FooterDevCardData.map(
+    (d: TFooterDevCardData) => (
+      <div className="footer-dev-card" key={d.name}>
+        <div className="left">
           {/* <img src={d.portrait} alt="portrait photo" /> */}
-          {getIcon("User")}
+          {getIcon(d.portrait, undefined, { fontSize: "2.3rem" })}
+          <h2>{d.name}</h2>
+        </div>
+        {/* <Separator
+          direction={ESeparatorDirection.Vertical}
+          length={130}
+          width={2}
+        /> */}
+        <div className="right">
           <p>{d.position}</p>
+          {/* TODO: Link to real repo */}
           <p>{d.gitHubRepoLink}</p>
-        </Fragment>
-      ))}
-    </div>
+        </div>
+      </div>
+    )
   );
+  return <div className="footer-dev-cards">{devCardsJSX}</div>;
 };
 
 export default FooterDevCard;
