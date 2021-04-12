@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useCallback } from "react";
+import useRedirectTo from "../../hooks/useRedirectTo";
 
 import Button from "../button/Button";
 import { EButtonSize } from "../button/EButtonSize";
 import { EButtonType } from "../button/EButtonType";
+import NavProps from "./NavProps";
 
 import "./_Nav.scss";
 
-const AfterLoginNav: React.FC<{ children?: JSX.Element }> = ({ children }) => {
-  // TODO: link onClick with Router -> redirect to /signIn
-  const redirectToMainPage = () => {};
-  const redirectToCommentsPage = () => {};
-  const redirectToBookmarksPage = () => {};
-  const logout = () => {};
+const toMain = "/main";
+const toComments = "/comments";
+const toBookmarks = "/bookmarks";
+const toLogOut = "/logout";
+
+const AfterLoginNav: React.FC<NavProps> = ({ history, children }) => {
+  const redirectToMain = useRedirectTo(history, toMain);
+  const redirectToComments = useRedirectTo(history, toComments);
+  const redirectToBookmarks = useRedirectTo(history, toBookmarks);
+  const redirectToLogOut = useRedirectTo(history, toLogOut);
 
   return (
     <div className="nav-afterLogin">
@@ -19,7 +25,7 @@ const AfterLoginNav: React.FC<{ children?: JSX.Element }> = ({ children }) => {
       <Button
         btnSize={EButtonSize.Medium}
         btnType={EButtonType.Primary}
-        onClick={redirectToMainPage}
+        onClick={redirectToMain}
       >
         Main
       </Button>
@@ -27,7 +33,7 @@ const AfterLoginNav: React.FC<{ children?: JSX.Element }> = ({ children }) => {
       <Button
         btnSize={EButtonSize.Medium}
         btnType={EButtonType.Alt}
-        onClick={redirectToCommentsPage}
+        onClick={redirectToComments}
       >
         Comments
       </Button>
@@ -35,7 +41,7 @@ const AfterLoginNav: React.FC<{ children?: JSX.Element }> = ({ children }) => {
       <Button
         btnSize={EButtonSize.Medium}
         btnType={EButtonType.Alt}
-        onClick={redirectToBookmarksPage}
+        onClick={redirectToBookmarks}
       >
         Bookmarks
       </Button>
@@ -43,7 +49,7 @@ const AfterLoginNav: React.FC<{ children?: JSX.Element }> = ({ children }) => {
       <Button
         btnSize={EButtonSize.Medium}
         btnType={EButtonType.Warning}
-        onClick={logout}
+        onClick={redirectToLogOut}
       >
         Log Out
       </Button>

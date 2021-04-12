@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Main = () => {
+const LogOut = () => {
   return (
     <div>
-      Main !!
+      Log Out!!
     </div>
   )
 }
 
-export default Main
+export default LogOut

@@ -5,10 +5,11 @@ import NavFactory from "../../component/nav/nav-factory/NavFactory";
 
 import "./_Landing.scss";
 
-const Landing: React.FC<{}> = () => {
+const Landing: React.FC<{ history: any }> = ({ history }) => {
   return (
     <div className="landing">
-      <NavFactory navType={ENavType.Landing} />
+      <NavFactory navType={ENavType.Landing} history={history} />
+      Landing!!
     </div>
   );
 };

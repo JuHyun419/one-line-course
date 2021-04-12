@@ -1,12 +1,17 @@
 import React from "react";
+// import { NavLink } from "react-router-dom";
 
-import "./_Button.scss";
+import ButtonProps, {
+  // TNavLinkToAndExact,
+  // isTNavLinkToAndExact,
+  TOnClick,
+} from "./ButtonProps";
 
-import { ButtonProps } from "./ButtonProps";
 import { EButtonType } from "./EButtonType";
 import { EButtonSize } from "./EButtonSize";
 import { joinClasses } from "../../common/StyleHelper";
 
+import "./_Button.scss";
 /**
  *
  * @btnType decide the type among primary, alt, warning, danger...
@@ -21,6 +26,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <div
+      // ["btn", btnType.toString(), btnSize.toString()].join(" ")
       className={joinClasses("btn", btnType.toString(), btnSize.toString())}
       onClick={onClick}
     >
@@ -30,3 +36,17 @@ const Button: React.FC<ButtonProps> = ({
 };
 
 export default Button;
+
+// if (isTNavLinkToAndExact(onClick)) {
+//   const [navTo, exact] = onClick as TNavLinkToAndExact;
+//   return (
+//     <div
+//       className={["btn", btnType.toString(), btnSize.toString()].join(" ")}
+//     >
+//       <NavLink to={navTo} exact={exact}>
+//         <span>{children}</span>
+//       </NavLink>
+//     </div>
+//   );
+// } else {
+// }

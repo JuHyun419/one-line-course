@@ -4,28 +4,26 @@ import { ENavType } from "../ENavType";
 import AfterLoginNav from "../AfterLoginNav";
 import LandingNav from "../LandingNav";
 import SignInNav from "../SignInNav";
-
-interface NavFactoryProps {
-  navType: ENavType;
-}
+import NavFactoryProps from "./NavFactoryProps";
 
 const NavFactory: React.FC<NavFactoryProps> = ({
   navType,
-}: NavFactoryProps) => <div className="nav">{makeNav(navType)}</div>;
+  history,
+}: NavFactoryProps) => <div className="nav">{makeNav(navType, history)}</div>;
 
-const makeNav = (navType: ENavType) => {
+const makeNav = (navType: ENavType, history: any) => {
   let navJSX: JSX.Element;
   switch (navType) {
     case ENavType.Landing:
-      navJSX = <LandingNav />;
+      navJSX = <LandingNav history={history} />;
       break;
 
     case ENavType.SignIn:
-      navJSX = <SignInNav />;
+      navJSX = <SignInNav history={history} />;
       break;
 
     case ENavType.AfterLogin:
-      navJSX = <AfterLoginNav />;
+      navJSX = <AfterLoginNav history={history} />;
       break;
 
     default:
