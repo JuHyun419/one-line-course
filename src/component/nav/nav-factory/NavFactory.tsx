@@ -6,12 +6,15 @@ import LandingNav from "../LandingNav";
 import SignInNav from "../SignInNav";
 import NavFactoryProps from "./NavFactoryProps";
 
-const NavFactory: React.FC<NavFactoryProps> = ({
+const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
+  <div className="nav">{makeNav(props)}</div>
+);
+
+const makeNav = ({
   navType,
   history,
-}: NavFactoryProps) => <div className="nav">{makeNav(navType, history)}</div>;
-
-const makeNav = (navType: ENavType, history: any) => {
+  highlightBtnIdx,
+}: NavFactoryProps): JSX.Element => {
   let navJSX: JSX.Element;
   switch (navType) {
     case ENavType.Landing:
@@ -23,7 +26,9 @@ const makeNav = (navType: ENavType, history: any) => {
       break;
 
     case ENavType.AfterLogin:
-      navJSX = <AfterLoginNav history={history} />;
+      navJSX = (
+        <AfterLoginNav history={history} highlightBtnIdx={highlightBtnIdx} />
+      );
       break;
 
     default:

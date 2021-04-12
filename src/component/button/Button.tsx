@@ -1,11 +1,7 @@
 import React from "react";
 // import { NavLink } from "react-router-dom";
 
-import ButtonProps, {
-  // TNavLinkToAndExact,
-  // isTNavLinkToAndExact,
-  TOnClick,
-} from "./ButtonProps";
+import ButtonProps from "./ButtonProps";
 
 import { EButtonType } from "./EButtonType";
 import { EButtonSize } from "./EButtonSize";
@@ -21,13 +17,19 @@ import "./_Button.scss";
 const Button: React.FC<ButtonProps> = ({
   btnSize = EButtonSize.Medium,
   btnType = EButtonType.Primary,
+  highlight = false,
   onClick,
   children,
 }) => {
   return (
     <div
       // ["btn", btnType.toString(), btnSize.toString()].join(" ")
-      className={joinClasses("btn", btnType.toString(), btnSize.toString())}
+      className={joinClasses(
+        "btn",
+        btnType.toString(),
+        btnSize.toString(),
+        `${highlight ? "highlight" : null}`
+      )}
       onClick={onClick}
     >
       <span>{children}</span>

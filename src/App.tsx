@@ -14,7 +14,6 @@ import Layout from "./component/layout/Layout";
 import "./app.scss";
 
 const App = () => {
-  /* 1. Landing page */
   let routeJSX = (
     <Switch>
       <Route path="/signIn" component={SignIn} />
@@ -24,29 +23,12 @@ const App = () => {
       <Route path="/logout" component={LogOut} />
 
       <Route path="/" exact component={Landing} />
+
       <Redirect to="/notFound" />
       <Route path="/notFound" component={NotFound} />
     </Switch>
   );
 
-  /* 2. Sign-In page */
-  /* <Switch> */
-  /* Google oAuth */
-  /* Kakao oAuth */
-  /* </Switch> */
-
-  /* 3. After Login pages */
-  /* <Switch>
-        <Route path="/main" component={Main} />
-        <Route path="/comments" component={Comments} />
-        <Route path="/bookmarks" component={Bookmarks} />
-        <Route path="/logout" component={LogOut} />
-
-        <Route path="/landing" component={Landing} />
-        <Route path="/" exact component={Landing} />
-        <Route path="/:id" component={NotFound} />
-        <Redirect to="/" />
-      </Switch> */
   return (
     <div className="app">
       <Layout>{routeJSX}</Layout>

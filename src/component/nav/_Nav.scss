@@ -24,6 +24,10 @@
       position: absolute;
     }
     justify-content: flex-end;
+
+    & .btn {
+      margin-right: 5%;
+    }
   }
 
   &-signIn {
