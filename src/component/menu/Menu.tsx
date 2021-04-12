@@ -1,12 +1,12 @@
 import React, { useState, useCallback, Fragment } from "react";
 
-import DarkModeContextProvider from "../../context/darkMode/DarkModeContext";
+import DarkModeCtxProvider from "../../context/darkMode/DarkModeCtx";
 
 import MenuHamburger from "./MenuHamburger";
 import MenuProps from "./MenuProps";
 import { EMenuMode } from "./EMenuMode";
 import MenuBar from "./menu-bar/MenuBar";
-import ViewModeContextProvider from "../../context/viewMode/ViewModeContext";
+import ViewModeCtxProvider from "../../context/viewMode/ViewModeCtx";
 import "./_Menu.scss";
 
 const Menu: React.FC<MenuProps> = ({
@@ -29,12 +29,11 @@ const Menu: React.FC<MenuProps> = ({
         <MenuHamburger />
         <MenuHamburger />
       </div>
-      <DarkModeContextProvider>
-        <ViewModeContextProvider>
-          {/* TODO: open, close animation */}
+      <DarkModeCtxProvider>
+        <ViewModeCtxProvider>
           <MenuBar menuMode={menuMode} isMenuOpen={isMenuOpen} />
-        </ViewModeContextProvider>
-      </DarkModeContextProvider>
+        </ViewModeCtxProvider>
+      </DarkModeCtxProvider>
     </Fragment>
   );
 };
