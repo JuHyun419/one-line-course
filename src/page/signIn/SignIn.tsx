@@ -1,4 +1,5 @@
 import React from "react";
+import { placeIconsRandomly } from "../../common/Icons";
 
 import { ENavType } from "../../component/nav/ENavType";
 import NavFactory from "../../component/nav/nav-factory/NavFactory";
@@ -9,6 +10,7 @@ const SignIn: React.FC<{}> = () => {
     <div className={["page", "signIn"].join(" ")}>
       <NavFactory navType={ENavType.SignIn} />
       Sign In !!
+      {placeIconsRandomly(30, { fontSize: "2rem" })}
     </div>
   );
 };
