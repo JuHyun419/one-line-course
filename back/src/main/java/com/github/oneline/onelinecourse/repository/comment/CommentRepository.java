@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface CommentRepository extends JpaRepository<Comments, Long> {
 
-    Optional<Comments> findByIdAndUserId(Long commentId/*, Long userId*/);
+    Optional<Comments> findByUserIdAndLectureId(Long userId, Long lectureId);
 }
