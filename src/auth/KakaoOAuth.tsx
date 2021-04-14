@@ -18,7 +18,7 @@ const KakaoOAuth: React.FC<{}> = () => {
             console.log(onSuccess);
           },
           always: onAlways => {
-            console.log(onAlways);
+            // console.log(onAlways);
           },
         });
       },
