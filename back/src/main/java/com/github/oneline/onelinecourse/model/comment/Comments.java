@@ -22,6 +22,12 @@ public class Comments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "USERS_ID")
+    private Long userId;
+
+    @Column(name="LECTURES_ID")
+    private Long lectureId;
     
     @Column(nullable = false)
     private String content;
@@ -57,6 +63,18 @@ public class Comments {
         this.updatedAt = defaultIfNull(updatedAt, LocalDateTime.now());
         this.lectures = lectures;
         /*this.users = users;*/
+    }
+
+    public void updateUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void updateLectureId(Long lectureId) {
+        this.lectureId = lectureId;
+    }
+
+    public void updateContent(String content) {
+        this.content = content;
     }
 
     @Override
