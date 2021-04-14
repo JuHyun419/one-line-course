@@ -18,25 +18,25 @@ public class CommentController {
 
     @PostMapping
     public ResponseEntity<CommentResponse> createComment(
-            CommentCreateRequest request/*, Users user*/, @RequestBody String lectureIds) {
-        Long lectureId = Long.valueOf(lectureIds);
-
-        final CommentResponse comment = commentService.createComment(
-                request.toEntity()/*, user.getId()*/, lectureId
+            @RequestBody CommentCreateRequest request) {
+        return ResponseEntity.ok(
+                new CommentResponse(
+                        commentService.createComment(request.toEntity()))
         );
-        return ResponseEntity.ok(comment);
     }
 
     @PatchMapping("/{commentId}")
-    public ResponseEntity<Void> updateComment(@PathVariable Long commentId) {
+    public ResponseEntity<Void> updateComment(@RequestBody CommentUpdateRequest request,
+                                              @PathVariable Long commentId) {
+        commentService.updateComment(request.toEntity(), commentId);
 
         return ResponseEntity.ok()
                 .build();
     }
 
     @DeleteMapping("/{commentId}")
-    public ResponseEntity<Void> deleteComment(@PathVariable Long commentId/*, User user*/) {
-        commentService.deleteComment(commentId/*, user*/);
+    public ResponseEntity<Void> deleteComment(@PathVariable Long commentId) {
+        commentService.deleteComment(commentId);
 
         return ResponseEntity.noContent()
                 .build();
