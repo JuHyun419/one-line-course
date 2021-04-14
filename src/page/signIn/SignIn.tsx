@@ -1,14 +1,23 @@
 import React from "react";
 
-import { ENavType } from "../../component/nav/ENavType";
 import NavFactory from "../../component/nav/nav-factory/NavFactory";
-import "./_SignIn.scss";
+import { ENavType } from "../../component/nav/ENavType";
+import AuthCtrl from "../../auth/AuthCtrl";
+import { placeIconsRandomly } from "../../common/Icons";
+import Footer from "../../component/footer/Footer";
 
-const SignIn: React.FC<{}> = () => {
+import "./_SignIn.scss";
+import "../_Page.scss";
+
+const SignIn: React.FC<{}> = () => {  
   return (
-    <div className={["page", "signIn"].join(" ")}>
+    <div>
       <NavFactory navType={ENavType.SignIn} />
-      Sign In !!
+      <div className="page">
+        <AuthCtrl />
+        {placeIconsRandomly(30, { fontSize: "2rem" })}
+      </div>
+      <Footer />
     </div>
   );
 };

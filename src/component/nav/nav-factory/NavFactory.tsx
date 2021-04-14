@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { ENavType } from "../ENavType";
 import AfterLoginNav from "../AfterLoginNav";
@@ -6,24 +6,26 @@ import LandingNav from "../LandingNav";
 import SignInNav from "../SignInNav";
 import NavFactoryProps from "./NavFactoryProps";
 
-const NavFactory: React.FC<NavFactoryProps> = ({
-  navType,
-  history,
-}: NavFactoryProps) => <div className="nav">{makeNav(navType, history)}</div>;
+const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
+  <Fragment>{makeNav(props)}</Fragment>
+);
 
-const makeNav = (navType: ENavType, history: any) => {
+const makeNav = ({
+  navType,
+  highlightBtnIdx,
+}: NavFactoryProps): JSX.Element => {
   let navJSX: JSX.Element;
   switch (navType) {
     case ENavType.Landing:
-      navJSX = <LandingNav history={history} />;
+      navJSX = <LandingNav />;
       break;
 
     case ENavType.SignIn:
-      navJSX = <SignInNav history={history} />;
+      navJSX = <SignInNav />;
       break;
 
     case ENavType.AfterLogin:
-      navJSX = <AfterLoginNav history={history} />;
+      navJSX = <AfterLoginNav highlightBtnIdx={highlightBtnIdx} />;
       break;
 
     default:

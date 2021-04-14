@@ -1,5 +1,9 @@
 import React from "react";
-import AuthCtxData from "./AuthCtxData";
+
+export interface AuthCtxData {
+  isAuth: boolean;
+  authenticate: () => void;
+}
 
 export const AuthCtx = React.createContext<AuthCtxData>({
   isAuth: false,
@@ -9,11 +13,8 @@ export const AuthCtx = React.createContext<AuthCtxData>({
 const AuthCtxProvider: React.FC<{
   children?: JSX.Element | null | undefined;
 }> = ({ children }) => {
-  return (
-    <AuthCtx.Provider value={{}}>
-      {children}
-    </AuthCtx.Provider>
-  )
+  // return <AuthCtx.Provider value={{}} {...children} />;
+  return <div></div>;
 };
 
 export default AuthCtxProvider;
