@@ -6,14 +6,20 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
-@Setter
 public class CommentCreateRequest {
 
     private String content;
+    private Long lectureId;
+    private Long userId;
 
     public Comments toEntity() {
-        return Comments.builder()
+        Comments comments = Comments.builder()
                 .content(content)
                 .build();
+
+        comments.updateUserId(userId);
+        comments.updateLectureId(lectureId);
+
+        return comments;
     }
 }
