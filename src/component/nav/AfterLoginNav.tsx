@@ -1,5 +1,5 @@
 import React, { Fragment, useCallback } from "react";
-import useRedirectToOnButtonClick from "../../hooks/useRedirectTo";
+import { useRedirectToOnButtonClick } from "../../hooks/useRedirectTo";
 
 import Button from "../button/Button";
 import { EButtonSize } from "../button/EButtonSize";

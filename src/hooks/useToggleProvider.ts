@@ -6,13 +6,13 @@ import { useState, useCallback, useMemo } from "react";
  * @param toggleName
  * @returns
  */
-const useToggleProvider = <TContextData extends {}>(
+export const useToggleProvider = <TContextData extends {}>(
   stateName: string,
   toggleName: string
 ) => {
   const [isOn, setIsOn] = useState(false);
 
-  const onToggle = useCallback(() => setIsOn(prv => !prv), [isOn, setIsOn]);
+  const onToggle = useCallback(() => setIsOn(prv => !prv), [setIsOn]);
 
   const providerValue = useMemo(
     () =>
@@ -20,10 +20,8 @@ const useToggleProvider = <TContextData extends {}>(
         [stateName]: isOn,
         [toggleName]: onToggle,
       } as TContextData),
-    [isOn, onToggle]
+    [isOn, onToggle, stateName, toggleName]
   );
 
   return { providerValue };
 };
-
-export default useToggleProvider;
