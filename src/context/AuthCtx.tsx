@@ -13,7 +13,8 @@ export const AuthCtx = React.createContext<AuthCtxData>({
 const AuthCtxProvider: React.FC<{
   children?: JSX.Element | null | undefined;
 }> = ({ children }) => {
-  return <AuthCtx.Provider value={{}} {...children} />;
+  // return <AuthCtx.Provider value={{}} {...children} />;
+  return <div></div>;
 };
 
 export default AuthCtxProvider;

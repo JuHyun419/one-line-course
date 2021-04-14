@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { ENavType } from "../ENavType";
 import AfterLoginNav from "../AfterLoginNav";
@@ -7,7 +7,7 @@ import SignInNav from "../SignInNav";
 import NavFactoryProps from "./NavFactoryProps";
 
 const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
-  <div className="nav">{makeNav(props)}</div>
+  <Fragment>{makeNav(props)}</Fragment>
 );
 
 const makeNav = ({

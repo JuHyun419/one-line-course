@@ -9,7 +9,7 @@ import Landing from "./page/landing/Landing";
 import LogOut from "./page/logout/LogOut";
 import NotFound from "./page/not-found/NotFound";
 
-import Layout from "./component/layout/Layout";
+// import Layout from "./component/layout/Layout";
 
 import "./app.scss";
 
@@ -29,11 +29,7 @@ const App = () => {
     </Switch>
   );
 
-  return (
-    <div className="app">
-      <Layout>{routeJSX}</Layout>
-    </div>
-  );
+  return <div className="app">{routeJSX}</div>;
 };
 
 export default App;

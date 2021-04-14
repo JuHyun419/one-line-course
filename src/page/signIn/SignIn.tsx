@@ -4,14 +4,18 @@ import { placeIconsRandomly } from "../../common/Icons";
 
 import { ENavType } from "../../component/nav/ENavType";
 import NavFactory from "../../component/nav/nav-factory/NavFactory";
+import Footer from "../../component/footer/Footer";
 import "./_SignIn.scss";
 
 const SignIn: React.FC<{}> = () => {
   return (
-    <div className="page signIn">
+    <div>
       <NavFactory navType={ENavType.SignIn} />
-      <AuthCtrl />
-      {placeIconsRandomly(30, { fontSize: "2rem" })}
+      <div className="signIn-main">
+        <AuthCtrl />
+        {placeIconsRandomly(30, { fontSize: "2rem" })}
+      </div>
+      <Footer />
     </div>
   );
 };
