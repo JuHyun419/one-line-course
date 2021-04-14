@@ -139,9 +139,9 @@ declare var Kakao: {
       url: APIURL;
       data?: UserMeObject | UpdateProfileObject;
       files?: any;
-      success?: (onSuccess: object) => void;
-      fail?: (onFail: object) => void;
-      always?: (onAlways: object) => void;
+      success?: (onSuccess: AuthSuccessCallback) => void;
+      fail?: (onFail: AuthFailCallback) => void;
+      always?: (onAlways: AuthSuccessCallback | AuthFailCallback) => void;
     }) => unknown;
   };
 

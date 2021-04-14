@@ -1,4 +1,5 @@
-import React, { Fragment, useCallback } from "react";
+import React, { Fragment } from "react";
+import { useHistory } from "react-router-dom";
 import { useRedirectToOnButtonClick } from "../../hooks/useRedirectTo";
 
 import Button from "../button/Button";
@@ -20,10 +21,10 @@ const AfterLoginNav: React.FC<NavProps> = (props: NavProps) => (
 );
 
 const makeButtonsOnHistory = ({
-  history,
   highlightBtnIdx,
   children,
 }: NavProps): JSX.Element => {
+  const history = useHistory();
   const redirectToMain = useRedirectToOnButtonClick(history, toMain);
   const redirectToComments = useRedirectToOnButtonClick(history, toComments);
   const redirectToBookmarks = useRedirectToOnButtonClick(history, toBookmarks);

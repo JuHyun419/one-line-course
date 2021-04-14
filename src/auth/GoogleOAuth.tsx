@@ -1,4 +1,5 @@
 import React, { useCallback } from "react";
+import { useHistory } from "react-router-dom";
 
 import {
   GoogleLogin,
@@ -8,13 +9,16 @@ import {
 
 import "./_Auth.scss";
 
-const GoogleOAuth = () => {
+const GoogleOAuth: React.FC<{}> = () => {
+  const history = useHistory();
+
   const onLoginSuccess = useCallback(
     (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
       console.log(response);
       // TODO: after login
+      history.push("/main");
     },
-    []
+    [history]
   );
 
   const onLoginFail = useCallback((error: any): void => {
@@ -29,7 +33,7 @@ const GoogleOAuth = () => {
         onSuccess={onLoginSuccess}
         onFailure={onLoginFail}
         cookiePolicy={"single_host_origin"}
-        theme={"dark"}
+        // theme={"dark"}
         isSignedIn
       />
     </div>

@@ -12,23 +12,20 @@ const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
 
 const makeNav = ({
   navType,
-  history,
   highlightBtnIdx,
 }: NavFactoryProps): JSX.Element => {
   let navJSX: JSX.Element;
   switch (navType) {
     case ENavType.Landing:
-      navJSX = <LandingNav history={history} />;
+      navJSX = <LandingNav />;
       break;
 
     case ENavType.SignIn:
-      navJSX = <SignInNav history={history} />;
+      navJSX = <SignInNav />;
       break;
 
     case ENavType.AfterLogin:
-      navJSX = (
-        <AfterLoginNav history={history} highlightBtnIdx={highlightBtnIdx} />
-      );
+      navJSX = <AfterLoginNav highlightBtnIdx={highlightBtnIdx} />;
       break;
 
     default:

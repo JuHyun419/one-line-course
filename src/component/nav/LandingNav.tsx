@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { useRedirectToOnButtonClick } from "../../hooks/useRedirectTo";
 
 import Button from "../button/Button";
@@ -10,7 +11,8 @@ import "./_Nav.scss";
 
 const toSignIn = "/signIn";
 
-const LandingNav: React.FC<NavProps> = ({ history, children }) => {
+const LandingNav: React.FC<NavProps> = ({ children }) => {
+  const history = useHistory();
   const redirectToSignIn = useRedirectToOnButtonClick(history, toSignIn);
 
   return (

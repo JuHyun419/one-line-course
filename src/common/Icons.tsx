@@ -45,9 +45,7 @@ export const placeIconsRandomly = (
     if (j >= IconClassNames.size) {
       j = 0;
     }
-
-    const val = asArr[j]!;
-    const [el1, el2] = val;
+    const [el1, el2] = asArr[j]!;
 
     iconsJSX.push(
       <i

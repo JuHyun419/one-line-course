@@ -6,13 +6,16 @@ import NavFactory from "../../component/nav/nav-factory/NavFactory";
 import LandingInfoItems from "./landing-info-item/LandingInfoItems";
 
 import "./_Landing.scss";
+import "../_Page.scss";
 
 const Landing: React.FC<{ history: any }> = ({ history }) => {
   return (
-    <div className={["page", "landing"].join(" ")}>
-      <NavFactory navType={ENavType.Landing} history={history} />
-      <LandingInfoItems />
-      {placeIconsRandomly(30, {fontSize: "2rem"})}
+    <div>
+      <NavFactory navType={ENavType.Landing} />
+      <div className="page">
+        <LandingInfoItems />
+        {placeIconsRandomly(30, { fontSize: "2rem" })}
+      </div>
     </div>
   );
 };
