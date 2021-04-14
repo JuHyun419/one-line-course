@@ -6,26 +6,42 @@ import com.github.oneline.onelinecourse.repository.comment.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.xml.stream.events.Comment;
+
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 @RequiredArgsConstructor
 @Service
 public class CommentService {
 
     private final CommentRepository commentRepository;
 
-    public CommentResponse createComment(Comments toEntity/*, Long userId*/, Long lectureId) {
+    public Comments createComment(Comments requestComment) {
+        checkNotNull(requestComment.getUserId(), "userId must be provided");
+        checkNotNull(requestComment.getLectureId(), "lectureId must be provided");
 
-        return null;
+        return commentRepository.findByUserIdAndLectureId(
+                        requestComment.getUserId(), requestComment.getLectureId())
+                .orElseGet(() -> commentRepository.save(requestComment));
     }
 
-    public void updateComment(Long id, Comments comments) {
+    public void updateComment(Comments requestComment, Long commentId) {
+        checkArgument(commentId > 0, "commentId must be positive number");
 
+        final Comments comments = commentRepository.findById(commentId)
+                .orElseThrow(() -> new IllegalArgumentException(commentId + "번에 해당하는 댓글이 존재하지 않습니다."));
+
+        comments.updateContent(requestComment.getContent());
     }
 
-    public void deleteComment(Long id/*, User user*/) {
-        final Comments comment = commentRepository.findByIdAndUserId(id/*, user.getId()*/)
-                .orElseThrow(() -> new IllegalArgumentException(id + "번에 해당하는 댓글이 존재하지 않습니다."));
+    public void deleteComment(Long commentId) {
+        checkArgument(commentId > 0, "commentId must be positive number");
 
-        commentRepository.delete(comment);
+        final Comments comments = commentRepository.findById(commentId)
+                .orElseThrow(() -> new IllegalArgumentException(commentId + "번에 해당하는 댓글이 존재하지 않습니다."));
+
+        commentRepository.delete(comments);
     }
 
 }
