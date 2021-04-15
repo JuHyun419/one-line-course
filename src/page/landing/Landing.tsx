@@ -4,11 +4,12 @@ import { placeIconsRandomly } from "../../common/Icons";
 import { ENavType } from "../../component/nav/ENavType";
 import NavFactory from "../../component/nav/nav-factory/NavFactory";
 import LandingInfoItems from "./landing-info-item/LandingInfoItems";
+import Footer from "../../component/footer/Footer";
 
 import "./_Landing.scss";
 import "../_Page.scss";
 
-const Landing: React.FC<{ history: any }> = ({ history }) => {
+const Landing: React.FC<{}> = () => {
   return (
     <div>
       <NavFactory navType={ENavType.Landing} />
@@ -16,6 +17,7 @@ const Landing: React.FC<{ history: any }> = ({ history }) => {
         <LandingInfoItems />
         {placeIconsRandomly(30, { fontSize: "2rem" })}
       </div>
+      <Footer />
     </div>
   );
 };
