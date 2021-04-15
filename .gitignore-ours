@@ -1,9 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-.env
-.vscode/
-
-# local history - vscode ext
 .history/
 
 # dependencies

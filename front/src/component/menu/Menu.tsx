@@ -1,12 +1,12 @@
 import React, { useState, useCallback, Fragment } from "react";
 
-import DarkModeCtxProvider from "../../context/darkMode/DarkModeCtx";
+import { DarkModeCtxProvider } from "../../context/DarkModeCtx";
+import { ViewModeCtxProvider } from "../../context/ViewModeCtx";
 
 import MenuHamburger from "./MenuHamburger";
 import MenuProps from "./MenuProps";
 import { EMenuMode } from "./EMenuMode";
 import MenuBar from "./menu-bar/MenuBar";
-import ViewModeCtxProvider from "../../context/viewMode/ViewModeCtx";
 import "./_Menu.scss";
 
 const Menu: React.FC<MenuProps> = ({

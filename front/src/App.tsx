@@ -1,57 +1,37 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-import SignIn from "./page/signIn/SignIn";
-import Main from "./page/main/Main";
-import Comments from "./page/comments/Comments";
-import Bookmarks from "./page/bookmarks/Bookmarks";
-import Landing from "./page/landing/Landing";
-import LogOut from "./page/logout/LogOut";
-import NotFound from "./page/not-found/NotFound";
+import landingPage from "./page/landing/Landing";
+const signInPage = React.lazy(() => import("./page/signIn/SignIn"));
+const mainPage = React.lazy(() => import("./page/main/Main"));
+const commentsPage = React.lazy(() => import("./page/comments/Comments"));
+const bookmarksPage = React.lazy(() => import("./page/bookmarks/Bookmarks"));
+const logOutPage = React.lazy(() => import("./page/logout/LogOut"));
+const notFoundPage = React.lazy(() => import("./page/not-found/NotFound"));
 
-import Layout from "./component/layout/Layout";
+import Loading from "./component/loading/Loading";
 
 import "./app.scss";
 
 const App = () => {
-  /* 1. Landing page */
   let routeJSX = (
-    <Switch>
-      <Route path="/signIn" component={SignIn} />
-      <Route path="/main" component={Main} />
-      <Route path="/comments" component={Comments} />
-      <Route path="/bookmarks" component={Bookmarks} />
-      <Route path="/logout" component={LogOut} />
+    <Suspense fallback={<Loading />}>
+      <Switch>
+        <Route path="/signIn" component={signInPage} />
+        <Route path="/main" component={mainPage} />
+        <Route path="/comments" component={commentsPage} />
+        <Route path="/bookmarks" component={bookmarksPage} />
+        <Route path="/logout" component={logOutPage} />
 
-      <Route path="/" exact component={Landing} />
-      <Redirect to="/notFound" />
-      <Route path="/notFound" component={NotFound} />
-    </Switch>
+        <Route path="/" exact component={landingPage} />
+
+        <Redirect to="/notFound" />
+        <Route path="/notFound" component={notFoundPage} />
+      </Switch>
+    </Suspense>
   );
 
-  /* 2. Sign-In page */
-  /* <Switch> */
-  /* Google oAuth */
-  /* Kakao oAuth */
-  /* </Switch> */
-
-  /* 3. After Login pages */
-  /* <Switch>
-        <Route path="/main" component={Main} />
-        <Route path="/comments" component={Comments} />
-        <Route path="/bookmarks" component={Bookmarks} />
-        <Route path="/logout" component={LogOut} />
-
-        <Route path="/landing" component={Landing} />
-        <Route path="/" exact component={Landing} />
-        <Route path="/:id" component={NotFound} />
-        <Redirect to="/" />
-      </Switch> */
-  return (
-    <div className="app">
-      <Layout>{routeJSX}</Layout>
-    </div>
-  );
+  return <div className="app">{routeJSX}</div>;
 };
 
 export default App;
