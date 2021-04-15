@@ -1,12 +1,11 @@
 package com.github.oneline.onelinecourse.service.comment;
 
-import com.github.oneline.onelinecourse.controller.comment.CommentResponse;
 import com.github.oneline.onelinecourse.model.comment.Comments;
 import com.github.oneline.onelinecourse.repository.comment.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.xml.stream.events.Comment;
+import java.util.List;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -17,7 +16,7 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
 
-    public Comments createComment(Comments requestComment) {
+    public Comments createComment(final Comments requestComment) {
         checkNotNull(requestComment.getUserId(), "userId must be provided");
         checkNotNull(requestComment.getLectureId(), "lectureId must be provided");
 
@@ -26,7 +25,7 @@ public class CommentService {
                 .orElseGet(() -> commentRepository.save(requestComment));
     }
 
-    public void updateComment(Comments requestComment, Long commentId) {
+    public void updateComment(final Comments requestComment, final Long commentId) {
         checkArgument(commentId > 0, "commentId must be positive number");
 
         final Comments comments = commentRepository.findById(commentId)
@@ -35,7 +34,7 @@ public class CommentService {
         comments.updateContent(requestComment.getContent());
     }
 
-    public void deleteComment(Long commentId) {
+    public void deleteComment(final Long commentId) {
         checkArgument(commentId > 0, "commentId must be positive number");
 
         final Comments comments = commentRepository.findById(commentId)
@@ -44,4 +43,15 @@ public class CommentService {
         commentRepository.delete(comments);
     }
 
+    public List<Comments> findAllLectureComments(final Long lectureId) {
+        checkArgument(lectureId > 0, "lectureId must be positive number");
+
+        return commentRepository.findAllByLectureId(lectureId);
+    }
+
+    public List<Comments> findAllUserComments(final Long userId) {
+        checkArgument(userId > 0, "userId must be positive number");
+
+        return commentRepository.findAllByUserId(userId);
+    }
 }
