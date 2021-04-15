@@ -9,11 +9,13 @@ const bookmarksPage = React.lazy(() => import("./page/bookmarks/Bookmarks"));
 const logOutPage = React.lazy(() => import("./page/logout/LogOut"));
 const notFoundPage = React.lazy(() => import("./page/not-found/NotFound"));
 
+import Loading from "./component/loading/Loading";
+
 import "./app.scss";
 
 const App = () => {
   let routeJSX = (
-    <Suspense fallback={<div>Loading ...</div>}>
+    <Suspense fallback={<Loading />}>
       <Switch>
         <Route path="/signIn" component={signInPage} />
         <Route path="/main" component={mainPage} />
