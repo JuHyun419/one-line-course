@@ -8,7 +8,7 @@ import LandingInfoItems from "./landing-info-item/LandingInfoItems";
 import "./_Landing.scss";
 import "../_Page.scss";
 
-const Landing: React.FC<{ history: any }> = ({ history }) => {
+const Landing: React.FC<{}> = () => {
   return (
     <div>
       <NavFactory navType={ENavType.Landing} />

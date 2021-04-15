@@ -13,6 +13,7 @@ const toSignIn = "/signIn";
 
 const LandingNav: React.FC<NavProps> = ({ children }) => {
   const history = useHistory();
+  console.log(history);
   const redirectToSignIn = useRedirectToOnButtonClick(history, toSignIn);
 
   return (
