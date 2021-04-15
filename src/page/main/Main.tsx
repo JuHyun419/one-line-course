@@ -5,13 +5,14 @@ import { ENavType } from "../../component/nav/ENavType";
 
 import "./_Main.scss";
 import { placeIconsRandomly } from "../../common/Icons";
+import Footer from "../../component/footer/Footer";
 
-const Main = () => {
+const Main: React.FC<{}> = () => {
   return (
-    <div className={["page", "main"].join(" ")}>
+    <div>
       <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={0} />
-      Main !!
-      {placeIconsRandomly(30, { fontSize: "2rem" })}
+      <div className="page">{placeIconsRandomly(30, { fontSize: "2rem" })}</div>
+      <Footer />
     </div>
   );
 };
