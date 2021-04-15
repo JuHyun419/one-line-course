@@ -4,10 +4,16 @@ import com.github.oneline.onelinecourse.model.comment.Comments;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comments, Long> {
 
     Optional<Comments> findByUserIdAndLectureId(Long userId, Long lectureId);
+
+    List<Comments> findAllByLectureId(Long lectureId);
+
+    List<Comments> findAllByUserId(Long userId);
+
 }
