@@ -11,6 +11,7 @@ const Main: React.FC<{}> = () => {
   return (
     <div>
       <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={0} />
+      
       <div className="page">{placeIconsRandomly(30, { fontSize: "2rem" })}</div>
       <Footer />
     </div>
