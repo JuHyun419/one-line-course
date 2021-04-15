@@ -1,4 +1,6 @@
 .history/
+<<<<<<< HEAD
+=======
 
 # dependencies
 node_modules/
@@ -26,3 +28,4 @@ dist/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+>>>>>>> front/feature/#42-Footer-컴포넌트
