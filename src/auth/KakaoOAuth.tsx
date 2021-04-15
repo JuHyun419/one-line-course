@@ -13,7 +13,7 @@ const KakaoOAuth: React.FC<{}> = () => {
         Kakao.API.request({
           url: "/v2/user/me",
           success: onSuccess => {
-            console.log(onSuccess);
+            // console.log(onSuccess);
             history.push("/main");
           },
           always: onAlways => {

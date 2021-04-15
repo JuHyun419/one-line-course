@@ -22,7 +22,7 @@ ReactDOM.render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
-    {/* <AuthCtxProvider>      
+    {/* <AuthCtxProvider>
     </AuthCtxProvider> */}
   </React.StrictMode>,
   document.querySelector(".root")
