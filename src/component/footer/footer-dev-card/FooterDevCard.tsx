@@ -16,11 +16,6 @@ const FooterDevCard: React.FC<{}> = () => {
           {getIcon(d.portrait, undefined, { fontSize: "2.3rem" })}
           <h2>{d.name}</h2>
         </div>
-        {/* <Separator
-          direction={ESeparatorDirection.Vertical}
-          length={130}
-          width={2}
-        /> */}
         <div className="right">
           <p>{d.position}</p>
           {/* TODO: Link to real repo */}
