@@ -36,8 +36,6 @@
 
   &-afterLogin {
     @include nav-common;
-    // TODO: Locate Icons randomly within the range of
-    // square + mask
     justify-content: flex-end;
   }
 }

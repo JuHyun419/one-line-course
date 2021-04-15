@@ -1,58 +1,55 @@
 import React from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 
-import Menu from "./component/menu/Menu";
+import SignIn from "./page/signIn/SignIn";
+import Main from "./page/main/Main";
+import Comments from "./page/comments/Comments";
+import Bookmarks from "./page/bookmarks/Bookmarks";
+import Landing from "./page/landing/Landing";
+import LogOut from "./page/logout/LogOut";
+import NotFound from "./page/not-found/NotFound";
 
-import Button from "./component/button/Button";
-import { EButtonSize } from "./component/button/EButtonSize";
-import { EButtonType } from "./component/button/EButtonType";
-import { EMenuMode } from "./component/menu/EMenuMode";
-
-import { placeIconsRandomly } from "./common/Icons";
-
-import NavFactory from "./component/nav/nav-factory/NavFactory";
-import { ENavType } from "./component/nav/ENavType";
-
-import Footer from "./component/footer/Footer";
+import Layout from "./component/layout/Layout";
 
 import "./app.scss";
 
 const App = () => {
+  /* 1. Landing page */
+  let routeJSX = (
+    <Switch>
+      <Route path="/signIn" component={SignIn} />
+      <Route path="/main" component={Main} />
+      <Route path="/comments" component={Comments} />
+      <Route path="/bookmarks" component={Bookmarks} />
+      <Route path="/logout" component={LogOut} />
+
+      <Route path="/" exact component={Landing} />
+      <Redirect to="/notFound" />
+      <Route path="/notFound" component={NotFound} />
+    </Switch>
+  );
+
+  /* 2. Sign-In page */
+  /* <Switch> */
+  /* Google oAuth */
+  /* Kakao oAuth */
+  /* </Switch> */
+
+  /* 3. After Login pages */
+  /* <Switch>
+        <Route path="/main" component={Main} />
+        <Route path="/comments" component={Comments} />
+        <Route path="/bookmarks" component={Bookmarks} />
+        <Route path="/logout" component={LogOut} />
+
+        <Route path="/landing" component={Landing} />
+        <Route path="/" exact component={Landing} />
+        <Route path="/:id" component={NotFound} />
+        <Redirect to="/" />
+      </Switch> */
   return (
-    <div className={"app"}>
-      <NavFactory navType={ENavType.Landing} />
-      {/* <NavFactory navType={ENavType.SignIn} /> */}
-      {/* <NavFactory navType={ENavType.AfterLogin} /> */}
-      <Button
-        btnSize={EButtonSize.Small}
-        btnType={EButtonType.Primary}
-        onClick={() => console.log("button clicked!")}
-      >
-        Main
-      </Button>
-      <Button
-        btnSize={EButtonSize.Small}
-        btnType={EButtonType.Alt}
-        onClick={() => console.log("button clicked!")}
-      >
-        Comments
-      </Button>
-      <Button
-        btnSize={EButtonSize.Medium}
-        btnType={EButtonType.Warning}
-        onClick={() => console.log("button clicked!")}
-      >
-        Bookmarks
-      </Button>
-      <Button
-        btnSize={EButtonSize.Large}
-        btnType={EButtonType.Danger}
-        onClick={() => console.log("button clicked!")}
-      >
-        Log out
-      </Button>
-      <Menu menuMode={EMenuMode.AfterLogin} />
-      {placeIconsRandomly(30, { fontSize: "3rem" })}
-      <Footer />
+    <div className="app">
+      <Layout>{routeJSX}</Layout>
     </div>
   );
 };
