@@ -9,7 +9,7 @@ import Footer from "../../component/footer/Footer";
 import "./_SignIn.scss";
 import "../_Page.scss";
 
-const SignIn: React.FC<{}> = () => {  
+const SignIn: React.FC<{}> = () => {
   return (
     <div>
       <NavFactory navType={ENavType.SignIn} />

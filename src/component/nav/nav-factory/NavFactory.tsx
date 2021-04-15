@@ -15,9 +15,6 @@ const makeNav = ({
   navType,
   highlightBtnIdx,
 }: NavFactoryProps): JSX.Element => {
-  const history = useHistory();
-  console.log(history);
-  
   let navJSX: JSX.Element;
   switch (navType) {
     case ENavType.Landing:

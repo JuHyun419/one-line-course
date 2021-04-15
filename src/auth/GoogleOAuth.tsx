@@ -14,8 +14,7 @@ const GoogleOAuth: React.FC<{}> = () => {
 
   const onLoginSuccess = useCallback(
     (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
-      console.log(response);
-      // TODO: after login
+      console.log(response);      
       history.push("/main");
     },
     [history]
