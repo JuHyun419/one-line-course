@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { getPhotoPage } from "../../../service/UnsplashService";
 import ImageMoveTo from "./ImageIndicator/ImageMoveTo";
@@ -8,28 +8,26 @@ import "./_ImageCarousel.scss";
 
 const ImageCarousel: React.FC<{}> = () => {
   const [images, setImages] = useState<Array<string> | undefined>(undefined);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     (async () => {
       const res = await getPhotoPage({ query: "office" });
-      setImages(res?.results.map(el => el.urls.full));
+      setImages(res?.results.map(el => el.urls.regular));
     })();
   }, [setImages]);
 
-  // const imgJSX = randomImgs?.map(url => (
-  //   <img key={uuidv4()} src={url} className="imageCarousel--image"></img>
-  // ));
-
-  let url: string = "";
-  if (typeof images !== "undefined") {
-    url = images[0]!;
-  }
+  const imgJSX = images?.map(url => (
+    <img key={uuidv4()} src={url} className="imageCarousel--image"></img>
+  ));
 
   return (
     <div className="imageCarousel">
-      <img src={url} className="imageCarousel--image" />
+      <div className="imageCarousel-imagePlacer" ref={carouselRef}>
+        {imgJSX}
+      </div>
       <div className="imageCarousel-indicator">
-        <ImageMoveTo images={images} />
+        <ImageMoveTo carouselRef={carouselRef} />
         <ImagesIndicator imageCount={15} highlightIdx={3} />
       </div>
     </div>

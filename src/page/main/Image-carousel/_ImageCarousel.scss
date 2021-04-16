@@ -1,13 +1,19 @@
 .imageCarousel {
-  position: relative;
-  left: 0;
-  top: 0;
-  height: 80%;
-  overflow: auto;
-
-  &--image {
-    width: 100%;
+  position: relative;  
+  height: 2000px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+  &-imagePlacer {
+    display: flex;
+    // flex-direction: row;
     height: 100%;
+
+    & .imageCarousel--image {
+      width: auto;
+      min-width: 100vw;
+      // height:
+    }
   }
 
   &-indicator {
@@ -15,6 +21,6 @@
     left: 0;
     top: 0;
     height: 100%;
-    width: 100%;
+    width: 100vw;
   }
 }

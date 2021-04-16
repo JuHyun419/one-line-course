@@ -1,14 +1,14 @@
 import { createApi } from "unsplash-js";
 import { Photos } from "unsplash-js/dist/methods/search/types/response";
-import { axiosInstance_Unsplash } from "./Axios";
+// import { axiosInstance_Unsplash } from "./Axios";
 
-export const getRandomPhotos = async () =>
-  (await axiosInstance_Unsplash.get(
-    `/photos/random/?client_id=${process.env.UNSPLASH_ACCESS_KEY}`
-  )) as typeof Unsplash_Img;
+// export const getRandomPhotos = async () =>
+//   (await axiosInstance_Unsplash.get(
+//     `/photos/random/?client_id=${process.env.UNSPLASH_ACCESS_KEY}`
+//   )) as typeof Unsplash_Img;
 
 const unsplash = createApi({
-  accessKey: process.env.UNSPLASH_ACCESS_KEY.toString(),
+  accessKey: process.env.UNSPLASH_ACCESS_KEY,
 });
 
 export const getPhotoPage = async ({

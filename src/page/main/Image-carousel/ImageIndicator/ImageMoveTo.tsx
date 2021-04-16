@@ -1,28 +1,41 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 import "./_ImageMoveTo.scss";
 
-const ImageMoveTo: React.FC<{ images: Array<string> | undefined }> = ({
-  images,
-}) => {
+const ImageMoveTo: React.FC<{
+  carouselRef: React.RefObject<HTMLDivElement>;
+}> = ({ carouselRef }) => {
+  const [_, setCarouselPosX] = useState(0);
+
+  const movementStep = useMemo(() => window.innerWidth, [window]);
+  console.log("available width: ", movementStep);
+
   const onMoveToLeft = useCallback(
-    (e: React.SyntheticEvent<HTMLDivElement>) => {
-      e.preventDefault();
+    (_: React.SyntheticEvent<HTMLDivElement>) => {
+      setCarouselPosX((prv: number) => {
+        const nextPos = prv + movementStep;
+        carouselRef.current!.style.transform = `translate(${nextPos}px, 0px)`;
+        return nextPos;
+      });
     },
-    [images]
+    [carouselRef, setCarouselPosX]
   );
 
   const onMoveToRight = useCallback(
-    (e: React.SyntheticEvent<HTMLDivElement>) => {
-      e.preventDefault();
+    (_: React.SyntheticEvent<HTMLDivElement>) => {
+      setCarouselPosX((prv: number) => {
+        const nextPos = prv - movementStep;
+        carouselRef.current!.style.transform = `translate(${nextPos}px, 0px)`;
+        return nextPos;
+      });
     },
-    [images]
+    [carouselRef, setCarouselPosX]
   );
 
   return (
     <div className="imageMoveTo">
-      <div onClick={onMoveToLeft}>&#60;</div>
-      <div onClick={onMoveToRight}>&#62;</div>
+      <div onClick={onMoveToLeft}>&larr;</div>
+      <div onClick={onMoveToRight}>&rarr;</div>
     </div>
   );
 };

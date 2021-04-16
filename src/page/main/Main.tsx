@@ -6,6 +6,7 @@ import { ENavType } from "../../component/nav/ENavType";
 import { placeIconsRandomly } from "../../common/Icons";
 import Footer from "../../component/footer/Footer";
 import ImageCarousel from "./Image-carousel/ImageCarousel";
+import Search from "./Search/Search";
 
 import "./_Main.scss";
 
@@ -16,6 +17,10 @@ const Main: React.FC<{}> = () => {
       <div className="page main">
         <ImageCarousel />
         {placeIconsRandomly(30, { fontSize: "2rem" })}
+        {/* TODO: Search Bar */}
+        <Search />
+        {/* TODO: Keyword Selection */}
+        {/* TODO: Search Result */}
         <Footer />
       </div>
     </div>
