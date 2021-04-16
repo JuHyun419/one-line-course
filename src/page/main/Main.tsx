@@ -13,11 +13,11 @@ const Main: React.FC<{}> = () => {
   return (
     <div>
       <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={0} />
-      <div className="page">
+      <div className="page main">
         <ImageCarousel />
         {placeIconsRandomly(30, { fontSize: "2rem" })}
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };
