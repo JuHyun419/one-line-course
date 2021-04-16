@@ -1,7 +1,7 @@
 @import "../../common/ColorScheme";
 @import "../../common/BoxShadow";
 
-@mixin make-btn($width: 100, $height: 40, $color: $color-primary) {
+@mixin make-btn($width: 100, $height: 40, $color: $color-alt) {
   width: #{$width}px;
   height: #{$height}px;
   background-color: $color;
@@ -16,11 +16,22 @@
   justify-content: center;
   cursor: pointer;
 
+  font-size: 1.2rem;
+
   @content;
 }
 
 .btn {
   margin: 5px;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &.highlight {
+    background-color: $color-primary !important;
+  }
 
   /*
   * by size
@@ -64,13 +75,13 @@
 }
 
 .btn {
-  & span {
+  & a & span {
     display: inline-block;
     position: relative;
     transition: 0.5s;
   }
 
-  & span:after {
+  & a:after & span:after {
     content: "\00bb";
     position: absolute;
     opacity: 0;
@@ -79,12 +90,12 @@
     transition: 0.5s;
   }
 
-  &:hover span {
+  &:hover a &:hover span {
     padding-right: 15px;
     transition: 0.5s;
   }
 
-  &:hover span:after {
+  &:hover a:after &:hover span:after {
     opacity: 1;
     right: 0;
     transition: 0.5s;

@@ -109,17 +109,23 @@
 <br>
 
 ## 💡 Issues
-  - [`서로 다른 OS(Mac, Window)에서 함께 Git 작업할 시 발생하는 LF, CRLF 문제`](https://zzang9ha.tistory.com/324)
+  - [`서로 다른 OS(Mac, Window)에서 함께 Git 작업할 시 발생하는 LF, CRLF 문제`](https://github.com/JuHyun419/one-line-course/issues/38)
+  - [`MySQL 😢이모지(utf8mb4) 스키마 설정`](https://github.com/JuHyun419/one-line-course/issues/8)
+  - [`Parcel 번들러 에서 ENV 파일 사용`](https://github.com/JuHyun419/one-line-course/issues/50)
 
+<br>
+
+## 📜 보완해야 할 부분(성능, 기능, 코드 등등)
 
 
 
 <br><br>
 
-### References
+### 🖥 References
 
 #### RESTful API
   - https://sas-study.tistory.com/265
+  - https://m.blog.naver.com/genycho/221309436556
 
 <br>
 

@@ -1,0 +1,38 @@
+@import "../../common/ColorScheme";
+@import "../button/Button";
+
+@mixin nav-common {
+  width: 100vw;
+  height: 15vh;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background-color: $color-nav;
+  border: 1px dashed #eee;
+
+  @content;
+}
+
+.nav {
+  &-landing {
+    @include nav-common;
+    justify-content: flex-end;
+
+    & .btn {
+      margin-right: 5%;
+    }
+  }
+
+  &-signIn {
+    @include nav-common;
+    height: 30vh;
+    justify-content: space-around;
+  }
+
+  &-afterLogin {
+    @include nav-common;
+    justify-content: flex-end;
+  }
+}
