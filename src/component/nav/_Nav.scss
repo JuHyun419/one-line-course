@@ -3,7 +3,7 @@
 
 @mixin nav-common {
   width: 100vw;
-  height: 15vh;
+  height: 5vh;
 
   display: flex;
   flex-direction: row;
@@ -26,8 +26,7 @@
   }
 
   &-signIn {
-    @include nav-common;
-    height: 30vh;
+    @include nav-common;    
     justify-content: space-around;
   }
 
