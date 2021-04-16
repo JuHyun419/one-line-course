@@ -45,6 +45,10 @@
 
 <br>
 
+  - [`DB 스키마`](https://github.com/JuHyun419/one-line-course/issues/8)
+
+<br>
+
   - [`RESTful API 설계`](https://www.notion.so/API-5f3c607a8217420495aa60182f90a2c5)
 
 <br>
