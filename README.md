@@ -110,14 +110,7 @@
 
 
 <br>
-0	6	22:24:41	CREATE TABLE Bookmarks (
-     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-     user_id VARCHAR(200)       NOT NULL,
-     lecture_id BIGINT     NOT NULL,
-     created_at datetime   NOT NULL DEFAULT CURRENT_TIMESTAMP(), -- DEFAULT
-     FOREIGN KEY (user_id) REFERENCES Users (id),
-     FOREIGN KEY (lecture_id) REFERENCES Lectures (id)
- )	Error Code: 3780. Referencing column 'user_id' and referenced column 'id' in foreign key constraint 'Bookmarks_ibfk_1' are incompatible.	0.000 sec
+
 ## 💡 Issues
   - [`서로 다른 OS(Mac, Window)에서 함께 Git 작업할 시 발생하는 LF, CRLF 문제`](https://github.com/JuHyun419/one-line-course/issues/38)
   - [`MySQL 😢이모지(utf8mb4) 스키마 설정`](https://github.com/JuHyun419/one-line-course/issues/8)
