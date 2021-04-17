@@ -1,11 +1,12 @@
-import React, { Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 
 import { ENavType } from "../ENavType";
 import AfterLoginNav from "../AfterLoginNav";
 import LandingNav from "../LandingNav";
 import SignInNav from "../SignInNav";
 import NavFactoryProps from "./NavFactoryProps";
-import { useHistory } from "react-router-dom";
+
+import "./_NavFactory.scss";
 
 const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
   <Fragment>{makeNav(props)}</Fragment>
@@ -13,8 +14,10 @@ const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
 
 const makeNav = ({
   navType,
+  carouselRef,
   highlightBtnIdx,
 }: NavFactoryProps): JSX.Element => {
+  const [sticky, setSticky] = useState("navFactory");
   let navJSX: JSX.Element;
   switch (navType) {
     case ENavType.Landing:
@@ -27,12 +30,25 @@ const makeNav = ({
 
     case ENavType.AfterLogin:
       navJSX = <AfterLoginNav highlightBtnIdx={highlightBtnIdx} />;
+      useEffect(() => {
+        window.addEventListener("scroll", function () {
+          // console.log(window.scrollY);
+          // console.log(carouselRef!.current!.getBoundingClientRect().top);
+
+          setSticky(
+            window.scrollY <= carouselRef!.current!.getBoundingClientRect().top
+              ? "navFactory"
+              : "navFactory sticky"
+          );
+        });
+      }, [window]);
       break;
 
     default:
       throw new Error("Can't react at here!");
   }
-  return navJSX;
+
+  return <div className={sticky}>{navJSX}</div>;
 };
 
 export default NavFactory;

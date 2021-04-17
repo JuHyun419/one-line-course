@@ -6,10 +6,11 @@ import ImagesIndicator from "./ImageIndicator/ImagesIndicator";
 
 import "./_ImageCarousel.scss";
 
-const ImageCarousel: React.FC<{}> = () => {
+const ImageCarousel: React.FC<{
+  carouselRef: React.RefObject<HTMLDivElement>;
+}> = ({ carouselRef }) => {
   const [images, setImages] = useState<Array<string> | undefined>(undefined);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
+  
   useEffect(() => {
     (async () => {
       const res = await getPhotoPage({ query: "office" });

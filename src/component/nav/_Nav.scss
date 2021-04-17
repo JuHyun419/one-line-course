@@ -3,7 +3,7 @@
 
 @mixin nav-common {
   width: 100vw;
-  height: 5vh;
+  height: 10vh;
 
   display: flex;
   flex-direction: row;
@@ -11,6 +11,8 @@
 
   background-color: $color-nav;
   border: 1px dashed #eee;
+
+  
 
   @content;
 }

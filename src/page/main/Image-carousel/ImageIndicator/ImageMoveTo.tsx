@@ -7,8 +7,8 @@ const ImageMoveTo: React.FC<{
 }> = ({ carouselRef }) => {
   const [_, setCarouselPosX] = useState(0);
 
-  const movementStep = useMemo(() => window.innerWidth, [window]);
-  console.log("available width: ", movementStep);
+  const movementStep = window.innerWidth;
+  // console.log("available width: ", movementStep);
 
   const onMoveToLeft = useCallback(
     (_: React.SyntheticEvent<HTMLDivElement>) => {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import NavFactory from "../../component/nav/nav-factory/NavFactory";
 import { ENavType } from "../../component/nav/ENavType";
@@ -11,16 +11,22 @@ import Search from "./Search/Search";
 import "./_Main.scss";
 
 const Main: React.FC<{}> = () => {
+  const carouselRef = useRef<HTMLDivElement>(null);
+
   return (
     <div>
-      <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={0} />
+      <NavFactory
+        navType={ENavType.AfterLogin}
+        highlightBtnIdx={0}
+        carouselRef={carouselRef}
+      />
       <div className="page main">
-        <ImageCarousel />
-        {placeIconsRandomly(30, { fontSize: "2rem" })}
+        <ImageCarousel carouselRef={carouselRef} />
         {/* TODO: Search Bar */}
         <Search />
         {/* TODO: Keyword Selection */}
         {/* TODO: Search Result */}
+        {placeIconsRandomly(30, { fontSize: "2rem" })}
         <Footer />
       </div>
     </div>
