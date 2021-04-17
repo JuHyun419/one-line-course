@@ -1,6 +1,6 @@
 package com.github.oneline.onelinecourse.controller.comment;
 
-import com.github.oneline.onelinecourse.model.comment.Comments;
+import com.github.oneline.onelinecourse.model.comment.Comment;
 import lombok.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -9,8 +9,8 @@ import lombok.*;
 public class CommentUpdateRequest {
     private String content;
 
-    public Comments toEntity() {
-        return Comments.builder()
+    public Comment toEntity() {
+        return Comment.builder()
                 .content(content)
                 .build();
     }

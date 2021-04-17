@@ -1,9 +1,12 @@
 package com.github.oneline.onelinecourse.service.comment;
 
-import com.github.oneline.onelinecourse.model.comment.Comments;
+import com.github.oneline.onelinecourse.model.comment.Comment;
+import com.github.oneline.onelinecourse.model.lecture.Lecture;
 import com.github.oneline.onelinecourse.repository.comment.CommentRepository;
+import com.github.oneline.onelinecourse.repository.lecture.LectureRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,41 +18,55 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class CommentService {
 
     private final CommentRepository commentRepository;
+    private final LectureRepository lectureRepository;
 
-    public Comments createComment(final Comments requestComment) {
-        checkNotNull(requestComment.getUserId(), "userId must be provided");
-        checkNotNull(requestComment.getLectureId(), "lectureId must be provided");
+    public Comment createComment(final Comment comment, final Long userId, final Long lectureId) {
+        checkNotNull(userId, "userId must be provided");
+        checkNotNull(lectureId, "lectureId must be provided");
 
-        return commentRepository.findByUserIdAndLectureId(
-                        requestComment.getUserId(), requestComment.getLectureId())
-                .orElseGet(() -> commentRepository.save(requestComment));
+/*        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException(userId + "의 유저가 존재하지 않습니다."));*/
+
+        Lecture lecture = lectureRepository.findById(lectureId)
+                .orElseThrow(() -> new IllegalArgumentException(lectureId + "의 강의가 존재하지 않습니다."));
+
+        /*comment.addUser(user);*/
+        comment.addLecture(lecture);
+
+        return commentRepository.findByUserIdAndLectureId(userId, lectureId)
+                .orElseGet(() -> commentRepository.save(comment));
     }
 
-    public void updateComment(final Comments requestComment, final Long commentId) {
+    @Transactional
+    public void updateComment(final Comment requestComment, final Long commentId) {
         checkArgument(commentId > 0, "commentId must be positive number");
 
-        final Comments comments = commentRepository.findById(commentId)
+        final Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(() -> new IllegalArgumentException(commentId + "번에 해당하는 댓글이 존재하지 않습니다."));
 
-        comments.updateContent(requestComment.getContent());
+        comment.updateContent(requestComment.getContent());
     }
 
+    @Transactional
     public void deleteComment(final Long commentId) {
         checkArgument(commentId > 0, "commentId must be positive number");
 
-        final Comments comments = commentRepository.findById(commentId)
+        final Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(() -> new IllegalArgumentException(commentId + "번에 해당하는 댓글이 존재하지 않습니다."));
 
-        commentRepository.delete(comments);
+        commentRepository.delete(comment);
     }
 
-    public List<Comments> findAllLectureComments(final Long lectureId) {
+    @Transactional(readOnly = true)
+    public List<Comment> findAllLectureComments(final Long lectureId) {
         checkArgument(lectureId > 0, "lectureId must be positive number");
 
         return commentRepository.findAllByLectureId(lectureId);
     }
 
-    public List<Comments> findAllUserComments(final Long userId) {
+    // TODO: 유저 확인 로직 추가
+    @Transactional(readOnly = true)
+    public List<Comment> findAllUserComments(final Long userId) {
         checkArgument(userId > 0, "userId must be positive number");
 
         return commentRepository.findAllByUserId(userId);

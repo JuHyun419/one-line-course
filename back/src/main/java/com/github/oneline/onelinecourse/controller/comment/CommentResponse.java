@@ -1,6 +1,6 @@
 package com.github.oneline.onelinecourse.controller.comment;
 
-import com.github.oneline.onelinecourse.model.comment.Comments;
+import com.github.oneline.onelinecourse.model.comment.Comment;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -17,7 +17,7 @@ public class CommentResponse {
     private String content;
     private LocalDateTime createdAt;
 
-    public CommentResponse(Comments source) {
+    public CommentResponse(Comment source) {
         BeanUtils.copyProperties(source, this);
     }
 }

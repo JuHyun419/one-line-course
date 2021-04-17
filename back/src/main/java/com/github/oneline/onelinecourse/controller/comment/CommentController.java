@@ -22,7 +22,8 @@ public class CommentController {
             @RequestBody CommentCreateRequest request) {
         return ResponseEntity.ok(
                 new CommentResponse(
-                        commentService.createComment(request.toEntity()))
+                        commentService.createComment(
+                                request.toEntity(), request.getUserId(), request.getLectureId()))
         );
     }
 

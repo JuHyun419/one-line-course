@@ -1,6 +1,6 @@
 package com.github.oneline.onelinecourse.model.comment;
 
-import com.github.oneline.onelinecourse.model.lecture.Lectures;
+import com.github.oneline.onelinecourse.model.lecture.Lecture;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,20 +15,14 @@ import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
 @Getter
 @NoArgsConstructor
-@Builder
 @Entity
-public class Comments {
+@Table(name = "Comments")
+public class Comment {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "USERS_ID")
-    private Long userId;
-
-    @Column(name="LECTURES_ID")
-    private Long lectureId;
-    
     @Column(nullable = false)
     private String content;
 
@@ -39,38 +33,34 @@ public class Comments {
     private LocalDateTime updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lectures_id")
-    private Lectures lectures;
+    @JoinColumn(name = "lecture_id")
+    private Lecture lecture;
 
     /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private Users users;*/
 
-    public Comments(String content, Lectures lectures/*, Users users */) {
-        this(null, content, null, null, lectures/*, users*/);
+    @Builder
+    public Comment(String content, Lecture lecture/*, Users users */) {
+        this(null, content, null, null, lecture/*, users*/);
     }
 
-    @Builder
-    public Comments(Long id, String content, LocalDateTime createdAt,
-                    LocalDateTime updatedAt, Lectures lectures/*, Users users*/) {
+    public Comment(Long id, String content, LocalDateTime createdAt,
+                   LocalDateTime updatedAt, Lecture lecture/*, Users users*/) {
         checkNotNull(content, "content must be provided");
-        checkNotNull(lectures, "lectures must be provided");
+        checkNotNull(lecture, "lectures must be provided");
         /*checkNotNull(users, "users must be provided");*/
 
         this.id = id;
         this.content = content;
         this.createdAt = defaultIfNull(createdAt, LocalDateTime.now());
         this.updatedAt = defaultIfNull(updatedAt, LocalDateTime.now());
-        this.lectures = lectures;
+        this.lecture = lecture;
         /*this.users = users;*/
     }
 
-    public void updateUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public void updateLectureId(Long lectureId) {
-        this.lectureId = lectureId;
+    public void addLecture(Lecture lecture) {
+        this.lecture = lecture;
     }
 
     public void updateContent(String content) {
@@ -82,7 +72,7 @@ public class Comments {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("id", id)
                 .append("content", content)
-                .append("lectures", lectures)
+                .append("lectures", lecture)
                 /*.append("users", users)*/
                 .toString();
     }

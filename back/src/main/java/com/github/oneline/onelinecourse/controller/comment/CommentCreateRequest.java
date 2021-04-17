@@ -1,6 +1,6 @@
 package com.github.oneline.onelinecourse.controller.comment;
 
-import com.github.oneline.onelinecourse.model.comment.Comments;
+import com.github.oneline.onelinecourse.model.comment.Comment;
 import lombok.*;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -12,14 +12,9 @@ public class CommentCreateRequest {
     private Long lectureId;
     private Long userId;
 
-    public Comments toEntity() {
-        Comments comments = Comments.builder()
+    public Comment toEntity() {
+        return Comment.builder()
                 .content(content)
                 .build();
-
-        comments.updateUserId(userId);
-        comments.updateLectureId(lectureId);
-
-        return comments;
     }
 }
