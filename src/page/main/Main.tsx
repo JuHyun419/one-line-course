@@ -18,10 +18,10 @@ const Main: React.FC<{}> = () => {
       <NavFactory
         navType={ENavType.AfterLogin}
         highlightBtnIdx={0}
-        carouselRef={carouselRef}
+        imagePlacerRef={carouselRef}
       />
       <div className="page main">
-        <ImageCarousel carouselRef={carouselRef} />
+        <ImageCarousel imagePlacerRef={carouselRef} />
         {/* TODO: Search Bar */}
         <Search />
         {/* TODO: Keyword Selection */}

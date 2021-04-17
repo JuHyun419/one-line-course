@@ -3,7 +3,7 @@ import { ENavType } from "../ENavType";
 interface NavFactoryProps {
   navType: ENavType;
   // TODO: Decorator -> @range(0, 4)
-  carouselRef?: React.RefObject<HTMLDivElement>;
+  imagePlacerRef?: React.RefObject<HTMLDivElement>;
   highlightBtnIdx?: number;
 }
 

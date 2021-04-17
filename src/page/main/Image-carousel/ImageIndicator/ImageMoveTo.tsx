@@ -1,35 +1,18 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useState } from "react";
+import { useMoveTo } from "./useMoveTo";
 
 import "./_ImageMoveTo.scss";
 
 const ImageMoveTo: React.FC<{
-  carouselRef: React.RefObject<HTMLDivElement>;
-}> = ({ carouselRef }) => {
-  const [_, setCarouselPosX] = useState(0);
+  imagePlacerEl: React.RefObject<HTMLDivElement>;
+  imageCount: number;
+}> = ({ imagePlacerEl, imageCount }) => {
+  const [_, setImagePlacerPosX] = useState(0);
 
-  const movementStep = window.innerWidth;
-  // console.log("available width: ", movementStep);
-
-  const onMoveToLeft = useCallback(
-    (_: React.SyntheticEvent<HTMLDivElement>) => {
-      setCarouselPosX((prv: number) => {
-        const nextPos = prv + movementStep;
-        carouselRef.current!.style.transform = `translate(${nextPos}px, 0px)`;
-        return nextPos;
-      });
-    },
-    [carouselRef, setCarouselPosX]
-  );
-
-  const onMoveToRight = useCallback(
-    (_: React.SyntheticEvent<HTMLDivElement>) => {
-      setCarouselPosX((prv: number) => {
-        const nextPos = prv - movementStep;
-        carouselRef.current!.style.transform = `translate(${nextPos}px, 0px)`;
-        return nextPos;
-      });
-    },
-    [carouselRef, setCarouselPosX]
+  const { onMoveToLeft, onMoveToRight } = useMoveTo(
+    imagePlacerEl,
+    imageCount,
+    setImagePlacerPosX
   );
 
   return (

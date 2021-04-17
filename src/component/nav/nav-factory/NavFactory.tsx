@@ -14,7 +14,7 @@ const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
 
 const makeNav = ({
   navType,
-  carouselRef,
+  imagePlacerRef,
   highlightBtnIdx,
 }: NavFactoryProps): JSX.Element => {
   const [sticky, setSticky] = useState("navFactory");
@@ -32,11 +32,9 @@ const makeNav = ({
       navJSX = <AfterLoginNav highlightBtnIdx={highlightBtnIdx} />;
       useEffect(() => {
         window.addEventListener("scroll", function () {
-          // console.log(window.scrollY);
-          // console.log(carouselRef!.current!.getBoundingClientRect().top);
-
           setSticky(
-            window.scrollY <= carouselRef!.current!.getBoundingClientRect().top
+            window.scrollY <=
+              imagePlacerRef!.current!.getBoundingClientRect().top
               ? "navFactory"
               : "navFactory sticky"
           );

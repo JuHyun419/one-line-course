@@ -7,16 +7,18 @@ import ImagesIndicator from "./ImageIndicator/ImagesIndicator";
 import "./_ImageCarousel.scss";
 
 const ImageCarousel: React.FC<{
-  carouselRef: React.RefObject<HTMLDivElement>;
-}> = ({ carouselRef }) => {
+  imagePlacerRef: React.RefObject<HTMLDivElement>;
+}> = ({ imagePlacerRef }) => {
   const [images, setImages] = useState<Array<string> | undefined>(undefined);
-  
+  const [imageCount, setImageCount] = useState<number>(0);
+
   useEffect(() => {
     (async () => {
       const res = await getPhotoPage({ query: "office" });
       setImages(res?.results.map(el => el.urls.regular));
+      setImageCount(res?.results.length);
     })();
-  }, [setImages]);
+  }, [setImages, setImageCount]);
 
   const imgJSX = images?.map(url => (
     <img key={uuidv4()} src={url} className="imageCarousel--image"></img>
@@ -24,11 +26,11 @@ const ImageCarousel: React.FC<{
 
   return (
     <div className="imageCarousel">
-      <div className="imageCarousel-imagePlacer" ref={carouselRef}>
+      <div className="imageCarousel-imagePlacer" ref={imagePlacerRef}>
         {imgJSX}
       </div>
       <div className="imageCarousel-indicator">
-        <ImageMoveTo carouselRef={carouselRef} />
+        <ImageMoveTo imagePlacerEl={imagePlacerRef} imageCount={imageCount} />
         <ImagesIndicator imageCount={15} highlightIdx={3} />
       </div>
     </div>
