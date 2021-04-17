@@ -1,6 +1,6 @@
 package com.github.oneline.onelinecourse.dto.user;
 
-import com.github.oneline.onelinecourse.model.user.Users;
+import com.github.oneline.onelinecourse.model.user.User;
 import lombok.Builder;
 
 public class CreateUserRequestDto {
@@ -20,8 +20,8 @@ public class CreateUserRequestDto {
     }
 
     // DTO -> Entity 변환
-    public Users toEntity() {
-        return Users.builder()
+    public User toEntity() {
+        return User.builder()
                 .id(id)
                 .email(email)
                 .name(name)

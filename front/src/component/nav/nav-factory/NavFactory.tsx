@@ -1,19 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { ENavType } from "../ENavType";
 import AfterLoginNav from "../AfterLoginNav";
 import LandingNav from "../LandingNav";
 import SignInNav from "../SignInNav";
+import NavFactoryProps from "./NavFactoryProps";
+import { useHistory } from "react-router-dom";
 
-interface NavFactoryProps {
-  navType: ENavType;
-}
+const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
+  <Fragment>{makeNav(props)}</Fragment>
+);
 
-const NavFactory: React.FC<NavFactoryProps> = ({
+const makeNav = ({
   navType,
-}: NavFactoryProps) => <div className="nav">{makeNav(navType)}</div>;
-
-const makeNav = (navType: ENavType) => {
+  highlightBtnIdx,
+}: NavFactoryProps): JSX.Element => {
+  const history = useHistory();
+  console.log(history);
+  
   let navJSX: JSX.Element;
   switch (navType) {
     case ENavType.Landing:
@@ -25,7 +29,7 @@ const makeNav = (navType: ENavType) => {
       break;
 
     case ENavType.AfterLogin:
-      navJSX = <AfterLoginNav />;
+      navJSX = <AfterLoginNav highlightBtnIdx={highlightBtnIdx} />;
       break;
 
     default:

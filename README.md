@@ -18,11 +18,10 @@
   - Front End - [`이윤상`](https://github.com/olcw78)
     - Typescript  
     - React.js
-      - context, redux-hook
+      - context API, redux-hooks API
       - react-router
     - SCSS
-    - Axios
-    - Parcel-bundler
+    
   - Back End - [`방소연`](https://github.com/bsy3764), [`이주현`](https://github.com/JuHyun419)
     - Java, Python(크롤링), SpringBoot, Spring Data JPA
     - AWS RDS DB(MySQL)
@@ -110,12 +109,12 @@
 
 ## 💡 Issues
   - [`서로 다른 OS(Mac, Window)에서 함께 Git 작업할 시 발생하는 LF, CRLF 문제`](https://github.com/JuHyun419/one-line-course/issues/38)
-
+  - [`MySQL 😢이모지(utf8mb4) 스키마 설정`](https://github.com/JuHyun419/one-line-course/issues/8)
+  - [`Parcel 번들러 에서 ENV 파일 사용`](https://github.com/JuHyun419/one-line-course/issues/50)\  
 
 <br>
 
 ## 📜 보완해야 할 부분(성능, 기능, 코드 등등)
-
 
 
 <br><br>

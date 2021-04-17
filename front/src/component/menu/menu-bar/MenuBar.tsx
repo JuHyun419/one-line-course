@@ -1,15 +1,23 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
+
+import {
+  useDarkModeContext,
+  DarkModeCtxData,
+} from "../../../context/DarkModeCtx";
+import {
+  useViewModeContext,
+  ViewModeCtxData,
+} from "../../../context/ViewModeCtx";
 
 import { joinClasses } from "../../../common/StyleHelper";
-import MenuBarProps from "./MenuBarProps";
-import { EMenuMode } from "../EMenuMode";
-import { DarkModeContext } from "../../../context/darkMode/DarkModeContext";
-import { ViewModeContext } from "../../../context/viewMode/ViewModeContext";
 import { getIcon } from "../../../common/Icons";
 import Separator from "../../../component/separator/Separator";
+
+import MenuBarProps from "./MenuBarProps";
+import { EMenuMode } from "../EMenuMode";
+
 import { ESeparatorDirection } from "../../../component/separator/ESeparatorDirection";
-import ViewModeContextData from "../../../context/viewMode/ViewModeContextData";
-import DarkModeContextData from "../../../context/darkMode/DarkModeContextData";
+
 import "./_MenuBar.scss";
 
 /**
@@ -20,8 +28,8 @@ const MenuBar: React.FC<MenuBarProps> = ({
   menuMode,
   isMenuOpen,
 }: MenuBarProps) => {
-  const darkModeCtx = useContext(DarkModeContext);
-  const viewModeCtx = useContext(ViewModeContext);
+  const darkModeCtx = useDarkModeContext();
+  const viewModeCtx = useViewModeContext();
 
   return (
     <div className={joinClasses("menu-bar", isMenuOpen ? "open" : "closed")}>
@@ -32,8 +40,8 @@ const MenuBar: React.FC<MenuBarProps> = ({
 
 const makeMenuBarItems = (
   menuMode: EMenuMode,
-  darkModeCtx: DarkModeContextData,
-  viewModeCtx: ViewModeContextData
+  darkModeCtx: DarkModeCtxData,
+  viewModeCtx: ViewModeCtxData
 ): JSX.Element => {
   const iconBasicStyles = {
     fontSize: "1.8rem",

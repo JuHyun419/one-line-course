@@ -35,5 +35,6 @@ public class UserController {
         return ResponseEntity.ok(   // 200 ok 상태코드 설정
                 new ResponseUserDto(userService.save(createUserRequestDto.toEntity()))
         );
+
     }
 }

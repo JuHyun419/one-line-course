@@ -30,7 +30,7 @@ export const getIcon = (
   ) : null;
 };
 
-export const getIconsRandomlyWithinRadius = (
+export const placeIconsRandomly = (
   count: number,
   additionalStyles?: TIconStyles
 ): JSX.Element | null | undefined => {
@@ -45,9 +45,7 @@ export const getIconsRandomlyWithinRadius = (
     if (j >= IconClassNames.size) {
       j = 0;
     }
-
-    const val = asArr[j]!;
-    const [el1, el2] = val;
+    const [el1, el2] = asArr[j]!;
 
     iconsJSX.push(
       <i

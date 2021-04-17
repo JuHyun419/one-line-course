@@ -1,6 +1,6 @@
 package com.github.oneline.onelinecourse.dto.user;
 
-import com.github.oneline.onelinecourse.model.user.Users;
+import com.github.oneline.onelinecourse.model.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,10 +27,10 @@ public class ResponseUserDto {
     }
 
     // Entity -> DTO ??????
-    public ResponseUserDto(Users users) {
+    public ResponseUserDto(User user) {
         // 객체를 쉽고 간결하게 복사
         // copyProperties(원본 객체, 복사 객체)
-        BeanUtils.copyProperties(users, this);
+        BeanUtils.copyProperties(user, this);
     }
 
 }

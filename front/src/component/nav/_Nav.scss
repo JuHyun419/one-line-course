@@ -2,42 +2,37 @@
 @import "../button/Button";
 
 @mixin nav-common {
+  width: 100vw;
+  height: 15vh;
+
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100vw;
-  height: 15vh;
+
+  background-color: $color-nav;
+  border: 1px dashed #eee;
 
   @content;
 }
 
 .nav {
-  position: relative;
-  display: flex;
-  width: 100vw;
-  height: 15vh;
-  background-color: $color-nav;
-  border: 1px dashed #eee;
-
   &-landing {
-    @include nav-common {
-      position: absolute;
-    }
+    @include nav-common;
     justify-content: flex-end;
+
+    & .btn {
+      margin-right: 5%;
+    }
   }
 
   &-signIn {
-    @include nav-common {
-      position: absolute;
-    }
+    @include nav-common;
     height: 30vh;
     justify-content: space-around;
   }
 
   &-afterLogin {
     @include nav-common;
-    // TODO: Locate Icons randomly within the range of
-    // square + mask
     justify-content: flex-end;
   }
 }

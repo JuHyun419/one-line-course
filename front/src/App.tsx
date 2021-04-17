@@ -1,56 +1,37 @@
-import React from "react";
-import Menu from "./component/menu/Menu";
+import React, { Suspense } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 
-import Button from "./component/button/Button";
-import { EButtonSize } from "./component/button/EButtonSize";
-import { EButtonType } from "./component/button/EButtonType";
-import { EMenuMode } from "./component/menu/EMenuMode";
+import landingPage from "./page/landing/Landing";
+const signInPage = React.lazy(() => import("./page/signIn/SignIn"));
+const mainPage = React.lazy(() => import("./page/main/Main"));
+const commentsPage = React.lazy(() => import("./page/comments/Comments"));
+const bookmarksPage = React.lazy(() => import("./page/bookmarks/Bookmarks"));
+const logOutPage = React.lazy(() => import("./page/logout/LogOut"));
+const notFoundPage = React.lazy(() => import("./page/not-found/NotFound"));
 
-import { getIconsRandomlyWithinRadius } from "./common/Icons";
-
-import NavFactory from "./component/nav/nav-factory/NavFactory";
-import { ENavType } from "./component/nav/ENavType";
+import Loading from "./component/loading/Loading";
 
 import "./app.scss";
 
 const App = () => {
-  return (
-    <div className={"app"}>
-      <NavFactory navType={ENavType.Landing} />
-      <NavFactory navType={ENavType.SignIn} />
-      <NavFactory navType={ENavType.AfterLogin} />
-      <Button
-        btnSize={EButtonSize.Small}
-        btnType={EButtonType.Primary}
-        onClick={() => console.log("button clicked!")}
-      >
-        Main
-      </Button>
-      <Button
-        btnSize={EButtonSize.Small}
-        btnType={EButtonType.Alt}
-        onClick={() => console.log("button clicked!")}
-      >
-        Comments
-      </Button>
-      <Button
-        btnSize={EButtonSize.Medium}
-        btnType={EButtonType.Warning}
-        onClick={() => console.log("button clicked!")}
-      >
-        Bookmarks
-      </Button>
-      <Button
-        btnSize={EButtonSize.Large}
-        btnType={EButtonType.Danger}
-        onClick={() => console.log("button clicked!")}
-      >
-        Log out
-      </Button>
-      <Menu menuMode={EMenuMode.AfterLogin} />
-      {getIconsRandomlyWithinRadius(30, { fontSize: "3rem" })}
-    </div>
+  let routeJSX = (
+    <Suspense fallback={<Loading />}>
+      <Switch>
+        <Route path="/signIn" component={signInPage} />
+        <Route path="/main" component={mainPage} />
+        <Route path="/comments" component={commentsPage} />
+        <Route path="/bookmarks" component={bookmarksPage} />
+        <Route path="/logout" component={logOutPage} />
+
+        <Route path="/" exact component={landingPage} />
+
+        <Redirect to="/notFound" />
+        <Route path="/notFound" component={notFoundPage} />
+      </Switch>
+    </Suspense>
   );
+
+  return <div className="app">{routeJSX}</div>;
 };
 
 export default App;

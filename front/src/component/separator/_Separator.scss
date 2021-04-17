@@ -6,15 +6,15 @@
 .separator {
   &-vertical {
     @include make-separator() {
-      width: 35px;
-      height: 2px;
+      width: 2px;
+      height: 35px;
     }
   }
 
   &-horizontal {
     @include make-separator() {
-      width: 2px;
-      height: 35px;
+      width: 35px;
+      height: 2px;
     }
   }
 }
