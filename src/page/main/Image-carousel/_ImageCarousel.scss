@@ -1,9 +1,30 @@
 .imageCarousel {
-  width: 100%;
-  height: 100%;
-  
-  &--image {
-    width: 100%;
+  // position: relative;
+  // left: 0;
+  // top: 0;
+  height: 80%;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &-imagePlacer {
+    display: flex;
+    flex-direction: row;
+
+    & .imageCarousel--image {
+      width: auto;
+      min-width: 100vw;
+      height: 530px;
+      // min-height: 100vh;
+
+      background-size: cover;
+    }
+  }
+
+  &-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
     height: 100%;
+    min-width: 100%;
   }
 }
