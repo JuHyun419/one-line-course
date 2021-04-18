@@ -115,6 +115,7 @@
   - [`MySQL 😢이모지(utf8mb4) 스키마 설정`](https://github.com/JuHyun419/one-line-course/issues/8)
   - [`Parcel 번들러 에서 ENV 파일 사용`](https://github.com/JuHyun419/one-line-course/issues/50)
   - [`MySQL referencing column and referenced column are incompatible`](https://github.com/JuHyun419/one-line-course/issues/8)
+  - [`MySQL 8.0 대소문자 구분 문제(MySQL 5 버전으로 변경)`](https://zzang9ha.tistory.com/328)
 
 <br>
 
