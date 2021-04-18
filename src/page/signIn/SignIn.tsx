@@ -1,9 +1,8 @@
 import React from "react";
 
-import NavFactory from "../../component/nav/nav-factory/NavFactory";
-import { ENavType } from "../../component/nav/ENavType";
+import { NavFactory, ENavType } from "../../component/nav/";
+import { placeIconsRandomly } from "../../common/";
 import AuthCtrl from "../../auth/AuthCtrl";
-import { placeIconsRandomly } from "../../common/Icons";
 import Footer from "../../component/footer/Footer";
 
 import "./_SignIn.scss";

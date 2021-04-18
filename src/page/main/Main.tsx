@@ -1,9 +1,7 @@
 import React, { useRef } from "react";
 
-import NavFactory from "../../component/nav/nav-factory/NavFactory";
-import { ENavType } from "../../component/nav/ENavType";
-
-import { placeIconsRandomly } from "../../common/Icons";
+import { NavFactory, ENavType } from "../../component/nav/";
+import { placeIconsRandomly } from "../../common/";
 import Footer from "../../component/footer/Footer";
 import ImageCarousel from "./Image-carousel/ImageCarousel";
 import Search from "./Search/Search";

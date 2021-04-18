@@ -18,7 +18,9 @@ const makeNav = ({
   highlightBtnIdx,
 }: NavFactoryProps): JSX.Element => {
   const [sticky, setSticky] = useState("navFactory");
+
   let navJSX: JSX.Element;
+
   switch (navType) {
     case ENavType.Landing:
       navJSX = <LandingNav />;

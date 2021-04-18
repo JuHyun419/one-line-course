@@ -16,7 +16,7 @@ const ImageCarousel: React.FC<{
   useEffect(() => {
     (async () => {
       const imageQueryResult = await getPhotoPage({ query: "office" });
-      setImages(imageQueryResult?.results.map(el => el.urls.small));
+      setImages(imageQueryResult?.results.map(el => el.urls.regular));
       setImageCount(imageQueryResult?.results.length);
     })();
   }, []);
