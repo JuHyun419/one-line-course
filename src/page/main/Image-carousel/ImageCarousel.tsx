@@ -11,6 +11,7 @@ const ImageCarousel: React.FC<{
 }> = ({ imagePlacerRef }) => {
   const [images, setImages] = useState<Array<string> | undefined>(undefined);
   const [imageCount, setImageCount] = useState<number>(0);
+  const [curIdx, setCurIdx] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -30,8 +31,13 @@ const ImageCarousel: React.FC<{
         {imgJSX}
       </div>
       <div className="imageCarousel-indicator">
-        <ImageMoveTo imagePlacerEl={imagePlacerRef} imageCount={imageCount} />
-        <ImagesIndicator imageCount={15} highlightIdx={3} />
+        <ImageMoveTo
+          imagePlacerEl={imagePlacerRef}
+          imageCount={imageCount}
+          curIdx={curIdx}
+          setCurIdx={setCurIdx}
+        />
+        <ImagesIndicator imageCount={imageCount} highlightIdx={curIdx}/>
       </div>
     </div>
   );

@@ -2,9 +2,10 @@ import React, { useState, useCallback } from "react";
 
 export const useMoveTo = (
   imagePlacerEl: React.RefObject<HTMLDivElement>,
-  imageCount: number
+  imageCount: number,
+  curIdx: number,
+  setCurIdx: React.Dispatch<React.SetStateAction<number>>
 ) => {
-  const [curIdx, setCurIdx] = useState(0);
   const [_, setImagePlacerPosX] = useState(0);
 
   return {

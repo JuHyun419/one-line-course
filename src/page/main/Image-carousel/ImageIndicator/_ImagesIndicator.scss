@@ -30,10 +30,8 @@
       margin-right: 0;
     }
 
-    transition: all 0.5s ease-in-out;
-
-    .highlight {
-      background-color: $color-selected;
+    &.highlight {
+      background-color: $color-primary;
       width: 20px;
       height: 20px;
     }

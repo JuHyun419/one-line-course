@@ -6,8 +6,15 @@ import "./_ImageMoveTo.scss";
 const ImageMoveTo: React.FC<{
   imagePlacerEl: React.RefObject<HTMLDivElement>;
   imageCount: number;
-}> = ({ imagePlacerEl, imageCount }) => {
-  const { onMoveToLeft, onMoveToRight } = useMoveTo(imagePlacerEl, imageCount);
+  curIdx: number;
+  setCurIdx: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ imagePlacerEl, imageCount, curIdx, setCurIdx }) => {
+  const { onMoveToLeft, onMoveToRight } = useMoveTo(
+    imagePlacerEl,
+    imageCount,
+    curIdx,
+    setCurIdx
+  );
 
   return (
     <div className="imageMoveTo">
