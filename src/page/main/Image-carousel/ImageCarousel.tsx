@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { getPhotoPage } from "../../../service/UnsplashService";
-import ImageMoveTo from "./ImageIndicator/ImageMoveTo";
-import ImagesIndicator from "./ImageIndicator/ImagesIndicator";
+import ImageMoveTo from "./Image-carousel-elements/ImageMoveTo";
+import ImagesIndicator from "./Image-carousel-elements/ImagesIndicator";
 
 import "./_ImageCarousel.scss";
 
@@ -37,7 +37,7 @@ const ImageCarousel: React.FC<{
           curIdx={curIdx}
           setCurIdx={setCurIdx}
         />
-        <ImagesIndicator imageCount={imageCount} highlightIdx={curIdx}/>
+        <ImagesIndicator imageCount={imageCount} highlightIdx={curIdx} />
       </div>
     </div>
   );

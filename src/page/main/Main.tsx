@@ -11,18 +11,17 @@ import Search from "./Search/Search";
 import "./_Main.scss";
 
 const Main: React.FC<{}> = () => {
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const imagePlacerRef = useRef<HTMLDivElement>(null);
 
   return (
     <div>
       <NavFactory
         navType={ENavType.AfterLogin}
         highlightBtnIdx={0}
-        imagePlacerRef={carouselRef}
+        imagePlacerRef={imagePlacerRef}
       />
       <div className="page main">
-        <ImageCarousel imagePlacerRef={carouselRef} />
-        {/* TODO: Search Bar */}
+        <ImageCarousel imagePlacerRef={imagePlacerRef} />
         <Search />
         {/* TODO: Keyword Selection */}
         {/* TODO: Search Result */}
