@@ -22,7 +22,7 @@ public class User {
     private String name;
 
     @Column(length = 500, nullable = false)
-    private String image_url;
+    private String imageUrl;
 
     @Column(length = 20, nullable = false, unique = true)
     private String platform;
@@ -34,17 +34,11 @@ public class User {
 //    private List<Comments> comments;
 
     @Builder    // 모든 필드에 대해서 매개변수를 받는 기본 생성자를 생성
-    public User(String id, String email, String name, String image_url, String platform) {
+    public User(String id, String email, String name, String imageUrl, String platform) {
         this.id = id;
         this.email = email;
         this.name = name;
-        this.image_url = image_url;
+        this.imageUrl = imageUrl;
         this.platform = platform;
     }
 }
-
-// Access Token과 Refresh Token을 묶어서 사용자 토큰
-// 액세스 토큰은 카카오 계정으로 성공적으로 로그인 했음을 증명하는 암호문 형태의 증서입니다.
-// 그래서 이 액세스 토큰을 이용해서 많은 일들을 할 수 있어 ID와 비밀번호를 넘겨주는 것과 비슷(보안상 이유로 짧은 유효 기간)
-
-// Access Token이 만료됐으나 Refresh token이 만료되지 않은 경우, Access Token을 갱신하여 유효하게 할 수 있음
