@@ -1,6 +1,6 @@
 package com.github.oneline.onelinecourse.model.lecture;
 
-import com.github.oneline.onelinecourse.model.comment.Comments;
+import com.github.oneline.onelinecourse.model.comment.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Lectures {
+public class Lecture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,7 +62,7 @@ public class Lectures {
     private String skills;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "lectures")
-    private List<Comments> comments;
+    private List<Comment> comments;
 
     @Override
     public String toString() {
