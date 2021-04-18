@@ -1,7 +1,5 @@
 package com.github.oneline.onelinecourse.controller.user;
 
-import com.github.oneline.onelinecourse.dto.user.CreateUserRequestDto;
-import com.github.oneline.onelinecourse.dto.user.ResponseUserDto;
 import com.github.oneline.onelinecourse.service.user.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

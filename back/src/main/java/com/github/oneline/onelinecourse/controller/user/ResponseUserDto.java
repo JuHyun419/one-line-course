@@ -1,4 +1,4 @@
-package com.github.oneline.onelinecourse.dto.user;
+package com.github.oneline.onelinecourse.controller.user;
 
 import com.github.oneline.onelinecourse.model.user.User;
 import lombok.Builder;
