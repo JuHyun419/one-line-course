@@ -18,11 +18,10 @@
   - Front End - [`이윤상`](https://github.com/olcw78)
     - Typescript  
     - React.js
-      - context, redux-hook
+      - context API, redux-hooks API
       - react-router
     - SCSS
-    - Axios
-    - Parcel-bundler
+    
   - Back End - [`방소연`](https://github.com/bsy3764), [`이주현`](https://github.com/JuHyun419)
     - Java, Python(크롤링), SpringBoot, Spring Data JPA
     - AWS RDS DB(MySQL)
@@ -43,6 +42,10 @@
   - [`DB 설계`](https://www.notion.so/DB-1f0520006f2a4ca582e0cef0a34623ae)
 
 ![image](https://user-images.githubusercontent.com/50076031/114146978-2e1e3900-9953-11eb-94b8-94124732f00c.png)
+
+<br>
+
+  - [`DB 스키마`](https://github.com/JuHyun419/one-line-course/issues/8)
 
 <br>
 
@@ -105,19 +108,18 @@
   > 본문은 `어떻게` 보다 `무엇을`, `왜` 에 맞춰서 작성하기  
 [`좋은 git 커밋 메시지를 작성하기 위한 7가지 약속`](https://meetup.toast.com/posts/106)
 
-
 <br>
 
 ## 💡 Issues
   - [`서로 다른 OS(Mac, Window)에서 함께 Git 작업할 시 발생하는 LF, CRLF 문제`](https://github.com/JuHyun419/one-line-course/issues/38)
   - [`MySQL 😢이모지(utf8mb4) 스키마 설정`](https://github.com/JuHyun419/one-line-course/issues/8)
   - [`Parcel 번들러 에서 ENV 파일 사용`](https://github.com/JuHyun419/one-line-course/issues/50)
+  - [`MySQL referencing column and referenced column are incompatible`](https://github.com/JuHyun419/one-line-course/issues/8)
 
 <br>
 
-## 📜 보완해야 할 부분(성능, 기능, 코드 등등)
-
-
+## 📜 보완해야 할 부분(성능, 추가 기능, 코드 등등)
+  - 검색 조건에 강의자(instructor) 추가
 
 <br><br>
 
