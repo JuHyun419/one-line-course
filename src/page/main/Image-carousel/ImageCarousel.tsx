@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { getPhotoPage } from "../../../service/UnsplashService";
 import ImageMoveTo from "./Image-carousel-elements/ImageMoveTo";
@@ -15,15 +15,19 @@ const ImageCarousel: React.FC<{
 
   useEffect(() => {
     (async () => {
-      const res = await getPhotoPage({ query: "office" });
-      setImages(res?.results.map(el => el.urls.regular));
-      setImageCount(res?.results.length);
+      const imageQueryResult = await getPhotoPage({ query: "office" });
+      setImages(imageQueryResult?.results.map(el => el.urls.small));
+      setImageCount(imageQueryResult?.results.length);
     })();
-  }, [setImages, setImageCount]);
+  }, []);
 
-  const imgJSX = images?.map(url => (
-    <img key={uuidv4()} src={url} className="imageCarousel--image"></img>
-  ));
+  const imgJSX = useMemo(
+    () =>
+      images?.map(url => (
+        <img key={uuidv4()} src={url} className="imageCarousel--image"></img>
+      )),
+    [images]
+  );
 
   return (
     <div className="imageCarousel">

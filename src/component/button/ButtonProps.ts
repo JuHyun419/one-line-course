@@ -15,7 +15,9 @@ export interface TOnClick {
 interface ButtonProps {
   btnSize?: EButtonSize | undefined;
   btnType?: EButtonType | undefined;
-  highlight ?: boolean;
+  highlight?: boolean;
+  additionalClassName?: string;
+  additionalStyles?: { [prop: string]: string };
   onClick?: TOnClick | undefined;
   children?: any | undefined;
 }
