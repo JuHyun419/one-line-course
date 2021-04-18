@@ -7,13 +7,7 @@ const ImageMoveTo: React.FC<{
   imagePlacerEl: React.RefObject<HTMLDivElement>;
   imageCount: number;
 }> = ({ imagePlacerEl, imageCount }) => {
-  const [_, setImagePlacerPosX] = useState(0);
-
-  const { onMoveToLeft, onMoveToRight } = useMoveTo(
-    imagePlacerEl,
-    imageCount,
-    setImagePlacerPosX
-  );
+  const { onMoveToLeft, onMoveToRight } = useMoveTo(imagePlacerEl, imageCount);
 
   return (
     <div className="imageMoveTo">
