@@ -16,15 +16,10 @@
 
 ## 📗 기술 스택
   - Front End - [`이윤상`](https://github.com/olcw78)
-    - Typescript  
-    - React.js
-      - context API, redux-hooks API
-      - react-router
-    - SCSS
+    - Typescript, React, SCSS
     
   - Back End - [`방소연`](https://github.com/bsy3764), [`이주현`](https://github.com/JuHyun419)
-    - Java, Python(크롤링), SpringBoot, Spring Data JPA
-    - AWS RDS DB(MySQL)
+    - Java, Python(크롤링), SpringBoot, Spring Data JPA, Maven, AWS, MySQL
 
 <br>
 
