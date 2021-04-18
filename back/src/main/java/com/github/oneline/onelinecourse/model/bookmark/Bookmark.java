@@ -14,11 +14,11 @@ public class Bookmark {
     private Long id;
 
     @Column(length = 50, nullable = false)
-    private Long user_id;
+    private Long userId;
 
     @Column(length = 20, nullable = false)
-    private Long lecture_id;
+    private Long lectureId;
 
     @Column(length = 500, nullable = false)
-    private String created_at;
+    private String createdAt;
 }
