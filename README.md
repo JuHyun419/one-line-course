@@ -16,15 +16,10 @@
 
 ## 📗 기술 스택
   - Front End - [`이윤상`](https://github.com/olcw78)
-    - Typescript  
-    - React.js
-      - context API, redux-hooks API
-      - react-router
-    - SCSS
+    - Typescript, React, SCSS
     
   - Back End - [`방소연`](https://github.com/bsy3764), [`이주현`](https://github.com/JuHyun419)
-    - Java, Python(크롤링), SpringBoot, Spring Data JPA
-    - AWS RDS DB(MySQL)
+    - Java, Python(크롤링), SpringBoot, Spring Data JPA, Maven, AWS, MySQL
 
 <br>
 
@@ -115,6 +110,8 @@
   - [`MySQL 😢이모지(utf8mb4) 스키마 설정`](https://github.com/JuHyun419/one-line-course/issues/8)
   - [`Parcel 번들러 에서 ENV 파일 사용`](https://github.com/JuHyun419/one-line-course/issues/50)
   - [`MySQL referencing column and referenced column are incompatible`](https://github.com/JuHyun419/one-line-course/issues/8)
+  - [`MySQL 8.0 대소문자 구분 문제(MySQL 5 버전으로 변경)`](https://zzang9ha.tistory.com/328)
+  - [`Java의 LocalDateTime과 MySQL의 datetime 사이의 시차 문제(9시간)`](https://github.com/JuHyun419/one-line-course/issues/62)
 
 <br>
 
@@ -136,3 +133,8 @@
   - https://meetup.toast.com/posts/106
 
 <br>
+
+#### AWS
+  - https://aws.amazon.com/ko/getting-started/hands-on/create-mysql-db/
+  - https://leveloper.tistory.com/18
+  - https://twofootdog.tistory.com/41
