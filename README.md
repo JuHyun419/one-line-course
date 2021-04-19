@@ -115,3 +115,10 @@
   - https://meetup.toast.com/posts/106
 
 <br>
+
+#### AWS
+  - https://aws.amazon.com/ko/getting-started/hands-on/create-mysql-db/
+  - https://pompitzz.github.io/blog/Java/awsEc2InstallJDK11.html#jdk-%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8E%E1%85%B5
+  - https://lemontia.tistory.com/941
+
+<br>
