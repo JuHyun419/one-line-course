@@ -1,3 +1,5 @@
+import "regenerator-runtime/runtime.js";
+
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
@@ -20,7 +22,7 @@ ReactDOM.render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
-    {/* <AuthCtxProvider>      
+    {/* <AuthCtxProvider>
     </AuthCtxProvider> */}
   </React.StrictMode>,
   document.querySelector(".root")

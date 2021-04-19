@@ -23,10 +23,12 @@
     "@parcel/transformer-react-refresh-babel": "^2.0.0-alpha.3",
     "@parcel/transformer-react-refresh-wrap": "^2.0.0-alpha.3",
     "@parcel/transformer-sass": "^2.0.0-nightly.638",
+    "@types/axios": "^0.14.0",
     "@types/node": "^14.14.37",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/react-router-dom": "^5.1.7",
+    "@types/uuid": "^8.3.0",
     "babel-loader": "^8.2.2",
     "concurrently": "^6.0.1",
     "eslint": "^7.24.0",
@@ -34,12 +36,16 @@
     "parcel": "^2.0.0-beta.2"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "node": "^15.12.0",
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
     "react-redux": "^7.2.3",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "regenerator-runtime": "^0.13.5",
+    "unsplash-js": "^7.0.10",
+    "uuid": "^3.4.0"
   }
 }

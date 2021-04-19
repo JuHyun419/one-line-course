@@ -1,0 +1,27 @@
+.imageCarousel {
+  position: relative;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &-imagePlacer {
+    display: flex;
+    height: 100%;
+    // transform: translate 0.5s ease-in-out;
+    overflow: hidden;
+
+    & .imageCarousel--image {
+      width: 100%;
+      min-width: 100vw;
+      overflow: hidden;
+    }
+  }
+
+  &-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100vw;
+  }
+}

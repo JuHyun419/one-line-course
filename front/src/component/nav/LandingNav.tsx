@@ -13,7 +13,6 @@ const toSignIn = "/signIn";
 
 const LandingNav: React.FC<NavProps> = ({ children }) => {
   const history = useHistory();
-  console.log(history);
   const redirectToSignIn = useRedirectToOnButtonClick(history, toSignIn);
 
   return (
@@ -24,7 +23,7 @@ const LandingNav: React.FC<NavProps> = ({ children }) => {
         highlight
         onClick={redirectToSignIn}
       >
-        Sign In
+        가입
       </Button>
       {children}
     </div>
