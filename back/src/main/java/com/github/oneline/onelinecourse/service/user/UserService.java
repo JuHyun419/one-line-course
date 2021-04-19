@@ -21,7 +21,7 @@ public class UserService {
 
     // 처음이라서 등록 필요
     public User save(User user) {
-        return UserRepository.save(user);
+        return userRepository.save(user);
     }
 
 }
