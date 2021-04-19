@@ -6,11 +6,12 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
+@Builder
 public class CommentCreateRequest {
 
     private String content;
     private Long lectureId;
-    private Long userId;
+    private String userId;
 
     public Comment toEntity() {
         return Comment.builder()
