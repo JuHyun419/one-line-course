@@ -133,3 +133,8 @@
   - https://meetup.toast.com/posts/106
 
 <br>
+
+#### AWS
+  - https://aws.amazon.com/ko/getting-started/hands-on/create-mysql-db/
+  - https://leveloper.tistory.com/18
+  - https://twofootdog.tistory.com/41
