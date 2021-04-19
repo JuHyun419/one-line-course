@@ -1,33 +1,41 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React from "react";
 
-import { getIcon } from "../../../../common/Icons";
-import SearchBarContents from "./SearchBarContents";
+import { Button, EButtonSize, EButtonType } from "../../../../component/button";
+import { SelectedKeywords } from "../../Search-keyword/";
 
 import "./_SearchBar.scss";
 
-const SearchBar: React.FC<{}> = () => {
-  const [isSearchBarToggled, setIsSearchBarToggled] = useState(true);
-
-  const toggleSearchBar = useCallback(
-    () => setIsSearchBarToggled(prv => !prv),
-    [setIsSearchBarToggled]
-  );
-
-  const searchIcon: JSX.Element = useMemo(
-    () => getIcon("Search", toggleSearchBar, { fontSize: "2rem" })!,
-    []
-  );
-
+const SearchBar: React.FC<{
+  searchIcon: JSX.Element;
+}> = ({ searchIcon }) => {
   return (
-    <div className="searchBarPlacer">
-      {!isSearchBarToggled && <SearchBarContents searchIcon={searchIcon} />}
-      <button
-        className={
-          isSearchBarToggled ? "searchBar-toggle" : "searchBar-toggle active"
-        }
+    <div className="searchBar">
+      {/* TODO:  */}
+      <input
+        type="text"
+        className="searchBar--input"
+        placeholder="키워드를 입력해서 강의를 찾으세요"
+      />
+      {searchIcon}
+      <Button
+        btnSize={EButtonSize.Small}
+        btnType={EButtonType.Primary}
+        additionalClassName="searchBar--btn"
       >
-        {searchIcon}
-      </button>
+        검색
+      </Button>
+      <div className="searchBar--separator"></div>
+      <p>선택한 키워드들...</p>
+      <div>
+        <SelectedKeywords />
+      </div>
+      <Button
+        btnSize={EButtonSize.Small}
+        btnType={EButtonType.Primary}
+        additionalClassName="searchBar--clearBtn"
+      >
+        비우기
+      </Button>
     </div>
   );
 };

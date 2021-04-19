@@ -39,7 +39,7 @@ const makeButtonsOnHistory = ({
         highlight={highlightBtnIdx === 0}
         onClick={redirectToMain}
       >
-        Main
+        메인
       </Button>
       {/* #02 Comments */}
       <Button
@@ -48,7 +48,7 @@ const makeButtonsOnHistory = ({
         highlight={highlightBtnIdx === 1}
         onClick={redirectToComments}
       >
-        Comments
+        댓글
       </Button>
       {/* #03 Bookmarks */}
       <Button
@@ -57,7 +57,7 @@ const makeButtonsOnHistory = ({
         highlight={highlightBtnIdx === 2}
         onClick={redirectToBookmarks}
       >
-        Bookmarks
+        북마크
       </Button>
       {/* #04 Log Out */}
       <Button
@@ -66,7 +66,7 @@ const makeButtonsOnHistory = ({
         highlight={highlightBtnIdx === 3}
         onClick={redirectToLogOut}
       >
-        Log Out
+        로그아웃
       </Button>
       {children}
     </Fragment>

@@ -1,11 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import { TFooterDevCardData, FooterDevCardData } from "./FooterDevCardData";
 
-import { getIcon } from "../../../common/Icons";
+import { getIcon } from "../../../common";
 import "../_Footer.scss";
-import Separator from "../../separator/Separator";
-import { ESeparatorDirection } from "../../separator/ESeparatorDirection";
+
 
 const FooterDevCard: React.FC<{}> = () => {
   const devCardsJSX: Array<JSX.Element> = FooterDevCardData.map(
