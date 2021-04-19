@@ -6,19 +6,22 @@
   justify-content: center;
   align-items: center;
 
-  width: 35%;
+  max-width: 35%;
+
   background-color: rgba(177, 177, 177, 0.7);
   padding: 5px 15px;
   border-radius: 15px;
 
   position: relative;
   margin: 0 auto;
-  top: 75%;
+  top: 90%;
 
   div {
     background-color: #ddd;
     width: 15px;
+    min-width: 15px;
     height: 15px;
+    min-height: 15px;
     border-radius: 50%;
 
     margin-right: 10px;
@@ -27,10 +30,8 @@
       margin-right: 0;
     }
 
-    transition: all 0.5s ease-in-out;
-
-    .highlight {
-      background-color: $color-selected;
+    &.highlight {
+      background-color: $color-primary;
       width: 20px;
       height: 20px;
     }

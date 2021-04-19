@@ -18,6 +18,8 @@ const Button: React.FC<ButtonProps> = ({
   btnSize = EButtonSize.Medium,
   btnType = EButtonType.Primary,
   highlight = false,
+  additionalClassName,
+  additionalStyles,
   onClick,
   children,
 }) => {
@@ -28,8 +30,10 @@ const Button: React.FC<ButtonProps> = ({
         "btn",
         btnType.toString(),
         btnSize.toString(),
-        `${highlight ? "highlight" : null}`
+        `${highlight ? "highlight" : null}`,
+        additionalClassName || ""
       )}
+      style={additionalStyles}
       onClick={onClick}
     >
       <span>{children}</span>

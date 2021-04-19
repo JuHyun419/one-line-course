@@ -23,7 +23,7 @@ const LandingNav: React.FC<NavProps> = ({ children }) => {
         highlight
         onClick={redirectToSignIn}
       >
-        Sign In
+        가입
       </Button>
       {children}
     </div>

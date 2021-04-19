@@ -1,36 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { getPhotoPage } from "../../../service/UnsplashService";
-import ImageMoveTo from "./ImageIndicator/ImageMoveTo";
-import ImagesIndicator from "./ImageIndicator/ImagesIndicator";
+import ImageMoveTo from "./Image-carousel-elements/ImageMoveTo";
+import ImagesIndicator from "./Image-carousel-elements/ImagesIndicator";
 
 import "./_ImageCarousel.scss";
 
-const ImageCarousel: React.FC<{}> = () => {
+const ImageCarousel: React.FC<{
+  imagePlacerRef: React.RefObject<HTMLDivElement>;
+}> = ({ imagePlacerRef }) => {
   const [images, setImages] = useState<Array<string> | undefined>(undefined);
+  const [imageCount, setImageCount] = useState<number>(0);
+  const [curIdx, setCurIdx] = useState(0);
 
   useEffect(() => {
     (async () => {
-      const res = await getPhotoPage({ query: "office" });
-      setImages(res?.results.map(el => el.urls.full));
+      const imageQueryResult = await getPhotoPage({ query: "office" });
+      setImages(imageQueryResult?.results.map(el => el.urls.regular));
+      setImageCount(imageQueryResult?.results.length);
     })();
-  }, [setImages]);
+  }, []);
 
-  // const imgJSX = randomImgs?.map(url => (
-  //   <img key={uuidv4()} src={url} className="imageCarousel--image"></img>
-  // ));
-
-  let url: string = "";
-  if (typeof images !== "undefined") {
-    url = images[0]!;
-  }
+  const imgJSX = useMemo(
+    () =>
+      images?.map(url => (
+        <img key={uuidv4()} src={url} className="imageCarousel--image"></img>
+      )),
+    [images]
+  );
 
   return (
     <div className="imageCarousel">
-      <img src={url} className="imageCarousel--image" />
+      <div className="imageCarousel-imagePlacer" ref={imagePlacerRef}>
+        {imgJSX}
+      </div>
       <div className="imageCarousel-indicator">
-        <ImageMoveTo images={images} />
-        <ImagesIndicator imageCount={15} highlightIdx={3} />
+        <ImageMoveTo
+          imagePlacerEl={imagePlacerRef}
+          imageCount={imageCount}
+          curIdx={curIdx}
+          setCurIdx={setCurIdx}
+        />
+        <ImagesIndicator imageCount={imageCount} highlightIdx={curIdx} />
       </div>
     </div>
   );
