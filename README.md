@@ -45,6 +45,10 @@
 
 <br>
 
+  - [`DB 스키마`](https://github.com/JuHyun419/one-line-course/issues/8)
+
+<br>
+
   - [`RESTful API 설계`](https://www.notion.so/API-5f3c607a8217420495aa60182f90a2c5)
 
 <br>
@@ -104,18 +108,18 @@
   > 본문은 `어떻게` 보다 `무엇을`, `왜` 에 맞춰서 작성하기  
 [`좋은 git 커밋 메시지를 작성하기 위한 7가지 약속`](https://meetup.toast.com/posts/106)
 
-
 <br>
 
 ## 💡 Issues
   - [`서로 다른 OS(Mac, Window)에서 함께 Git 작업할 시 발생하는 LF, CRLF 문제`](https://github.com/JuHyun419/one-line-course/issues/38)
   - [`MySQL 😢이모지(utf8mb4) 스키마 설정`](https://github.com/JuHyun419/one-line-course/issues/8)
-  - [`Parcel 번들러 에서 ENV 파일 사용`](https://github.com/JuHyun419/one-line-course/issues/50)\  
+  - [`Parcel 번들러 에서 ENV 파일 사용`](https://github.com/JuHyun419/one-line-course/issues/50)
+  - [`MySQL referencing column and referenced column are incompatible`](https://github.com/JuHyun419/one-line-course/issues/8)
 
 <br>
 
-## 📜 보완해야 할 부분(성능, 기능, 코드 등등)
-
+## 📜 보완해야 할 부분(성능, 추가 기능, 코드 등등)
+  - 검색 조건에 강의자(instructor) 추가
 
 <br><br>
 
