@@ -53,7 +53,7 @@ public class CommentController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<CommentResponse>> getUserComments(@PathVariable Long userId) {
+    public ResponseEntity<List<CommentResponse>> getUserComments(@PathVariable String userId) {
         return ResponseEntity.ok(
                 commentService.findAllUserComments(userId)
                         .stream()
