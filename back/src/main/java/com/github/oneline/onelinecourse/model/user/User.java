@@ -13,6 +13,7 @@ import java.util.List;
 @Entity // JPA에서 사용한 Entity class 선언, 테이블과 링크될 클래스
 @Table(name = "Users")  // JPA에서 DB를 매칭할 테이블명
 public class User {
+
     @Id // 기본키(PK)로 지정
     @NonNull
     // @GeneratedValue : PK 생성 규칙
