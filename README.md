@@ -63,9 +63,9 @@
 ### 데이터베이스 및 스키마 설정
   - 먼저 application.properties 파일에 본인의 DB의 설정을 입력해야 합니다.
     - url, username, password 를 설정합니다.
-  - 스키마 설정은 로컬에 직접 설정 및 프로젝트 실행 시 자동으로 설정하는 두 가지 방법이 있습니다. (아래 사진 참고)
-    - 1. src/main/resources 경로의 schema.sql 파일에 작성된 스키마를 직접 복사해서 로컬 DB에서 생성합니다.
-    - 2. application.properties 파일의 schema 주석 부분을 해제한 후 애플리케이션을 실행하면 스키마 설정이 됩니다.
+  - 스키마 설정은 로컬에 직접 설정 및 프로젝트 실행 시 자동으로 설정하는 두 가지 방법이 있습니다. (사진 참고)
+    - src/main/resources 경로의 schema.sql 파일에 작성된 스키마를 직접 복사해서 로컬 DB에서 생성합니다.
+    - application.properties 파일의 schema 주석 부분을 해제한 후 애플리케이션을 실행하면 스키마 설정이 됩니다.
 <br>
   - application.properties, schema.sql 파일
 
