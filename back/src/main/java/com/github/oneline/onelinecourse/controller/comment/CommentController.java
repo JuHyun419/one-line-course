@@ -1,6 +1,8 @@
 package com.github.oneline.onelinecourse.controller.comment;
 
 import com.github.oneline.onelinecourse.service.comment.CommentService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,7 @@ public class CommentController {
     }
 
     @PostMapping
+    @ApiOperation(value = "댓글 등록")
     public ResponseEntity<CommentResponse> createComment(
             @RequestBody CommentCreateRequest request) {
         return ResponseEntity.ok(
@@ -28,22 +31,28 @@ public class CommentController {
     }
 
     @PatchMapping("/{commentId}")
-    public ResponseEntity<Void> updateComment(@RequestBody CommentUpdateRequest request,
-                                              @PathVariable Long commentId) {
+    @ApiOperation(value = "댓글 수정")
+    public ResponseEntity<Void> updateComment(
+            @RequestBody CommentUpdateRequest request,
+            @PathVariable @ApiParam(value = "댓글 ID", example = "1") Long commentId) {
         commentService.updateComment(request.toEntity(), commentId);
         return ResponseEntity.ok()
                 .build();
     }
 
     @DeleteMapping("/{commentId}")
-    public ResponseEntity<Void> deleteComment(@PathVariable Long commentId) {
+    @ApiOperation(value = "댓글 삭제")
+    public ResponseEntity<Void> deleteComment(
+            @PathVariable @ApiParam(value = "댓글 ID", example = "1") Long commentId) {
         commentService.deleteComment(commentId);
         return ResponseEntity.noContent()
                 .build();
     }
 
     @GetMapping("/lectures/{lectureId}")
-    public ResponseEntity<List<CommentResponse>> getLectureComments(@PathVariable Long lectureId) {
+    @ApiOperation(value = "강의 댓글 전체 조회")
+    public ResponseEntity<List<CommentResponse>> getLectureComments(
+            @PathVariable @ApiParam(value = "강의 ID", example = "1") Long lectureId) {
         return ResponseEntity.ok(
                 commentService.findAllLectureComments(lectureId)
                         .stream()
@@ -53,7 +62,9 @@ public class CommentController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<CommentResponse>> getUserComments(@PathVariable String userId) {
+    @ApiOperation(value = "유저 댓글 전체 조회")
+    public ResponseEntity<List<CommentResponse>> getUserComments(
+            @PathVariable @ApiParam(value = "유저 ID", example = "00002182919823455812") String userId) {
         return ResponseEntity.ok(
                 commentService.findAllUserComments(userId)
                         .stream()
