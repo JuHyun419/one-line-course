@@ -2,12 +2,12 @@ import React from "react";
 import { useSafeContext } from "../hooks/useSafeContext";
 import { useToggleProvider } from "../hooks/useToggleProvider";
 
-export interface ViewModeCtxData {
+export interface ViewModeCtxState {
   isGrid: boolean;
   toggleViewMode: () => void;
 }
 
-const ViewModeCtx = React.createContext<ViewModeCtxData>({
+const ViewModeCtx = React.createContext<ViewModeCtxState>({
   isGrid: true,
   toggleViewMode: () => {},
 });
@@ -15,7 +15,7 @@ const ViewModeCtx = React.createContext<ViewModeCtxData>({
 export const ViewModeCtxProvider: React.FC<{
   children?: JSX.Element | null | undefined;
 }> = ({ children }) => {
-  const { providerValue } = useToggleProvider<ViewModeCtxData>(
+  const { providerValue } = useToggleProvider<ViewModeCtxState>(
     "isGrid",
     "toggleViewMode"
   );
@@ -24,4 +24,4 @@ export const ViewModeCtxProvider: React.FC<{
 };
 
 export const useViewModeContext = () =>
-  useSafeContext<ViewModeCtxData>(ViewModeCtx);
+  useSafeContext<ViewModeCtxState>(ViewModeCtx);

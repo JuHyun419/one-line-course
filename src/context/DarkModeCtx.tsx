@@ -2,12 +2,12 @@ import React from "react";
 import { useSafeContext } from "../hooks/useSafeContext";
 import { useToggleProvider } from "../hooks/useToggleProvider";
 
-export interface DarkModeCtxData {
+export interface DarkModeCtxState {
   isDark: boolean;
   toggleDarkMode: () => void;
 }
 
-const DarkModeCtx = React.createContext<DarkModeCtxData>({
+const DarkModeCtx = React.createContext<DarkModeCtxState>({
   isDark: false,
   toggleDarkMode: () => {},
 });
@@ -15,7 +15,7 @@ const DarkModeCtx = React.createContext<DarkModeCtxData>({
 export const DarkModeCtxProvider: React.FC<{
   children?: JSX.Element | null | undefined;
 }> = ({ children }) => {
-  const { providerValue } = useToggleProvider<DarkModeCtxData>(
+  const { providerValue } = useToggleProvider<DarkModeCtxState>(
     "isDark",
     "toggleDarkMode"
   );
@@ -24,4 +24,4 @@ export const DarkModeCtxProvider: React.FC<{
 };
 
 export const useDarkModeContext = () =>
-  useSafeContext<DarkModeCtxData>(DarkModeCtx);
+  useSafeContext<DarkModeCtxState>(DarkModeCtx);

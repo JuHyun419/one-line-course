@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import { v4 as uuidv4 } from "uuid";
 import { getPhotoPage } from "../../../service/UnsplashService";
 import ImageMoveTo from "./Image-carousel-elements/ImageMoveTo";
@@ -13,10 +15,15 @@ const ImageCarousel: React.FC<{
   const [imageCount, setImageCount] = useState<number>(0);
   const [curIdx, setCurIdx] = useState(0);
 
+  // const counter = useSelector(state => state.counter);
+  const dispatch = useDispatch();
+  const loadImages = useCallback((images: Array<string>) => dispatch({type: "loadImages", payloads: images}), [dispatch]);
+
   useEffect(() => {
     (async () => {
       const imageQueryResult = await getPhotoPage({ query: "office" });
-      setImages(imageQueryResult?.results.map(el => el.urls.regular));
+      loadImages(imageQueryResult?.results.map(el => el.urls.regular));
+      // setImages(imageQueryResult?.results.map(el => el.urls.regular));
       setImageCount(imageQueryResult?.results.length);
     })();
   }, []);

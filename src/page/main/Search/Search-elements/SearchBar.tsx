@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, EButtonSize, EButtonType } from "../../../../component/button";
+import Button from "../../../../component/button/Button";
 import { SelectedKeywords } from "../../Search-keyword/";
 
 import "./_SearchBar.scss";

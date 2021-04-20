@@ -1,20 +1,24 @@
 import React, { Fragment } from "react";
-import { joinClasses } from "../../common/StyleHelper";
-import { ESeparatorDirection } from "./ESeparatorDirection";
-import SeparatorProps from "./SeparatorProps";
 import "./_Separator.scss";
+
+interface SeparatorProps {
+  direction: ESeparatorDirection;
+  length?: number;
+  width?: number;
+}
 
 const Separator: React.FC<SeparatorProps> = ({
   direction,
   length,
   width,
 }: SeparatorProps) => {
-  let separator: JSX.Element;
+  let separator: JSX.Element | null = null;
+  
   switch (direction) {
     case ESeparatorDirection.Vertical:
       separator = (
         <div
-          className={joinClasses("separator-vertical")}
+          className="separator-vertical"
           style={{ width: `${width}px`, height: `${length}px` }}
         ></div>
       );
@@ -23,7 +27,7 @@ const Separator: React.FC<SeparatorProps> = ({
     case ESeparatorDirection.Horizontal:
       separator = (
         <div
-          className={joinClasses("separator-horizontal")}
+          className="separator-horizontal"
           style={{ width: `${length}px`, height: `${width}px` }}
         ></div>
       );

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import { NavFactory, ENavType } from "../../component/nav/";
+import NavFactory from "../../component/nav/nav-factory/NavFactory";
 import { placeIconsRandomly } from "../../common/";
 import Footer from "../../component/footer/Footer";
 import ImageCarousel from "./Image-carousel/ImageCarousel";

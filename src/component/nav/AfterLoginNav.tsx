@@ -3,9 +3,6 @@ import { useHistory } from "react-router-dom";
 import { useRedirectToOnButtonClick } from "../../hooks/useRedirectTo";
 
 import Button from "../button/Button";
-import { EButtonSize } from "../button/EButtonSize";
-import { EButtonType } from "../button/EButtonType";
-import NavProps from "./NavProps";
 
 import "./_Nav.scss";
 
@@ -13,6 +10,12 @@ const toMain = "/main";
 const toComments = "/comments";
 const toBookmarks = "/bookmarks";
 const toLogOut = "/logout";
+
+interface NavProps {
+  // TODO: decorator -> @range(0, 4)
+  highlightBtnIdx?: number;
+  children?: JSX.Element;
+}
 
 const AfterLoginNav: React.FC<NavProps> = (props: NavProps) => (
   <div className="nav-afterLogin">

@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface AuthCtxData {
+interface AuthCtxData {
   isAuth: boolean;
   authenticate: () => void;
 }

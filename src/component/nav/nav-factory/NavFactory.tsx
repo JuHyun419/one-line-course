@@ -1,12 +1,17 @@
 import React, { useState, Fragment, useEffect } from "react";
 
-import { ENavType } from "../ENavType";
 import AfterLoginNav from "../AfterLoginNav";
 import LandingNav from "../LandingNav";
 import SignInNav from "../SignInNav";
-import NavFactoryProps from "./NavFactoryProps";
 
 import "./_NavFactory.scss";
+
+interface NavFactoryProps {
+  navType: ENavType;
+  // TODO: Decorator -> @range(0, 4)
+  imagePlacerRef?: React.RefObject<HTMLDivElement>;
+  highlightBtnIdx?: number;
+}
 
 const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
   <Fragment>{makeNav(props)}</Fragment>

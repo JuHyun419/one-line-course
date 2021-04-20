@@ -1,6 +1,6 @@
 import React from "react";
 
-import { NavFactory, ENavType } from "../../component/nav/";
+import NavFactory from "../../component/nav/nav-factory/NavFactory";
 import { placeIconsRandomly } from "../../common/";
 import AuthCtrl from "../../auth/AuthCtrl";
 import Footer from "../../component/footer/Footer";
