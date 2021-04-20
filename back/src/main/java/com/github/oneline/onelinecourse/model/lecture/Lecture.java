@@ -1,6 +1,5 @@
 package com.github.oneline.onelinecourse.model.lecture;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.github.oneline.onelinecourse.model.comment.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +26,7 @@ public class Lecture {
     @Column @Lob
     private String imageUrl;
 
-    @Column
+    @Column(length = 200)
     private String title;
 
     @Column
@@ -39,28 +38,28 @@ public class Lecture {
     @Column
     private float rating;
 
-    @Column
+    @Column(length = 100)
     private String instructor;
 
-    @Column
+    @Column(length = 500)
     private String url;
 
     @Column
     private int viewCount;
 
-    @Column
+    @Column(length = 20)
     private String platform;
 
     @Column
     private int sessionCount;
 
-    @Column
+    @Column(length = 20)
     private String currency;
 
     @Column @Lob
     private String description;
 
-    @Column
+    @Column(length = 100)
     private String skills;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "lecture")
