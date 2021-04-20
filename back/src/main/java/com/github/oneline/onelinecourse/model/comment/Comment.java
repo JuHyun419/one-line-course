@@ -2,6 +2,7 @@ package com.github.oneline.onelinecourse.model.comment;
 
 import com.github.oneline.onelinecourse.model.lecture.Lecture;
 import com.github.oneline.onelinecourse.model.user.User;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "Comments")
 public class Comment {
