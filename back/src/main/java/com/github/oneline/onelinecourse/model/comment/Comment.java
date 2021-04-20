@@ -1,6 +1,5 @@
 package com.github.oneline.onelinecourse.model.comment;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.github.oneline.onelinecourse.model.lecture.Lecture;
 import com.github.oneline.onelinecourse.model.user.User;
 import lombok.Builder;
@@ -8,8 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -26,7 +27,8 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 1000)
+    @Length(max = 1000, message = "댓글은 1000자를 초과할 수 없습니다.")
+    @NotBlank(message = "댓글 내용은 비어 있을 수 없습니다.")
     private String content;
 
     @Column
