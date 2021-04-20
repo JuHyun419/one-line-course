@@ -95,6 +95,7 @@
   - [`Parcel 번들러 에서 ENV 파일 사용`](https://github.com/JuHyun419/one-line-course/issues/50)
   - [`MySQL referencing column and referenced column are incompatible`](https://github.com/JuHyun419/one-line-course/issues/8)
   - [`AWS RDS MySQL 8.0 대소문자 구분 설정`](https://zzang9ha.tistory.com/328)
+  - [`typescript 흩어져 있는 type specification 관리(정리)하기`](https://stackoverflow.com/questions/36633033/how-to-organize-typescript-interfaces)
 
 <br>
 
