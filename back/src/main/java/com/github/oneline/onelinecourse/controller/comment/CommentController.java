@@ -3,21 +3,19 @@ package com.github.oneline.onelinecourse.controller.comment;
 import com.github.oneline.onelinecourse.service.comment.CommentService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @RequestMapping("/comments")
 @RestController
 public class CommentController {
 
     private final CommentService commentService;
-
-    public CommentController(CommentService commentService) {
-        this.commentService = commentService;
-    }
 
     @PostMapping
     @ApiOperation(value = "댓글 등록")
