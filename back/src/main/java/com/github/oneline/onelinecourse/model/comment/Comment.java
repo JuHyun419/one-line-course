@@ -67,6 +67,10 @@ public class Comment {
         this.content = content;
     }
 
+    public void updateDate() {
+        this.updatedAt = LocalDateTime.now();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -85,8 +85,8 @@ class CommentServiceTest {
 
         // when
         commentService.createComment(request.toEntity(), request.getUserId(), request.getLectureId());
-        final Comment newComment = commentRepository
-                .findByUserIdAndLectureId(request.getUserId(), request.getLectureId())
+        final Comment newComment =
+                commentRepository.findByUserIdAndLectureId(request.getUserId(), request.getLectureId())
                 .orElseGet(Comment::new);
 
         // then
