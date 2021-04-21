@@ -1,6 +1,10 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { ENavType, MainCarouselImageState } from "../../../typings/type";
+import {
+  ENavType,
+  TCombinedStates,
+  CarouselState,
+} from "../../../typings/type";
 
 import AfterLoginNav from "../AfterLoginNav";
 import LandingNav from "../LandingNav";
@@ -22,9 +26,6 @@ const makeNav = ({
   navType,
   highlightBtnIdx,
 }: NavFactoryProps): JSX.Element => {
-  const imagePlacerRef = useSelector(
-    (state: MainCarouselImageState) => state.imagesPlacerRef
-  );
   const [sticky, setSticky] = useState("navFactory");
 
   let navJSX: JSX.Element;
@@ -40,16 +41,23 @@ const makeNav = ({
 
     case ENavType.AfterLogin:
       navJSX = <AfterLoginNav highlightBtnIdx={highlightBtnIdx} />;
+      const imagePlacerRef = useSelector(
+        (state: TCombinedStates) => state.carousel.carouselRef
+      );
       useEffect(() => {
+        if (!imagePlacerRef?.current) return;
+
         window.addEventListener("scroll", function () {
+          if (!imagePlacerRef?.current) return;
+
           setSticky(
             window.scrollY <=
-              imagePlacerRef!.current!.getBoundingClientRect().top
+              imagePlacerRef.current!.getBoundingClientRect().top
               ? "navFactory"
               : "navFactory sticky"
           );
         });
-      }, [window]);
+      }, [window, imagePlacerRef]);
       break;
 
     default:

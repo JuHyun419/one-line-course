@@ -1,24 +1,21 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import {
-  MainCarouselImageFetchState,
-  MainCarouselImageState,
-} from "../../../../typings/type";
+import { TCombinedStates } from "../../../../typings/type";
 import "./_ImagesIndicator.scss";
 
 const ImagesIndicator: React.FC = () => {
-  const imagesCount = useSelector(
-    (state: MainCarouselImageFetchState) => state.imagesCount,
-    shallowEqual
+  const totalImagesCount = useSelector(
+    (state: TCombinedStates) => state.imgFetcher.imgURLs.length
   );
   const currentImagesPlacerIndex = useSelector(
-    (state: MainCarouselImageState) => state.currentImagesPlacerIndex,
+    (state: TCombinedStates) =>
+      state.carousel.curIdx,
     shallowEqual
   );
 
   const indicatorJSX: Array<JSX.Element> = [];
-  for (let i = 0; i < imagesCount; ++i) {
+  for (let i = 0; i < totalImagesCount; ++i) {
     indicatorJSX.push(
       <div
         key={uuidv4()}
