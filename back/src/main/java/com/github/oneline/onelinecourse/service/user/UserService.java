@@ -17,13 +17,23 @@ public class UserService {
     }
 
     // 처음 로그인인지 확인
-    public void signIn(User user) {
-        return;
+    public List<User> searchUser(String userId) {
+        return userRepository.findByUserId(userId);
     }
 
+//    public boolean searchUser(String userId) {
+//        User searchByUserId =  userRepository.findByUserId(userId);
+//        if(searchByUserId != null) {
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
+//    }
+
     // 처음이라서 등록 필요
-    public User save(User user) {
-        return null;
+    public User createUser(User user) {
+        return userRepository.save(user);
     }
 
 }
