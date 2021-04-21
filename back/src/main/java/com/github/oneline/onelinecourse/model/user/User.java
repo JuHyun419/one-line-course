@@ -1,5 +1,6 @@
 package com.github.oneline.onelinecourse.model.user;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.github.oneline.onelinecourse.model.bookmark.Bookmark;
 import com.github.oneline.onelinecourse.model.comment.Comment;
 import lombok.*;
