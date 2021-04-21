@@ -1,19 +1,39 @@
-import { createStore, applyMiddleware, Store } from "redux";
-// import applyMiddleware from "redux";
-// import Store from "redux";
+import React from "react";
+import {
+  createStore,
+  applyMiddleware,
+  Store,
+  combineReducers,
+  CombinedState,
+} from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import React from "react";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import carouselImagesReducer, {
-  CarouselImageState,
-  CarouselImageAction,
-  CarouselImageDispatch,
-} from "./reducer/CarouselImage";
+import {
+  MainCarouselImageAction,
+  MainCarouselImageFetchAction,
+  MainCarouselImageFetchState,
+  MainCarouselImageState,
+} from "../typings/type";
 
-export const store: Store<CarouselImageState, CarouselImageAction> & {
+import mainCarouselImageFetchReducer from "./reducer/MainCarouselImageFetch";
+import mainCarouselImageReducer from "./reducer/MainCarouselImage";
+
+const rootReducers = combineReducers({
+  mainCarouselImagesFetch: mainCarouselImageFetchReducer,
+  mainCarouselImage: mainCarouselImageReducer,
+});
+
+const store: Store<
+  CombinedState<{
+    mainCarouselImagesFetch: MainCarouselImageFetchState;
+    mainCarouselImage: MainCarouselImageState;
+  }>,
+  MainCarouselImageFetchAction | MainCarouselImageAction
+> & {
   dispatch: unknown;
-} = createStore(carouselImagesReducer, applyMiddleware(thunk));
+} = createStore(rootReducers, composeWithDevTools(applyMiddleware(thunk)));
 
 const ReduxProvider: React.FC<{
   children: JSX.Element;

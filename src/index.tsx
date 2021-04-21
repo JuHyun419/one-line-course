@@ -8,8 +8,7 @@ import App from "./App";
 
 import "./hot-module";
 import "./Ext";
-// import ReduxProvider from "./redux";
-
+import ReduxProvider from "./store";
 
 // import AuthCtxProvider from "./context/AuthCtx";
 

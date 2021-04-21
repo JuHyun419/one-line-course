@@ -1,5 +1,5 @@
 import React from "react";
-// import { NavLink } from "react-router-dom";
+import { EButtonSize, EButtonType, TOnClick } from "../../typings/type";
 
 import { joinClasses } from "../../common/StyleHelper";
 

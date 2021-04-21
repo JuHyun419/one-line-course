@@ -1,4 +1,5 @@
 import React, { useState, useCallback, Fragment } from "react";
+import { EMenuMode } from "~typings/type";
 
 import { DarkModeCtxProvider } from "../../context/DarkModeCtx";
 import { ViewModeCtxProvider } from "../../context/ViewModeCtx";

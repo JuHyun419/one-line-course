@@ -1,8 +1,7 @@
 import React from "react";
-
+import { EButtonSize, EButtonType } from "../../../../typings/type";
 import Button from "../../../../component/button/Button";
 import { SelectedKeywords } from "../../Search-keyword/";
-
 import "./_SearchBar.scss";
 
 const SearchBar: React.FC<{

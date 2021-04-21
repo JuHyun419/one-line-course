@@ -1,20 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useMoveTo } from "./useMoveTo";
-
 import "./_ImageMoveTo.scss";
 
-const ImageMoveTo: React.FC<{
-  imagePlacerEl: React.RefObject<HTMLDivElement>;
-  imageCount: number;
-  curIdx: number;
-  setCurIdx: React.Dispatch<React.SetStateAction<number>>;
-}> = ({ imagePlacerEl, imageCount, curIdx, setCurIdx }) => {
-  const { onMoveToLeft, onMoveToRight } = useMoveTo(
-    imagePlacerEl,
-    imageCount,
-    curIdx,
-    setCurIdx
-  );
+const ImageMoveTo: React.FC = () => {
+  const { onMoveToLeft, onMoveToRight } = useMoveTo();
 
   return (
     <div className="imageMoveTo">

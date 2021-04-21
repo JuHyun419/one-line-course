@@ -1,4 +1,6 @@
 import React, { useState, Fragment, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { ENavType, MainCarouselImageState } from "../../../typings/type";
 
 import AfterLoginNav from "../AfterLoginNav";
 import LandingNav from "../LandingNav";
@@ -9,7 +11,6 @@ import "./_NavFactory.scss";
 interface NavFactoryProps {
   navType: ENavType;
   // TODO: Decorator -> @range(0, 4)
-  imagePlacerRef?: React.RefObject<HTMLDivElement>;
   highlightBtnIdx?: number;
 }
 
@@ -19,9 +20,11 @@ const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
 
 const makeNav = ({
   navType,
-  imagePlacerRef,
   highlightBtnIdx,
 }: NavFactoryProps): JSX.Element => {
+  const imagePlacerRef = useSelector(
+    (state: MainCarouselImageState) => state.imagesPlacerRef
+  );
   const [sticky, setSticky] = useState("navFactory");
 
   let navJSX: JSX.Element;
