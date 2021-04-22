@@ -6,7 +6,8 @@
   justify-content: center;
   align-items: center;
 
-  max-width: 35%;
+  max-width: 20%;
+  min-width: 15%;
 
   background-color: rgba(177, 177, 177, 0.7);
   padding: 5px 15px;
@@ -14,7 +15,7 @@
 
   position: relative;
   margin: 0 auto;
-  top: 90%;
+  top: 75%;
 
   div {
     background-color: #ddd;

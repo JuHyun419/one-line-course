@@ -1,37 +1,37 @@
-// @import "../../../../../common/BoxShadow";
-@import "../../../../common/ColorScheme";
+@import "../../../../common/BoxShadow";
+// @import "../../../../common/ColorScheme";
 
-.searchBar-contents {
+.searchBar {
   position: relative;
 
-  width: 400px;
-  height: 200px;
+  width: 750px;
+  height: 350px;
 
   border: 1px dashed #b2b2b2;
   border-radius: 15px;
-
-  box-shadow: 1px 1px 1px 1px $color-box-shadow;
+  @include make-box-shadow(1, 1, 1);
+  // box-shadow: 1px 1px 1px 1px $color-box-shadow;
 
   // transition: width 1s ease-in-out, height 1s ease-in-out;
 
   i {
     position: absolute;
-    left: 5px;
+    left: 15px;
     top: 5%;
   }
 
   p {
     position: absolute;
-    left: 5px;
+    left: 5%;
     top: 60%;
   }
 
   .searchBar--input {
     position: absolute;
-    left: 50px;
-    top: 0;
+    left: 55px;
+    top: 2%;
 
-    width: 350px;
+    width: 550px;
     height: 50px;
     border: 0;
     border-radius: 15px;
@@ -44,12 +44,13 @@
 
   .searchBar--btn {
     position: absolute;
-    left: 70%;
+    left: 83%;
     top: 30%;
   }
 
   .searchBar--separator {
     position: absolute;
+    left: 2%;
     top: 50%;
 
     width: 95%;
@@ -61,7 +62,7 @@
 
   .searchBar--clearBtn {
     position: absolute;
-    left: 70%;
+    left: 83%;
     top: 75%;
   }
 }

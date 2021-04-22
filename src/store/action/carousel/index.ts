@@ -1,5 +1,13 @@
-import { Actions, SetCurIdx, SetRef } from "./Actions";
+import { Actions, SetCurIdx, SetRef, SetImgWidth } from "./Actions";
 
-import { setCurIdx, setRef } from "./ActionCreators";
+import { setCurIdx, setRef, setImgWidth } from "./ActionCreators";
 
-export { Actions, SetCurIdx, SetRef, setCurIdx, setRef };
+export {
+  Actions,
+  SetCurIdx,
+  SetRef,
+  SetImgWidth,
+  setCurIdx,
+  setRef,
+  setImgWidth,
+};

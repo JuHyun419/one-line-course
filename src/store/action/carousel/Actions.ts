@@ -8,4 +8,9 @@ export interface SetRef {
   ref: React.RefObject<HTMLDivElement>;
 }
 
-export type Actions = SetCurIdx | SetRef;
+export interface SetImgWidth {
+  type: "SET_IMG_WIDTH";
+  imgWidth: number;
+}
+
+export type Actions = SetCurIdx | SetRef | SetImgWidth;
