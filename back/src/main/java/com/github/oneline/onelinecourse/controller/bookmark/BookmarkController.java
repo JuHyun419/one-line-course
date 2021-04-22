@@ -15,16 +15,19 @@ public class BookmarkController {
     }
 
     @PostMapping("/user/{userid}")
-    public ResponseEntity<BookmarkResponseDto> createBookmark(@PathVariable("userid") String userId) {
+    public ResponseEntity<BookmarkResponseDto> createBookmark(
+            @RequestBody CreateBookmarkRequestDto createBookmarkRequestDto,
+            @PathVariable("userid") String userId) {
         return ResponseEntity.ok(
-                new BookmarkResponseDto(bookmarkService.createBookmark(CreateBookmarkRequestDto.to))
+                new BookmarkResponseDto(bookmarkService.createBookmark(
+                        createBookmarkRequestDto.toEntity(), createBookmarkRequestDto.getUserId(), createBookmarkRequestDto.getLectureId()
+                ))
         );
-
     }
 
-    @DeleteMapping("/user/{userid}")
-    public ResponseEntity<BookmarkResponseDto> deleteBookmark(@PathVariable("userid") String userId) {
-        bookmarkService.deleteBookmark(userId);
+    @DeleteMapping("/{bookmarkid}")
+    public ResponseEntity<BookmarkResponseDto> deleteBookmark(@PathVariable("bookmarkid") Long bookmarkId) {
+        bookmarkService.deleteBookmark(bookmarkId);
         return ResponseEntity.noContent()   // body에 응답 내용이 없을 경우
                 .build();
     }

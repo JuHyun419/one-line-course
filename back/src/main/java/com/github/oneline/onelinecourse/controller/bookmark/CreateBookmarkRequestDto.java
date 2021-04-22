@@ -3,30 +3,29 @@ package com.github.oneline.onelinecourse.controller.bookmark;
 import com.github.oneline.onelinecourse.model.bookmark.Bookmark;
 import com.github.oneline.onelinecourse.model.lecture.Lecture;
 import com.github.oneline.onelinecourse.model.user.User;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Builder
 public class CreateBookmarkRequestDto {
     private Long id;
     private LocalDateTime createdAt;
-    private User user;
-    private Lecture lecture;
+    private String userId;
+    private Long lectureId;
 
-    @Builder
-    public CreateBookmarkRequestDto(Long id, LocalDateTime createdAt, User user, Lecture lecture) {
-        this.id = id;
-        this.createdAt = createdAt;
-        this.user = user;
-        this.lecture = lecture;
-    }
-
+    // DTO -> Entity 변환
     public Bookmark toEntity() {
         return Bookmark.builder()
-                .id(id)
-                .createdAt(createdAt)
-                .user(user)
-                .lecture(lecture)
+                .userId(userId)
+                .lectureId(lectureId)
                 .build();
     }
+
 }

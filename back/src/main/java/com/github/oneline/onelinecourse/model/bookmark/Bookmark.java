@@ -6,6 +6,8 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+import static org.apache.commons.lang3.ObjectUtils.defaultIfNull;
+
 @Getter
 @ToString
 @Entity // JPA에서 사용한 Entity class  선언
@@ -29,9 +31,13 @@ public class Bookmark {
     private Lecture lecture;
 
     @Builder
+    public Bookmark(User user, Lecture lecture){
+        this(null, null, user, lecture);
+    }
+
     public Bookmark(Long id, LocalDateTime createdAt, User user, Lecture lecture) {
         this.id = id;
-        this.createdAt = createdAt;
+        this.createdAt = defaultIfNull(createdAt, LocalDateTime.now());;
         this.user = user;
         this.lecture = lecture;
     }
