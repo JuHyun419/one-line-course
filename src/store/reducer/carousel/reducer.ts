@@ -1,36 +1,40 @@
-import { Actions as CarouselActions } from "../../action/carousel";
+import { ECarouselActionType } from "../../../typings/type";
+import { TActions as TCarouselActions } from "../../action/carousel";
 
-export interface Carousel {
+export interface ICarousel {
   ref?: React.RefObject<HTMLDivElement>;
   idx: number;
   imgWidth: number;
 }
 
-export interface State {
-  state: Carousel;
+export interface IState {
+  state: ICarousel;
 }
 
-const init: Carousel = {
+const init: ICarousel = {
   ref: undefined,
   idx: 0,
   imgWidth: 0,
 };
 
-const reducer = (state: Carousel = init, action: CarouselActions): Carousel => {
+const reducer = (
+  state: ICarousel = init,
+  action: TCarouselActions
+): ICarousel => {
   switch (action.type) {
-    case "SET_CUR_IDX":
+    case ECarouselActionType.Set_ImageIndicatorCurIdx:
       return {
         ...state,
         idx: action.idx,
       };
 
-    case "SET_REF":
+    case ECarouselActionType.Set_ImagePlacerRef:
       return {
         ...state,
         ref: action.ref,
       };
 
-    case "SET_IMG_WIDTH":
+    case ECarouselActionType.Set_ImageWidth:
       return {
         ...state,
         imgWidth: action.imgWidth,

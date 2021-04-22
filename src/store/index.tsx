@@ -12,24 +12,23 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 // import { TStore, TRootReducer } from "../typings/type";
 
-
 // async carousel dep
 import carouselAsync, {
-  CarouselFetcher,
+  ICarouselAsync,
 } from "./reducer/carousel-async/reducer";
-import { Actions as CarouselAsyncActions } from "./action/carousel-async";
+import { TActions as TCarouselAsyncActions } from "./action/carousel-async";
 // carousel dep
-import carousel, { Carousel } from "./reducer/carousel/reducer";
-import { Actions as CarouselActions } from "./action/carousel";
+import carousel, { ICarousel } from "./reducer/carousel/reducer";
+import { TActions as TCarouselActions } from "./action/carousel";
 
-export type CombinedCarousel = CombinedState<{
-  carouselAsync: CarouselFetcher;
-  carousel: Carousel;
+export type TCombinedCarousel = CombinedState<{
+  carouselAsync: ICarouselAsync;
+  carousel: ICarousel;
 }>;
 
 type TRootReducer = Reducer<
-  CombinedCarousel,
-  CarouselAsyncActions | CarouselActions
+  TCombinedCarousel,
+  TCarouselAsyncActions | TCarouselActions
 >;
 
 const rootReducers: TRootReducer = combineReducers({

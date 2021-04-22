@@ -2,7 +2,7 @@ import React, { useState, Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { ENavType } from "../../../typings/type";
 
-import { CombinedCarousel } from "../../../store";
+import { TCombinedCarousel } from "../../../store";
 
 import AfterLoginNav from "../AfterLoginNav";
 import LandingNav from "../LandingNav";
@@ -40,7 +40,7 @@ const makeNav = ({
     case ENavType.AfterLogin:
       navJSX = <AfterLoginNav highlightBtnIdx={highlightBtnIdx} />;
       const imgRef = useSelector(
-        (state: CombinedCarousel) => state.carousel.ref
+        (state: TCombinedCarousel) => state.carousel.ref
       );
 
       useEffect(() => {

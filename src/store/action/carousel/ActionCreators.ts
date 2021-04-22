@@ -1,16 +1,23 @@
-import { SetCurIdx, SetImgWidth, SetRef } from "./Actions";
+import { ECarouselActionType } from "../../../typings/type";
+import {
+  ISetImageIndicatorCurIdxAction,
+  ISetImageWidthAction,
+  ISetImagePlacerRefAction,
+} from "./Actions";
 
-export const setCurIdx = (idx: number): SetCurIdx => ({
-  type: "SET_CUR_IDX",
+export const setImageIndicatorCurIdx = (idx: number): ISetImageIndicatorCurIdxAction => ({
+  type: ECarouselActionType.Set_ImageIndicatorCurIdx,
   idx,
 });
 
-export const setRef = (ref: React.RefObject<HTMLDivElement>): SetRef => ({
-  type: "SET_REF",
+export const setImagePlacerRef = (
+  ref: React.RefObject<HTMLDivElement>
+): ISetImagePlacerRefAction => ({
+  type: ECarouselActionType.Set_ImagePlacerRef,
   ref,
 });
 
-export const setImgWidth = (imgWidth: number): SetImgWidth => ({
-  type: "SET_IMG_WIDTH",
+export const setImgWidth = (imgWidth: number): ISetImageWidthAction => ({
+  type: ECarouselActionType.Set_ImageWidth,
   imgWidth,
 });

@@ -1,20 +1,21 @@
+import { ECarouselAsyncActionType } from "../../../typings/type";
+
 // Actions
-export interface FetchReq {
-  type: "FETCH_REQUEST";
+export interface IFetchReqAction_CarouselImageURLs {
+  type: ECarouselAsyncActionType.FetchRequest_CarouselImagesURLs;
 }
 
-export interface FetchSucceed {
-  type: "FETCH_SUCCEED";
+export interface IFetchSucceedAction_CarouselImageURLs {
+  type: ECarouselAsyncActionType.FetchSucceed_CarouselImagesURLs;
   urls: Array<string>;
 }
 
-export interface FetchFail {
-  type: "FETCH_FAIL";
+export interface IFetchFailAction_CarouselImgURLs {
+  type: ECarouselAsyncActionType.FetchFail_CarouselImagesURLs;
   err: string;
 }
 
-
-export type Actions =
-  | FetchReq
-  | FetchSucceed
-  | FetchFail
+export type TActions =
+  | IFetchReqAction_CarouselImageURLs
+  | IFetchSucceedAction_CarouselImageURLs
+  | IFetchFailAction_CarouselImgURLs;

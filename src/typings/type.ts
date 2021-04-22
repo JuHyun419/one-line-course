@@ -53,11 +53,17 @@ export enum ESeparatorDirection {
   Horizontal,
 }
 
-/**
- *
- */
+export enum ECarouselAsyncActionType {
+  FetchRequest_CarouselImagesURLs = "FETCH_REQUEST_CAROUSEL_IMAGES_URLS",
+  FetchSucceed_CarouselImagesURLs = "FETCH_SUCCEED_CAROUSEL_IMAGES_URLS",
+  FetchFail_CarouselImagesURLs = "FETCH_FAIL_CAROUSEL_IMAGES_URLS",
+}
 
-
+export enum ECarouselActionType {
+  Set_ImageIndicatorCurIdx = "SET_IMAGE_INDICATOR_CURRENT_INDEX",
+  Set_ImagePlacerRef = "SET_IMAGE_PLACER_REF",
+  Set_ImageWidth = "SET_IMAGE_WIDTH",
+}
 
 /**
  *

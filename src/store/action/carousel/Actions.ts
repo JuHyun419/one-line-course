@@ -1,16 +1,21 @@
-export interface SetCurIdx {
-  type: "SET_CUR_IDX";
+import { ECarouselActionType } from "../../../typings/type";
+
+export interface ISetImageIndicatorCurIdxAction {
+  type: ECarouselActionType.Set_ImageIndicatorCurIdx;
   idx: number;
 }
 
-export interface SetRef {
-  type: "SET_REF";
+export interface ISetImagePlacerRefAction {
+  type: ECarouselActionType.Set_ImagePlacerRef;
   ref: React.RefObject<HTMLDivElement>;
 }
 
-export interface SetImgWidth {
-  type: "SET_IMG_WIDTH";
+export interface ISetImageWidthAction {
+  type: ECarouselActionType.Set_ImageWidth;
   imgWidth: number;
 }
 
-export type Actions = SetCurIdx | SetRef | SetImgWidth;
+export type TActions =
+  | ISetImageIndicatorCurIdxAction
+  | ISetImagePlacerRefAction
+  | ISetImageWidthAction;

@@ -1,19 +1,24 @@
-import { FetchReq, FetchSucceed, FetchFail, Actions } from "./Actions";
+import {
+  IFetchReqAction_CarouselImageURLs,
+  IFetchSucceedAction_CarouselImageURLs,
+  IFetchFailAction_CarouselImgURLs,
+  TActions,
+} from "./Actions";
 
 import {
-  fetchRequest,
-  fetchSucceed,
-  fetchFail,
-  initFetch,
+  fetchRequest_CarouselImageURLs,
+  fetchSucceed_CarouselImageURLs,
+  fetchFail_CarouselImageURLs,
+  initFetch_CarouselImageURLs,
 } from "./ActionCreators";
 
 export {
-  FetchReq,
-  FetchSucceed,
-  FetchFail,
-  Actions,
-  fetchRequest,
-  fetchSucceed,
-  fetchFail,
-  initFetch,
+  IFetchReqAction_CarouselImageURLs,
+  IFetchSucceedAction_CarouselImageURLs,
+  IFetchFailAction_CarouselImgURLs,
+  TActions,
+  fetchRequest_CarouselImageURLs,
+  fetchSucceed_CarouselImageURLs,
+  fetchFail_CarouselImageURLs,
+  initFetch_CarouselImageURLs,
 };

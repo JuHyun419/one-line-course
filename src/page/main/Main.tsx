@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { ENavType } from "../../typings/type";
-import { initFetch } from "../../store/action/carousel-async/";
+import { initFetch_CarouselImageURLs } from "../../store/action/carousel-async/";
 
 import NavFactory from "../../component/nav/nav-factory/NavFactory";
 import { placeIconsRandomly } from "../../common/";
@@ -33,7 +33,7 @@ const useInitFetch = () => {
   const dispatch = useDispatch();
 
   const _initFetch = useCallback(
-    (query: string) => dispatch(initFetch({ query })),
+    (query: string) => dispatch(initFetch_CarouselImageURLs({ query })),
     [dispatch]
   );
 

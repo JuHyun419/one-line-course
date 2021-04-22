@@ -1,31 +1,35 @@
 import React, { useState, useCallback } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import { SetCurIdx, setCurIdx } from "../../../../store/action/carousel";
-import { CombinedCarousel } from "../../../../store";
+import {
+  ISetImageIndicatorCurIdxAction,
+  setImageIndicatorCurIdx,
+} from "../../../../store/action/carousel";
+import { TCombinedCarousel } from "../../../../store";
 import "./_ImageMoveTo.scss";
 
 const ImageMoveTo: React.FC = () => {
   const dispatch = useDispatch();
   const [_, setPlacerPos] = useState(0);
 
-  const placerEl = useSelector((state: CombinedCarousel) => state.carousel.ref);
+  const placerEl = useSelector((state: TCombinedCarousel) => state.carousel.ref);
 
   const imgLen = useSelector(
-    (state: CombinedCarousel) => state.carouselAsync.urls?.length,
+    (state: TCombinedCarousel) => state.carouselAsync.urls?.length,
     shallowEqual
   );
 
   const curIdx = useSelector(
-    (state: CombinedCarousel) => state.carousel.idx,
+    (state: TCombinedCarousel) => state.carousel.idx,
     shallowEqual
   );
 
-  const _setCurIdx = useCallback((idx: number) => dispatch(setCurIdx(idx)), [
-    dispatch,
-  ]);
+  const _setImageIndicatorCurIdx = useCallback(
+    (idx: number) => dispatch(setImageIndicatorCurIdx(idx)),
+    [dispatch]
+  );
 
   const imgWidth = useSelector(
-    (state: CombinedCarousel) => state.carousel.imgWidth,
+    (state: TCombinedCarousel) => state.carousel.imgWidth,
     shallowEqual
   );
 
@@ -35,7 +39,7 @@ const ImageMoveTo: React.FC = () => {
     setPlacerPos,
     imgLen,
     curIdx,
-    _setCurIdx,
+    _setImageIndicatorCurIdx,
     imgWidth
   );
 
@@ -45,7 +49,7 @@ const ImageMoveTo: React.FC = () => {
     setPlacerPos,
     imgLen,
     curIdx,
-    _setCurIdx,
+    _setImageIndicatorCurIdx,
     imgWidth
   );
 
@@ -63,7 +67,7 @@ const useMoveCarousel = (
   setPlacerPos: React.Dispatch<React.SetStateAction<number>>,
   imgLen: number | undefined,
   curIdx: number,
-  _setCurIdx: (idx: number) => SetCurIdx,
+  _setCurIdx: (idx: number) => ISetImageIndicatorCurIdxAction,
   imgWidth: number | undefined
 ) =>
   useCallback(
