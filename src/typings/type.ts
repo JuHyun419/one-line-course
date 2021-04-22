@@ -1,5 +1,5 @@
 import React from "react";
-import { Action } from "redux";
+import { Action, CombinedState, Reducer, Store, Dispatch } from "redux";
 
 /**
  *
@@ -56,60 +56,41 @@ export enum ESeparatorDirection {
 /**
  *
  */
-export interface MainCarouselImageFetchState {
-  images: Array<string>;
-  imagesCount: number;
-  error: Error | null;
-  loading: boolean;
-}
-export type TMainCarouselImageFetchSucceed = { urls: Array<string>; length: number };
-export type MainCarouselImageFetchPayload =
-  | TMainCarouselImageFetchSucceed
-  | Error
-  | boolean
-  | null;
+
+
 
 /**
  *
  */
-export interface MainCarouselImageFetchAction extends Action {
-  type: EMainCarouselImageFetchActions;
-  payload?: MainCarouselImageFetchPayload;
-}
+// export type TImgDispatch = (args: ImgAction) => ImgAction;
+// export type TImgDispatch = Dispatch<ICarouselImgAction>;
 
-/**
- *
- */
-export type MainCarouselImageFetchDispatch = (
-  args: MainCarouselImageFetchAction
-) => MainCarouselImageFetchAction;
+// export interface CarouselState {
+//   carouselRef: React.RefObject<HTMLDivElement> | null;
+//   curIdx: number;
+// }
 
-export enum EMainCarouselImageFetchActions {
-  FETCH_IMAGES_REQUEST,
-  FETCH_IMAGES_SUCCEED,
-  FETCH_IMAGES_FAIL,
-}
+// export interface CarouselAction extends Action {
+//   type: ECarouselActions;
+//   payload?: CarouselState;
+// }
 
-export interface MainCarouselImageState {
-  imagesPlacerRef: React.RefObject<HTMLDivElement> | null;
-  currentImagesPlacerIndex: number;
-}
+// export type TCarouselDispatch = (args: CarouselAction) => CarouselAction;
 
-export type MainCarouselImagePayload =
-  | number
-  | React.RefObject<HTMLDivElement>
-  | null;
+// export enum ECarouselActions {
+//   UPDATE_REF,
+//   UPDATE_CUR_IDX,
+// }
 
-export interface MainCarouselImageAction extends Action {
-  type: EMainCarouselImageActions;
-  payload: MainCarouselImagePayload;
-}
+// export type TCombinedStates = CombinedState<{
+//   imgFetcher: ICarouselImg;
+//   carousel: CarouselState;
+// }>;
 
-export type MainCarouselImageDispatch = (
-  args: MainCarouselImageAction
-) => MainCarouselImageAction;
+// export type TCombinedActions = ICarouselImgAction | CarouselAction;
 
-export enum EMainCarouselImageActions {
-  UPDATE_IMAGES_PLACER_REF,
-  UPDATE_CURRENT_IMAGES_PLACER_INDEX,
-}
+// export type TRootReducer = Reducer<TCombinedStates, TCombinedActions>;
+
+// export type TStore = Store<TCombinedStates, TCombinedActions> & {
+//   // dispatch: TCarouselDispatch | TImgDispatch;
+// };
