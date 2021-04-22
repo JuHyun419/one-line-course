@@ -33,6 +33,7 @@ const useInitFetch = () => {
   const dispatch = useDispatch();
 
   const _initFetch = useCallback(
+    // TODO: Fetch Random Images times passing by
     (query: string) => dispatch(initFetch_CarouselImageURLs({ query })),
     [dispatch]
   );

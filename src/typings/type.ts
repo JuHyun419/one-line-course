@@ -65,6 +65,10 @@ export enum ECarouselActionType {
   Set_ImageWidth = "SET_IMAGE_WIDTH",
 }
 
+export enum ESearchActionType {
+  Set_Keyword = "SET_KEYWORDS",
+}
+
 export enum EUserAsyncActionType {
   FetchRequest_CreateUser = "FETCH_REQUEST_CREATE_USER",
   FetchSucceed_CreateUser = "FETCH_SUCCEED_CREATE_USER",
@@ -83,12 +87,31 @@ export enum ECommentActionType {
 
 }
 
-export enum ELectureAsyncActionType {
+export interface ILectureFetchResult {
+  id: number,
+  imageUrl: string,
+  title: string,
+  price: number,
+  salePrices: number,
+  rating: number,
+  instructor: string,
+  url: string,
+  viewCount: number,
+  platform: string,
+  sessionCount: number,
+  currency: string,
+  description: string,
+  skills: string,
+}
 
+export enum ELectureAsyncActionType {
+  FetchRequest_QueryLectures = "FETCH_REQUEST_QUERY_LECTURES",
 }
 
 export enum ELectureActionType {
-
+  Set_ViewType = "SET_VIEW_TYPE",
+  // Set_LectureCountPerPage = "SET_LECTURE_COUNT_PER_PAGE",
+  Set_CurrentPage = "SET_CURRENT_PAGE",
 }
 
 export enum EBookmarkAsyncActionType {

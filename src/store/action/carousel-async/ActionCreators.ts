@@ -34,7 +34,7 @@ export const initFetch_CarouselImageURLs = (query: { query: string }) => async (
   try {
     dispatch(fetchRequest_CarouselImageURLs());
     const queryResult = await getPhotoPage(query);
-    const imageURLs = queryResult?.results;
+    const imageURLs = queryResult?.results;    
     dispatch(
       fetchSucceed_CarouselImageURLs(imageURLs.map(el => el.urls.regular))
     );

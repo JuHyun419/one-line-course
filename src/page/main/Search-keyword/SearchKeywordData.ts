@@ -239,6 +239,7 @@ export const SearchKeywordData: Set<string> = new Set<string>([
   "리눅스",
   "해킹",
   "hacking",
+  "Tensorflow",
 ]);
 
 // 텍스트마이닝,데이터시각화,웹크롤링
