@@ -3,6 +3,7 @@ import { Actions as CarouselActions } from "../../action/carousel";
 export interface Carousel {
   ref?: React.RefObject<HTMLDivElement>;
   idx: number;
+  imgWidth: number;
 }
 
 export interface State {
@@ -12,6 +13,7 @@ export interface State {
 const init: Carousel = {
   ref: undefined,
   idx: 0,
+  imgWidth: 0,
 };
 
 const reducer = (state: Carousel = init, action: CarouselActions): Carousel => {
@@ -26,6 +28,12 @@ const reducer = (state: Carousel = init, action: CarouselActions): Carousel => {
       return {
         ...state,
         ref: action.ref,
+      };
+
+    case "SET_IMG_WIDTH":
+      return {
+        ...state,
+        imgWidth: action.imgWidth,
       };
 
     default:

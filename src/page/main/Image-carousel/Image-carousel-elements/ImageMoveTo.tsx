@@ -24,13 +24,19 @@ const ImageMoveTo: React.FC = () => {
     dispatch,
   ]);
 
+  const imgWidth = useSelector(
+    (state: CombinedCarousel) => state.carousel.imgWidth,
+    shallowEqual
+  );
+
   const onMoveToLeft = useMoveCarousel(
     "left",
     placerEl,
     setPlacerPos,
     imgLen,
     curIdx,
-    _setCurIdx
+    _setCurIdx,
+    imgWidth
   );
 
   const onMoveToRight = useMoveCarousel(
@@ -39,7 +45,8 @@ const ImageMoveTo: React.FC = () => {
     setPlacerPos,
     imgLen,
     curIdx,
-    _setCurIdx
+    _setCurIdx,
+    imgWidth
   );
 
   return (
@@ -56,54 +63,54 @@ const useMoveCarousel = (
   setPlacerPos: React.Dispatch<React.SetStateAction<number>>,
   imgLen: number | undefined,
   curIdx: number,
-  _setCurIdx: (idx: number) => SetCurIdx
+  _setCurIdx: (idx: number) => SetCurIdx,
+  imgWidth: number | undefined
 ) =>
   useCallback(
     (_: React.SyntheticEvent<HTMLDivElement>) => {
-      if (!placerEl?.current) {
-        return;
-      }
-
-      if (imgLen === undefined) {
+      if (
+        !placerEl?.current ||
+        imgLen === undefined ||
+        imgWidth === undefined
+      ) {
         return;
       }
 
       // position that moves per click
-      const movementStep = window.innerWidth;
       let nextMovementStep: number = 0;
 
       if (direction === "left") {
         // curIdx is max
         if (curIdx === 0) {
           _setCurIdx(imgLen - 1);
-          nextMovementStep =
-            -placerEl.current?.getBoundingClientRect().width + movementStep; // totalWidth - 1 block
+          nextMovementStep = -imgWidth * (imgLen - 1); // totalWidth - 1 block
         } else {
           _setCurIdx(curIdx - 1);
-          nextMovementStep = movementStep;
+          nextMovementStep = imgWidth;
         }
       }
 
       if (direction === "right") {
         if (curIdx === imgLen - 1) {
           _setCurIdx(0); // curIdx is 0
-          nextMovementStep =
-            placerEl.current?.getBoundingClientRect().width - movementStep; // totalWidth - 1 block
+          nextMovementStep = imgWidth * (imgLen - 1); // totalWidth - 1 block
         } else {
           // check it's good to move
           _setCurIdx(curIdx + 1);
-          nextMovementStep = -movementStep;
+          nextMovementStep = -imgWidth;
         }
       }
 
       // move Image position
       setPlacerPos((prv: number) => {
         const nextPos = prv + nextMovementStep;
+        console.log("next pos: ", nextPos, " px");
+
         placerEl.current!.style.transform = `translate(${nextPos}px, 0px)`;
         return nextPos;
       });
     },
-    [placerEl, setPlacerPos, imgLen, curIdx, _setCurIdx]
+    [placerEl, setPlacerPos, imgLen, curIdx, _setCurIdx, imgWidth]
   );
 
 export default ImageMoveTo;

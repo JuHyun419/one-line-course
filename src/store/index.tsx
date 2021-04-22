@@ -12,11 +12,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 // import { TStore, TRootReducer } from "../typings/type";
 
+
+// async carousel dep
 import carouselAsync, {
   CarouselFetcher,
 } from "./reducer/carousel-async/reducer";
 import { Actions as CarouselAsyncActions } from "./action/carousel-async";
-
+// carousel dep
 import carousel, { Carousel } from "./reducer/carousel/reducer";
 import { Actions as CarouselActions } from "./action/carousel";
 
