@@ -127,3 +127,4 @@
   - https://aws.amazon.com/ko/getting-started/hands-on/create-mysql-db/
   - https://leveloper.tistory.com/18
   - https://twofootdog.tistory.com/41
+  - https://miniminis.github.io/2019/10/13/spring/springboot-deploy/
