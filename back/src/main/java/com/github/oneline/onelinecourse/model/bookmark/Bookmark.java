@@ -1,5 +1,7 @@
 package com.github.oneline.onelinecourse.model.bookmark;
 
+import com.github.oneline.onelinecourse.model.lecture.Lecture;
+import com.github.oneline.onelinecourse.model.user.User;
 import lombok.*;
 import javax.persistence.*;
 
@@ -13,12 +15,15 @@ public class Bookmark {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동으로 생성되도록 하기위해
     private Long id;
 
-    @Column(length = 50, nullable = false)
-    private Long userId;
-
-    @Column(length = 20, nullable = false)
-    private Long lectureId;
-
     @Column(length = 500, nullable = false)
     private String createdAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "lecture_id")
+    private Lecture lecture;
+
 }

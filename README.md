@@ -48,60 +48,48 @@
 
 <br>
 
+  - [`Swagger API 문서`](http://15.165.229.191:8080/swagger-ui.html)
+
+<br>
+
 ## 🐱‍💻 백엔드 역할 분담
   - 주현
     - [ ] 강의(Lecture)
     - [ ] 댓글(Comment)
+    - [ ] 인프라(AWS) 설정
   - 소연
     - [ ] 북마크(Bookmark)
     - [ ] 유저(User)
 
 <br>
 
-## 🎵 Git 커밋 메시지 규칙
+## ✨ 프로젝트 실행 방법
+### 데이터베이스 및 스키마 설정
+  - 먼저 application.properties 파일에 본인의 DB의 설정을 입력해야 합니다.
+    - url, username, password 를 설정합니다.
+  - 스키마 설정은 로컬에 직접 설정 및 프로젝트 실행 시 자동으로 설정하는 두 가지 방법이 있습니다. (사진 참고)
+    - src/main/resources 경로의 schema.sql 파일에 작성된 스키마를 직접 복사해서 로컬 DB에서 생성합니다.
+    - application.properties 파일의 schema 주석 부분을 해제한 후 애플리케이션을 실행하면 스키마 설정이 됩니다.
+<br>
+  - application.properties, schema.sql 파일
 
-```html
-{타입}: {메세지}
-
-{본문}
-```
-  
-<br>  
-  
-### 타입
-  - feat: 새로운 기능 추가
-  - fix: 버그 수정
-  - docs: 문서 수정
-  - style: 코드 문법, 포맷팅
-  - refactor: 코드 리팩토링
-  - test: 테스트 코드
+![image](https://user-images.githubusercontent.com/50076031/115238733-f97f5e00-a158-11eb-9aac-9ebde3bbf699.png)
 
 <br>
 
-### 메세지
-  - 해당 커밋에 대한 설명문
-  - 보통 현재형 동사와 함께 명령어로 작성
-  - 첫 글자는 대문자, 나머지는 소문자로 작성
-    - ex) feat{타입}: Add google-oauth{메세지}
-  - 메세지를 통해 최대한 해당 커밋에 대해 파악이 가능하도록 작성
+  - application.properties schema 주석 부분
+
+![image](https://user-images.githubusercontent.com/50076031/115238802-1156e200-a159-11eb-9ef8-c8b57b43240f.png)
 
 <br>
 
-### 본문
-  - {타입}: {메세지} 로 표현할 수 없는 상세 내용을 적는 부분
-  - 따라서, {타입}: {메세지} 로 표현이 가능하다면 생략 가능
-
+### 프로젝트 실행하기
+  - 현재 API 서버인 스프링 부트 프로젝트 실행만 가능합니다.
+  - back 폴더의 프로젝트를 받으셔서 실행하시면 됩니다.
 <br>
 
-### 좋은 Commit을 위한 7가지 약속(영어 기준)
-  > 제목과 본문을 한 줄 띄워 분리하기  
-  > 제목은 영문 기준 50자 이내로  
-  > 제목 첫글자를 대문자로  
-  > 제목 끝에 `.` 금지  
-  > 제목은 `명령조`로   
-  > 본문은 영문 기준 72자마다 줄 바꾸기  
-  > 본문은 `어떻게` 보다 `무엇을`, `왜` 에 맞춰서 작성하기  
-[`좋은 git 커밋 메시지를 작성하기 위한 7가지 약속`](https://meetup.toast.com/posts/106)
+
+## 🎵 [Git 커밋 메시지 규칙](https://github.com/JuHyun419/one-line-course/wiki/Git-%EC%BB%A4%EB%B0%8B-%EB%A9%94%EC%8B%9C%EC%A7%80-%EA%B7%9C%EC%B9%99)
 
 <br>
 
@@ -128,9 +116,10 @@
 
 <br>
 
-#### Git Commit
+#### Git
   - https://medium.com/hashbox/git-commit-%EB%A9%94%EC%84%B8%EC%A7%80-%EA%B7%9C%EC%B9%99-conventional-commits-71710f7f53c
   - https://meetup.toast.com/posts/106
+  - https://javakong.tistory.com/217
 
 <br>
 

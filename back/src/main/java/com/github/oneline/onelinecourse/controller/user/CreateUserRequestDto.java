@@ -1,4 +1,4 @@
-package com.github.oneline.onelinecourse.dto.user;
+package com.github.oneline.onelinecourse.controller.user;
 
 import com.github.oneline.onelinecourse.model.user.User;
 import lombok.Builder;
@@ -7,15 +7,15 @@ public class CreateUserRequestDto {
     private String id;
     private String email;
     private String name;
-    private String image_url;
+    private String imageUrl;
     private String platform;
 
     @Builder
-    public CreateUserRequestDto(String id, String email, String name, String image_url, String platform) {
+    public CreateUserRequestDto(String id, String email, String name, String imageUrl, String platform) {
         this.id = id;
         this.email = email;
         this.name = name;
-        this.image_url = image_url;
+        this.imageUrl = imageUrl;
         this.platform = platform;
     }
 
@@ -25,7 +25,7 @@ public class CreateUserRequestDto {
                 .id(id)
                 .email(email)
                 .name(name)
-                .image_url(image_url)
+                .imageUrl(imageUrl)
                 .platform(platform)
                 .build();
     }

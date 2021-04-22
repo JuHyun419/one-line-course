@@ -1,10 +1,7 @@
 package com.github.oneline.onelinecourse.model.lecture;
 
-import com.github.oneline.onelinecourse.model.comment.Comments;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.github.oneline.onelinecourse.model.comment.Comment;
+import lombok.*;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -12,11 +9,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
 @Entity
-public class Lectures {
+@Table(name = "Lectures")
+public class Lecture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +23,7 @@ public class Lectures {
     @Column @Lob
     private String imageUrl;
 
-    @Column
+    @Column(length = 200)
     private String title;
 
     @Column
@@ -37,32 +35,32 @@ public class Lectures {
     @Column
     private float rating;
 
-    @Column
+    @Column(length = 100)
     private String instructor;
 
-    @Column
+    @Column(length = 500)
     private String url;
 
     @Column
     private int viewCount;
 
-    @Column
+    @Column(length = 20)
     private String platform;
 
     @Column
     private int sessionCount;
 
-    @Column
+    @Column(length = 20)
     private String currency;
 
     @Column @Lob
     private String description;
 
-    @Column
+    @Column(length = 100)
     private String skills;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "lectures")
-    private List<Comments> comments;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "lecture")
+    private List<Comment> comments;
 
     @Override
     public String toString() {
