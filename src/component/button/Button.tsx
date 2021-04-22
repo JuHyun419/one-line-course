@@ -1,13 +1,20 @@
 import React from "react";
-// import { NavLink } from "react-router-dom";
+import { EButtonSize, EButtonType, TOnClick } from "../../typings/type";
 
-import ButtonProps from "./ButtonProps";
-
-import { EButtonType } from "./EButtonType";
-import { EButtonSize } from "./EButtonSize";
 import { joinClasses } from "../../common/StyleHelper";
 
 import "./_Button.scss";
+
+interface ButtonProps {
+  btnSize?: EButtonSize | undefined;
+  btnType?: EButtonType | undefined;
+  highlight?: boolean;
+  additionalClassName?: string;
+  additionalStyles?: { [prop: string]: string };
+  onClick?: TOnClick | undefined;
+  children?: any | undefined;
+}
+
 /**
  *
  * @btnType decide the type among primary, alt, warning, danger...

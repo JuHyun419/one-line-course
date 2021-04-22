@@ -1,6 +1,9 @@
-import React, { useRef } from "react";
+import React, { useCallback, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { ENavType } from "../../typings/type";
+import { initFetch } from "../../store/action/carousel-async/";
 
-import { NavFactory, ENavType } from "../../component/nav/";
+import NavFactory from "../../component/nav/nav-factory/NavFactory";
 import { placeIconsRandomly } from "../../common/";
 import Footer from "../../component/footer/Footer";
 import ImageCarousel from "./Image-carousel/ImageCarousel";
@@ -9,17 +12,22 @@ import Search from "./Search/Search";
 import "./_Main.scss";
 
 const Main: React.FC<{}> = () => {
-  const imagePlacerRef = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
+
+  const _initFetch = useCallback(
+    (query: string) => dispatch(initFetch({ query })),
+    [dispatch]
+  );
+
+  useEffect(() => {
+    _initFetch("office");
+  }, []);
 
   return (
     <div>
-      <NavFactory
-        navType={ENavType.AfterLogin}
-        highlightBtnIdx={0}
-        imagePlacerRef={imagePlacerRef}
-      />
+      <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={0} />
       <div className="page main">
-        <ImageCarousel imagePlacerRef={imagePlacerRef} />
+        <ImageCarousel />
         <Search />
         {/* TODO: Keyword Selection */}
         {/* TODO: Search Result */}

@@ -2,7 +2,11 @@ import React from "react";
 
 import "./_Loading.scss";
 
-const Loading: React.FC<{ duration?: number }> = ({ duration }) => {
+interface LoadingProps {
+  duration?: number;
+}
+
+const Loading: React.FC<LoadingProps> = ({ duration }) => {
   return (
     <div className="roller-placer">
       <div className="lds-roller">
