@@ -1,4 +1,5 @@
-@import "../../../../../common/BoxShadow";
+// @import "../../../../../common/BoxShadow";
+@import "../../../../common/ColorScheme";
 
 .searchBar-contents {
   position: relative;
@@ -9,7 +10,7 @@
   border: 1px dashed #b2b2b2;
   border-radius: 15px;
 
-  @include make-box-shadow(1, 1, 1);
+  box-shadow: 1px 1px 1px 1px $color-box-shadow;
 
   // transition: width 1s ease-in-out, height 1s ease-in-out;
 

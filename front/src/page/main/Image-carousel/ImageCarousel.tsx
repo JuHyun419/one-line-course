@@ -1,50 +1,84 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useMemo, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { getPhotoPage } from "../../../service/UnsplashService";
+// import { TCombinedStates } from "../../../typings/type";
+import { setRef } from "../../../store/action/carousel";
+import { CombinedCarousel } from "../../../store";
+
 import ImageMoveTo from "./Image-carousel-elements/ImageMoveTo";
 import ImagesIndicator from "./Image-carousel-elements/ImagesIndicator";
 
 import "./_ImageCarousel.scss";
 
-const ImageCarousel: React.FC<{
-  imagePlacerRef: React.RefObject<HTMLDivElement>;
-}> = ({ imagePlacerRef }) => {
-  const [images, setImages] = useState<Array<string> | undefined>(undefined);
-  const [imageCount, setImageCount] = useState<number>(0);
-  const [curIdx, setCurIdx] = useState(0);
+const ImageCarousel: React.FC = () => {
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    (async () => {
-      const imageQueryResult = await getPhotoPage({ query: "office" });
-      setImages(imageQueryResult?.results.map(el => el.urls.regular));
-      setImageCount(imageQueryResult?.results.length);
-    })();
-  }, []);
+  const imgs = useSelector((state: CombinedCarousel) => state.carouselAsync.urls);
+
+  const _setImgRef = useCallback(
+    (ref: React.RefObject<HTMLDivElement>) => dispatch(setRef(ref)),
+    [dispatch]
+  );
+
+  const imgRef = useSelector((state: CombinedCarousel) => state.carousel.ref);
+
+  const setImgRef = useCallback(
+    (ref: HTMLDivElement) => {
+      if (ref && !imgRef?.current) {
+        console.log("Image Placer Ref updated!");
+        _setImgRef({ current: ref });
+      }
+    },
+    [imgRef]
+  );
 
   const imgJSX = useMemo(
     () =>
-      images?.map(url => (
+      imgs?.map(url => (
         <img key={uuidv4()} src={url} className="imageCarousel--image"></img>
       )),
-    [images]
+    [imgs]
   );
 
   return (
     <div className="imageCarousel">
-      <div className="imageCarousel-imagePlacer" ref={imagePlacerRef}>
+      <div className="imageCarousel-imagePlacer" ref={setImgRef}>
         {imgJSX}
+        {/* {images && images.map(url => (
+          <img key={uuidv4()} src={url} className="imageCarousel--image"></img>
+        ))} */}
       </div>
       <div className="imageCarousel-indicator">
-        <ImageMoveTo
-          imagePlacerEl={imagePlacerRef}
-          imageCount={imageCount}
-          curIdx={curIdx}
-          setCurIdx={setCurIdx}
-        />
-        <ImagesIndicator imageCount={imageCount} highlightIdx={curIdx} />
+        <ImageMoveTo />
+        <ImagesIndicator />
       </div>
     </div>
   );
 };
+
+// const useImageCarousel = () => {
+//   const dispatch = useDispatch();
+
+//   const images = useSelector(
+//     (state: TCombinedStates) => state.mainCarouselImagesFetch.images
+//   );
+
+//   const _initFetchImages = useCallback(
+//     (query: string) => dispatch(initFetchImages({ query })),
+//     [dispatch]
+//   );
+
+//   const _updateImagesPlacerRef = useCallback(
+//     (imagesPlacerRef: React.RefObject<HTMLDivElement>) =>
+//       dispatch(updateImagesPlacerRef(imagesPlacerRef)),
+//     [dispatch]
+//   );
+
+//   return {
+//     images,
+//     _initFetchImages,
+//     _updateImagesPlacerRef,
+//   };
+// };
 
 export default ImageCarousel;
