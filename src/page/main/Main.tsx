@@ -12,16 +12,7 @@ import Search from "./Search/Search";
 import "./_Main.scss";
 
 const Main: React.FC<{}> = () => {
-  const dispatch = useDispatch();
-
-  const _initFetch = useCallback(
-    (query: string) => dispatch(initFetch({ query })),
-    [dispatch]
-  );
-
-  useEffect(() => {
-    _initFetch("office");
-  }, []);
+  useInitFetch();
 
   return (
     <div>
@@ -36,6 +27,19 @@ const Main: React.FC<{}> = () => {
       </div>
     </div>
   );
+};
+
+const useInitFetch = () => {
+  const dispatch = useDispatch();
+
+  const _initFetch = useCallback(
+    (query: string) => dispatch(initFetch({ query })),
+    [dispatch]
+  );
+
+  useEffect(() => {
+    _initFetch("office");
+  }, []);
 };
 
 export default Main;
