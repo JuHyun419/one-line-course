@@ -1,5 +1,7 @@
-export interface FetchReqUser {
-  type: "FETCH_REQUEST_CAROUSEL";
+import { EUserAsyncActionType } from "../../../typings/type";
+
+export interface IFetchRequestAction_CreateUser {
+  type: EUserAsyncActionType.FetchRequest_CreateUser;
   id: string;
   email: string;
   name: string;
@@ -7,12 +9,18 @@ export interface FetchReqUser {
   platform: string;
 }
 
-export interface FetchSucceed {
-  type: ""
+export interface IFetchSucceed_CreateUser {
+  type: EUserAsyncActionType.FetchSucceed_CreateUser;
+  statusCode: string;
 }
 
-export interface FetchFail {
-
+export interface IFetchFail_CreateUser {
+  type: EUserAsyncActionType.FetchFail_CreateUser;
+  errCode: string;
+  err: string;
 }
 
-// export type Actions = FetchReq;
+export type TActions =
+  | IFetchRequestAction_CreateUser
+  | IFetchSucceed_CreateUser
+  | IFetchFail_CreateUser;

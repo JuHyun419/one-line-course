@@ -65,6 +65,41 @@ export enum ECarouselActionType {
   Set_ImageWidth = "SET_IMAGE_WIDTH",
 }
 
+export enum EUserAsyncActionType {
+  FetchRequest_CreateUser = "FETCH_REQUEST_CREATE_USER",
+  FetchSucceed_CreateUser = "FETCH_SUCCEED_CREATE_USER",
+  FetchFail_CreateUser = "FETCH_FAIL_CREATE_USER",
+}
+
+export enum EUserActionType {
+
+}
+
+export enum ECommentAsyncActionType {
+
+}
+
+export enum ECommentActionType {
+
+}
+
+export enum ELectureAsyncActionType {
+
+}
+
+export enum ELectureActionType {
+
+}
+
+export enum EBookmarkAsyncActionType {
+
+}
+
+export enum EBookmarkActionType {
+  
+}
+
+
 /**
  *
  */

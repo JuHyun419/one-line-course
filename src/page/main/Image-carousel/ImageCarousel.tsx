@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-// import { TCombinedStates } from "../../../typings/type";
 import { setImgWidth, setImagePlacerRef } from "../../../store/action/carousel";
 import { TCombinedCarousel } from "../../../store";
 

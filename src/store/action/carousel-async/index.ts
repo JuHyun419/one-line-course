@@ -1,5 +1,5 @@
 import {
-  IFetchReqAction_CarouselImageURLs,
+  IFetchRequestAction_CarouselImageURLs,
   IFetchSucceedAction_CarouselImageURLs,
   IFetchFailAction_CarouselImgURLs,
   TActions,
@@ -13,7 +13,7 @@ import {
 } from "./ActionCreators";
 
 export {
-  IFetchReqAction_CarouselImageURLs,
+  IFetchRequestAction_CarouselImageURLs,
   IFetchSucceedAction_CarouselImageURLs,
   IFetchFailAction_CarouselImgURLs,
   TActions,

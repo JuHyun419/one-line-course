@@ -1,32 +1,60 @@
-// import { AnyAction } from "redux";
-// import { ThunkDispatch } from "redux-thunk";
-// import { FetchSucceed } from "./Actions";
-// import { getPhotoPage } from "../../../service/UnsplashService";
+import { AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 
-// // Creators
-// export const fetchRequest = (): FetchReq => ({
-//   type: "FETCH_REQUEST_CAROUSEL",
-// });
+import { EUserAsyncActionType } from "../../../typings/type";
+import {
+  IFetchRequestAction_CreateUser,
+  IFetchSucceed_CreateUser,
+  IFetchFail_CreateUser,
+} from "./Actions";
 
-// export const fetchSucceed = (urls: Array<string>): FetchSucceed => ({
-//   type: "FETCH_SUCCEED",
-//   urls,
-// });
+export interface ICreateUserData {
+  id: string;
+  email: string;
+  name: string;
+  imageURL: string;
+  platform: string;
+}
 
-// export const fetchFail = (err: string): FetchFail => ({
-//   type: "FETCH_FAIL",
-//   err,
-// });
+export const FetchRequest_CreateUser = (
+  data: ICreateUserData
+): IFetchRequestAction_CreateUser => {
+  const { id, email, name, imageURL, platform } = data;
+  return {
+    type: EUserAsyncActionType.FetchRequest_CreateUser,
+    id,
+    email,
+    name,
+    imageURL,
+    platform,
+  };
+};
 
-// export const initFetch = (query: { query: string }) => async (
-//   dispatch: ThunkDispatch<{}, {}, AnyAction>
-// ) => {
-//   try {
-//     dispatch(fetchRequest());
-//     const queryResult = await getPhotoPage(query);
-//     const imageURLs = queryResult?.results;
-//     dispatch(fetchSucceed(imageURLs.map(el => el.urls.regular)));
-//   } catch (err) {
-//     dispatch(fetchFail(err));
-//   }
-// };
+export const FetchSucceed_CreateUser = (
+  statusCode: string
+): IFetchSucceed_CreateUser => ({
+  type: EUserAsyncActionType.FetchSucceed_CreateUser,
+  statusCode,
+});
+
+export const FetchFail_CreateUser = (
+  errCode: string,
+  err: string
+): IFetchFail_CreateUser => ({
+  type: EUserAsyncActionType.FetchFail_CreateUser,
+  errCode,
+  err,
+});
+
+export const initFetch_CreateUser = (data: ICreateUserData) => async (
+  dispatch: ThunkDispatch<{}, {}, AnyAction>
+) => {
+  try {
+    dispatch(FetchRequest_CreateUser(data));
+    // TODO: post create user
+    // TODO: get status code
+    dispatch(FetchSucceed_CreateUser("TEST_SUCCEED_CODE"));
+  } catch (err) {
+    dispatch(FetchFail_CreateUser("TEST_ERROR_CODE", err));
+  }
+};

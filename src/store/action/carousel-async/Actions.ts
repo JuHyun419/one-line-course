@@ -1,7 +1,7 @@
 import { ECarouselAsyncActionType } from "../../../typings/type";
 
 // Actions
-export interface IFetchReqAction_CarouselImageURLs {
+export interface IFetchRequestAction_CarouselImageURLs {
   type: ECarouselAsyncActionType.FetchRequest_CarouselImagesURLs;
 }
 
@@ -16,6 +16,6 @@ export interface IFetchFailAction_CarouselImgURLs {
 }
 
 export type TActions =
-  | IFetchReqAction_CarouselImageURLs
+  | IFetchRequestAction_CarouselImageURLs
   | IFetchSucceedAction_CarouselImageURLs
   | IFetchFailAction_CarouselImgURLs;

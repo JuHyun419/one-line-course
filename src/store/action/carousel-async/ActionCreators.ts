@@ -4,13 +4,13 @@ import { ThunkDispatch } from "redux-thunk";
 import { ECarouselAsyncActionType } from "../../../typings/type";
 import {
   IFetchFailAction_CarouselImgURLs,
-  IFetchReqAction_CarouselImageURLs,
+  IFetchRequestAction_CarouselImageURLs,
   IFetchSucceedAction_CarouselImageURLs,
 } from "./Actions";
 import { getPhotoPage } from "../../../service/UnsplashService";
 
 // Creators
-export const fetchRequest_CarouselImageURLs = (): IFetchReqAction_CarouselImageURLs => ({
+export const fetchRequest_CarouselImageURLs = (): IFetchRequestAction_CarouselImageURLs => ({
   type: ECarouselAsyncActionType.FetchRequest_CarouselImagesURLs,
 });
 
