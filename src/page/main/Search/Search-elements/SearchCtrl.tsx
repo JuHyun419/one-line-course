@@ -19,7 +19,7 @@ const SearchCtrl: React.FC<{}> = () => {
   );
 
   return (
-    <div>
+    <div className="searchCtrl">
       {!isSearchBarToggled && <SearchBar searchIcon={searchIcon} />}
       <button
         className={

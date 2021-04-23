@@ -1,21 +1,25 @@
 import React from "react";
-
-import {  SearchKeywords } from "../Search-keyword";
+import { v4 as uuid } from "uuid";
 
 import "./_KeywordSelector.scss";
 
 const KeywordSelector: React.FC<{
   title: string;
   keywords: Array<string>;
-}> = ({ title }) => {
-  
+}> = ({ title, keywords }) => {
   return (
     <div className="keywordSelector">
       <div className="keywordSelector-left">
         <p>{title}</p>
       </div>
       <div className="keywordSelector-right">
-        <SearchKeywords keywords={allKeywords} />
+        <ul>
+          {keywords.map(keyword => (
+            <li key={uuid()}>
+              <p>{keyword}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

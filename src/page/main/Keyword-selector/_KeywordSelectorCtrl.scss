@@ -1,7 +1,9 @@
 .keywordSelectorCtrl {
-  position: relative;
-  left: 0;
-  top: 0;
+  display: flex;
+  flex-direction: column;
 
-  margin-top: 25%;
+  width: 700px;
+
+  margin: 0 auto;
+  margin-top: 5%;
 }
