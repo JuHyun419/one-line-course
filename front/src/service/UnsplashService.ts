@@ -11,25 +11,12 @@ const unsplash = createApi({
   accessKey: process.env.UNSPLASH_ACCESS_KEY,
 });
 
-export const getPhotoPage = async ({
-  query,
-  page,
-  perPage,
-  orderBy,
-  collectionIds,
-  contentFilter,
-  color,
-  orientation,
-}: typeof Unsplash_PhotoSearch) =>
-  (
-    await unsplash.search.getPhotos({
-      query,
-      page,
-      perPage,
-      orderBy,
-      collectionIds,
-      contentFilter,
-      color,
-      orientation,
-    })
-  ).response! as Photos;
+export const getPhotoPage = async (
+  queries: typeof Unsplash_PhotoSearch
+): Promise<{
+  data: Photos | undefined;
+  status: number;
+}> => {
+  const { response: data, status } = await unsplash.search.getPhotos(queries);
+  return { data, status };
+};

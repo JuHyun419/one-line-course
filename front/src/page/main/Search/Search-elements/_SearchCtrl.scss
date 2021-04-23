@@ -1,27 +1,30 @@
-// @import "../../../../../common/BoxShadow";
-@import "../../../../common/ColorScheme";
+@import "../../../../common/BoxShadow";
 
-// .searchCtrl {
-  
-// }
+.searchCtrl {
+  margin-top: 15px;
+  height: 350px;
+}
 
 .searchBar-toggle {
-    position: relative;
-    left: 0;
-    top: 0;
+  position: relative;
+  left: 0;
+  top: 150px;
+  // margin: 50% auto;
 
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 
-    background-color: #fff;
+  background-color: #fff;
 
-    border: 0.7px dashed rgba(150, 150, 150, 0.6);
-    border-radius: 15px;
+  border: 0.7px dashed rgba(150, 150, 150, 0.6);
+  border-radius: 15px;
 
-    // @include make-box-shadow(1, 1, 1);
-    box-shadow: 1px 1px 1px 1px $color-box-shadow;
+  @include make-box-shadow(1, 1, 1);
+  // box-shadow: 1px 1px 1px 1px $color-box-shadow;
 
-    &.active {
-      display: none;
-    }
+  visibility: visible;
+
+  &.active {
+    visibility: hidden;
   }
+}

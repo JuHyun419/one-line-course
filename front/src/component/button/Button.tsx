@@ -1,5 +1,5 @@
 import React from "react";
-import { EButtonSize, EButtonType, TOnClick } from "../../typings/type";
+import { EButtonSize, EButtonType, TOnClickButton } from "../../typings/type";
 
 import { joinClasses } from "../../common/StyleHelper";
 
@@ -11,7 +11,7 @@ interface ButtonProps {
   highlight?: boolean;
   additionalClassName?: string;
   additionalStyles?: { [prop: string]: string };
-  onClick?: TOnClick | undefined;
+  onClick?: TOnClickButton<HTMLDivElement> | undefined;
   children?: any | undefined;
 }
 

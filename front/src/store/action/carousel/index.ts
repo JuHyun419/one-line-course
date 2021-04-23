@@ -1,5 +1,22 @@
-import { Actions, SetCurIdx, SetRef } from "./Actions";
+import {
+  TActions,
+  ISetImageIndicatorCurIdxAction,
+  ISetImagePlacerRefAction,
+  ISetImageWidthAction,
+} from "./Actions";
 
-import { setCurIdx, setRef } from "./ActionCreators";
+import {
+  setImageIndicatorCurIdx,
+  setImagePlacerRef,
+  setImgWidth,
+} from "./ActionCreators";
 
-export { Actions, SetCurIdx, SetRef, setCurIdx, setRef };
+export {
+  TActions,
+  ISetImageIndicatorCurIdxAction,
+  ISetImagePlacerRefAction,
+  ISetImageWidthAction,
+  setImageIndicatorCurIdx,
+  setImagePlacerRef,
+  setImgWidth,
+};

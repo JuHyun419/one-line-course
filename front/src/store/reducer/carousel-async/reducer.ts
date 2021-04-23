@@ -1,40 +1,41 @@
-import { Actions as CarouselAsyncActions } from "../../action/carousel-async";
+import { TActions as TCarouselAsyncActions } from "../../action/carousel-async";
 
-export interface CarouselFetcher {
+import { ECarouselAsyncActionType } from "../../../typings/type";
+export interface ICarouselAsync {
   urls?: Array<string>;
   err?: string;
   isLoading: boolean;
 }
 
-export interface State {
-  fetcher: CarouselFetcher;
+export interface IState {
+  fetcher: ICarouselAsync;
 }
 
-const init: CarouselFetcher = {
+const init: ICarouselAsync = {
   urls: [],
   err: "",
   isLoading: false,
 };
 
 const reducer = (
-  state: CarouselFetcher = init,
-  action: CarouselAsyncActions
-): CarouselFetcher => {
+  state: ICarouselAsync = init,
+  action: TCarouselAsyncActions
+): ICarouselAsync => {
   switch (action.type) {
-    case "FETCH_REQUEST":
+    case ECarouselAsyncActionType.FetchRequest_CarouselImagesURLs:
       return {
         ...state,
         isLoading: true,
       };
 
-    case "FETCH_SUCCEED":
+    case ECarouselAsyncActionType.FetchSucceed_CarouselImagesURLs:
       return {
         urls: action.urls,
         err: "",
         isLoading: false,
       };
 
-    case "FETCH_FAIL":
+    case ECarouselAsyncActionType.FetchFail_CarouselImagesURLs:
       return {
         ...state,
         err: action.err,
