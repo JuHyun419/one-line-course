@@ -1,9 +1,8 @@
 .imageCarousel {
-  position: relative;  // overflow-y: auto;
+  position: relative;
   overflow-x: hidden;
   height: 80vh;
-  box-sizing: border-box;
-  // margin-bottom: 15%;
+  display: block;
 
   &-imagePlacer {
     display: flex;

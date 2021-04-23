@@ -11,10 +11,7 @@ const KeywordSelectorCtrl = () => {
 
   return (
     <div className="keywordSelectorCtrl">
-      <KeywordSelector
-        title="플랫폼"
-        keywords={Array.from(AllPlatformsData)}
-      />
+      <KeywordSelector title="플랫폼" keywords={Array.from(allPlatforms)} />
       <KeywordSelector
         title="프로그래밍 언어 / API / 프레임워크"
         keywords={Array.from(allKeywords)}

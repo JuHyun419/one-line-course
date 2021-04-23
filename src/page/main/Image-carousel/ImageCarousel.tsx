@@ -52,14 +52,16 @@ const useImg = (dispatch: Dispatch<any>) => {
   );
 
   useEffect(() => {
-    if (!imgTmpRef.current) return;
+    if (!imgTmpRef) return;
 
     const timerHandle = setTimeout(() => {
+      // console.log(imgTmpRef.current);
+
       _setImgWidth(imgTmpRef.current?.clientWidth!);
-    }, 500);
+    }, 200);
 
     return () => clearTimeout(timerHandle);
-  }, [imgs, imgTmpRef]);
+  }, [imgTmpRef]);
 
   return useMemo(
     () =>
@@ -102,14 +104,13 @@ const useImgRef = (dispatch: Dispatch<any>) => {
     [dispatch]
   );
 
-  return useCallback(
-    (ref: HTMLDivElement) => {
-      if (ref && !imgRef?.current) {
-        _setImgRef({ current: ref });
-      }
-    },
-    [imgRef]
-  );
+  return useCallback((ref: HTMLDivElement) => {
+    if (ref && !imgRef?.current) {
+      // console.log(ref);
+
+      _setImgRef({ current: ref });
+    }
+  }, []);
 };
 
 export default ImageCarousel;

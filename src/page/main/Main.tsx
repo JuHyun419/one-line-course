@@ -16,13 +16,13 @@ import "./_Main.scss";
 const Main: React.FC<{}> = () => {
   useInitFetch();
 
-  const loadingJSX = useSelector(
-    (state: TCombinedStates) => state.carouselAsync.isLoading,
-    shallowEqual
-  );
-  if (loadingJSX) {
-    return <Loading />;
-  }
+  // const loadingJSX = useSelector(
+  //   (state: TCombinedStates) => state.carouselAsync.isLoading,
+  //   shallowEqual
+  // );
+  // if (loadingJSX) {
+  //   return <Loading />;
+  // }
 
   // const errorJSX = useSelector(
   //   (state: TCombinedStates) => state.carouselAsync.err,
