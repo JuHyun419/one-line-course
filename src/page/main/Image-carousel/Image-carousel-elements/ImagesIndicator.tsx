@@ -1,17 +1,17 @@
 import React, { useMemo } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { TCombinedCarousel } from "../../../../store";
+import { TCombinedStates } from "../../../../store";
 import "./_ImagesIndicator.scss";
 
 const ImagesIndicator: React.FC = () => {
   const imgLen = useSelector(
-    (state: TCombinedCarousel) => state.carouselAsync.urls?.length,
+    (state: TCombinedStates) => state.carouselAsync.urls?.length,
     shallowEqual
   );
 
   const curIdx = useSelector(
-    (state: TCombinedCarousel) => state.carousel.idx,
+    (state: TCombinedStates) => state.carousel.idx,
     shallowEqual
   );
 

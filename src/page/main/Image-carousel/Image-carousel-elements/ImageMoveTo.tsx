@@ -4,22 +4,22 @@ import {
   ISetImageIndicatorCurIdxAction,
   setImageIndicatorCurIdx,
 } from "../../../../store/action/carousel";
-import { TCombinedCarousel } from "../../../../store";
+import { TCombinedStates } from "../../../../store";
 import "./_ImageMoveTo.scss";
 
 const ImageMoveTo: React.FC = () => {
   const dispatch = useDispatch();
   const [_, setPlacerPos] = useState(0);
 
-  const placerEl = useSelector((state: TCombinedCarousel) => state.carousel.ref);
+  const placerEl = useSelector((state: TCombinedStates) => state.carousel.ref);
 
   const imgLen = useSelector(
-    (state: TCombinedCarousel) => state.carouselAsync.urls?.length,
+    (state: TCombinedStates) => state.carouselAsync.urls?.length,
     shallowEqual
   );
 
   const curIdx = useSelector(
-    (state: TCombinedCarousel) => state.carousel.idx,
+    (state: TCombinedStates) => state.carousel.idx,
     shallowEqual
   );
 
@@ -29,7 +29,7 @@ const ImageMoveTo: React.FC = () => {
   );
 
   const imgWidth = useSelector(
-    (state: TCombinedCarousel) => state.carousel.imgWidth,
+    (state: TCombinedStates) => state.carousel.imgWidth,
     shallowEqual
   );
 
@@ -108,8 +108,7 @@ const useMoveCarousel = (
       // move Image position
       setPlacerPos((prv: number) => {
         const nextPos = prv + nextMovementStep;
-        console.log("next pos: ", nextPos, " px");
-
+        // console.log("next pos: ", nextPos, " px");
         placerEl.current!.style.transform = `translate(${nextPos}px, 0px)`;
         return nextPos;
       });

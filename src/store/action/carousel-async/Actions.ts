@@ -7,11 +7,13 @@ export interface IFetchRequestAction_CarouselImageURLs {
 
 export interface IFetchSucceedAction_CarouselImageURLs {
   type: ECarouselAsyncActionType.FetchSucceed_CarouselImagesURLs;
+  status: number;
   urls: Array<string>;
 }
 
 export interface IFetchFailAction_CarouselImgURLs {
   type: ECarouselAsyncActionType.FetchFail_CarouselImagesURLs;
+  status: number;
   err: string;
 }
 

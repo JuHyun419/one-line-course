@@ -8,7 +8,7 @@ import React, {
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { setImgWidth, setImagePlacerRef } from "../../../store/action/carousel";
-import { TCombinedCarousel } from "../../../store";
+import { TCombinedStates } from "../../../store";
 
 import ImageMoveTo from "./Image-carousel-elements/ImageMoveTo";
 import ImagesIndicator from "./Image-carousel-elements/ImagesIndicator";
@@ -36,7 +36,7 @@ const ImageCarousel: React.FC = () => {
 
 const useImg = (dispatch: Dispatch<any>) => {
   const imgs = useSelector(
-    (state: TCombinedCarousel) => state.carouselAsync.urls
+    (state: TCombinedStates) => state.carouselAsync.urls
   );
 
   const _setImgWidth = useCallback(
@@ -47,7 +47,7 @@ const useImg = (dispatch: Dispatch<any>) => {
   const imgTmpRef = useRef<HTMLImageElement>(null);
 
   const curIdx = useSelector(
-    (state: TCombinedCarousel) => state.carousel.idx,
+    (state: TCombinedStates) => state.carousel.idx,
     shallowEqual
   );
 
@@ -95,7 +95,7 @@ const useImg = (dispatch: Dispatch<any>) => {
 };
 
 const useImgRef = (dispatch: Dispatch<any>) => {
-  const imgRef = useSelector((state: TCombinedCarousel) => state.carousel.ref);
+  const imgRef = useSelector((state: TCombinedStates) => state.carousel.ref);
 
   const _setImgRef = useCallback(
     (ref: React.RefObject<HTMLDivElement>) => dispatch(setImagePlacerRef(ref)),

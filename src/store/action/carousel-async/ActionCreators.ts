@@ -15,16 +15,20 @@ export const fetchRequest_CarouselImageURLs = (): IFetchRequestAction_CarouselIm
 });
 
 export const fetchSucceed_CarouselImageURLs = (
+  status: number,
   urls: Array<string>
 ): IFetchSucceedAction_CarouselImageURLs => ({
   type: ECarouselAsyncActionType.FetchSucceed_CarouselImagesURLs,
+  status,
   urls,
 });
 
 export const fetchFail_CarouselImageURLs = (
+  status: number,
   err: string
 ): IFetchFailAction_CarouselImgURLs => ({
   type: ECarouselAsyncActionType.FetchFail_CarouselImagesURLs,
+  status,
   err,
 });
 
@@ -33,12 +37,14 @@ export const initFetch_CarouselImageURLs = (query: { query: string }) => async (
 ) => {
   try {
     dispatch(fetchRequest_CarouselImageURLs());
-    const queryResult = await getPhotoPage(query);
-    const imageURLs = queryResult?.results;    
+    const { data, status } = await getPhotoPage(query);
     dispatch(
-      fetchSucceed_CarouselImageURLs(imageURLs.map(el => el.urls.regular))
+      fetchSucceed_CarouselImageURLs(
+        status,
+        data.results.map(el => el.urls.regular)
+      )
     );
   } catch (err) {
-    dispatch(fetchFail_CarouselImageURLs(err));
+    dispatch(fetchFail_CarouselImageURLs(400, err));
   }
 };
