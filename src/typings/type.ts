@@ -66,8 +66,11 @@ export enum ECarouselActionType {
 }
 
 export enum ESearchActionType {
+  Set_AllKeywords = "SET_ALL_KEYWORDS",
+  Set_AllPlatforms = "SET_ALL_PLATFORMS",
   Set_SelectedKeyword = "SET_SELECTED_KEYWORD",
   Set_SelectedPlatform = "SET_SELECTED_PLATFORM",
+  Set_Input_BuildAutoSuggestion = "SET_INPUT_BUILD_AUTO_SUGGESTION",
 }
 
 export enum ESearchAsyncActionType {
@@ -87,6 +90,11 @@ export enum EUserActionType {}
 export enum ECommentAsyncActionType {}
 
 export enum ECommentActionType {}
+
+export enum ELecturePlatform {
+  Youtube,
+  Inflearn,
+}
 
 export interface ILectureFetchResult {
   id: number;

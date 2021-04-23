@@ -1,19 +1,19 @@
 import React, { useMemo } from "react";
 import { SearchKeywordData } from "../Search-keyword";
-import { SearchPlatformData } from "../Search-keyword/SearchKeywordData";
+import { AllPlatformsData } from "../Search-keyword/SearchKeywordData";
 
 import KeywordSelector from "./KeywordSelector";
 import "./_KeywordSelectorCtrl.scss";
 
 const KeywordSelectorCtrl = () => {
-  const allPlatforms = useMemo(() => SearchPlatformData, []);
+  const allPlatforms = useMemo(() => AllPlatformsData, []);
   const allKeywords = useMemo(() => SearchKeywordData, []);
 
   return (
     <div className="keywordSelectorCtrl">
       <KeywordSelector
         title="플랫폼"
-        keywords={Array.from(SearchPlatformData)}
+        keywords={Array.from(AllPlatformsData)}
       />
       <KeywordSelector
         title="프로그래밍 언어 / API / 프레임워크"

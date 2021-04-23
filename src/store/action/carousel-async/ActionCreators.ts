@@ -41,7 +41,7 @@ export const initFetch_CarouselImageURLs = (query: { query: string }) => async (
     dispatch(
       fetchSucceed_CarouselImageURLs(
         status,
-        data.results.map(el => el.urls.regular)
+        data!.results.map(el => el.urls.regular)
       )
     );
   } catch (err) {

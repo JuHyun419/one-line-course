@@ -30,12 +30,12 @@
 
 // // SearchKeywordData.c?.keywords;
 
-export const SearchPlatformData: Set<string> = new Set<string>([
+export const AllPlatformsData: Set<string> = new Set<string>([
   "유튜브",
   "인프런",
 ]);
 
-export const SearchKeywordData: Set<string> = new Set<string>([
+export const AllKeywordsData: Set<string> = new Set<string>([
   "c",
   "c++",
   "c#",

@@ -22,19 +22,26 @@ import { TActions as TCarouselAsyncActions } from "./action/carousel-async";
 import carousel, { ICarousel } from "./reducer/carousel/reducer";
 import { TActions as TCarouselActions } from "./action/carousel";
 
+// async search dep
 import searchAsync, { ISearchAsync } from "./reducer/search-async/reducer";
 import { TActions as TSearchAsyncActions } from "./action/search-async";
+
+// search dep
+import search, { ISearch } from "./reducer/search/reducer";
+import { TActions as TSearchActions } from "./action/search";
 
 export type TCombinedStates = CombinedState<{
   carouselAsync: ICarouselAsync;
   carousel: ICarousel;
   searchAsync: ISearchAsync;
+  search: ISearch;
 }>;
 
 export type TCombinedActions =
   | TCarouselAsyncActions
   | TCarouselActions
-  | TSearchAsyncActions;
+  | TSearchAsyncActions
+  | TSearchActions;
 
 type TRootReducer = Reducer<TCombinedStates, TCombinedActions>;
 
@@ -42,6 +49,7 @@ const rootReducers: TRootReducer = combineReducers({
   carouselAsync,
   carousel,
   searchAsync,
+  search,
 });
 
 const store = createStore(

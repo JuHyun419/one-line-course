@@ -1,5 +1,22 @@
-import { TActions, ISetSelectedKeyword, ISetSelectedPlatform } from "./Actions";
+import {
+  TActions,
+  ISetSelectedKeyword,
+  ISetSelectedPlatform,
+  ISetInputBuildAutoSuggestion,
+} from "./Actions";
 
-import { setSelectedKeyword, setSelectedPlatform } from "./ActionCreators";
+import {
+  setSelectedKeyword,
+  setSelectedPlatform,
+  setInputBuildAutoSuggestion,
+} from "./ActionCreators";
 
-export { TActions, ISetSelectedKeyword, setSelectedKeyword };
+export {
+  TActions,
+  ISetSelectedKeyword,
+  ISetSelectedPlatform,
+  ISetInputBuildAutoSuggestion,
+  setSelectedKeyword,
+  setSelectedPlatform,
+  setInputBuildAutoSuggestion,
+};
