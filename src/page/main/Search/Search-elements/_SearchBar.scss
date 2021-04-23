@@ -7,12 +7,10 @@
   width: 750px;
   height: 350px;
 
-  border: 1px dashed #b2b2b2;
+  border: 2px dashed #000;
   border-radius: 15px;
-  @include make-box-shadow(1, 1, 1);
-  // box-shadow: 1px 1px 1px 1px $color-box-shadow;
 
-  // transition: width 1s ease-in-out, height 1s ease-in-out;
+  // @include make-box-shadow(1, 1, 1);
 
   i {
     position: absolute;

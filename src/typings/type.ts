@@ -66,7 +66,14 @@ export enum ECarouselActionType {
 }
 
 export enum ESearchActionType {
-  Set_Keyword = "SET_KEYWORDS",
+  Set_SelectedKeyword = "SET_SELECTED_KEYWORD",
+  Set_SelectedPlatform = "SET_SELECTED_PLATFORM",
+}
+
+export enum ESearchAsyncActionType {
+  FetchRequest_RetrieveLectures = "FETCH_REQUEST_RETRIEVE_LECTURES",
+  FetchSucceed_RetrieveLectures = "FETCH_SUCCEED_RETRIEVE_LECTURES",
+  FetchFail_RetrieveLectures = "FETCH_FAIL_RETRIEVE_LECTURES",
 }
 
 export enum EUserAsyncActionType {
@@ -75,33 +82,27 @@ export enum EUserAsyncActionType {
   FetchFail_CreateUser = "FETCH_FAIL_CREATE_USER",
 }
 
-export enum EUserActionType {
+export enum EUserActionType {}
 
-}
+export enum ECommentAsyncActionType {}
 
-export enum ECommentAsyncActionType {
-
-}
-
-export enum ECommentActionType {
-
-}
+export enum ECommentActionType {}
 
 export interface ILectureFetchResult {
-  id: number,
-  imageUrl: string,
-  title: string,
-  price: number,
-  salePrices: number,
-  rating: number,
-  instructor: string,
-  url: string,
-  viewCount: number,
-  platform: string,
-  sessionCount: number,
-  currency: string,
-  description: string,
-  skills: string,
+  id: number;
+  imageUrl: string;
+  title: string;
+  price: number;
+  salePrices: number;
+  rating: number;
+  instructor: string;
+  url: string;
+  viewCount: number;
+  platform: string;
+  sessionCount: number;
+  currency: string;
+  description: string;
+  skills: string;
 }
 
 export enum ELectureAsyncActionType {
@@ -114,14 +115,9 @@ export enum ELectureActionType {
   Set_CurrentPage = "SET_CURRENT_PAGE",
 }
 
-export enum EBookmarkAsyncActionType {
+export enum EBookmarkAsyncActionType {}
 
-}
-
-export enum EBookmarkActionType {
-  
-}
-
+export enum EBookmarkActionType {}
 
 /**
  *

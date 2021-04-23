@@ -2,7 +2,8 @@ import { ESearchActionType } from "../../../typings/type";
 import { TActions as TSearchActions } from "../../action/search";
 
 export interface ISearch {
-  keywords: Array<string>;
+  selectedKeywords: Array<string>;
+  selectedPlatforms: Array<string>;
 }
 
 export interface IState {
@@ -10,15 +11,28 @@ export interface IState {
 }
 
 const init: ISearch = {
-  keywords: [],
+  selectedKeywords: [],
+  selectedPlatforms: [],
 };
 
 const reducer = (state: ISearch = init, action: TSearchActions): ISearch => {
   switch (action.type) {
-    case ESearchActionType.Set_Keyword:
+    case ESearchActionType.Set_SelectedKeyword:
       return {
         ...state,
-        keywords: Array.from([...state.keywords, action.keyword]),
+        selectedKeywords: Array.from([
+          ...state.selectedKeywords,
+          action.keyword,
+        ]),
+      };
+
+    case ESearchActionType.Set_SelectedPlatform:
+      return {
+        ...state,
+        selectedPlatforms: Array.from([
+          ...state.selectedPlatforms,
+          action.platform,
+        ]),
       };
 
     default:

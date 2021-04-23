@@ -1,8 +1,13 @@
 import { ESearchActionType } from "../../../typings/type";
 
-export interface ISetKeywords {
-  type: ESearchActionType.Set_Keyword;
+export interface ISetSelectedKeyword {
+  type: ESearchActionType.Set_SelectedKeyword;
   keyword: string;
 }
 
-export type TActions = ISetKeywords;
+export interface ISetSelectedPlatform {
+  type: ESearchActionType.Set_SelectedPlatform;
+  platform: string;
+}
+
+export type TActions = ISetSelectedKeyword | ISetSelectedPlatform;

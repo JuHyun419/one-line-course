@@ -1,5 +1,5 @@
-import { TActions, ISetKeywords } from "./Actions";
+import { TActions, ISetSelectedKeyword, ISetSelectedPlatform } from "./Actions";
 
-import { setKeywords } from "./ActionCreators";
+import { setSelectedKeyword, setSelectedPlatform } from "./ActionCreators";
 
-export { TActions, ISetKeywords, setKeywords };
+export { TActions, ISetSelectedKeyword, setSelectedKeyword };

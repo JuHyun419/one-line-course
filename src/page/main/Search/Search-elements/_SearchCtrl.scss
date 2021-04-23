@@ -1,14 +1,15 @@
 @import "../../../../common/BoxShadow";
-// @import "../../../../common/ColorScheme";
 
 .searchCtrl {
-  // height: 350px;
+  margin-top: 15px;
+  height: 350px;
 }
 
-.searchBar-toggle {  
+.searchBar-toggle {
   position: relative;
   left: 0;
-  top: 0;
+  top: 150px;
+  // margin: 50% auto;
 
   width: 50px;
   height: 50px;
@@ -21,7 +22,9 @@
   @include make-box-shadow(1, 1, 1);
   // box-shadow: 1px 1px 1px 1px $color-box-shadow;
 
+  visibility: visible;
+
   &.active {
-    display: none;
+    visibility: hidden;
   }
 }

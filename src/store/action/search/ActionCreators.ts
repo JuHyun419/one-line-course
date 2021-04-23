@@ -1,7 +1,14 @@
 import { ESearchActionType } from "../../../typings/type";
-import { ISetKeywords } from "./Actions";
+import { ISetSelectedKeyword, ISetSelectedPlatform } from "./Actions";
 
-export const setKeywords = (keyword: string): ISetKeywords => ({
-  type: ESearchActionType.Set_Keyword,
+export const setSelectedKeyword = (keyword: string): ISetSelectedKeyword => ({
+  type: ESearchActionType.Set_SelectedKeyword,
   keyword,
+});
+
+export const setSelectedPlatform = (
+  platform: string
+): ISetSelectedPlatform => ({
+  type: ESearchActionType.Set_SelectedPlatform,
+  platform,
 });
