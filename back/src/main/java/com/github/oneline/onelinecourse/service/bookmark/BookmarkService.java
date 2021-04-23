@@ -8,6 +8,8 @@ import com.github.oneline.onelinecourse.repository.lecture.LectureRepository;
 import com.github.oneline.onelinecourse.repository.user.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookmarkService {
 
@@ -24,23 +26,32 @@ public class BookmarkService {
     }
 
     // 북마크 등록
-    public Bookmark createBookmark(Bookmark bookmark , String userId, Long lectureId) {
+    public Bookmark createBookmark(/*Bookmark bookmark ,*/ String userId, Long lectureId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("userId: " + userId + "의 유저가 존재하지 않습니다."));
         Lecture lecture = lectureRepository.findById(lectureId)
                 .orElseThrow(() -> new IllegalArgumentException("lectureId: " + lectureId + "의 강의가 존재하지 않습니다."));
-        Bookmark bookmark1 = Bookmark.builder()
+        Bookmark bookmarkEntity = Bookmark.builder()
                 .user(user)
                 .lecture(lecture)
                 .build();
-        return bookmarkRepository.save(bookmark1);
+        return bookmarkRepository.save(bookmarkEntity);
+    }
+
+    // 북마크 검색
+    public List<Bookmark> findAllUserBookmark(String userId) {
+        return bookmarkRepository.findAllUserBookmarks(userId);
     }
 
     // 북마크 해제
     public void deleteBookmark(Long bookmarkId) {
-        Bookmark bookmark = bookmarkRepository.findById(bookmarkId)
-                .orElseThrow(() -> new IllegalArgumentException(bookmarkId + "번에 해당하는 북마크가 존재하지 않습니다."));
-        bookmarkRepository.delete(bookmark);
+        bookmarkRepository.deleteById(bookmarkId);
     }
+
+//    public void deleteBookmark(Long bookmarkId) {
+//        Bookmark bookmark = bookmarkRepository.findById(bookmarkId)
+//                .orElseThrow(() -> new IllegalArgumentException(bookmarkId + "번에 해당하는 북마크가 존재하지 않습니다."));
+//        bookmarkRepository.delete(bookmark);
+//    }
 
 }

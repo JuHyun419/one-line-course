@@ -1,8 +1,7 @@
 package com.github.oneline.onelinecourse.controller.bookmark;
 
 import com.github.oneline.onelinecourse.model.bookmark.Bookmark;
-import com.github.oneline.onelinecourse.model.lecture.Lecture;
-import com.github.oneline.onelinecourse.model.user.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,6 +22,8 @@ public class CreateBookmarkRequestDto {
     // DTO -> Entity 변환
     public Bookmark toEntity() {
         return Bookmark.builder()
+                .id(id)
+                .createdAt(createdAt)
                 .userId(userId)
                 .lectureId(lectureId)
                 .build();
