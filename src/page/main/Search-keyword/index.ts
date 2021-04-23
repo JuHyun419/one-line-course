@@ -1,6 +1,6 @@
 import SearchKeyword from "./SearchKeyword";
 import SearchKeywords from "./SearchKeywords";
 import SelectedKeywords from "./SelectedKeywords";
-import { AllKeywordsData } from "./SearchKeywordData";
+import { AllKeywordsData_English } from "./SearchKeywordData";
 
-export { SearchKeyword, SearchKeywords, SelectedKeywords, AllKeywordsData as SearchKeywordData };
+export { SearchKeyword, SearchKeywords, SelectedKeywords, AllKeywordsData_English as SearchKeywordData };

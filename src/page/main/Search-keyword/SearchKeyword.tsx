@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AllKeywordsData } from "./SearchKeywordData";
+import { AllKeywordsData_English } from "./SearchKeywordData";
 
 const SearchKeyword: React.FC<{}> = () => {
   return <div></div>;
