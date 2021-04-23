@@ -1,19 +1,22 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { EButtonSize, EButtonType } from "../../typings/type";
 import { useRedirectToOnButtonClick } from "../../hooks/useRedirectTo";
 
 import Button from "../button/Button";
-import { EButtonSize } from "../button/EButtonSize";
-import { EButtonType } from "../button/EButtonType";
-import NavProps from "./NavProps";
 
 import "./_Nav.scss";
 
 const toSignIn = "/signIn";
 
+interface NavProps {
+  // TODO: decorator -> @range(0, 4)
+  highlightBtnIdx?: number;
+  children?: JSX.Element;
+}
+
 const LandingNav: React.FC<NavProps> = ({ children }) => {
   const history = useHistory();
-  console.log(history);
   const redirectToSignIn = useRedirectToOnButtonClick(history, toSignIn);
 
   return (
@@ -24,7 +27,7 @@ const LandingNav: React.FC<NavProps> = ({ children }) => {
         highlight
         onClick={redirectToSignIn}
       >
-        Sign In
+        가입
       </Button>
       {children}
     </div>

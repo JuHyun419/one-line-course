@@ -1,13 +1,20 @@
 import React from "react";
-// import { NavLink } from "react-router-dom";
+import { EButtonSize, EButtonType, TOnClick } from "../../typings/type";
 
-import ButtonProps from "./ButtonProps";
-
-import { EButtonType } from "./EButtonType";
-import { EButtonSize } from "./EButtonSize";
 import { joinClasses } from "../../common/StyleHelper";
 
 import "./_Button.scss";
+
+interface ButtonProps {
+  btnSize?: EButtonSize | undefined;
+  btnType?: EButtonType | undefined;
+  highlight?: boolean;
+  additionalClassName?: string;
+  additionalStyles?: { [prop: string]: string };
+  onClick?: TOnClick | undefined;
+  children?: any | undefined;
+}
+
 /**
  *
  * @btnType decide the type among primary, alt, warning, danger...
@@ -18,6 +25,8 @@ const Button: React.FC<ButtonProps> = ({
   btnSize = EButtonSize.Medium,
   btnType = EButtonType.Primary,
   highlight = false,
+  additionalClassName,
+  additionalStyles,
   onClick,
   children,
 }) => {
@@ -28,8 +37,10 @@ const Button: React.FC<ButtonProps> = ({
         "btn",
         btnType.toString(),
         btnSize.toString(),
-        `${highlight ? "highlight" : null}`
+        `${highlight ? "highlight" : null}`,
+        additionalClassName || ""
       )}
+      style={additionalStyles}
       onClick={onClick}
     >
       <span>{children}</span>

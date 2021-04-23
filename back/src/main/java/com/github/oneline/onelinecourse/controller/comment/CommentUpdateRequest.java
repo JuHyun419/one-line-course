@@ -4,8 +4,6 @@ import com.github.oneline.onelinecourse.model.comment.Comment;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 public class CommentUpdateRequest {
 

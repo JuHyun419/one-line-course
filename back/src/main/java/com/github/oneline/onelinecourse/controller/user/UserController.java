@@ -1,7 +1,6 @@
 package com.github.oneline.onelinecourse.controller.user;
 
 import com.github.oneline.onelinecourse.service.user.UserService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,12 +21,10 @@ public class UserController {
 
     // 회원 조회
     @GetMapping("/{userid}")    // GET 요청 방식의 API
-    public ResponseEntity<List<ResponseUserDto>> searchUser(@PathVariable("userid") String userId) {
+    public ResponseEntity<ResponseUserDto> searchUser(@PathVariable("userid") String userId) {
         return ResponseEntity.ok(
-                userService.searchUser(userId)
-                .stream()
-                .map(ResponseUserDto::new)
-                .collect(Collectors.toList()));
+                new ResponseUserDto(userService.searchUser(userId))
+        );
     }
 
 //    public ResponseEntity<ResponseUserDto> searchUser(@PathVariable("userid") String userId, String platform) { // URL을 처리할 때는 @PathVariable을 사용
@@ -47,7 +44,7 @@ public class UserController {
             @RequestBody CreateUserRequestDto createUserRequestDto ) { // @RequestBody : 클라이언트가 전송하는 Http 요청의 Body내용을 Java Object로 변환시켜주는 역할
 
         // 응답 헤더의 상태 코드 본문을 직접 다루기 위해 사용
-        return ResponseEntity.ok(   // 200 ok 상태코드 설정
+        return ResponseEntity.ok(   // 200 ok 상태코드
                 new ResponseUserDto(userService.createUser(createUserRequestDto.toEntity()))
         );
 

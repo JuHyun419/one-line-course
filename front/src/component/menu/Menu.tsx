@@ -1,13 +1,16 @@
 import React, { useState, useCallback, Fragment } from "react";
+import { EMenuMode } from "~typings/type";
 
 import { DarkModeCtxProvider } from "../../context/DarkModeCtx";
 import { ViewModeCtxProvider } from "../../context/ViewModeCtx";
 
 import MenuHamburger from "./MenuHamburger";
-import MenuProps from "./MenuProps";
-import { EMenuMode } from "./EMenuMode";
 import MenuBar from "./menu-bar/MenuBar";
 import "./_Menu.scss";
+
+interface MenuProps {
+  menuMode: EMenuMode;
+}
 
 const Menu: React.FC<MenuProps> = ({
   menuMode = EMenuMode.AfterLogin,

@@ -19,7 +19,7 @@
     - Typescript, React, SCSS
     
   - Back End - [`방소연`](https://github.com/bsy3764), [`이주현`](https://github.com/JuHyun419)
-    - Java, Python(크롤링), SpringBoot, Spring Data JPA, Maven, AWS
+    - Java, Python(크롤링), SpringBoot, Spring Data JPA, Maven, AWS, MySQL
 
 <br>
 
@@ -98,8 +98,8 @@
   - [`MySQL 😢이모지(utf8mb4) 스키마 설정`](https://github.com/JuHyun419/one-line-course/issues/8)
   - [`Parcel 번들러 에서 ENV 파일 사용`](https://github.com/JuHyun419/one-line-course/issues/50)
   - [`MySQL referencing column and referenced column are incompatible`](https://github.com/JuHyun419/one-line-course/issues/8)
-  - [`AWS RDS MySQL 8.0 대소문자 구분 설정`](https://zzang9ha.tistory.com/328)
-  - [`typescript 흩어져 있는 type specification 관리(정리)하기`](https://stackoverflow.com/questions/36633033/how-to-organize-typescript-interfaces)
+  - [`MySQL 8.0 대소문자 구분 문제(MySQL 5 버전으로 변경)`](https://zzang9ha.tistory.com/328)
+  - [`Java의 LocalDateTime과 MySQL의 datetime 사이의 시차 문제(9시간)`](https://github.com/JuHyun419/one-line-course/issues/62)
 
 <br>
 
@@ -125,8 +125,6 @@
 
 #### AWS
   - https://aws.amazon.com/ko/getting-started/hands-on/create-mysql-db/
-  - https://pompitzz.github.io/blog/Java/awsEc2InstallJDK11.html#jdk-%E1%84%89%E1%85%A5%E1%86%AF%E1%84%8E%E1%85%B5
-  - https://lemontia.tistory.com/941
+  - https://leveloper.tistory.com/18
+  - https://twofootdog.tistory.com/41
   - https://miniminis.github.io/2019/10/13/spring/springboot-deploy/
-
-<br>

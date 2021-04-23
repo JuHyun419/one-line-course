@@ -1,11 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import { TFooterDevCardData, FooterDevCardData } from "./FooterDevCardData";
 
-import { getIcon } from "../../../common/Icons";
+import { getIcon } from "../../../common";
 import "../_Footer.scss";
-import Separator from "../../separator/Separator";
-import { ESeparatorDirection } from "../../separator/ESeparatorDirection";
+
 
 const FooterDevCard: React.FC<{}> = () => {
   const devCardsJSX: Array<JSX.Element> = FooterDevCardData.map(
@@ -16,11 +15,6 @@ const FooterDevCard: React.FC<{}> = () => {
           {getIcon(d.portrait, undefined, { fontSize: "2.3rem" })}
           <h2>{d.name}</h2>
         </div>
-        {/* <Separator
-          direction={ESeparatorDirection.Vertical}
-          length={130}
-          width={2}
-        /> */}
         <div className="right">
           <p>{d.position}</p>
           {/* TODO: Link to real repo */}
