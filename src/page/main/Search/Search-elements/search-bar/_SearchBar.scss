@@ -1,5 +1,5 @@
-@import "../../../../common/BoxShadow";
-// @import "../../../../common/ColorScheme";
+@import "../../../../../common/BoxShadow";
+@import "../../../../../common/ColorScheme";
 
 .searchBar {
   position: relative;
@@ -44,6 +44,48 @@
     position: absolute;
     left: 83%;
     top: 30%;
+  }
+
+  .searchBar--suggestions {
+    position: absolute;
+    left: 5%;
+    top: 15%;
+
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+
+    li {
+      background-color: $color-primary;
+      color: rgb(0, 0, 0);
+
+      border: 1px solid #000;
+      border-radius: 15px;
+      padding: 5px 15px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+  }
+
+  .searchBar--selected {
+    position: absolute;
+    left: 5%;
+    top: 70%;
+
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+
+    li {
+      background-color: $color-primary;
+      color: rgb(0, 0, 0);
+
+      border: 1px solid #000;
+      border-radius: 15px;
+      padding: 5px 15px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
   }
 
   .searchBar--separator {

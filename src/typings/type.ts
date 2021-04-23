@@ -23,9 +23,10 @@ export enum EButtonType {
 /**
  *
  */
-export interface TOnClick {
-  (event?: React.MouseEvent<HTMLDivElement>, linkTo?: string): void;
+export interface TOnClickButton<T extends HTMLElement> {
+  (event?: React.MouseEvent<T>, linkTo?: string): void;
 }
+
 
 /**
  *
@@ -66,11 +67,9 @@ export enum ECarouselActionType {
 }
 
 export enum ESearchActionType {
-  Set_AllKeywords = "SET_ALL_KEYWORDS",
-  Set_AllPlatforms = "SET_ALL_PLATFORMS",
   Set_SelectedKeyword = "SET_SELECTED_KEYWORD",
   Set_SelectedPlatform = "SET_SELECTED_PLATFORM",
-  Set_Input_BuildAutoSuggestion = "SET_INPUT_BUILD_AUTO_SUGGESTION",
+  Set_Suggestion = "SET_SUGGESTION",
 }
 
 export enum ESearchAsyncActionType {

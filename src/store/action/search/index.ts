@@ -2,21 +2,21 @@ import {
   TActions,
   ISetSelectedKeyword,
   ISetSelectedPlatform,
-  ISetInputBuildAutoSuggestion,
+  ISetSuggestion,
 } from "./Actions";
 
 import {
   setSelectedKeyword,
   setSelectedPlatform,
-  setInputBuildAutoSuggestion,
+  setSuggestion,
 } from "./ActionCreators";
 
 export {
   TActions,
   ISetSelectedKeyword,
   ISetSelectedPlatform,
-  ISetInputBuildAutoSuggestion,
+  ISetSuggestion,
   setSelectedKeyword,
   setSelectedPlatform,
-  setInputBuildAutoSuggestion,
+  setSuggestion,
 };

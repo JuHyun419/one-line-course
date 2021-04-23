@@ -1,31 +1,21 @@
 import { ESearchActionType } from "../../../typings/type";
 
-// export interface ISetAllKeywords {
-//   type: ESearchActionType.Set_AllKeywords;
-//   allKeywords: Set<string>;
-// }
-
-// export interface ISetAllPlatforms {
-//   type: ESearchActionType.Set_AllPlatforms;
-//   allPlatforms: Set<string>;
-// }
-
 export interface ISetSelectedKeyword {
   type: ESearchActionType.Set_SelectedKeyword;
-  keyword: string;
+  selectedKeyword: string;
 }
 
 export interface ISetSelectedPlatform {
   type: ESearchActionType.Set_SelectedPlatform;
-  platform: string;
+  selectedPlatform: string;
 }
 
-export interface ISetInputBuildAutoSuggestion {
-  type: ESearchActionType.Set_Input_BuildAutoSuggestion;
-  input: string | Array<string>;
+export interface ISetSuggestion {
+  type: ESearchActionType.Set_Suggestion;
+  suggestions: Array<string>;
 }
 
 export type TActions =
-  // | ISetAllKeywords
-  // | ISetAllPlatforms
-  ISetSelectedKeyword | ISetSelectedPlatform | ISetInputBuildAutoSuggestion;
+  | ISetSelectedKeyword
+  | ISetSelectedPlatform
+  | ISetSuggestion;

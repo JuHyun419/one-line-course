@@ -1,4 +1,5 @@
-@import "../../../common/ColorScheme";
+// @import "../../../common/ColorScheme";
+@import "../../../../common/ColorScheme";
 
 .keywordSelector {
   display: flex;
@@ -40,15 +41,21 @@
 
         display: inline-block;
 
-        background-color: $color-nav;
+        background-color: $color-not-selected;
         color: rgb(0, 0, 0);
 
         border: 1px solid #000;
         border-radius: 15px;
         padding: 5px 15px;
+        margin-right: 5px;
+        margin-bottom: 5px;
 
         p {
-          // font-size: 1.2rem;
+          font-size: 1.2rem;
+        }
+
+        &.active {
+          background-color: $color-selected;
         }
       }
     }

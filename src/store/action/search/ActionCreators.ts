@@ -2,24 +2,26 @@ import { ESearchActionType } from "../../../typings/type";
 import {
   ISetSelectedKeyword,
   ISetSelectedPlatform,
-  ISetInputBuildAutoSuggestion,
+  ISetSuggestion,
 } from "./Actions";
 
-export const setSelectedKeyword = (keyword: string): ISetSelectedKeyword => ({
+export const setSelectedKeyword = (
+  selectedKeyword: string
+): ISetSelectedKeyword => ({
   type: ESearchActionType.Set_SelectedKeyword,
-  keyword,
+  selectedKeyword,
 });
 
 export const setSelectedPlatform = (
-  platform: string
+  selectedPlatform: string
 ): ISetSelectedPlatform => ({
   type: ESearchActionType.Set_SelectedPlatform,
-  platform,
+  selectedPlatform,
 });
 
-export const setInputBuildAutoSuggestion = (
-  input: string | Array<string>
-): ISetInputBuildAutoSuggestion => ({
-  type: ESearchActionType.Set_Input_BuildAutoSuggestion,
-  input,
+export const setSuggestion = (
+  suggestions: Array<string>
+): ISetSuggestion => ({
+  type: ESearchActionType.Set_Suggestion,
+  suggestions,
 });

@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from "react";
 
 import { getIcon } from "../../../../common";
-import SearchBar from "./SearchBar";
+import SearchBar from "./search-bar/SearchBar";
 
 import "./_SearchCtrl.scss";
 

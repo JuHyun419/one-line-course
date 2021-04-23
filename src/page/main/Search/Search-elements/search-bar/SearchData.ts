@@ -1,41 +1,8 @@
-// type TSearchKeyword = {
-//   [langName: string]: {
-//     mainField: Array<string>;
-//     keywords: Array<string>;
-//   };
-//   // [langName: string]: string;
-// };
+export const platforms = new Set<string>(["유튜브", "인프런"]);
 
-// export const SearchKeywordData: TSearchKeyword = {
-//   c: {
-//     keywords: ["opengl", "directX"],
-//   },
-//   cpp: {
-//     mainField: "system",
-//     keywords: ["opengl", "directX", "vulkan", "qt"],
-//   },
-//   csharp: {
-//     mainField: "system",
-//     keywords: [".net", "dotnet", "asp", "asp.net", "asp.mvc", "blazor"],
-//   },
-//   java: {
-//     mainField: "system",
-//     keywords: ["spring"],
-//   },
-//   javascript: {
-//     mainField: "system",
-//     keywords: [""],
-//   },
-// };
+export const platformsAsArr = Array.from<string>(platforms);
 
-// // SearchKeywordData.c?.keywords;
-
-export const AllPlatformsData: Set<string> = new Set<string>([
-  "유튜브",
-  "인프런",
-]);
-
-export const AllKeywordsData_Korean: Set<string> = new Set<string>([
+export const keywordsKorean = new Set<string>([
   "클론코딩",
   "취업",
   "면접",
@@ -104,7 +71,11 @@ export const AllKeywordsData_Korean: Set<string> = new Set<string>([
   "해킹",
 ]);
 
-export const AllKeywordsData_English: Set<string> = new Set<string>([
+export const keywordsKoreanAsArr = Array.from<string>(
+  keywordsKorean
+);
+
+export const keywordsEnglish = new Set<string>([
   "c",
   "c++",
   "c#",
@@ -248,6 +219,42 @@ export const AllKeywordsData_English: Set<string> = new Set<string>([
   "hacking",
   "Tensorflow",
 ]);
+
+export const keywordsEnglishAsArr = Array.from<string>(
+  keywordsEnglish
+);
+
+// type TSearchKeyword = {
+//   [langName: string]: {
+//     mainField: Array<string>;
+//     keywords: Array<string>;
+//   };
+//   // [langName: string]: string;
+// };
+//
+// export const SearchKeywordData: TSearchKeyword = {
+//   c: {
+//     keywords: ["opengl", "directX"],
+//   },
+//   cpp: {
+//     mainField: "system",
+//     keywords: ["opengl", "directX", "vulkan", "qt"],
+//   },
+//   csharp: {
+//     mainField: "system",
+//     keywords: [".net", "dotnet", "asp", "asp.net", "asp.mvc", "blazor"],
+//   },
+//   java: {
+//     mainField: "system",
+//     keywords: ["spring"],
+//   },
+//   javascript: {
+//     mainField: "system",
+//     keywords: [""],
+//   },
+// };
+
+// // SearchKeywordData.c?.keywords;
 
 // 텍스트마이닝,데이터시각화,웹크롤링
 // AWS,Linux
