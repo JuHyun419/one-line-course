@@ -1,11 +1,9 @@
 import React from "react";
-import { placeIconsRandomly } from "../../common/Icons";
-
-import { ENavType } from "../../component/nav/ENavType";
+import { ENavType } from "../../typings/type";
 import NavFactory from "../../component/nav/nav-factory/NavFactory";
+import { placeIconsRandomly } from "../../common/";
 import LandingInfoItems from "./landing-info-item/LandingInfoItems";
 import Footer from "../../component/footer/Footer";
-
 import "./_Landing.scss";
 import "../_Page.scss";
 
