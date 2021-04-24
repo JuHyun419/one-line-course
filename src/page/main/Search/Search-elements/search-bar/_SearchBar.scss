@@ -18,13 +18,13 @@
     top: 5%;
   }
 
-  .searchBar--selectedKeywords-placeholder {
+  &--selectedKeywords-placeholder {
     position: absolute;
     left: 5%;
     top: 63%;
   }
 
-  .searchBar--input {
+  &--input {
     position: absolute;
     left: 55px;
     top: 2%;
@@ -40,7 +40,23 @@
     }
   }
 
-  .searchBar--suggestions {
+  &--invalid-keyword-indicator {
+    position: absolute;
+    left: 83%;
+    top: 2%;
+
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: red;
+
+    visibility: hidden;
+    &.active {
+      visibility: visible;
+    }
+  }
+
+  &--suggestions {
     position: absolute;
     left: 5%;
     top: 15%;
@@ -70,7 +86,7 @@
     }
   }
 
-  .searchBar--selected {
+  &--selected {
     position: absolute;
     left: 5%;
     top: 72%;
@@ -105,7 +121,7 @@
     }
   }
 
-  .searchBar--separator {
+  &--separator {
     position: absolute;
     left: 2%;
     top: 57%;

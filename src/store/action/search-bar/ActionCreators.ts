@@ -4,6 +4,7 @@ import {
   IOpenSearchBar,
   ICloseSearchBar,
   ISetCurrentInput,
+  IToggleInvalidKeywordWarningRef,
 } from "./Actions";
 
 export const toggleSearchBar = (): IToggleSearchBar => ({
@@ -21,4 +22,8 @@ export const closeSearchBar = (): ICloseSearchBar => ({
 export const setCurrentInput = (input: string): ISetCurrentInput => ({
   type: ESearchBarActionType.Set_CurrentInput,
   input,
+});
+
+export const ToggleInvalidKeywordWarningRef = (): IToggleInvalidKeywordWarningRef => ({
+  type: ESearchBarActionType.Toggle_InvalidKeyword_WarningRef,
 });

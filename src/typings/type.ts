@@ -91,7 +91,8 @@ export enum ESearchBarActionType {
   Toggle_SearchBar = "TOGGLE_SEARCH_BAR",
   Open_SearchBar = "OPEN_SEARCH_BAR",
   Close_SearchBar = "CLOSE_SEARCH_BAR",
-  Set_CurrentInput = "SET_CURRENT_INPUT"
+  Set_CurrentInput = "SET_CURRENT_INPUT",
+  Toggle_InvalidKeyword_WarningRef = "TOGGLE_INVALID_KEYWORDS_WARNING_REF",
 }
 
 /**

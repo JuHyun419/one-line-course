@@ -4,7 +4,10 @@ import { TCombinedStates } from "../../../../../store";
 
 import { clearSuggestion } from "../../../../../store/action/search-suggestion";
 import { setSelectedKeyword } from "../../../../../store/action/search";
-import { setCurrentInput } from "../../../../../store/action/search-bar";
+import {
+  setCurrentInput,
+  ToggleInvalidKeywordWarningRef,
+} from "../../../../../store/action/search-bar";
 
 import { useSearchBarSuggestion } from "./";
 
@@ -14,6 +17,10 @@ const SearchBarInput = () => {
   const input = useSelector(
     (state: TCombinedStates) => state.searchBar.input,
     shallowEqual
+  );
+
+  const suggestions = useSelector(
+    (state: TCombinedStates) => state.searchSuggestion.suggestions
   );
 
   const dispatch = useDispatch();
@@ -29,18 +36,37 @@ const SearchBarInput = () => {
   const _clearSuggestion = useCallback(() => dispatch(clearSuggestion()), [
     dispatch,
   ]);
+  const _toggleInvalidKeywordWarning = useCallback(
+    () => dispatch(ToggleInvalidKeywordWarningRef()),
+    [dispatch]
+  );
 
   const onSubmitInput = useCallback(
     (e: React.KeyboardEvent<HTMLDivElement>) => {
       if (e.key === "Enter") {
         // TODO: check the keyword is valid
         console.log(input);
+        if (!suggestions.includes(input)) {
+          _toggleInvalidKeywordWarning();
+          setTimeout(() => _toggleInvalidKeywordWarning(), 3000);
+          return;
+        }
+
+        // add input to selected keywords
         _setSelectedKeyword(input);
+        // wipe out the current input & suggestion
         clearCurrentInput("");
         _clearSuggestion();
       }
     },
-    [input, _setSelectedKeyword, clearCurrentInput, _clearSuggestion]
+    [
+      input,
+      suggestions,
+      _setSelectedKeyword,
+      clearCurrentInput,
+      _clearSuggestion,
+      _toggleInvalidKeywordWarning,
+    ]
   );
 
   return (

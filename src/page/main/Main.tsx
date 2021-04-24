@@ -24,14 +24,7 @@ const Main: React.FC<{}> = () => {
   //   return <Loading />;
   // }
 
-  // const errorJSX = useSelector(
-  //   (state: TCombinedStates) => state.carouselAsync.err,
-  //   shallowEqual
-  // );
-  // if (errorJSX) {
-  //   // TODO: Render Error
-  //   // return <Error />;
-  // }
+
 
   return (
     <div>

@@ -1,4 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
+import { shallowEqual, useSelector } from "react-redux";
+import { TCombinedStates } from "~store";
 // import { shallowEqual, useSelector } from "react-redux";
 // import { TCombinedStates } from "~store";
 
@@ -23,10 +25,26 @@ const SearchBar: React.FC<{
   const selectedKeywordsJSX = useSearchBarSelectedKeywords();
   const { _toggleSearchBar: toggleSearchBar } = useToggleSearchBar();
 
+  const isInvalidKeyword = useSelector(
+    (state: TCombinedStates) => state.searchBar.isInvalidKeyword,
+    shallowEqual
+  );
+
+  const invalidKeywordWarningJSX = isInvalidKeyword && (
+    <p className="searchBar--invalid-keyword-indicator active">
+      없는
+      <br />
+      키워드!
+      <br />
+      입니다!
+    </p>
+  );
+
   return (
     <div className="searchBar">
       <SearchBarInput />
       <div onClick={toggleSearchBar}>{searchIcon}</div>
+      {invalidKeywordWarningJSX}
       <AddButton />
       <SearchButton />
       <div className="searchBar--suggestions">{suggestionJSX}</div>

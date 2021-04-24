@@ -17,8 +17,13 @@ export interface ISetCurrentInput {
   input: string;
 }
 
+export interface IToggleInvalidKeywordWarningRef {
+  type: ESearchBarActionType.Toggle_InvalidKeyword_WarningRef;  
+}
+
 export type TActions =
   | IToggleSearchBar
   | IOpenSearchBar
   | ICloseSearchBar
-  | ISetCurrentInput;
+  | ISetCurrentInput
+  | IToggleInvalidKeywordWarningRef;
