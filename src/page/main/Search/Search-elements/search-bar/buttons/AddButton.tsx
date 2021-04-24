@@ -48,16 +48,14 @@ const AddButton: React.FC = () => {
 
   const onClickAddButton = useCallback(
     (_: React.MouseEvent<HTMLDivElement>) => {
-      // TODO: check the keyword is valid
-      console.log(input);
       if (!suggestions.includes(input)) {
         _toggleInvalidKeywordWarning();
         setTimeout(() => _toggleInvalidKeywordWarning(), 3000);
-        return;
+      } else {
+        // add input to selected keywords
+        _setSelectedKeyword(input);
       }
 
-      // add input to selected keywords
-      _setSelectedKeyword(input);
       // wipe out the current input & suggestion
       clearCurrentInput("");
       _clearSuggestion();

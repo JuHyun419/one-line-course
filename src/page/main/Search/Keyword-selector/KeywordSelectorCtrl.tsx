@@ -21,13 +21,13 @@ const KeywordSelectorCtrl = () => {
 
   const _setSelectedKeyword = useCallback(
     (selectedKeyword: string) => dispatch(setSelectedKeyword(selectedKeyword)),
-    [dispatch]
+    []
   );
 
   const _setSelectedPlatform = useCallback(
     (selectedPlatform: string) =>
       dispatch(setSelectedPlatform(selectedPlatform)),
-    [dispatch]
+    []
   );
 
   return (

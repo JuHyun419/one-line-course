@@ -1,5 +1,7 @@
-import React, { Dispatch, useCallback, useMemo, useRef } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
+import { useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
+import { TCombinedStates } from "../../../../store";
 import { useToggleSearchBar } from "../Search-elements/search-bar";
 
 import "./_KeywordSelector.scss";
@@ -23,7 +25,7 @@ const KeywordSelector: React.FC<{
       (el?.parentElement as HTMLLIElement).classList.toggle("active");
       _openSearchBar();
     },
-    [dispatchKeyword]
+    []
   );
 
   const onSelectKeywordLiElement = useCallback(
@@ -39,8 +41,24 @@ const KeywordSelector: React.FC<{
       );
       _openSearchBar();
     },
-    [dispatchKeyword]
+    []
   );
+
+  // const selectedKeywords = useSelector(
+  //   (state: TCombinedStates) => state.search.selectedKeywords
+  // );
+  
+  // const selectedPlatforms = useSelector(
+  //   (state: TCombinedStates) => state.search.selectedPlatforms
+  // );
+
+  // useEffect(() => {
+  //   // 1. compare selected keywords with 
+  // }, [selectedKeywords]);
+
+  // useEffect(() => {
+
+  // }, [selectedPlatforms]);
 
   const selectedKeywordsJSX = useMemo(
     () =>
