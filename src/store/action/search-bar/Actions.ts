@@ -12,4 +12,13 @@ export interface ICloseSearchBar {
   type: ESearchBarActionType.Close_SearchBar;
 }
 
-export type TActions = IToggleSearchBar | IOpenSearchBar | ICloseSearchBar;
+export interface ISetCurrentInput {
+  type: ESearchBarActionType.Set_CurrentInput;
+  input: string;
+}
+
+export type TActions =
+  | IToggleSearchBar
+  | IOpenSearchBar
+  | ICloseSearchBar
+  | ISetCurrentInput;

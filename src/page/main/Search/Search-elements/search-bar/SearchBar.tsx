@@ -1,4 +1,6 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo, useState } from "react";
+// import { shallowEqual, useSelector } from "react-redux";
+// import { TCombinedStates } from "~store";
 
 import {
   AddButton,
@@ -9,32 +11,21 @@ import {
   useSearchBarSelectedPlatforms,
   useToggleSearchBar,
 } from "./";
+import SearchBarInput from "./SearchBarInput";
 
 import "./_SearchBar.scss";
 
 const SearchBar: React.FC<{
   searchIcon: JSX.Element;
 }> = ({ searchIcon }) => {
-  const { onSearchBarInputChange, suggestionJSX } = useSearchBarSuggestion();
+  const { suggestionJSX } = useSearchBarSuggestion();
   const selectedPlatformsJSX = useSearchBarSelectedPlatforms();
   const selectedKeywordsJSX = useSearchBarSelectedKeywords();
   const { _toggleSearchBar: toggleSearchBar } = useToggleSearchBar();
 
-  const searchBarInputJSX = useMemo(
-    () => (
-      <input
-        type="text"
-        className="searchBar--input"
-        placeholder="키워드를 입력해서 강의를 찾으세요"
-        onChange={onSearchBarInputChange}
-      />
-    ),
-    [onSearchBarInputChange]
-  );
-
   return (
     <div className="searchBar">
-      {searchBarInputJSX}
+      <SearchBarInput />
       <div onClick={toggleSearchBar}>{searchIcon}</div>
       <AddButton />
       <SearchButton />

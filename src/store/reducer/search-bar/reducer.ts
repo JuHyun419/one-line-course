@@ -3,6 +3,7 @@ import { TActions as TSearchBarActions } from "../../action/search-bar";
 
 export interface ISearchBar {
   isSearchBarClose: boolean;
+  input: string;
 }
 
 export interface IState {
@@ -11,6 +12,7 @@ export interface IState {
 
 const init: ISearchBar = {
   isSearchBarClose: true,
+  input: "",
 };
 
 const reducer = (
@@ -34,6 +36,12 @@ const reducer = (
       return {
         ...state,
         isSearchBarClose: true,
+      };
+
+    case ESearchBarActionType.Set_CurrentInput:
+      return {
+        ...state,
+        input: action.input,
       };
 
     default:

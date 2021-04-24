@@ -9,6 +9,7 @@ import {
   toggleSearchBar,
   openSearchBar,
   closeSearchBar,
+  setCurrentInput,
 } from "./ActionCreators";
 
 export {
@@ -19,4 +20,5 @@ export {
   toggleSearchBar,
   openSearchBar,
   closeSearchBar,
+  setCurrentInput,
 };
