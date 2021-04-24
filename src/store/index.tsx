@@ -12,27 +12,50 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 // import { TStore, TRootReducer } from "../typings/type";
 
+// async carousel dep
 import carouselAsync, {
-  CarouselFetcher,
+  ICarouselAsync,
 } from "./reducer/carousel-async/reducer";
-import { Actions as CarouselAsyncActions } from "./action/carousel-async";
+import { TActions as TCarouselAsyncActions } from "./action/carousel-async";
 
-import carousel, { Carousel } from "./reducer/carousel/reducer";
-import { Actions as CarouselActions } from "./action/carousel";
+// carousel dep
+import carousel, { ICarousel } from "./reducer/carousel/reducer";
+import { TActions as TCarouselActions } from "./action/carousel";
 
-export type CombinedCarousel = CombinedState<{
-  carouselAsync: CarouselFetcher;
-  carousel: Carousel;
+// async search dep
+import searchAsync, { ISearchAsync } from "./reducer/search-async/reducer";
+import { TActions as TSearchAsyncActions } from "./action/search-async";
+
+// search dep
+import search, { ISearch } from "./reducer/search/reducer";
+import { TActions as TSearchActions } from "./action/search";
+
+// searchbar dep
+import searchBar, { ISearchBar } from "./reducer/search-bar/reducer";
+import { TActions as TSearchBarActions } from "./action/search";
+
+export type TCombinedStates = CombinedState<{
+  carouselAsync: ICarouselAsync;
+  carousel: ICarousel;
+  searchAsync: ISearchAsync;
+  search: ISearch;
+  searchBar: ISearchBar;
 }>;
 
-type TRootReducer = Reducer<
-  CombinedCarousel,
-  CarouselAsyncActions | CarouselActions
->;
+export type TCombinedActions =
+  | TCarouselAsyncActions
+  | TCarouselActions
+  | TSearchAsyncActions
+  | TSearchActions;
+
+type TRootReducer = Reducer<TCombinedStates, TCombinedActions>;
 
 const rootReducers: TRootReducer = combineReducers({
   carouselAsync,
   carousel,
+  searchAsync,
+  search,
+  searchBar,
 });
 
 const store = createStore(
