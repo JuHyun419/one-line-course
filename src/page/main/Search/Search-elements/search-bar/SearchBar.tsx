@@ -1,73 +1,85 @@
 import React from "react";
-import { v4 as uuid } from "uuid";
-// import { shallowEqual, useDispatch, useSelector } from "react-redux";
-
 import { EButtonSize, EButtonType } from "../../../../../typings/type";
 import Button from "../../../../../component/button/Button";
 
+import {
+  useSearchBarSuggestion,
+  useSearchBarSelectedKeywords,
+  useSearchBarSelectedPlatforms,
+} from "./";
 import "./_SearchBar.scss";
-
-import { useSuggestion } from "./useSuggestion";
-import { TCombinedStates } from "~store";
-import { useSelector } from "react-redux";
 
 const SearchBar: React.FC<{
   searchIcon: JSX.Element;
 }> = ({ searchIcon }) => {
-  const onSearchBarInputChange = useSuggestion();
+  const { onSearchBarInputChange, suggestionJSX } = useSearchBarSuggestion();
+  const selectedPlatformsJSX = useSearchBarSelectedPlatforms();
+  const selectedKeywordsJSX = useSearchBarSelectedKeywords();
 
-  const suggestions = useSelector(
-    (state: TCombinedStates) => state.search.suggestions
+  const searchBarInputJSX = (
+    <input
+      type="text"
+      className="searchBar--input"
+      placeholder="키워드를 입력해서 강의를 찾으세요"
+      onChange={onSearchBarInputChange}
+    />
   );
-  const selectedKeywords = useSelector(
-    (state: TCombinedStates) => state.search.selectedKeywords
-  );
-  
-  const selectedPlatforms = useSelector(
-    (state: TCombinedStates) => state.search.selectedPlatforms
-  );
+
+  const { addBtnJSX, searchBtnJSX, clearBtnJSX } = makeBtns();
 
   return (
     <div className="searchBar">
-      <input
-        type="text"
-        className="searchBar--input"
-        placeholder="키워드를 입력해서 강의를 찾으세요"
-        onChange={onSearchBarInputChange}
-      />
+      {searchBarInputJSX}
       {searchIcon}
-      <Button
-        btnSize={EButtonSize.Small}
-        btnType={EButtonType.Primary}
-        additionalClassName="searchBar--btn"
-      >
-        검색
-      </Button>
-      {/* 검색 제안 */}
-      <div className="searchBar--suggestions">
-        {suggestions?.map(sug => (
-          <li key={uuid()}>{sug}</li>
-        ))}
-      </div>
+      {addBtnJSX}
+      {searchBtnJSX}
+      <div className="searchBar--suggestions">{suggestionJSX}</div>
       <div className="searchBar--separator"></div>
-      <p>선택한 키워드들...</p>
+      <p className="searchBar--selectedKeywords-placeholder">
+        선택한 키워드들...
+      </p>
       <div className="searchBar--selected">
-        {selectedPlatforms?.map(platform => (
-          <li key={uuid()}>{platform}</li>
-        ))}
-        {selectedKeywords?.map(keyword => (
-          <li key={uuid()}>{keyword}</li>
-        ))}
+        {selectedPlatformsJSX}
+        {selectedKeywordsJSX}
       </div>
-      <Button
-        btnSize={EButtonSize.Small}
-        btnType={EButtonType.Primary}
-        additionalClassName="searchBar--clearBtn"
-      >
-        비우기
-      </Button>
+      {clearBtnJSX}
     </div>
   );
+};
+
+const makeBtns = () => {
+  const addBtnJSX = (
+    <Button
+      btnSize={EButtonSize.Small}
+      btnType={EButtonType.Primary}
+      additionalClassName="searchBar--btn-add"
+    >
+      추가
+    </Button>
+  );
+
+  const searchBtnJSX = (
+    <Button
+      btnSize={EButtonSize.XSmall}
+      btnType={EButtonType.Primary}
+      additionalClassName="searchBar--btn-search"
+      additionalStyles={{ fontSize: "0.9rem" }}
+    >
+      검색
+    </Button>
+  );
+
+  const clearBtnJSX = (
+    <Button
+      btnSize={EButtonSize.Small}
+      btnType={EButtonType.Primary}
+      additionalClassName="searchBar--clearBtn"
+    >
+      비우기
+    </Button>
+  );
+
+  return { addBtnJSX, searchBtnJSX, clearBtnJSX };
 };
 
 export default SearchBar;

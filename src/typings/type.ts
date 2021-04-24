@@ -5,6 +5,7 @@ import React from "react";
  *
  */
 export enum EButtonSize {
+  XSmall = "btn-xsmall",
   Small = "btn-small",
   Medium = "btn-medium",
   Large = "btn-large",
@@ -26,7 +27,6 @@ export enum EButtonType {
 export interface TOnClickButton<T extends HTMLElement> {
   (event?: React.MouseEvent<T>, linkTo?: string): void;
 }
-
 
 /**
  *
