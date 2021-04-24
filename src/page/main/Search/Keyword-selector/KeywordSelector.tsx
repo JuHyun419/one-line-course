@@ -1,5 +1,6 @@
 import React, { Dispatch, useCallback, useMemo, useRef } from "react";
 import { v4 as uuid } from "uuid";
+import { useToggleSearchBar } from "../Search-elements/search-bar";
 
 import "./_KeywordSelector.scss";
 
@@ -8,6 +9,8 @@ const KeywordSelector: React.FC<{
   keywords: Array<string>;
   dispatchKeyword: (selectedPlatform: string) => void;
 }> = ({ title, keywords, dispatchKeyword }) => {
+  const { _openSearchBar } = useToggleSearchBar();
+
   const onSelectKeyword = useCallback(
     (e: React.MouseEvent<HTMLParagraphElement>) => {
       e.stopPropagation();
@@ -17,6 +20,7 @@ const KeywordSelector: React.FC<{
       dispatchKeyword(el?.innerText);
       // toggle background color of parent element (li tag)
       (el?.parentElement as HTMLLIElement).classList.toggle("active");
+      _openSearchBar();
     },
     [dispatchKeyword]
   );
@@ -32,6 +36,7 @@ const KeywordSelector: React.FC<{
       dispatchKeyword(
         (el?.firstElementChild as HTMLParagraphElement).innerText
       );
+      _openSearchBar();
     },
     [dispatchKeyword]
   );

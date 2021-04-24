@@ -1,7 +1,5 @@
-import React, { useCallback, useMemo } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { TCombinedStates } from "../../../../store";
-import { toggleSearchBar } from "../../../../store/action/search";
+import React, { useMemo } from "react";
+import { toggleSearchBar } from "../../../../store/action/search-bar";
 
 import { getIcon } from "../../../../common";
 import SearchBar from "./search-bar/SearchBar";
