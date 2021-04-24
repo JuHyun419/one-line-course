@@ -70,6 +70,7 @@ export enum ESearchActionType {
   Set_SelectedKeyword = "SET_SELECTED_KEYWORD",
   Set_SelectedPlatform = "SET_SELECTED_PLATFORM",
   Set_Suggestion = "SET_SUGGESTION",
+  Toggle_SearchBar = "TOGGLE_SEARCH_BAR"
 }
 
 export enum ESearchAsyncActionType {

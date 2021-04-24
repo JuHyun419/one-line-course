@@ -5,6 +5,7 @@ export interface ISearch {
   selectedKeywords: string[];
   selectedPlatforms: string[];
   suggestions: string[];
+  isSearchBarClose: boolean;
 }
 
 export interface IState {
@@ -15,6 +16,7 @@ const init: ISearch = {
   selectedKeywords: [],
   selectedPlatforms: [],
   suggestions: [],
+  isSearchBarClose: true,
 };
 
 const reducer = (state: ISearch = init, action: TSearchActions): ISearch => {
@@ -45,6 +47,12 @@ const reducer = (state: ISearch = init, action: TSearchActions): ISearch => {
       return {
         ...state,
         suggestions: action.suggestions,
+      };
+
+    case ESearchActionType.Toggle_SearchBar:
+      return {
+        ...state,
+        isSearchBarClose: !state.isSearchBarClose,
       };
 
     default:

@@ -6,6 +6,7 @@ import {
   useSearchBarSuggestion,
   useSearchBarSelectedKeywords,
   useSearchBarSelectedPlatforms,
+  useToggleSearchBar,
 } from "./";
 import "./_SearchBar.scss";
 
@@ -15,6 +16,8 @@ const SearchBar: React.FC<{
   const { onSearchBarInputChange, suggestionJSX } = useSearchBarSuggestion();
   const selectedPlatformsJSX = useSearchBarSelectedPlatforms();
   const selectedKeywordsJSX = useSearchBarSelectedKeywords();
+
+  const { _toggleSearchBar } = useToggleSearchBar();
 
   const searchBarInputJSX = (
     <input
@@ -30,7 +33,7 @@ const SearchBar: React.FC<{
   return (
     <div className="searchBar">
       {searchBarInputJSX}
-      {searchIcon}
+      <div onClick={_toggleSearchBar}>{searchIcon}</div>
       {addBtnJSX}
       {searchBtnJSX}
       <div className="searchBar--suggestions">{suggestionJSX}</div>

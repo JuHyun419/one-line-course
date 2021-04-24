@@ -1,17 +1,16 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { TCombinedStates } from "../../../../store";
+import { toggleSearchBar } from "../../../../store/action/search";
 
 import { getIcon } from "../../../../common";
 import SearchBar from "./search-bar/SearchBar";
+import { useToggleSearchBar } from "./search-bar";
 
 import "./_SearchCtrl.scss";
 
 const SearchCtrl: React.FC<{}> = () => {
-  const [isSearchBarToggled, setIsSearchBarToggled] = useState(true);
-
-  const toggleSearchBar = useCallback(
-    () => setIsSearchBarToggled(prv => !prv),
-    [setIsSearchBarToggled]
-  );
+  const { isSearchBarClosed, _toggleSearchBar } = useToggleSearchBar();
 
   const searchIcon: JSX.Element = useMemo(
     () => getIcon("Search", toggleSearchBar, { fontSize: "2rem" })!,
@@ -20,11 +19,12 @@ const SearchCtrl: React.FC<{}> = () => {
 
   return (
     <div className="searchCtrl">
-      {!isSearchBarToggled && <SearchBar searchIcon={searchIcon} />}
+      {!isSearchBarClosed && <SearchBar searchIcon={searchIcon} />}
       <button
         className={
-          isSearchBarToggled ? "searchBar-toggle" : "searchBar-toggle active"
+          isSearchBarClosed ? "searchBar-toggle" : "searchBar-toggle active"
         }
+        onClick={_toggleSearchBar}
       >
         {searchIcon}
       </button>

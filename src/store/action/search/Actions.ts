@@ -15,7 +15,12 @@ export interface ISetSuggestion {
   suggestions: Array<string>;
 }
 
+export interface IToggleSearchBar {
+  type: ESearchActionType.Toggle_SearchBar;
+}
+
 export type TActions =
   | ISetSelectedKeyword
   | ISetSelectedPlatform
-  | ISetSuggestion;
+  | ISetSuggestion
+  | IToggleSearchBar;

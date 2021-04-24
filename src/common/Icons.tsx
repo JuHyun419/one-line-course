@@ -18,7 +18,8 @@ type TIconStyles = { [propName: string]: string | number };
 export const getIcon = (
   iconName: string,
   onClick?: () => void,
-  additionalStyles?: TIconStyles
+  additionalStyles?: TIconStyles,
+  additionalAttributes?: any
 ): JSX.Element | null | undefined => {
   const classes = IconClassNames.get(iconName.trim());
   return classes ? (
@@ -26,6 +27,7 @@ export const getIcon = (
       className={joinClasses("icon", ...classes)}
       style={additionalStyles}
       onClick={onClick}
+      {...additionalAttributes}
     />
   ) : null;
 };
