@@ -73,13 +73,13 @@ public class CommentService {
     public List<Comment> findAllLectureComments(final Long lectureId) {
         checkArgument(lectureId > 0, "lectureId must be positive number");
 
-        return commentRepository.findAllByLectureId(lectureId);
+        return commentRepository.findAllByLectureIdOrderByCreatedAtDesc(lectureId);
     }
 
     @Transactional(readOnly = true)
     public List<Comment> findAllUserComments(final String userId) {
         checkNotNull(userId, "userId must be provided");
 
-        return commentRepository.findAllByUserId(userId);
+        return commentRepository.findAllByUserIdOrderByCreatedAtDesc(userId);
     }
 }
