@@ -54,6 +54,9 @@ export enum ESeparatorDirection {
   Horizontal,
 }
 
+/**
+ * Carousel Action Types
+ */
 export enum ECarouselAsyncActionType {
   FetchRequest_CarouselImagesURLs = "FETCH_REQUEST_CAROUSEL_IMAGES_URLS",
   FetchSucceed_CarouselImagesURLs = "FETCH_SUCCEED_CAROUSEL_IMAGES_URLS",
@@ -66,16 +69,13 @@ export enum ECarouselActionType {
   Set_ImageWidth = "SET_IMAGE_WIDTH",
 }
 
+/**
+ * Search Action Types
+ */
 export enum ESearchActionType {
   Set_SelectedKeyword = "SET_SELECTED_KEYWORD",
   Set_SelectedPlatform = "SET_SELECTED_PLATFORM",
-  Set_Suggestion = "SET_SUGGESTION",
-}
-
-export enum ESearchBarActionType {
-  Toggle_SearchBar = "TOGGLE_SEARCH_BAR",
-  Open_SearchBar = "OPEN_SEARCH_BAR",
-  Close_SearchBar = "CLOSE_SEARCH_BAR",
+  Clear_SelectedAll = "CLEAR_SELECTED_ALL",
 }
 
 export enum ESearchAsyncActionType {
@@ -84,6 +84,26 @@ export enum ESearchAsyncActionType {
   FetchFail_RetrieveLectures = "FETCH_FAIL_RETRIEVE_LECTURES",
 }
 
+/**
+ * SearchBar Action Types
+ */
+export enum ESearchBarActionType {
+  Toggle_SearchBar = "TOGGLE_SEARCH_BAR",
+  Open_SearchBar = "OPEN_SEARCH_BAR",
+  Close_SearchBar = "CLOSE_SEARCH_BAR",
+}
+
+/**
+ * Search Suggestion Action Types
+ */
+export enum ESearchSuggestionActionType {
+  Set_Suggestion = "SET_SUGGESTION",
+  Clear_Suggestion = "CLEAR_SUGGESTION",
+}
+
+/**
+ * User Action Types
+ */
 export enum EUserAsyncActionType {
   FetchRequest_CreateUser = "FETCH_REQUEST_CREATE_USER",
   FetchSucceed_CreateUser = "FETCH_SUCCEED_CREATE_USER",

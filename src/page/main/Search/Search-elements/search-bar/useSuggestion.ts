@@ -1,9 +1,10 @@
 import { useCallback, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { TCombinedStates } from "~store";
 import {
   setSuggestion,
   ISetSuggestion,
-} from "../../../../../store/action/search";
+} from "../../../../../store/action/search-suggestion";
 
 import { keywordsEnglishAsArr, keywordsKoreanAsArr } from "./SearchData";
 
@@ -19,6 +20,9 @@ const isKorean = (input: string) => input.match(koreanCheckReg) !== null;
 export const useSuggestion = () => {
   const nextInputAwaitTimer = useRef<NodeJS.Timeout>();
   const dispatch = useDispatch();
+  const suggestions = useSelector(
+    (state: TCombinedStates) => state.searchSuggestion.suggestions
+  );
   const _setSuggestion = useCallback(
     (suggestion: string[]) => dispatch(setSuggestion(suggestion)),
     [dispatch]
@@ -38,9 +42,10 @@ export const useSuggestion = () => {
         suggest(
           isKorean(value) ? keywordsKoreanAsArr : keywordsEnglishAsArr,
           value,
+          suggestions,
           _setSuggestion
         );
-      }, 1000);
+      }, 300);
     },
     [keywordsEnglishAsArr, keywordsKoreanAsArr, _setSuggestion]
   );
@@ -49,12 +54,19 @@ export const useSuggestion = () => {
 const suggest = (
   keywords: string[],
   input: string,
+  suggestions: string[],
   _setSuggestion: (suggestion: string[]) => ISetSuggestion
 ) => {
   // no empty input allowed
   if (input === "") {
+    // wipe out the previous suggestions if any remains
+    // if (suggestions && suggestions.length > 0) {
+    // }
+    _setSuggestion([]);
+
     return;
   }
+
   // filter the keywords including input
   const matchedKeywords: string[] = keywords.filter((keywords: string) =>
     keywords.includes(input)

@@ -1,22 +1,11 @@
-import {
-  TActions,
-  ISetSelectedKeyword,
-  ISetSelectedPlatform,
-  ISetSuggestion,
-} from "./Actions";
+import { TActions, ISetSelectedKeyword, ISetSelectedPlatform } from "./Actions";
 
-import {
-  setSelectedKeyword,
-  setSelectedPlatform,
-  setSuggestion,
-} from "./ActionCreators";
+import { setSelectedKeyword, setSelectedPlatform } from "./ActionCreators";
 
 export {
   TActions,
   ISetSelectedKeyword,
   ISetSelectedPlatform,
-  ISetSuggestion,
   setSelectedKeyword,
   setSelectedPlatform,
-  setSuggestion,
 };
