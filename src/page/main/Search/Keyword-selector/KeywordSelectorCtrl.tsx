@@ -17,7 +17,7 @@ import KeywordSelector from "./KeywordSelector";
 import "./_KeywordSelectorCtrl.scss";
 
 const KeywordSelectorCtrl = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  
 
   const _setSelectedKeyword = useCallback(
     (selectedKeyword: string) => dispatch(setSelectedKeyword(selectedKeyword)),

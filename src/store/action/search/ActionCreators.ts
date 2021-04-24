@@ -3,7 +3,6 @@ import {
   ISetSelectedKeyword,
   ISetSelectedPlatform,
   ISetSuggestion,
-  IToggleSearchBar
 } from "./Actions";
 
 export const setSelectedKeyword = (
@@ -20,13 +19,7 @@ export const setSelectedPlatform = (
   selectedPlatform,
 });
 
-export const setSuggestion = (
-  suggestions: Array<string>
-): ISetSuggestion => ({
+export const setSuggestion = (suggestions: Array<string>): ISetSuggestion => ({
   type: ESearchActionType.Set_Suggestion,
   suggestions,
-});
-
-export const toggleSearchBar = (): IToggleSearchBar => ({
-  type: ESearchActionType.Toggle_SearchBar
 });
