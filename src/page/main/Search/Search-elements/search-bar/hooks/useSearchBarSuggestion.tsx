@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
 
-import { TCombinedStates } from "../../../../../store";
+import { TCombinedStates } from "../../../../../../store";
 import { useSuggestion } from "./useSuggestion";
 
 export const useSearchBarSuggestion = () => {

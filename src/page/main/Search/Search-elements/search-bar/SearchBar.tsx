@@ -1,13 +1,15 @@
-import React from "react";
-import { EButtonSize, EButtonType } from "../../../../../typings/type";
-import Button from "../../../../../component/button/Button";
+import React, { useMemo } from "react";
 
 import {
+  AddButton,
+  SearchButton,
+  ClearButton,
   useSearchBarSuggestion,
   useSearchBarSelectedKeywords,
   useSearchBarSelectedPlatforms,
   useToggleSearchBar,
 } from "./";
+
 import "./_SearchBar.scss";
 
 const SearchBar: React.FC<{
@@ -16,26 +18,26 @@ const SearchBar: React.FC<{
   const { onSearchBarInputChange, suggestionJSX } = useSearchBarSuggestion();
   const selectedPlatformsJSX = useSearchBarSelectedPlatforms();
   const selectedKeywordsJSX = useSearchBarSelectedKeywords();
+  const { _toggleSearchBar: toggleSearchBar } = useToggleSearchBar();
 
-  const { _toggleSearchBar } = useToggleSearchBar();
-
-  const searchBarInputJSX = (
-    <input
-      type="text"
-      className="searchBar--input"
-      placeholder="키워드를 입력해서 강의를 찾으세요"
-      onChange={onSearchBarInputChange}
-    />
+  const searchBarInputJSX = useMemo(
+    () => (
+      <input
+        type="text"
+        className="searchBar--input"
+        placeholder="키워드를 입력해서 강의를 찾으세요"
+        onChange={onSearchBarInputChange}
+      />
+    ),
+    [onSearchBarInputChange]
   );
-
-  const { addBtnJSX, searchBtnJSX, clearBtnJSX } = makeBtns();
 
   return (
     <div className="searchBar">
       {searchBarInputJSX}
-      <div onClick={_toggleSearchBar}>{searchIcon}</div>
-      {addBtnJSX}
-      {searchBtnJSX}
+      <div onClick={toggleSearchBar}>{searchIcon}</div>
+      <AddButton />
+      <SearchButton />
       <div className="searchBar--suggestions">{suggestionJSX}</div>
       <div className="searchBar--separator"></div>
       <p className="searchBar--selectedKeywords-placeholder">
@@ -45,44 +47,9 @@ const SearchBar: React.FC<{
         {selectedPlatformsJSX}
         {selectedKeywordsJSX}
       </div>
-      {clearBtnJSX}
+      <ClearButton />
     </div>
   );
-};
-
-const makeBtns = () => {
-  const addBtnJSX = (
-    <Button
-      btnSize={EButtonSize.Small}
-      btnType={EButtonType.Primary}
-      additionalClassName="searchBar--btn-add"
-    >
-      추가
-    </Button>
-  );
-
-  const searchBtnJSX = (
-    <Button
-      btnSize={EButtonSize.XSmall}
-      btnType={EButtonType.Primary}
-      additionalClassName="searchBar--btn-search"
-      additionalStyles={{ fontSize: "0.9rem" }}
-    >
-      검색
-    </Button>
-  );
-
-  const clearBtnJSX = (
-    <Button
-      btnSize={EButtonSize.Small}
-      btnType={EButtonType.Primary}
-      additionalClassName="searchBar--clearBtn"
-    >
-      비우기
-    </Button>
-  );
-
-  return { addBtnJSX, searchBtnJSX, clearBtnJSX };
 };
 
 export default SearchBar;

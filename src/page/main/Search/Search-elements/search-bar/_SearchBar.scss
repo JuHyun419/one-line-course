@@ -40,29 +40,17 @@
     }
   }
 
-  .searchBar--btn-add {
-    position: absolute;
-    left: 83%;
-    top: 35%;
-  }
-
-  .searchBar--btn-search {
-    position: absolute;
-    left: 83%;
-    top: 45%;
-  }
-
   .searchBar--suggestions {
     position: absolute;
     left: 5%;
-    top: 15%;    
+    top: 15%;
 
     box-sizing: border-box;
 
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
-    align-items:flex-start;
+    align-items: flex-start;
 
     width: 77%;
     height: 43%;
@@ -71,7 +59,7 @@
     list-style-type: none;
 
     li {
-      background-color: $color-selected;
+      background-color: $color-warning;
       color: #fff;
 
       border: 1px solid #000;
@@ -89,8 +77,8 @@
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
-    align-items:flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
 
     width: 77%;
     height: 28%;
@@ -98,8 +86,15 @@
 
     list-style-type: none;
 
-    li {
+    &-keywords {
       background-color: $color-selected;
+    }
+
+    &-platforms {
+      background-color: $color-warning;
+    }
+
+    li {
       color: #fff;
 
       border: 1px solid #000;
@@ -120,11 +115,5 @@
 
     margin: 5px 5px;
     border-bottom: 1px dashed #000;
-  }
-
-  .searchBar--clearBtn {
-    position: absolute;
-    left: 83%;
-    top: 87%;
   }
 }

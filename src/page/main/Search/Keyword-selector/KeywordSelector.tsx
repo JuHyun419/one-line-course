@@ -7,8 +7,9 @@ import "./_KeywordSelector.scss";
 const KeywordSelector: React.FC<{
   title: string;
   keywords: Array<string>;
+  keywordsClassName: string;
   dispatchKeyword: (selectedPlatform: string) => void;
-}> = ({ title, keywords, dispatchKeyword }) => {
+}> = ({ title, keywords, keywordsClassName, dispatchKeyword }) => {
   const { _openSearchBar } = useToggleSearchBar();
 
   const onSelectKeyword = useCallback(
@@ -44,7 +45,11 @@ const KeywordSelector: React.FC<{
   const selectedKeywordsJSX = useMemo(
     () =>
       keywords?.map((keyword: string) => (
-        <li key={uuid()} onClick={onSelectKeywordLiElement}>
+        <li
+          key={uuid()}
+          onClick={onSelectKeywordLiElement}
+          className={keywordsClassName}
+        >
           <p onClick={onSelectKeyword}>{keyword}</p>
         </li>
       )),

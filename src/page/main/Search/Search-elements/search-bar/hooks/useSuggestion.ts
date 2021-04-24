@@ -4,9 +4,9 @@ import { TCombinedStates } from "~store";
 import {
   setSuggestion,
   ISetSuggestion,
-} from "../../../../../store/action/search-suggestion";
+} from "../../../../../../store/action/search-suggestion";
 
-import { keywordsEnglishAsArr, keywordsKoreanAsArr } from "./SearchData";
+import { keywordsEnglishAsArr, keywordsKoreanAsArr } from "../SearchData";
 
 const koreanCheckReg = /[가-힣]/;
 /**

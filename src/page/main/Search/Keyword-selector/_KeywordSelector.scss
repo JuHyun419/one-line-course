@@ -34,6 +34,18 @@
       display: inline-flex;
       flex-wrap: wrap;
 
+      .platforms {
+        &.active {
+          background-color: $color-warning;
+        }
+      }
+
+      .keywords {
+        &.active {
+          background-color: $color-selected;
+        }
+      }
+
       li {
         list-style-type: none;
         overflow: hidden;

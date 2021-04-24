@@ -1,6 +1,8 @@
-import { useSearchBarSuggestion } from "./useSearchBarSuggestion";
-import { useSearchBarSelectedKeywords } from "./useSearchBarSelectedKeywords";
-import { useSearchBarSelectedPlatforms } from "./useSearchBarSelectedPlatforms";
+import { AddButton, SearchButton, ClearButton } from "./buttons/";
+
+import { useSearchBarSuggestion } from "./hooks/useSearchBarSuggestion";
+import { useSearchBarSelectedKeywords } from "./hooks/useSearchBarSelectedKeywords";
+import { useSearchBarSelectedPlatforms } from "./hooks/useSearchBarSelectedPlatforms";
 import { useToggleSearchBar } from "./useToggleSearchBar";
 
 import {
@@ -13,6 +15,9 @@ import {
 } from "./SearchData";
 
 export {
+  AddButton,
+  SearchButton,
+  ClearButton,
   useSearchBarSuggestion,
   useSearchBarSelectedKeywords,
   useSearchBarSelectedPlatforms,
