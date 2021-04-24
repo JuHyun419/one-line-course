@@ -8,13 +8,17 @@ import {
 import { keywordsEnglishAsArr, keywordsKoreanAsArr } from "./SearchData";
 
 const koreanCheckReg = /[가-힣]/;
+/**
+ * return true if input is Korean, nor false because it's English
+ */
+const isKorean = (input: string) => input.match(koreanCheckReg) !== null;
+
 // const englishCheckReg = /[a-zA-Z]/;
 // const othersCheckReg = /[^ㄱ-ㅎ가-힣a-zA-Z ]/;
 
 export const useSuggestion = () => {
   const nextInputAwaitTimer = useRef<NodeJS.Timeout>();
   const dispatch = useDispatch();
-
   const _setSuggestion = useCallback(
     (suggestion: string[]) => dispatch(setSuggestion(suggestion)),
     [dispatch]
@@ -22,23 +26,20 @@ export const useSuggestion = () => {
 
   return useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      // start detecting whether the input finished or not,
-
+      // dispose the time if it already exists
       if (nextInputAwaitTimer.current) {
         clearTimeout(nextInputAwaitTimer.current);
       }
 
       nextInputAwaitTimer.current = setTimeout(() => {
         const { value } = e.target;
-        // Set back to true, if no detection of input.
-        const matchRes = value.match(koreanCheckReg);
-        // console.log(matchRes);
-
-        if (matchRes === null) {
-          suggest(keywordsEnglishAsArr, value, _setSuggestion);
-        } else {
-          suggest(keywordsKoreanAsArr, value, _setSuggestion);
-        }
+        // match regex with input and decide whether using Korean or English
+        // and suggest
+        suggest(
+          isKorean(value) ? keywordsKoreanAsArr : keywordsEnglishAsArr,
+          value,
+          _setSuggestion
+        );
       }, 1000);
     },
     [keywordsEnglishAsArr, keywordsKoreanAsArr, _setSuggestion]
@@ -54,17 +55,15 @@ const suggest = (
   if (input === "") {
     return;
   }
-
-  console.log("input : ", input);
-
-  const matchedKeywords: Array<string> = keywords.filter(
-    (skillKeyword: string) => skillKeyword.includes(input)
+  // filter the keywords including input
+  const matchedKeywords: string[] = keywords.filter((keywords: string) =>
+    keywords.includes(input)
   );
-
+  // disapatch action to the store
   _setSuggestion(matchedKeywords);
 
-  console.log(
-    `keywords query count : ${keywords.length}`,
-    `\nmatched keywords : ${matchedKeywords}`
-  );
+  // console.log(
+  //   `keywords query count : ${keywords.length}`,
+  //   `\nmatched keywords : ${matchedKeywords}`
+  // );
 };

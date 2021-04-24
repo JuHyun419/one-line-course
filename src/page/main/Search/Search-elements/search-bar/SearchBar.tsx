@@ -22,6 +22,7 @@ const SearchBar: React.FC<{
   const selectedKeywords = useSelector(
     (state: TCombinedStates) => state.search.selectedKeywords
   );
+  
   const selectedPlatforms = useSelector(
     (state: TCombinedStates) => state.search.selectedPlatforms
   );

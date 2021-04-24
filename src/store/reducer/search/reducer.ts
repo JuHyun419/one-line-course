@@ -23,22 +23,22 @@ const reducer = (state: ISearch = init, action: TSearchActions): ISearch => {
       return {
         ...state,
         selectedKeywords:
-          state.selectedKeywords.indexOf(action.selectedKeyword) === -1 // if it doesn't match
-            ? [...state.selectedKeywords, action.selectedKeyword]
-            : state.selectedKeywords.filter(
+          state.selectedKeywords.indexOf(action.selectedKeyword) !== -1 // if it doesn't match
+            ? state.selectedKeywords.filter(
                 keyword => keyword !== action.selectedKeyword
-              ),
+              )
+            : [...state.selectedKeywords, action.selectedKeyword],
       };
 
     case ESearchActionType.Set_SelectedPlatform:
       return {
         ...state,
         selectedPlatforms:
-          state.selectedPlatforms.indexOf(action.selectedPlatform) === -1
-            ? [...state.selectedPlatforms, action.selectedPlatform]
-            : state.selectedPlatforms.filter(
+          state.selectedPlatforms.indexOf(action.selectedPlatform) !== -1
+            ? state.selectedPlatforms.filter(
                 platform => platform !== action.selectedPlatform
-              ),
+              )
+            : [...state.selectedPlatforms, action.selectedPlatform],
       };
 
     case ESearchActionType.Set_Suggestion:

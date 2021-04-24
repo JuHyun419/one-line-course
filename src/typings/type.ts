@@ -90,11 +90,6 @@ export enum ECommentAsyncActionType {}
 
 export enum ECommentActionType {}
 
-export enum ELecturePlatform {
-  Youtube,
-  Inflearn,
-}
-
 export interface ILectureFetchResult {
   id: number;
   imageUrl: string;

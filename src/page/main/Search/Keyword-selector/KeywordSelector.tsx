@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { Dispatch, useCallback, useMemo, useRef } from "react";
 import { v4 as uuid } from "uuid";
 
 import "./_KeywordSelector.scss";
@@ -6,13 +6,45 @@ import "./_KeywordSelector.scss";
 const KeywordSelector: React.FC<{
   title: string;
   keywords: Array<string>;
-  onClick: (e: React.MouseEvent<HTMLElement>) => void;
-}> = ({ title, keywords, onClick }) => {
-  const onPropagateFromP = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    console.log("li!", e.target);
+  dispatchKeyword: (selectedPlatform: string) => void;
+}> = ({ title, keywords, dispatchKeyword }) => {
+  const onSelectKeyword = useCallback(
+    (e: React.MouseEvent<HTMLParagraphElement>) => {
+      e.stopPropagation();
+      // current element is p tag
+      const el = e.target as HTMLParagraphElement;
 
-    (e.target as HTMLElement).classList.toggle("active");
-  }, []);
+      dispatchKeyword(el?.innerText);
+      // toggle background color of parent element (li tag)
+      (el?.parentElement as HTMLLIElement).classList.toggle("active");
+    },
+    [dispatchKeyword]
+  );
+
+  const onSelectKeywordLiElement = useCallback(
+    (e: React.MouseEvent<HTMLLIElement>) => {
+      const el = e.target as HTMLLIElement;
+
+      // // apply backgroud color
+      el?.classList.toggle("active");
+
+      // dispatch to the store with the selected keyword or platform
+      dispatchKeyword(
+        (el?.firstElementChild as HTMLParagraphElement).innerText
+      );
+    },
+    [dispatchKeyword]
+  );
+
+  const selectedKeywordsJSX = useMemo(
+    () =>
+      keywords?.map((keyword: string) => (
+        <li key={uuid()} onClick={onSelectKeywordLiElement}>
+          <p onClick={onSelectKeyword}>{keyword}</p>
+        </li>
+      )),
+    [keywords]
+  );
 
   return (
     <div className="keywordSelector">
@@ -20,13 +52,7 @@ const KeywordSelector: React.FC<{
         <p>{title}</p>
       </div>
       <div className="keywordSelector-right">
-        <ul>
-          {keywords.map(keyword => (
-            <li key={uuid()} onClick={onPropagateFromP}>
-              <p onClick={onClick}>{keyword}</p>
-            </li>
-          ))}
-        </ul>
+        <ul>{selectedKeywordsJSX}</ul>
       </div>
     </div>
   );

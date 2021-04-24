@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { Dispatch, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
 import {
@@ -30,32 +30,12 @@ const KeywordSelectorCtrl = () => {
     [dispatch]
   );
 
-  const onSelectKeyword = useCallback(
-    (e: React.MouseEvent<HTMLElement>) => {
-      console.log("p!", e.target);
-
-      const el = e.target as HTMLElement;
-      _setSelectedKeyword(el.innerText);
-    },
-    [_setSelectedKeyword]
-  );
-
-  const onSelectPlatform = useCallback(
-    (e: React.MouseEvent<HTMLElement>) => {
-      console.log("p!", e.target);
-
-      const el = e.target as HTMLElement;
-      _setSelectedPlatform(el.innerText);
-    },
-    [_setSelectedPlatform]
-  );
-
   return (
     <div className="keywordSelectorCtrl">
       <KeywordSelector
         title="플랫폼"
         keywords={platformsAsArr}
-        onClick={onSelectPlatform}
+        dispatchKeyword={_setSelectedPlatform}
       />
       <KeywordSelector
         title="프로그래밍 언어 / API / 프레임워크"
@@ -63,7 +43,7 @@ const KeywordSelectorCtrl = () => {
           ...keywordsKoreanAsArr.slice(keywordsKoreanAsArr.length / 2),
           ...keywordsEnglishAsArr.slice(0, keywordsEnglishAsArr.length / 2),
         ]}
-        onClick={onSelectKeyword}
+        dispatchKeyword={_setSelectedKeyword}
       />
     </div>
   );
