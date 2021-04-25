@@ -107,6 +107,7 @@
   - 검색 조건에 강의자(instructor) 추가
   - 환경 변수(application.properties) 관리(외부 노출 X)
   - 테스트 코드(통합 테스트, 단위 테스트) 추가
+  - Exception Handling
 
 <br><br>
 
