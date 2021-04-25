@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
+import { v4 as uuid } from "uuid";
 import { shallowEqual, useSelector } from "react-redux";
-import { TCombinedStates } from "~store";
+import { TCombinedStates } from "../../../store";
+import { ILectureFetchResult } from "../../../typings/type";
 
 import GridView from "./view/GridView";
 import ListView from "./view/ListView";
@@ -22,9 +24,28 @@ const SearchResult = () => {
     shallowEqual
   );
 
+  const searchedLectures: ILectureFetchResult[] = useSelector(
+    (state: TCombinedStates) => state.searchResult.lectures
+  );
+
+  const searchedLecturesJSX = useMemo(
+    () =>
+      searchedLectures?.map((lec: ILectureFetchResult) => (
+        <li key={uuid()}>
+          {lec.title} {lec.skills[0]}
+        </li>
+      )),
+    [searchedLectures]
+  );
+
   const resultViewJSX = isGridView ? <GridView /> : <ListView />;
 
-  return <div className="searchResult">{resultViewJSX}</div>;
+  return (
+    <div className="searchResult">
+      {resultViewJSX}
+      {searchedLecturesJSX}
+    </div>
+  );
 };
 
 export default SearchResult;

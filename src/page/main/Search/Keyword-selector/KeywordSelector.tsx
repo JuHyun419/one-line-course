@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from "react";
 import { v4 as uuid } from "uuid";
-import { useToggleSearchBar } from "../Search-elements/search-bar";
+import { useToggleSearchBar } from "../search-bar";
 
 import "./_KeywordSelector.scss";
 

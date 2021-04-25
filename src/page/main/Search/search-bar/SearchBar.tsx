@@ -12,7 +12,7 @@ import {
   useSearchBarSelectedKeywords,
   useSearchBarSelectedPlatforms,
   useToggleSearchBar,
-} from "./";
+} from ".";
 import SearchBarInput from "./SearchBarInput";
 
 import "./_SearchBar.scss";

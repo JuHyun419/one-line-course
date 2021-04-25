@@ -2,9 +2,9 @@ import React, { useCallback, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { Dispatch } from "redux";
 import { v4 as uuid } from "uuid";
-import { TCombinedStates } from "../../../../../../store";
+import { TCombinedStates } from "../../../../../store";
 
-import { setSelectedPlatform } from "../../../../../../store/action/search";
+import { setSelectedPlatform } from "../../../../../store/action/search";
 
 export const useSearchBarSelectedPlatforms = (
   dispatch: Dispatch<any>

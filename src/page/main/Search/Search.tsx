@@ -4,7 +4,7 @@ import { TCombinedStates } from "../../../store";
 
 import { initFetch_RetrieveLectures } from "../../../store/action/search-async";
 
-import SearchCtrl from "./Search-elements/SearchCtrl";
+import SearchCtrl from "./search-ctrl/SearchCtrl";
 import Loading from "../../../component/loading/Loading";
 
 import "./_Search.scss";

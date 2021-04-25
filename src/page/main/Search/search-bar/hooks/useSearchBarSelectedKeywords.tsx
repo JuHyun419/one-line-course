@@ -2,9 +2,9 @@ import React, { useCallback, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { Dispatch } from "redux";
 import { v4 as uuid } from "uuid";
-import { TCombinedStates } from "../../../../../../store";
+import { TCombinedStates } from "../../../../../store";
 
-import { setSelectedKeyword } from "../../../../../../store/action/search";
+import { setSelectedKeyword } from "../../../../../store/action/search";
 
 export const useSearchBarSelectedKeywords = (
   dispatch: Dispatch<any>

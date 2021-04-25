@@ -1,17 +1,17 @@
 import React, { useCallback } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
-import { TCombinedStates } from "../../../../../../store";
+import { TCombinedStates } from "../../../../../store";
 
-import { EButtonSize, EButtonType } from "../../../../../../typings/type";
-import Button from "../../../../../../component/button/Button";
+import { EButtonSize, EButtonType } from "../../../../../typings/type";
+import Button from "../../../../../component/button/Button";
 
-import { setSelectedKeyword } from "../../../../../../store/action/search";
+import { setSelectedKeyword } from "../../../../../store/action/search";
 import {
   setCurrentInput,
   ToggleInvalidKeywordWarningRef,
-} from "../../../../../../store/action/search-bar";
-import { clearSuggestion } from "../../../../../../store/action/search-suggestion";
+} from "../../../../../store/action/search-bar";
+import { clearSuggestion } from "../../../../../store/action/search-suggestion";
 
 import "./_SearchBarButton.scss";
 

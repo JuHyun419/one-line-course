@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { EButtonSize, EButtonType } from "../../../../../../typings/type";
-import Button from "../../../../../../component/button/Button";
-import { clearSelectedAll } from "../../../../../../store/action/search/ActionCreators";
+import { EButtonSize, EButtonType } from "../../../../../typings/type";
+import Button from "../../../../../component/button/Button";
+import { clearSelectedAll } from "../../../../../store/action/search/ActionCreators";
 
 import "./_SearchBarButton.scss";
 

@@ -8,9 +8,9 @@ import { initFetch_CarouselImageURLs } from "../../store/action/carousel-async/"
 
 import NavFactory from "../../component/nav/nav-factory/NavFactory";
 
-import ImageCarousel from "./Image-carousel/ImageCarousel";
-import Search from "./Search/Search";
-import KeywordSelectorCtrl from "./Search/Keyword-selector/KeywordSelectorCtrl";
+import ImageCarousel from "./image-carousel/ImageCarousel";
+import Search from "./search/Search";
+import KeywordSelectorCtrl from "./search/keyword-selector/KeywordSelectorCtrl";
 import SearchResult from "./search-result/SearchResult";
 import MainMenu from "./main-menu/MainMenu";
 import { placeIconsRandomly } from "../../common/";

@@ -10,7 +10,7 @@ import {
   platformsEnglishAsArr,
   keywordsKoreanAsArr,
   keywordsEnglishAsArr,
-} from "../Search-elements/search-bar/SearchData";
+} from "../search-bar/SearchData";
 
 import KeywordSelector from "./KeywordSelector";
 

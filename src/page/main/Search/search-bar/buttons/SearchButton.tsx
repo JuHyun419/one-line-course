@@ -1,16 +1,16 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { TCombinedStates } from "../../../../../../store";
+import { TCombinedStates } from "../../../../../store";
 
 import {
   EButtonSize,
   EButtonType,
   ILectureFetchResult,
-} from "../../../../../../typings/type";
-import Button from "../../../../../../component/button/Button";
+} from "../../../../../typings/type";
+import Button from "../../../../../component/button/Button";
 
-import { initSearch } from "../../../../../../store/action/search-result";
+import { initSearch } from "../../../../../store/action/search-result";
 
 import "./_SearchBarButton.scss";
 
@@ -31,6 +31,7 @@ const SearchButton: React.FC = () => {
 };
 
 const useOnClickSearchBtn = () => {
+  const dispatch = useDispatch();
   const selectedKeywords: string[] = useSelector(
     (state: TCombinedStates) => state.search.selectedKeywords
   );
@@ -43,15 +44,13 @@ const useOnClickSearchBtn = () => {
     (state: TCombinedStates) => state.searchAsync.lectures
   );
 
-  const dispatch = useDispatch();
-
   // start search
   const _initSearch = useCallback(() => {
-    console.log("selected keywords ", selectedKeywords);
-    console.log("selected platforms ", selectedPlatforms);
+    // console.log("selected keywords ", selectedKeywords);
+    // console.log("selected platforms ", selectedPlatforms);
 
     dispatch(initSearch(selectedPlatforms, selectedKeywords, lectures));
-  }, [dispatch, selectedPlatforms, selectedKeywords, lectures]);
+  }, [selectedPlatforms, selectedKeywords, lectures]);
 
   return useCallback((_: React.MouseEvent<HTMLDivElement>) => _initSearch(), [
     _initSearch,

@@ -2,8 +2,8 @@ import React, { useMemo } from "react";
 import { toggleSearchBar } from "../../../../store/action/search-bar";
 
 import { getIcon } from "../../../../common";
-import SearchBar from "./search-bar/SearchBar";
-import { useToggleSearchBar } from "./search-bar";
+import SearchBar from "../search-bar/SearchBar";
+import { useToggleSearchBar } from "../search-bar";
 
 import "./_SearchCtrl.scss";
 

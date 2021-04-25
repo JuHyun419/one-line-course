@@ -1,11 +1,11 @@
 import { useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TCombinedStates } from "../../../../../../store";
-import { setCurrentInput } from "../../../../../../store/action/search-bar";
+import { TCombinedStates } from "../../../../../store";
+import { setCurrentInput } from "../../../../../store/action/search-bar";
 import {
   setSuggestion,
   ISetSuggestion,
-} from "../../../../../../store/action/search-suggestion";
+} from "../../../../../store/action/search-suggestion";
 
 import { keywordsEnglishAsArr, keywordsKoreanAsArr } from "../SearchData";
 

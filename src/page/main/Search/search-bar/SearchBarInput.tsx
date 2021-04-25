@@ -1,15 +1,15 @@
 import React, { useCallback } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { TCombinedStates } from "../../../../../store";
+import { TCombinedStates } from "../../../../store";
 
-import { clearSuggestion } from "../../../../../store/action/search-suggestion";
-import { setSelectedKeyword } from "../../../../../store/action/search";
+import { clearSuggestion } from "../../../../store/action/search-suggestion";
+import { setSelectedKeyword } from "../../../../store/action/search";
 import {
   setCurrentInput,
   ToggleInvalidKeywordWarningRef,
-} from "../../../../../store/action/search-bar";
+} from "../../../../store/action/search-bar";
 
-import { useSearchBarSuggestion } from "./";
+import { useSearchBarSuggestion } from ".";
 
 const SearchBarInput = () => {
   const { onSearchBarInputChange } = useSearchBarSuggestion();
