@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.github.oneline.onelinecourse.util.StatusCode.getStatusCode;
+
 @RequiredArgsConstructor
 @RestController
 public class LectureController {
@@ -25,10 +27,6 @@ public class LectureController {
                 .map(LectureResponse::new)
                 .collect(Collectors.toList());
 
-        HttpStatus statusCode = response.isEmpty()
-                ? HttpStatus.NO_CONTENT
-                : HttpStatus.OK;
-
-        return new ResponseEntity<>(response, statusCode);
+        return new ResponseEntity<>(response, getStatusCode(response));
     }
 }

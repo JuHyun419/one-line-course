@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.github.oneline.onelinecourse.util.StatusCode.getStatusCode;
+
 @RequiredArgsConstructor
 @RequestMapping("/comments")
 @RestController
@@ -58,11 +60,7 @@ public class CommentController {
                 .map(CommentResponse::new)
                 .collect(Collectors.toList());
 
-        HttpStatus statusCode = response.isEmpty()
-                ? HttpStatus.NO_CONTENT
-                : HttpStatus.OK;
-
-        return new ResponseEntity<>(response, statusCode);
+        return new ResponseEntity<>(response, getStatusCode(response));
     }
 
     @GetMapping("/user/{userId}")
@@ -75,10 +73,6 @@ public class CommentController {
                 .map(CommentResponse::new)
                 .collect(Collectors.toList());
 
-        HttpStatus statusCode = response.isEmpty()
-                ? HttpStatus.NO_CONTENT
-                : HttpStatus.OK;
-
-        return new ResponseEntity<>(response, statusCode);
+        return new ResponseEntity<>(response, getStatusCode(response));
     }
 }
