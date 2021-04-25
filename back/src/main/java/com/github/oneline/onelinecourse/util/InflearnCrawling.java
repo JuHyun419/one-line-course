@@ -1,4 +1,4 @@
-package com.github.oneline.onelinecourse.util.crawling;
+package com.github.oneline.onelinecourse.util;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
