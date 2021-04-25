@@ -40,6 +40,14 @@ export const initFetch_RetrieveLectures = () => async (
   try {
     dispatch(fetchRequest_RetrieveLectures());
     const { data, status } = await getLectures();
+
+    // hasUppercase?
+    // data.forEach((d: ILectureFetchResult, i: number) => {
+    //   if (d.skills.match(/[A-Z]/) !== null) {
+    //     console.log(`${i}: ${d.skills} has uppercase!`);
+    //   }
+    // });
+
     dispatch(fetchSucceed_RetrieveLectures(status, data));
   } catch (err) {
     dispatch(fetchFail_RetrieveLectures("TEST_ERR_CODE", err));

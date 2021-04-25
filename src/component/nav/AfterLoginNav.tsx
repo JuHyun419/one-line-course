@@ -7,12 +7,6 @@ import Button from "../button/Button";
 
 import "./_Nav.scss";
 
-interface NavProps {
-  // TODO: decorator -> @range(0, 4)
-  highlightBtnIdx?: number;
-  children?: JSX.Element;
-}
-
 const AfterLoginNav: React.FC<NavProps> = (props: NavProps) => (
   <div className="nav-afterLogin">{makeButtonsOnHistory(props)}</div>
 );

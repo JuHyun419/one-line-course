@@ -1,6 +1,10 @@
-export const platforms = new Set<string>(["유튜브", "인프런"]);
+export const platformsKorean = new Set<string>(["유튜브", "인프런"]);
 
-export const platformsAsArr = Array.from<string>(platforms);
+export const platformsKoreanAsArr = Array.from<string>(platformsKorean);
+
+export const platformsEnglish = new Set<string>(["Youtube", "Inflearn"]);
+
+export const platformsEnglishAsArr = Array.from<string>(platformsEnglish);
 
 export const keywordsKorean = new Set<string>([
   "클론코딩",
@@ -71,9 +75,7 @@ export const keywordsKorean = new Set<string>([
   "해킹",
 ]);
 
-export const keywordsKoreanAsArr = Array.from<string>(
-  keywordsKorean
-);
+export const keywordsKoreanAsArr = Array.from<string>(keywordsKorean);
 
 export const keywordsEnglish = new Set<string>([
   "c",
@@ -95,6 +97,7 @@ export const keywordsEnglish = new Set<string>([
   "spring",
   "back-end",
   "front-end",
+  "html/css",
   "redux",
   "mobx",
   "unity3d",
@@ -195,7 +198,7 @@ export const keywordsEnglish = new Set<string>([
   "refactoring",
   "netword",
   "tcpip",
-  "tsc/ip",
+  "tcp/ip",
   "sql",
   "nosql",
   "cloud",
@@ -220,9 +223,7 @@ export const keywordsEnglish = new Set<string>([
   "Tensorflow",
 ]);
 
-export const keywordsEnglishAsArr = Array.from<string>(
-  keywordsEnglish
-);
+export const keywordsEnglishAsArr = Array.from<string>(keywordsEnglish);
 
 // type TSearchKeyword = {
 //   [langName: string]: {

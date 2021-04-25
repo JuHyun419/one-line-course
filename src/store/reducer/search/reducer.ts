@@ -4,7 +4,6 @@ import { TActions as TSearchActions } from "../../action/search";
 export interface ISearch {
   selectedKeywords: string[];
   selectedPlatforms: string[];
-  suggestions: string[];
 }
 
 export interface IState {
@@ -14,7 +13,6 @@ export interface IState {
 const init: ISearch = {
   selectedKeywords: [],
   selectedPlatforms: [],
-  suggestions: [],
 };
 
 const reducer = (state: ISearch = init, action: TSearchActions): ISearch => {
@@ -41,10 +39,11 @@ const reducer = (state: ISearch = init, action: TSearchActions): ISearch => {
             : [...state.selectedPlatforms, action.selectedPlatform],
       };
 
-    case ESearchActionType.Set_Suggestion:
+    case ESearchActionType.Clear_SelectedAll:
       return {
         ...state,
-        suggestions: action.suggestions,
+        selectedKeywords: [],
+        selectedPlatforms: [],
       };
 
     default:
