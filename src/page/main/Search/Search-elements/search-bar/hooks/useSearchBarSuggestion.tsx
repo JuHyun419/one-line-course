@@ -2,17 +2,22 @@ import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
 
-import { TCombinedStates } from "../../../../../store";
+import { TCombinedStates } from "../../../../../../store";
 import { useSuggestion } from "./useSuggestion";
 
 export const useSearchBarSuggestion = () => {
   const onSearchBarInputChange = useSuggestion();
 
   const suggestions = useSelector(
-    (state: TCombinedStates) => state.search.suggestions
+    (state: TCombinedStates) => state.searchSuggestion.suggestions
   );
   const suggestionJSX = useMemo(
-    () => suggestions?.map(sug => <li key={uuid()}>{sug}</li>),
+    () =>
+      suggestions && suggestions.length > 0
+        ? suggestions?.map((suggestion: string) => (
+            <li key={uuid()}>{suggestion}</li>
+          ))
+        : null,
     [suggestions]
   );
 

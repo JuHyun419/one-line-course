@@ -10,12 +10,21 @@ export interface ISetSelectedPlatform {
   selectedPlatform: string;
 }
 
-export interface ISetSuggestion {
-  type: ESearchActionType.Set_Suggestion;
-  suggestions: Array<string>;
+export interface IClearSelectedAll {
+  type: ESearchActionType.Clear_SelectedAll;
+}
+
+export interface IStartSearch {
+  type: ESearchActionType.Start_Search;
+}
+
+export interface IToggleResultView {
+  type: ESearchActionType.Toggle_ResultView
 }
 
 export type TActions =
   | ISetSelectedKeyword
   | ISetSelectedPlatform
-  | ISetSuggestion;
+  | IClearSelectedAll
+  | IStartSearch
+  | IToggleResultView;

@@ -12,8 +12,7 @@ import {
   ViewModeCtxState,
 } from "../../../context/ViewModeCtx";
 
-import { joinClasses } from "../../../common/StyleHelper";
-import { getIcon } from "../../../common/Icons";
+import { joinClasses, getIcon } from "../../../common";
 import Separator from "../../../component/separator/Separator";
 
 import "./_MenuBar.scss";
@@ -27,10 +26,7 @@ interface MenuBarProps {
  *
  * @returns
  */
-const MenuBar: React.FC<MenuBarProps> = ({
-  menuMode,
-  isMenuOpen,
-}: MenuBarProps) => {
+const MenuBar: React.FC<MenuBarProps> = ({ menuMode, isMenuOpen }) => {
   const darkModeCtx = useDarkModeContext();
   const viewModeCtx = useViewModeContext();
 
@@ -133,7 +129,7 @@ const makeMenuBarItemsAfterLogin = (
   <Fragment>
     {getIcon("Sun", toggleDarkMode, iconStyles[0])}
     {getIcon("Moon", toggleDarkMode, iconStyles[1])}
-    <Separator direction={ESeparatorDirection.Vertical} />
+    <Separator direction={ESeparatorDirection.Horizontal} />
     {getIcon("Grid", toggleViewMode, iconStyles[2])}
     {getIcon("List", toggleViewMode, iconStyles[3])}
   </Fragment>

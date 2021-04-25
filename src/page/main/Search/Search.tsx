@@ -1,25 +1,24 @@
-import React, { useCallback, useEffect } from "react";
+import React, { Fragment, useCallback, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { TCombinedStates } from "../../../store";
+import { EMenuMode } from "../../../typings/type";
 
 import { initFetch_RetrieveLectures } from "../../../store/action/search-async";
 
 import KeywordSelectorCtrl from "./Keyword-selector/KeywordSelectorCtrl";
 import SearchCtrl from "./Search-elements/SearchCtrl";
 import Loading from "../../../component/loading/Loading";
+import Menu from "../../../component/menu/Menu";
 
 import "./_Search.scss";
 
 const Search: React.FC<{}> = () => {
   useInitFetch();
 
-  const loadingJSX = useSelector(
+  const isSearchLoading = useSelector(
     (state: TCombinedStates) => state.searchAsync.isLoading,
     shallowEqual
   );
-  if (loadingJSX) {
-    return <Loading />;
-  }
 
   // const errorJSX = useSelector(
   //   (state: TCombinedStates) => state.searchAsync.err,
@@ -31,17 +30,28 @@ const Search: React.FC<{}> = () => {
 
   return (
     <div className="search">
-      <SearchCtrl />
-      <KeywordSelectorCtrl />
+      {isSearchLoading ? (
+        <Loading />
+      ) : (
+        <Fragment>
+          <SearchCtrl />
+          <KeywordSelectorCtrl />
+          <div className="search--menu">
+            <Menu menuMode={EMenuMode.AfterLogin} />
+          </div>
+        </Fragment>
+      )}
+      {/* Search Result */}
     </div>
   );
 };
 
 const useInitFetch = () => {
   const dispatch = useDispatch();
-  const _initFetch = useCallback(() => dispatch(initFetch_RetrieveLectures()), [
-    dispatch,
-  ]);
+  const _initFetch = useCallback(
+    () => dispatch(initFetch_RetrieveLectures()),
+    []
+  );
 
   useEffect(() => {
     _initFetch();

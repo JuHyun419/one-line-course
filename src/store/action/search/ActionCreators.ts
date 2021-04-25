@@ -2,7 +2,9 @@ import { ESearchActionType } from "../../../typings/type";
 import {
   ISetSelectedKeyword,
   ISetSelectedPlatform,
-  ISetSuggestion,
+  IClearSelectedAll,
+  IStartSearch,
+  IToggleResultView,
 } from "./Actions";
 
 export const setSelectedKeyword = (
@@ -19,7 +21,14 @@ export const setSelectedPlatform = (
   selectedPlatform,
 });
 
-export const setSuggestion = (suggestions: Array<string>): ISetSuggestion => ({
-  type: ESearchActionType.Set_Suggestion,
-  suggestions,
+export const clearSelectedAll = (): IClearSelectedAll => ({
+  type: ESearchActionType.Clear_SelectedAll,
+});
+
+export const startSearch = (): IStartSearch => ({
+  type: ESearchActionType.Start_Search,
+});
+
+export const toggleResultView = (): IToggleResultView => ({
+  type: ESearchActionType.Toggle_ResultView,
 });

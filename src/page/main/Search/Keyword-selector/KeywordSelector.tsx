@@ -1,4 +1,4 @@
-import React, { Dispatch, useCallback, useMemo, useRef } from "react";
+import React, { useCallback, useMemo } from "react";
 import { v4 as uuid } from "uuid";
 import { useToggleSearchBar } from "../Search-elements/search-bar";
 
@@ -7,8 +7,9 @@ import "./_KeywordSelector.scss";
 const KeywordSelector: React.FC<{
   title: string;
   keywords: Array<string>;
+  keywordsClassName: string;
   dispatchKeyword: (selectedPlatform: string) => void;
-}> = ({ title, keywords, dispatchKeyword }) => {
+}> = ({ title, keywords, keywordsClassName, dispatchKeyword }) => {
   const { _openSearchBar } = useToggleSearchBar();
 
   const onSelectKeyword = useCallback(
@@ -22,7 +23,7 @@ const KeywordSelector: React.FC<{
       (el?.parentElement as HTMLLIElement).classList.toggle("active");
       _openSearchBar();
     },
-    [dispatchKeyword]
+    []
   );
 
   const onSelectKeywordLiElement = useCallback(
@@ -38,13 +39,33 @@ const KeywordSelector: React.FC<{
       );
       _openSearchBar();
     },
-    [dispatchKeyword]
+    []
   );
+
+  // const selectedKeywords = useSelector(
+  //   (state: TCombinedStates) => state.search.selectedKeywords
+  // );
+
+  // const selectedPlatforms = useSelector(
+  //   (state: TCombinedStates) => state.search.selectedPlatforms
+  // );
+
+  // useEffect(() => {
+  //   // 1. compare selected keywords with
+  // }, [selectedKeywords]);
+
+  // useEffect(() => {
+
+  // }, [selectedPlatforms]);
 
   const selectedKeywordsJSX = useMemo(
     () =>
       keywords?.map((keyword: string) => (
-        <li key={uuid()} onClick={onSelectKeywordLiElement}>
+        <li
+          key={uuid()}
+          onClick={onSelectKeywordLiElement}
+          className={keywordsClassName}
+        >
           <p onClick={onSelectKeyword}>{keyword}</p>
         </li>
       )),

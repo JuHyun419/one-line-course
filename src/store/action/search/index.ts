@@ -2,21 +2,25 @@ import {
   TActions,
   ISetSelectedKeyword,
   ISetSelectedPlatform,
-  ISetSuggestion,
+  IStartSearch,
+  IToggleResultView,
 } from "./Actions";
 
 import {
   setSelectedKeyword,
   setSelectedPlatform,
-  setSuggestion,
+  clearSelectedAll,
+  toggleResultView,
 } from "./ActionCreators";
 
 export {
   TActions,
   ISetSelectedKeyword,
   ISetSelectedPlatform,
-  ISetSuggestion,
+  IStartSearch,
+  IToggleResultView,
   setSelectedKeyword,
   setSelectedPlatform,
-  setSuggestion,
+  clearSelectedAll,
+  toggleResultView,
 };

@@ -71,9 +71,7 @@ export const keywordsKorean = new Set<string>([
   "해킹",
 ]);
 
-export const keywordsKoreanAsArr = Array.from<string>(
-  keywordsKorean
-);
+export const keywordsKoreanAsArr = Array.from<string>(keywordsKorean);
 
 export const keywordsEnglish = new Set<string>([
   "c",
@@ -220,9 +218,7 @@ export const keywordsEnglish = new Set<string>([
   "Tensorflow",
 ]);
 
-export const keywordsEnglishAsArr = Array.from<string>(
-  keywordsEnglish
-);
+export const keywordsEnglishAsArr = Array.from<string>(keywordsEnglish);
 
 // type TSearchKeyword = {
 //   [langName: string]: {
