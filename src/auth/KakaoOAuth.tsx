@@ -13,12 +13,12 @@ const KakaoOAuth: React.FC<{}> = () => {
         Kakao.API.request({
           url: "/v2/user/me",
           success: onSuccess => {
-            // console.log(onSuccess);
+            console.log(onSuccess);
             history.push("/main");
           },
-          always: onAlways => {
-            // console.log(onAlways);
-          },
+          // always: onAlways => {
+          //   // console.log(onAlways);
+          // },
         });
       },
       fail: onFail => {

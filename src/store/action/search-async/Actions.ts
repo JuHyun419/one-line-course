@@ -1,7 +1,7 @@
 import {
   ESearchAsyncActionType,
   ILectureFetchResult,
-} from "../../../typings/type";
+} from "../../../typings";
 
 export interface IFetchRequestAction_RetrieveLectures {
   type: ESearchAsyncActionType.FetchRequest_RetrieveLectures;

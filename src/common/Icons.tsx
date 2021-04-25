@@ -1,5 +1,5 @@
 import React from "react";
-import { joinClasses, setCSSVariable } from "./StyleHelper";
+import { joinClasses } from "./";
 import { IconClassNames } from "./IconsResources";
 
 import "./_Icons.scss";

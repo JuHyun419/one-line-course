@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { EButtonSize, EButtonType } from "../../../../../typings/type";
+import { EButtonSize, EButtonType } from "../../../../../typings";
 import Button from "../../../../../component/button/Button";
 import { clearSelectedAll } from "../../../../../store/action/search/ActionCreators";
 

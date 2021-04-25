@@ -1,7 +1,7 @@
 import {
   ESearchResultActionType,
   ILectureFetchResult,
-} from "../../../typings/type";
+} from "../../../typings";
 import { TActions as TSearchResultAction } from "../../action/search-result";
 
 export interface ISearchResult {

@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
 
-const GridView = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+export interface IGridViewProps {
+  children: JSX.Element[];
 }
 
+const GridView: React.FC<IGridViewProps> = ({ children }) => {
+  return <div>{children}</div>;
+};
+
 export default GridView;
+

@@ -1,6 +1,8 @@
 import React from "react";
 // import { Action, CombinedState, Reducer, Store, Dispatch } from "redux";
 
+export type TStatusCode = number;
+
 /**
  *
  */
@@ -55,11 +57,11 @@ export enum ESeparatorDirection {
 }
 
 /**
- * 
+ *
  */
 export enum ELectureCardType {
   GridView,
-  ListView
+  ListView,
 }
 
 /**
@@ -122,6 +124,22 @@ export enum ESearchResultActionType {
   Toggle_ResultView = "TOGGLE_RESULT_VIEW",
 }
 
+export interface IUserData {
+  platform: "google" | "kakao"; // 플랫폼 이름 (=string)
+  userID: string;
+  data: {
+    email: string; // "...@google.com" or "...@kakao.com"
+    name: string; // 실제 이름
+    imageURL: string; // 프로필 이미지 URL
+  };
+}
+
+export interface IBookmarkData {
+  bookmarkID: number;
+  userID: string; // 테이블에는 typeof(userID) == bigInt 던데.. 확인 부탁 드려요
+  lectureID: number;
+  createdAt: Date; // 예: Sun Apr 25 2021 21:29:32 GMT+0900 (Korean Standard Time)
+}
 /**
  * User Action Types
  */

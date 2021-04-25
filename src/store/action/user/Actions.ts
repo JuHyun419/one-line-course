@@ -1,4 +1,4 @@
-import { EUserAsyncActionType } from "../../../typings/type";
+import { EUserAsyncActionType } from "../../../typings";
 
 export interface IFetchRequestAction_CreateUser {
   type: EUserAsyncActionType.FetchRequest_CreateUser;

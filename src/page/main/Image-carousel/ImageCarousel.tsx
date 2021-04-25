@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import { setImgWidth, setImagePlacerRef } from "../../../store/action/carousel";
 import { TCombinedStates } from "../../../store";
 
+// import ImageMoveTo from "../Image-carousel-elements/ImageMoveTo";
 import ImageMoveTo from "./Image-carousel-elements/ImageMoveTo";
 import ImagesIndicator from "./Image-carousel-elements/ImagesIndicator";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { ENavType } from "../../typings/type";
+import { ENavType } from "../../typings";
 import NavFactory from "../../component/nav/nav-factory/NavFactory";
 import { placeIconsRandomly } from "../../common/";
 import LandingInfoItems from "./landing-info-item/LandingInfoItems";

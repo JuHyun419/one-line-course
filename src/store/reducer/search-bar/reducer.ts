@@ -1,4 +1,4 @@
-import { ESearchBarActionType } from "../../../typings/type";
+import { ESearchBarActionType } from "../../../typings";
 import { TActions as TSearchBarActions } from "../../action/search-bar";
 
 export interface ISearchBar {

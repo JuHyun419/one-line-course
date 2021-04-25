@@ -1,7 +1,7 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 
-import { EUserAsyncActionType } from "../../../typings/type";
+import { EUserAsyncActionType } from "../../../typings";
 import {
   IFetchRequestAction_CreateUser,
   IFetchSucceed_CreateUser,

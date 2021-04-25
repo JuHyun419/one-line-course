@@ -1,4 +1,4 @@
-import { ESearchSuggestionActionType } from "../../../typings/type";
+import { ESearchSuggestionActionType } from "../../../typings";
 
 export interface ISetSuggestion {
   type: ESearchSuggestionActionType.Set_Suggestion;

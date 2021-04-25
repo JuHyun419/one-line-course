@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { ENavType } from "../../typings/type";
+import { ENavType } from "../../typings";
 // import { TCombinedStates } from "../../store";
 
 import { initFetch_CarouselImageURLs } from "../../store/action/carousel-async/";
@@ -39,14 +39,14 @@ const Main: React.FC<{}> = () => {
 
 const useInitFetch = () => {
   const dispatch = useDispatch();
-  const _initFetch = useCallback(
+  const _initFetchRandomCarouselImages = useCallback(
     // TODO: Fetch Random Images times passing by
     (query: string) => dispatch(initFetch_CarouselImageURLs({ query })),
     []
   );
 
   useEffect(() => {
-    _initFetch("office");
+    _initFetchRandomCarouselImages("office");
   }, []);
 };
 

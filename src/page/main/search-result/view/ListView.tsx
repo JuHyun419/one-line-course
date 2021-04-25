@@ -1,9 +1,13 @@
 import React from 'react'
 
-const ListView = () => {
+export interface IListViewProps {
+  children: JSX.Element[];
+}
+
+const ListView: React.FC<IListViewProps> = ({ children }) => {
   return (
     <div>
-      
+      {children}
     </div>
   )
 }

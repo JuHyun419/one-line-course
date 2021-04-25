@@ -1,5 +1,5 @@
 import React from "react";
-import { ELectureCardType } from "../../../typings/type";
+import { ELectureCardType } from "../../../typings";
 
 interface ILectureCardFactoryProps {
   lectureCardType: ELectureCardType;

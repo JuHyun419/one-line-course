@@ -1,4 +1,4 @@
-import { ECarouselAsyncActionType } from "../../../typings/type";
+import { ECarouselAsyncActionType } from "../../../typings";
 
 // Actions
 export interface IFetchRequestAction_CarouselImageURLs {

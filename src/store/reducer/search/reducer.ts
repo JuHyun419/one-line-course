@@ -1,4 +1,4 @@
-import { ESearchActionType } from "../../../typings/type";
+import { ESearchActionType } from "../../../typings";
 import { TActions as TSearchActions } from "../../action/search";
 
 export interface ISearch {
