@@ -3,6 +3,8 @@ import { TActions as TSearchBarActions } from "../../action/search-bar";
 
 export interface ISearchBar {
   isSearchBarClose: boolean;
+  isInvalidKeyword: boolean;
+  input: string;
 }
 
 export interface IState {
@@ -11,6 +13,8 @@ export interface IState {
 
 const init: ISearchBar = {
   isSearchBarClose: true,
+  isInvalidKeyword: false,
+  input: "",
 };
 
 const reducer = (
@@ -34,6 +38,18 @@ const reducer = (
       return {
         ...state,
         isSearchBarClose: true,
+      };
+
+    case ESearchBarActionType.Set_CurrentInput:
+      return {
+        ...state,
+        input: action.input,
+      };
+
+    case ESearchBarActionType.Toggle_InvalidKeyword_WarningRef:
+      return {
+        ...state,
+        isInvalidKeyword: !state.isInvalidKeyword,
       };
 
     default:

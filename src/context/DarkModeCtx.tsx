@@ -13,14 +13,18 @@ const DarkModeCtx = React.createContext<DarkModeCtxState>({
 });
 
 export const DarkModeCtxProvider: React.FC<{
-  children?: JSX.Element | null | undefined;
+  children: JSX.Element;
 }> = ({ children }) => {
   const { providerValue } = useToggleProvider<DarkModeCtxState>(
     "isDark",
     "toggleDarkMode"
   );
 
-  return <DarkModeCtx.Provider value={providerValue} {...children} />;
+  return (
+    <DarkModeCtx.Provider value={providerValue}>
+      {children}
+    </DarkModeCtx.Provider>
+  );
 };
 
 export const useDarkModeContext = () =>

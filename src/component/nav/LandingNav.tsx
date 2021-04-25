@@ -9,12 +9,6 @@ import "./_Nav.scss";
 
 const toSignIn = "/signIn";
 
-interface NavProps {
-  // TODO: decorator -> @range(0, 4)
-  highlightBtnIdx?: number;
-  children?: JSX.Element;
-}
-
 const LandingNav: React.FC<NavProps> = ({ children }) => {
   const history = useHistory();
   const redirectToSignIn = useRedirectToOnButtonClick(history, toSignIn);

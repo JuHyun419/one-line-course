@@ -3,12 +3,15 @@ import {
   IToggleSearchBar,
   IOpenSearchBar,
   ICloseSearchBar,
+  IToggleInvalidKeywordWarningRef,
 } from "./Actions";
 
 import {
   toggleSearchBar,
   openSearchBar,
   closeSearchBar,
+  setCurrentInput,
+  ToggleInvalidKeywordWarningRef,
 } from "./ActionCreators";
 
 export {
@@ -16,7 +19,10 @@ export {
   IToggleSearchBar,
   IOpenSearchBar,
   ICloseSearchBar,
+  IToggleInvalidKeywordWarningRef,
   toggleSearchBar,
   openSearchBar,
   closeSearchBar,
+  setCurrentInput,
+  ToggleInvalidKeywordWarningRef,
 };

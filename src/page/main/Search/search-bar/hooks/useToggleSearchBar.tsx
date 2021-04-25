@@ -10,24 +10,15 @@ import {
 import { TCombinedStates } from "../../../../../store";
 
 export const useToggleSearchBar = () => {
-  const dispatch = useDispatch();
-
   const isSearchBarClosed = useSelector(
     (state: TCombinedStates) => state.searchBar.isSearchBarClose,
     shallowEqual
   );
 
-  const _toggleSearchBar = useCallback(() => dispatch(toggleSearchBar()), [
-    dispatch,
-  ]);
-
-  const _openSearchBar = useCallback(() => dispatch(openSearchBar()), [
-    dispatch,
-  ]);
-
-  const _closeSearchBar = useCallback(() => dispatch(closeSearchBar()), [
-    dispatch,
-  ]);
+  const dispatch = useDispatch();
+  const _toggleSearchBar = useCallback(() => dispatch(toggleSearchBar()), []);
+  const _openSearchBar = useCallback(() => dispatch(openSearchBar()), []);
+  const _closeSearchBar = useCallback(() => dispatch(closeSearchBar()), []);
 
   return {
     isSearchBarClosed,

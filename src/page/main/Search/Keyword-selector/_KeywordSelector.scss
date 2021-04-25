@@ -7,7 +7,7 @@
   border-radius: 25px;
 
   padding: 15px 25px;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 
   box-sizing: border-box;
 
@@ -33,6 +33,18 @@
     ul {
       display: inline-flex;
       flex-wrap: wrap;
+
+      .platforms {
+        &.active {
+          background-color: $color-warning;
+        }
+      }
+
+      .keywords {
+        &.active {
+          background-color: $color-selected;
+        }
+      }
 
       li {
         list-style-type: none;
