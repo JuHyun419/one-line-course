@@ -1,8 +1,7 @@
 .imageCarousel {
   position: relative;
   overflow-x: hidden;
-  height: 120vh;
-  display: block;
+  height: 100vh;
 
   &-imagePlacer {
     display: flex;
@@ -12,7 +11,7 @@
     margin: 0 auto;
     height: 80%;
 
-    margin-top: 2%;    
+    margin-top: 2%;
 
     & .imageCarousel--image {
       width: 100%;

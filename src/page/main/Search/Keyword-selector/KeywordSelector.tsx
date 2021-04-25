@@ -1,7 +1,5 @@
-import React, { useCallback, useEffect, useMemo } from "react";
-import { useSelector } from "react-redux";
+import React, { useCallback, useMemo } from "react";
 import { v4 as uuid } from "uuid";
-import { TCombinedStates } from "../../../../store";
 import { useToggleSearchBar } from "../Search-elements/search-bar";
 
 import "./_KeywordSelector.scss";
@@ -47,13 +45,13 @@ const KeywordSelector: React.FC<{
   // const selectedKeywords = useSelector(
   //   (state: TCombinedStates) => state.search.selectedKeywords
   // );
-  
+
   // const selectedPlatforms = useSelector(
   //   (state: TCombinedStates) => state.search.selectedPlatforms
   // );
 
   // useEffect(() => {
-  //   // 1. compare selected keywords with 
+  //   // 1. compare selected keywords with
   // }, [selectedKeywords]);
 
   // useEffect(() => {

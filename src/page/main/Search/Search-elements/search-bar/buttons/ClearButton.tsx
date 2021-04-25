@@ -9,7 +9,7 @@ import "./_SearchBarButton.scss";
 const ClearButton: React.FC = () => {
   // clear selected keywords all
   const dispatch = useDispatch();
-  const _clearAll = useCallback(() => dispatch(clearSelectedAll()), [dispatch]);
+  const _clearAll = useCallback(() => dispatch(clearSelectedAll()), []);
   const onClickClearButton = useCallback(
     (_: React.MouseEvent<HTMLDivElement>) => _clearAll(),
     [_clearAll]

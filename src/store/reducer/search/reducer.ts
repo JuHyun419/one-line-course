@@ -4,6 +4,7 @@ import { TActions as TSearchActions } from "../../action/search";
 export interface ISearch {
   selectedKeywords: string[];
   selectedPlatforms: string[];
+  isGridView: boolean;
 }
 
 export interface IState {
@@ -13,6 +14,7 @@ export interface IState {
 const init: ISearch = {
   selectedKeywords: [],
   selectedPlatforms: [],
+  isGridView: true,
 };
 
 const reducer = (state: ISearch = init, action: TSearchActions): ISearch => {
@@ -37,8 +39,22 @@ const reducer = (state: ISearch = init, action: TSearchActions): ISearch => {
                 platform => platform !== action.selectedPlatform
               )
             : [...state.selectedPlatforms, action.selectedPlatform],
-      };    
+      };
 
+    case ESearchActionType.Clear_SelectedAll:
+      return {
+        ...state,
+        selectedKeywords: [],
+        selectedPlatforms: [],
+      };
+
+    case ESearchActionType.Toggle_ResultView:
+      return {
+        ...state,
+        isGridView: !state.isGridView,
+      };
+
+    case ESearchActionType.Start_Search: // fall thru
     default:
       return state;
   }

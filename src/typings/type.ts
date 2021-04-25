@@ -76,6 +76,8 @@ export enum ESearchActionType {
   Set_SelectedKeyword = "SET_SELECTED_KEYWORD",
   Set_SelectedPlatform = "SET_SELECTED_PLATFORM",
   Clear_SelectedAll = "CLEAR_SELECTED_ALL",
+  Start_Search = "START_SEARCH",
+  Toggle_ResultView = "TOGGLE_RESULT_VIEW",
 }
 
 export enum ESearchAsyncActionType {
@@ -135,7 +137,7 @@ export interface ILectureFetchResult {
   skills: string;
 }
 
-export enum ELectureAsyncActionType {
+export enum ELectureActionType {
   FetchRequest_QueryLectures = "FETCH_REQUEST_QUERY_LECTURES",
 }
 

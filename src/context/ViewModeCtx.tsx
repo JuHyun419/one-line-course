@@ -13,14 +13,18 @@ const ViewModeCtx = React.createContext<ViewModeCtxState>({
 });
 
 export const ViewModeCtxProvider: React.FC<{
-  children?: JSX.Element | null | undefined;
+  children: JSX.Element;
 }> = ({ children }) => {
   const { providerValue } = useToggleProvider<ViewModeCtxState>(
     "isGrid",
     "toggleViewMode"
   );
 
-  return <ViewModeCtx.Provider value={providerValue} {...children} />;
+  return (
+    <ViewModeCtx.Provider value={providerValue}>
+      {children}
+    </ViewModeCtx.Provider>
+  );
 };
 
 export const useViewModeContext = () =>

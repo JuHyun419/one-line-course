@@ -1,11 +1,26 @@
-import { TActions, ISetSelectedKeyword, ISetSelectedPlatform } from "./Actions";
+import {
+  TActions,
+  ISetSelectedKeyword,
+  ISetSelectedPlatform,
+  IStartSearch,
+  IToggleResultView,
+} from "./Actions";
 
-import { setSelectedKeyword, setSelectedPlatform } from "./ActionCreators";
+import {
+  setSelectedKeyword,
+  setSelectedPlatform,
+  clearSelectedAll,
+  toggleResultView,
+} from "./ActionCreators";
 
 export {
   TActions,
   ISetSelectedKeyword,
   ISetSelectedPlatform,
+  IStartSearch,
+  IToggleResultView,
   setSelectedKeyword,
   setSelectedPlatform,
+  clearSelectedAll,
+  toggleResultView,
 };

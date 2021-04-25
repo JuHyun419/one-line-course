@@ -9,6 +9,7 @@
 
   border-radius: 15px;
   background-color: #eee;
+  opacity: 0;
 
   & i {
     padding: 3px;
@@ -34,7 +35,7 @@
     animation: {
       name: anim-close;
       duration: 0.5s;
-      delay: 0.3s;
+      delay: 0.1s;
       iteration-count: 1;
       direction: normal;
       timing-function: ease-in-out;
