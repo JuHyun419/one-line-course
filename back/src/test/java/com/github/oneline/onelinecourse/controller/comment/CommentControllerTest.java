@@ -1,6 +1,5 @@
 package com.github.oneline.onelinecourse.controller.comment;
 
-import com.github.oneline.onelinecourse.model.comment.Comment;
 import com.github.oneline.onelinecourse.repository.comment.CommentRepository;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.DisplayName;
@@ -44,6 +43,7 @@ class CommentControllerTest {
 
         // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+        assertThat(responseEntity.getBody()).isNull();
     }
 
     @DisplayName("조회 데이터가 없는 유저 댓글을 조회한다.")
@@ -58,6 +58,7 @@ class CommentControllerTest {
 
         // then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+        assertThat(responseEntity.getBody()).isNull();
     }
 
 }
