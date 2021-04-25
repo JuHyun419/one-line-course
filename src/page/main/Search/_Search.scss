@@ -9,9 +9,14 @@
   position: relative;
 
   &--menu {
-    transform: scale(1.8);
+    transform: scale(1.5);
     position: fixed;
     left: 95%;
-    top: 70%;
+    top: 60%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
