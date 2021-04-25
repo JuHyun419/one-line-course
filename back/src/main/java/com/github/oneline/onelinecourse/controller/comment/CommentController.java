@@ -4,6 +4,7 @@ import com.github.oneline.onelinecourse.service.comment.CommentService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,23 +52,33 @@ public class CommentController {
     @ApiOperation(value = "강의 댓글 전체 조회")
     public ResponseEntity<List<CommentResponse>> getLectureComments(
             @PathVariable @ApiParam(value = "강의 ID", example = "1") Long lectureId) {
-        return ResponseEntity.ok(
-                commentService.findAllLectureComments(lectureId)
-                        .stream()
-                        .map(CommentResponse::new)
-                        .collect(Collectors.toList())
-        );
+
+        List<CommentResponse> response = commentService.findAllLectureComments(lectureId)
+                .stream()
+                .map(CommentResponse::new)
+                .collect(Collectors.toList());
+
+        HttpStatus statusCode = response.isEmpty()
+                ? HttpStatus.NO_CONTENT
+                : HttpStatus.OK;
+
+        return new ResponseEntity<>(response, statusCode);
     }
 
     @GetMapping("/user/{userId}")
     @ApiOperation(value = "유저 댓글 전체 조회")
     public ResponseEntity<List<CommentResponse>> getUserComments(
             @PathVariable @ApiParam(value = "유저 ID", example = "00002182919823455812") String userId) {
-        return ResponseEntity.ok(
-                commentService.findAllUserComments(userId)
-                        .stream()
-                        .map(CommentResponse::new)
-                        .collect(Collectors.toList())
-        );
+
+        List<CommentResponse> response = commentService.findAllUserComments(userId)
+                .stream()
+                .map(CommentResponse::new)
+                .collect(Collectors.toList());
+
+        HttpStatus statusCode = response.isEmpty()
+                ? HttpStatus.NO_CONTENT
+                : HttpStatus.OK;
+
+        return new ResponseEntity<>(response, statusCode);
     }
 }
