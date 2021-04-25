@@ -18,18 +18,10 @@ public class UserService {
 
     // 처음 로그인인지 확인
     public User searchUser(String userId) {
-        return userRepository.findByUserId(userId);
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("userId: " + userId + "의 유저가 존재하지 않습니다."));
+        return user;
     }
-
-//    public boolean searchUser(String userId) {
-//        User searchByUserId =  userRepository.findByUserId(userId);
-//        if(searchByUserId != null) {
-//            return true;
-//        }
-//        else {
-//            return false;
-//        }
-//    }
 
     // 처음이라서 등록 필요
     public User createUser(User user) {
