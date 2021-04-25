@@ -55,6 +55,14 @@ export enum ESeparatorDirection {
 }
 
 /**
+ * 
+ */
+export enum ELectureCardType {
+  GridView,
+  ListView
+}
+
+/**
  * Carousel Action Types
  */
 export enum ECarouselAsyncActionType {

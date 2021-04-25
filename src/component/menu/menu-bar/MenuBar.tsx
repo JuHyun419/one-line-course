@@ -101,8 +101,8 @@ const makeMenuBarItems = (
         viewModeCtx.toggleViewMode,
         sunIconStyles,
         moonIconStyles,
-        gridIconStyles,
-        listIconStyles
+        listIconStyles,
+        gridIconStyles
       );
 
     default:
