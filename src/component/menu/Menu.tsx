@@ -22,7 +22,6 @@ const Menu: React.FC<MenuProps> = ({
     (_: React.MouseEvent<HTMLDivElement>) => setIsMenuOpen(prv => !prv),
     []
   );
-  console.log(isMenuOpen);
 
   return (
     <Fragment>

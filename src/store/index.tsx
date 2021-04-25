@@ -40,6 +40,10 @@ import searchSuggestion, {
 } from "./reducer/search-suggestion/reducer";
 import { TActions as TSearchSuggestionActions } from "./action/search-suggestion";
 
+// search result dep
+import searchResult, { ISearchResult } from "./reducer/search-result/reducer";
+import { TActions as TSearchResultActions } from "./action/search-result";
+
 export type TCombinedStates = CombinedState<{
   carouselAsync: ICarouselAsync;
   carousel: ICarousel;
@@ -47,6 +51,7 @@ export type TCombinedStates = CombinedState<{
   search: ISearch;
   searchBar: ISearchBar;
   searchSuggestion: ISearchSuggestion;
+  searchResult: ISearchResult;
 }>;
 
 export type TCombinedActions =
@@ -55,7 +60,8 @@ export type TCombinedActions =
   | TSearchAsyncActions
   | TSearchActions
   | TSearchBarActions
-  | TSearchSuggestionActions;
+  | TSearchSuggestionActions
+  | TSearchResultActions;
 
 type TRootReducer = Reducer<TCombinedStates, TCombinedActions>;
 
@@ -66,6 +72,7 @@ const rootReducers: TRootReducer = combineReducers({
   search,
   searchBar,
   searchSuggestion,
+  searchResult,
 });
 
 const store = createStore(

@@ -76,8 +76,6 @@ export enum ESearchActionType {
   Set_SelectedKeyword = "SET_SELECTED_KEYWORD",
   Set_SelectedPlatform = "SET_SELECTED_PLATFORM",
   Clear_SelectedAll = "CLEAR_SELECTED_ALL",
-  Start_Search = "START_SEARCH",
-  Toggle_ResultView = "TOGGLE_RESULT_VIEW",
 }
 
 export enum ESearchAsyncActionType {
@@ -103,6 +101,17 @@ export enum ESearchBarActionType {
 export enum ESearchSuggestionActionType {
   Set_Suggestion = "SET_SUGGESTION",
   Clear_Suggestion = "CLEAR_SUGGESTION",
+}
+
+/**
+ * Search Result Action Type
+ */
+export enum ESearchResultActionType {
+  Start_Search = "START_SEARCH",
+  Succeed_Search = "SUCCEED_SEARCH",
+  Fail_Search = "FAIL_SEARCH",
+
+  Toggle_ResultView = "TOGGLE_RESULT_VIEW",
 }
 
 /**

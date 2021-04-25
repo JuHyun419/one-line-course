@@ -1,22 +1,10 @@
 .search {
   width: 100%;
-  height: 100%;
+  // height: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
   position: relative;
-
-  &--menu {
-    transform: scale(1.5);
-    position: fixed;
-    left: 95%;
-    top: 60%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 }

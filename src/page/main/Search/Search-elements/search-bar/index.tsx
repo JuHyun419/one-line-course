@@ -6,8 +6,8 @@ import { useSearchBarSelectedPlatforms } from "./hooks/useSearchBarSelectedPlatf
 import { useToggleSearchBar } from "./useToggleSearchBar";
 
 import {
-  platforms,
-  platformsAsArr,
+  platformsEnglish,
+  platformsEnglishAsArr,
   keywordsKorean,
   keywordsKoreanAsArr,
   keywordsEnglish,
@@ -22,8 +22,8 @@ export {
   useSearchBarSelectedKeywords,
   useSearchBarSelectedPlatforms,
   useToggleSearchBar,
-  platforms,
-  platformsAsArr,
+  platformsEnglish as platforms,
+  platformsEnglishAsArr as platformsAsArr,
   keywordsKorean,
   keywordsKoreanAsArr,
   keywordsEnglish,

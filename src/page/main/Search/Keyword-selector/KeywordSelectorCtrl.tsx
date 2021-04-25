@@ -7,7 +7,7 @@ import {
 } from "../../../../store/action/search";
 
 import {
-  platformsAsArr,
+  platformsEnglishAsArr,
   keywordsKoreanAsArr,
   keywordsEnglishAsArr,
 } from "../Search-elements/search-bar/SearchData";
@@ -34,7 +34,7 @@ const KeywordSelectorCtrl = () => {
     <div className="keywordSelectorCtrl">
       <KeywordSelector
         title="플랫폼"
-        keywords={platformsAsArr}
+        keywords={platformsEnglishAsArr}
         keywordsClassName="platforms"
         dispatchKeyword={_setSelectedPlatform}
       />

@@ -14,17 +14,7 @@ export interface IClearSelectedAll {
   type: ESearchActionType.Clear_SelectedAll;
 }
 
-export interface IStartSearch {
-  type: ESearchActionType.Start_Search;
-}
-
-export interface IToggleResultView {
-  type: ESearchActionType.Toggle_ResultView
-}
-
 export type TActions =
   | ISetSelectedKeyword
   | ISetSelectedPlatform
-  | IClearSelectedAll
-  | IStartSearch
-  | IToggleResultView;
+  | IClearSelectedAll;
