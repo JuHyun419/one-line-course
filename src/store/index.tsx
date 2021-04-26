@@ -44,6 +44,23 @@ import { TActions as TSearchSuggestionActions } from "./action/search-suggestion
 import searchResult, { ISearchResult } from "./reducer/search-result/reducer";
 import { TActions as TSearchResultActions } from "./action/search-result";
 
+// bookmark async (add bookmark) dep
+import bookmarkAsync_AddBookmark, {
+  IBookmarkAsync as IBookmarkAsync_AddBookmark,
+} from "./reducer/bookmark-async/add-bookmark/reducer";
+
+// bookmark async (remove bookmark) dep
+import bookmarkAsync_RemoveBookmark, {
+  IBookmarkAsync as IBookmarkAsync_RemoveBookmark,
+} from "./reducer/bookmark-async/remove-bookmark/reducer";
+
+// bookmark async (query all bookmarks) dep
+import bookmarkAsync_QueryAllBookmarks, {
+  IBookmarkAsync as IBookmarkAsync_QueryAllBookmarks,
+} from "./reducer/bookmark-async/remove-bookmark/reducer";
+
+import { TActions as TBookmarkAsyncActions } from "./action/bookmark-async";
+
 export type TCombinedStates = CombinedState<{
   carouselAsync: ICarouselAsync;
   carousel: ICarousel;
@@ -52,6 +69,9 @@ export type TCombinedStates = CombinedState<{
   searchBar: ISearchBar;
   searchSuggestion: ISearchSuggestion;
   searchResult: ISearchResult;
+  bookmarkAsync_AddBookmark: IBookmarkAsync_AddBookmark;
+  bookmarkAsync_RemoveBookmark: IBookmarkAsync_RemoveBookmark;
+  bookmarkAsync_QueryAllBookmarks: IBookmarkAsync_QueryAllBookmarks;
 }>;
 
 export type TCombinedActions =
@@ -61,7 +81,8 @@ export type TCombinedActions =
   | TSearchActions
   | TSearchBarActions
   | TSearchSuggestionActions
-  | TSearchResultActions;
+  | TSearchResultActions
+  | TBookmarkAsyncActions;
 
 type TRootReducer = Reducer<TCombinedStates, TCombinedActions>;
 
@@ -73,6 +94,9 @@ const rootReducers: TRootReducer = combineReducers({
   searchBar,
   searchSuggestion,
   searchResult,
+  bookmarkAsync_AddBookmark,
+  bookmarkAsync_RemoveBookmark,
+  bookmarkAsync_QueryAllBookmarks,
 });
 
 const store = createStore(

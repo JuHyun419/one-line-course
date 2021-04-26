@@ -40,11 +40,11 @@ const Main: React.FC<{}> = () => {
 const useInitFetch = () => {
   const dispatch = useDispatch();
   const _initFetchRandomCarouselImages = useCallback(
-    // TODO: Fetch Random Images times passing by
     (query: string) => dispatch(initFetch_CarouselImageURLs({ query })),
     []
   );
 
+  // TODO: Fetch Random Images times passing by
   useEffect(() => {
     _initFetchRandomCarouselImages("office");
   }, []);

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { Fragment, useMemo } from "react";
 import { v4 as uuid } from "uuid";
 import { shallowEqual, useSelector } from "react-redux";
 import { TCombinedStates } from "../../../store";
@@ -9,12 +9,13 @@ import ListView from "./view/ListView";
 
 import "./_SearchResult.scss";
 import SearchResultSummary from "./SearchResultSummary";
+import NoSearchResult from "./NoSearchResult";
 
 const SearchResult = () => {
-  // const isSearchStarted = useSelector(
-  //   (state: TCombinedStates) => state.searchResult.isSearchStarted,
-  //   shallowEqual
-  // );
+  const isSearchSucceed = useSelector(
+    (state: TCombinedStates) => state.searchResult.isSearchSucceed,
+    shallowEqual
+  );
 
   const isGridView = useSelector(
     (state: TCombinedStates) => state.searchResult.isGridView,
@@ -42,13 +43,18 @@ const SearchResult = () => {
       ) : (
         <ListView>{searchedLecturesJSX}</ListView>
       ),
-    [isGridView]
+    [isSearchSucceed, isGridView]
+  );
+
+  const resultJSX = useMemo(
+    () => (isSearchSucceed ? resultViewJSX : <NoSearchResult />),
+    [isSearchSucceed]
   );
 
   return (
     <div className="searchResult">
       <SearchResultSummary />
-      {resultViewJSX}
+      {resultJSX}
     </div>
   );
 };

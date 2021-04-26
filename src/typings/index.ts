@@ -182,9 +182,27 @@ export enum ELectureActionType {
   Set_CurrentPage = "SET_CURRENT_PAGE",
 }
 
-export enum EBookmarkAsyncActionType {}
+export enum EBookmarkAsync_AddBookmark_ActionType {
+  FetchRequest = "FETCH_REQUEST_ADD_BOOKMARK",
+  FetchSucceed = "FETCH_SUCCEED_ADD_BOOKMARK",
+  FetchFail = "FETCH_FAIL_ADD_BOOKMARK",
+}
 
-export enum EBookmarkActionType {}
+export enum EBookmarkAsync_RemoveBookmark_ActionType {
+  FetchRequest = "FETCH_REQUEST_REMOVE_BOOKMARK",
+  FetchSucceed = "FETCH_SUCCEED_REMOVE_BOOKMARK",
+  FetchFail = "FETCH_FAIL_REMOVE_BOOKMARK",
+}
+
+export enum EBookmarkAsync_QueryAllBookmarks_ActionType {
+  FetchRequest = "FETCH_REQUEST_QUERY_ALL_BOOKMARKS",
+  FetchSucceed = "FETCH_SUCCEED_QUERY_ALL_BOOKMARKS",
+  FetchFail = "FETCH_FAIL_QUERY_ALL_BOOKMARKS",
+}
+
+export enum EBookmarkActionType {
+  Toggle_Bookmark = "",
+}
 
 /**
  *

@@ -11,7 +11,7 @@ export interface ISearchAsync {
 }
 
 export interface IState {
-  fetcher: ISearchAsync;
+  state: ISearchAsync;
 }
 
 const init: ISearchAsync = {
