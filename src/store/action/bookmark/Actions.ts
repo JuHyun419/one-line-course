@@ -22,3 +22,7 @@ import { EBookmarkActionType, IBookmarkData } from "~/src/typings";
 //   | ISucceedSearch
 //   | IFailSearch
 //   | IToggleResultView;
+
+export interface IToggleBookmark {
+  
+}

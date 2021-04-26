@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useMemo } from "react";
+import { shallowEqual, useSelector } from "react-redux";
+import GridLectureCard from "~/src/component/lecture-card/GridLectureCard";
 
-export interface IGridViewProps {
-  children: JSX.Element[];
-}
+import { TCombinedStates } from "~/src/store";
 
-const GridView: React.FC<IGridViewProps> = ({ children }) => {
-  return <div>{children}</div>;
+import "./_GridView.scss";
+
+export interface IGridViewProps {}
+
+const GridView: React.FC<IGridViewProps> = () => {
+  const searchedLecturesLen: number = useSelector(
+    (state: TCombinedStates) => state.searchResult.lectures.length,
+    shallowEqual
+  );
+
+  const lectureCardsJSX = useMemo(
+    () =>
+      new Array(searchedLecturesLen)
+        .fill(0)
+        .map((_, i) => <GridLectureCard key={i} lectureIdx={i} />),
+    [searchedLecturesLen]
+  );
+
+  return <ul className="gridView">{lectureCardsJSX}</ul>;
 };
 
 export default GridView;
-

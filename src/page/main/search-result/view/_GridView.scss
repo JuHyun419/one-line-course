@@ -1,0 +1,12 @@
+.gridView {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  padding: 15px 25px;
+
+  border: 2px dashed #000;
+  border-radius: 25px;
+
+  list-style-type: none;
+}

@@ -1,15 +1,27 @@
-import React from 'react'
+import React, { useMemo } from "react";
+import { useSelector } from "react-redux";
+import { v4 as uuid } from "uuid";
 
-export interface IListViewProps {
-  children: JSX.Element[];
-}
+import { TCombinedStates } from "~/src/store";
+import { ILectureFetchResult } from "~/src/typings";
 
-const ListView: React.FC<IListViewProps> = ({ children }) => {
-  return (
-    <div>
-      {children}
-    </div>
-  )
-}
+export interface IListViewProps {}
 
-export default ListView
+const ListView: React.FC<IListViewProps> = () => {
+  const searchedLectures: ILectureFetchResult[] = useSelector(
+    (state: TCombinedStates) => state.searchResult.lectures
+  );
+
+  const searchedLecturesJSX = useMemo(
+    () =>
+      searchedLectures?.map((lec: ILectureFetchResult) => (
+        <li key={uuid()}>
+          {lec.title} {lec.skills[0]}
+        </li>
+      )),
+    [searchedLectures]
+  );
+  return <div>{searchedLecturesJSX}</div>;
+};
+
+export default ListView;

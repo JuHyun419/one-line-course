@@ -1,53 +1,56 @@
-import React, { useCallback, useMemo } from "react";
-import { getIcon } from "~/src/common";
-import { ILectureFetchResult } from "~/src/typings";
+import React from "react";
+import { useSelector } from "react-redux";
+import { TCombinedStates } from "~/src/store";
+
+import {
+  LectureTitle,
+  LectureBookmark,
+  LectureThumbnail,
+  LectureRating,
+  LectureViewCount,
+  LecturePrice,
+  LecturePlatform,
+  LectureSessionCount,
+} from "./";
 
 import "./_LectureCard.scss";
 
 export interface IGridLectureCardProps {
-  lecture: ILectureFetchResult;
+  lectureIdx: number;
 }
 
-const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lecture }) => {
+const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
+  const lecture = useSelector(
+    (state: TCombinedStates) => state.searchResult.lectures[lectureIdx]
+  );
+
   const {
-    id,
-    imageUrl,
     title,
-    price,
-    salePrices,
+    imageUrl,
     rating,
-    instructor,
-    url,
     viewCount,
+    salePrices,
+    price,
+    currency,
     platform,
     sessionCount,
-    currency,
-    description,
-    skills,
-  } = lecture;
+  } = lecture!;
 
   return (
-    <li key={id} className="lectureCard-grid">
-      <span className="lectureCard-grid--title">{title}</span>
-
-      <img
-        src={imageUrl}
-        alt={`thumbnail--${title}`} 
-        loading="lazy"
-        className="lectureCard-grid--thumbnail"
+    <li className="lectureCard-grid">
+      <LectureTitle title={title} />
+      <LectureBookmark />
+      <LectureThumbnail imageURL={imageUrl} title={title} />
+      <LectureRating rating={rating} />
+      <LectureViewCount viewCount={viewCount} />
+      <LecturePrice
+        price={salePrices === 0 ? price : salePrices}
+        currency={currency}
       />
+      <LecturePlatform platform={platform} />
+      <LectureSessionCount sessionCount={sessionCount} />
     </li>
   );
-};
-
-const makeBookmarkIcon = () => {
-  // const _toggleBookmark = 
-  const onClickIcon = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    // toggle bookmark
-
-  }, []);
-  // const BookmarkIcon_Disabled = useMemo(getIcon("BookmarkIcon_Disabled"));
-  // const BookmarkIcon_Enabled = useMemo(getIcon("BookmarkIcon_Enabled"));
 };
 
 export default GridLectureCard;
