@@ -1,5 +1,6 @@
 package com.github.oneline.onelinecourse.controller.user;
 
+import com.github.oneline.onelinecourse.model.user.User;
 import com.github.oneline.onelinecourse.service.user.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,14 @@ public class UserController {
     public ResponseEntity<ResponseUserDto> createUser(
             @RequestBody CreateUserRequestDto createUserRequestDto) { // @RequestBody : 클라이언트가 전송하는 Http 요청의 Body내용을 Java Object로 변환시켜주는 역할
 
+        // 회원이 등록되어 있는지 체크
+        User user = userService.searchUser(createUserRequestDto.toEntity().getId());
+        if(user != null) {  // 등록되어 있다면
+            return ResponseEntity.ok(
+                    new ResponseUserDto(userService.searchUser(createUserRequestDto.toEntity().getId()))
+            );
+        }
+        // 등록되어 있지 않다면(db에 저장)
         // 응답 헤더의 상태 코드 본문을 직접 다루기 위해 사용
         return ResponseEntity.ok(   // 200 ok 상태코드
                 new ResponseUserDto(userService.createUser(createUserRequestDto.toEntity()))

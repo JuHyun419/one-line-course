@@ -19,7 +19,8 @@ public class UserService {
     // 처음 로그인인지 확인
     public User searchUser(String userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("userId: " + userId + "의 유저가 존재하지 않습니다."));
+//                .orElseThrow(() -> new IllegalArgumentException("userId: " + userId + "의 유저가 존재하지 않습니다."));
+                .orElse(null);
         return user;
     }
 
