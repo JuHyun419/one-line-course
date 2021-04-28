@@ -22,7 +22,7 @@ const Pagenator: React.FC<IPagenatorProps> = ({ postsPerPage, children }) => {
   }, [setTotalPage, children.length, postsPerPage]);
 
   // calc lectures arrays
-  // postPerPage: 9
+  // e.g. postPerPage: 9
   // -> 0 ~ 8 / 9 ~ 17 / 18 ~ 27 / 28 ~ 37
   useEffect(
     () =>
@@ -35,14 +35,7 @@ const Pagenator: React.FC<IPagenatorProps> = ({ postsPerPage, children }) => {
     [currentPage, postsPerPage]
   );
 
-  return (
-    <Fragment>
-      {pagedPosts &&
-        pagedPosts!.map((post: JSX.Element) => (
-          <Fragment key={uuid()}>{post}</Fragment>
-        ))}
-    </Fragment>
-  );
+  return <Fragment>{pagedPosts}</Fragment>;
 };
 
 export default Pagenator;
