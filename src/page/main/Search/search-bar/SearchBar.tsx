@@ -1,8 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { TCombinedStates } from "~store";
-// import { shallowEqual, useSelector } from "react-redux";
-// import { TCombinedStates } from "~store";
+import { TCombinedStates } from "~/src/store";
 
 import {
   AddButton,
@@ -12,7 +10,7 @@ import {
   useSearchBarSelectedKeywords,
   useSearchBarSelectedPlatforms,
   useToggleSearchBar,
-} from ".";
+} from "./";
 import SearchBarInput from "./SearchBarInput";
 
 import "./_SearchBar.scss";
@@ -33,7 +31,11 @@ const SearchBar: React.FC<{
 
   const invalidKeywordWarningJSX = isInvalidKeyword && (
     <p className="searchBar--invalid-keyword-indicator active">
-      없는<br />키워드!<br />입니다!
+      없는
+      <br />
+      키워드!
+      <br />
+      입니다!
     </p>
   );
 

@@ -1,7 +1,7 @@
 import {
   ESearchResultActionType,
   ILectureFetchResult,
-} from "../../../typings/type";
+} from "../../../typings";
 
 export interface IStartSearch {
   type: ESearchResultActionType.Start_Search;

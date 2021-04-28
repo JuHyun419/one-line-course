@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { ESeparatorDirection } from "../../typings/type";
+import { ESeparatorDirection } from "../../typings";
 import "./_Separator.scss";
 
 interface SeparatorProps {

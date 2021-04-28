@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import { ENavType } from "../../typings/type";
+import { ENavType } from "../../typings";
 // import { TCombinedStates } from "../../store";
 
 import { initFetch_CarouselImageURLs } from "../../store/action/carousel-async/";
@@ -11,7 +11,9 @@ import NavFactory from "../../component/nav/nav-factory/NavFactory";
 import ImageCarousel from "./image-carousel/ImageCarousel";
 import Search from "./search/Search";
 import KeywordSelectorCtrl from "./search/keyword-selector/KeywordSelectorCtrl";
+import SearchResultSummary from "./search-result/SearchResultSummary";
 import SearchResult from "./search-result/SearchResult";
+import GoToTop from "~/src/component/goToTop/GoToTop";
 import MainMenu from "./main-menu/MainMenu";
 import { placeIconsRandomly } from "../../common/";
 import Footer from "../../component/footer/Footer";
@@ -28,7 +30,9 @@ const Main: React.FC<{}> = () => {
         <ImageCarousel />
         <Search />
         <KeywordSelectorCtrl />
+        <SearchResultSummary />
         <SearchResult />
+        <GoToTop />
         <MainMenu />
         {placeIconsRandomly(30, { fontSize: "2rem" })}
         <Footer />
@@ -39,14 +43,14 @@ const Main: React.FC<{}> = () => {
 
 const useInitFetch = () => {
   const dispatch = useDispatch();
-  const _initFetch = useCallback(
-    // TODO: Fetch Random Images times passing by
+  const _initFetchRandomCarouselImages = useCallback(
     (query: string) => dispatch(initFetch_CarouselImageURLs({ query })),
     []
   );
 
+  // TODO: Fetch Random Images times passing by
   useEffect(() => {
-    _initFetch("office");
+    _initFetchRandomCarouselImages("office");
   }, []);
 };
 

@@ -1,4 +1,4 @@
-import { ECarouselActionType } from "../../../typings/type";
+import { ECarouselActionType } from "../../../typings";
 import { TActions as TCarouselActions } from "../../action/carousel";
 
 export interface ICarousel {

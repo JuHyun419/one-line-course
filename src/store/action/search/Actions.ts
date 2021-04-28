@@ -1,4 +1,4 @@
-import { ESearchActionType } from "../../../typings/type";
+import { ESearchActionType } from "../../../typings";
 
 export interface ISetSelectedKeyword {
   type: ESearchActionType.Set_SelectedKeyword;

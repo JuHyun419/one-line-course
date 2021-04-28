@@ -3,7 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { TCombinedStates } from "../../../../../store";
 
-import { EButtonSize, EButtonType } from "../../../../../typings/type";
+import { EButtonSize, EButtonType } from "../../../../../typings";
 import Button from "../../../../../component/button/Button";
 
 import { setSelectedKeyword } from "../../../../../store/action/search";

@@ -1,6 +1,6 @@
 import { TActions as TCarouselAsyncActions } from "../../action/carousel-async";
 
-import { ECarouselAsyncActionType } from "../../../typings/type";
+import { ECarouselAsyncActionType } from "../../../typings";
 export interface ICarouselAsync {
   urls?: Array<string>;
   err?: string;

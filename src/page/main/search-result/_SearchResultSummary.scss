@@ -1,0 +1,36 @@
+@import "../../../common/ColorScheme";
+
+.searchResult {
+  &-summary {
+    width: 500px;
+    padding: 10px 20px;
+    margin-left: 200px;
+    border: 2px dashed #000;
+    border-radius: 25px;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      list-style-type: none;
+    }
+
+    li {
+      border: 1px solid #000;
+      border-radius: 15px;
+
+      color: #fff;
+      padding: 5px 15px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+
+    &--platform {
+      background-color: $color-warning;
+    }
+
+    &--keyword {
+      background-color: $color-selected;
+    }
+  }
+}

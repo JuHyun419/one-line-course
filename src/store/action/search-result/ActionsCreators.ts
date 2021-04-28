@@ -4,7 +4,7 @@ import { ThunkDispatch } from "redux-thunk";
 import {
   ESearchResultActionType,
   ILectureFetchResult,
-} from "../../../typings/type";
+} from "../../../typings";
 import {
   IStartSearch,
   ISucceedSearch,

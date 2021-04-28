@@ -43,7 +43,7 @@ type APIURL = "/v2/user/me" | "/v1/user/unlink" | "/v1/user/update_profile";
 
 type KakaoUserProfile = {
   nickname?: string;
-  profile_image?: string;
+  profile_image_url?: string;
   thumbnail_image_url?: string;
   profile_needs_agreement?: boolean;
 };
@@ -52,8 +52,12 @@ type KakaoUserProfile = {
  * @
  */
 type KakaoAccount = {
-  profile?: KakaoUserProfile;
   email?: string;
+  email_needs_agreement?: boolean;
+  has_email?: boolean;
+  is_email_valid?: boolean;
+  is_email_verified?: boolean;
+  profile?: KakaoUserProfile;
   age_range?: string;
   birthday?: string;
   birthyear?: string;
@@ -66,14 +70,29 @@ type KakaoAccount = {
  *
  */
 type AuthSuccessCallback = {
+  // id: number;
   access_token: string;
-  refresh_token: string;
-  token_type: "bearer";
   expires_in: number;
+  refresh_token: string;
+  refresh_token_expires_in: number;
   scope: string;
+  stateToken: string;
+  token_type: "bearer";
 };
 
 type AuthFailCallback = {
+  error: "access_denied";
+  error_description: string;
+};
+
+type RequestSuccessCallback = {
+  connected_at: string;
+  id: number;
+  kakao_account: KakaoAccount;
+  properties?: UserMeObject;
+};
+
+type RequestFailCallback = {
   error: "access_denied";
   error_description: string;
 };
@@ -139,9 +158,9 @@ declare var Kakao: {
       url: APIURL;
       data?: UserMeObject | UpdateProfileObject;
       files?: any;
-      success?: (onSuccess: AuthSuccessCallback) => void;
-      fail?: (onFail: AuthFailCallback) => void;
-      always?: (onAlways: AuthSuccessCallback | AuthFailCallback) => void;
+      success?: (onSuccess: RequestSuccessCallback) => void;
+      fail?: (onFail: RequestFailCallback) => void;
+      always?: (onAlways: RequestSuccessCallback | RequestFailCallback) => void;
     }) => unknown;
   };
 

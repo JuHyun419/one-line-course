@@ -1,5 +1,5 @@
 import React from "react";
-import { EButtonSize, EButtonType, TOnClickButton } from "../../typings/type";
+import { EButtonSize, EButtonType, TOnClickButton } from "../../typings";
 
 import { joinClasses } from "../../common/StyleHelper";
 

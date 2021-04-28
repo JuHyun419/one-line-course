@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { TCombinedStates } from "../../../../store";
+import { TCombinedStates } from "~/src/store";
+
 import "./_ImagesIndicator.scss";
 
 const ImagesIndicator: React.FC = () => {
