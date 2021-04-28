@@ -11,6 +11,7 @@ import {
   LecturePrice,
   LecturePlatform,
   LectureSessionCount,
+  LectureSkills,
 } from "./";
 
 import "./_LectureCard.scss";
@@ -34,21 +35,34 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
     currency,
     platform,
     sessionCount,
+    skills,
   } = lecture!;
+  const actualPrice =
+    salePrices === 0 || salePrices === undefined ? price : salePrices;
 
   return (
     <li className="lectureCard-grid">
       <LectureTitle title={title} />
       <LectureBookmark />
       <LectureThumbnail imageURL={imageUrl} title={title} />
-      <LectureRating rating={rating} />
-      <LectureViewCount viewCount={viewCount} />
-      <LecturePrice
-        price={salePrices === 0 ? price : salePrices}
-        currency={currency}
-      />
-      <LecturePlatform platform={platform} />
-      <LectureSessionCount sessionCount={sessionCount} />
+      <div className="lectureCard-gird-desc">
+        <div className="lectureCard-grid--first-row">
+          <div className="lectureCard-grid--cl1">
+            <LectureRating rating={rating} />
+            <LecturePlatform platform={platform} />
+          </div>
+          <div className="lectureCard-grid--cl2">
+            <LectureViewCount viewCount={viewCount} />
+            <LectureSessionCount sessionCount={sessionCount} />
+          </div>
+          <div className="lectureCard-grid-cl3">
+            <LecturePrice price={actualPrice} currency={currency} />
+          </div>
+        </div>
+        {/* <div className="lectureCard-grid--second-row">
+          <LectureSkills skills={skills.filter(skill => skill !=)} />
+        </div> */}
+      </div>
     </li>
   );
 };

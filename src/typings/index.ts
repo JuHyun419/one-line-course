@@ -119,11 +119,9 @@ export enum ESearchResultActionType {
 export interface IUserData {
   platform: "google" | "kakao"; // 플랫폼 이름 (=string)
   userID: string;
-  data: {
-    email: string; // "...@google.com" or "...@kakao.com"
-    name: string; // 실제 이름
-    imageURL: string; // 프로필 이미지 URL
-  };
+  email: string; // "...@google.com" or "...@kakao.com"
+  name: string; // 실제 이름
+  imageURL: string; // 프로필 이미지 URL
 }
 
 export interface IBookmarkData {
@@ -147,6 +145,7 @@ export enum ECommentAsyncActionType {}
 
 export enum ECommentActionType {}
 
+export type TCurrency = "₩" | "$" | "￦";
 export interface ILectureFetchResult {
   id: number;
   imageUrl: string;
@@ -159,7 +158,7 @@ export interface ILectureFetchResult {
   viewCount: number;
   platform: string;
   sessionCount: number;
-  currency: string;
+  currency: TCurrency;
   description: string;
   skills: string;
 }

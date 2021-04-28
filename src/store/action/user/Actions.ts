@@ -2,7 +2,7 @@ import { EUserAsyncActionType } from "../../../typings";
 
 export interface IFetchRequestAction_CreateUser {
   type: EUserAsyncActionType.FetchRequest_CreateUser;
-  id: string;
+  userID: string;
   email: string;
   name: string;
   imageURL: string;

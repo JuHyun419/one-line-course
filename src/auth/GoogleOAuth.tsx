@@ -14,7 +14,16 @@ const GoogleOAuth: React.FC<{}> = () => {
 
   const onLoginSuccess = useCallback(
     (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
-      console.log(response);      
+      console.log(response);
+
+      if ((response as GoogleLoginResponse) !== null) {
+        const authRes = (response as GoogleLoginResponse).getAuthResponse();
+        sessionStorage.setItem("userID", authRes.access_token);
+        sessionStorage.setItem("expiresIn", `${authRes.expires_in}`);
+      } else {
+        const code = (response as GoogleLoginResponseOffline).code;
+        console.log("trying to access offline: ", code);
+      }
       history.push("/main");
     },
     [history]
@@ -22,6 +31,7 @@ const GoogleOAuth: React.FC<{}> = () => {
 
   const onLoginFail = useCallback((error: any): void => {
     console.log(error);
+    localStorage.clear();
   }, []);
 
   return (

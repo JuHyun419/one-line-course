@@ -1,31 +1,17 @@
 import React, { useCallback } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import "./_Auth.scss";
 
-const KakaoOAuth: React.FC<{}> = () => {
-  // console.log(Kakao);
-  const history = useHistory();
+// type TKakaoOnSucceed = {
+//   response: LoginResponse;
+//   profile?: UserProfile;
+// };
 
-  const loginWithKakao = useCallback(() => {
-    Kakao.Auth.login({
-      success: authObj => {
-        Kakao.API.request({
-          url: "/v2/user/me",
-          success: onSuccess => {
-            console.log(onSuccess);
-            history.push("/main");
-          },
-          // always: onAlways => {
-          //   // console.log(onAlways);
-          // },
-        });
-      },
-      fail: onFail => {
-        console.log(onFail);
-      },
-    });
-  }, [history]);
+const KakaoOAuth: React.FC = () => {
+  const history = useHistory();
+  const loginWithKakao = useKakaoLoginCallback(history);
 
   return (
     <div id="custom-login-btn" className="authBtn" onClick={loginWithKakao}>
@@ -35,6 +21,48 @@ const KakaoOAuth: React.FC<{}> = () => {
       />
     </div>
   );
+};
+
+const useKakaoLoginCallback = (history: any) => {
+  // const dispatch = useDispatch();
+  // const _
+
+  const loginWithKakao = () => {
+    Kakao.Auth.login({
+      success: onSuccess => {
+        console.log(onSuccess);
+
+        sessionStorage.setItem("userID", onSuccess.access_token);
+        sessionStorage.setItem("expiresIn", `${onSuccess.expires_in}`);
+
+        // request the current user's info
+        requestCurrentUserInfo();
+      },
+
+      fail: onFail => {
+        console.error(onFail);
+      },
+    });
+  };
+
+  const requestCurrentUserInfo = () =>
+    Kakao.API.request({
+      url: "/v2/user/me",
+
+      success: onSuccess => {
+        console.log(onSuccess);
+        // TODO: store <id, KakaoAcount(email, nickname, profile_image_url, thumbnail_image_url ...)>
+        // into sessionStorage
+        
+        history.push("/main");
+      },
+
+      fail: onFail => {
+        console.error(onFail);
+      },
+    });
+
+  return loginWithKakao;
 };
 
 export default KakaoOAuth;

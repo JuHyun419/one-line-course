@@ -1,3 +1,7 @@
+/**
+ * key: Icon ID
+ * value: all font awesome classes
+ */
 export const IconClassNames = new Map<string, Array<string>>();
 
 IconClassNames.set("Grid", ["fas", "fa-th"]);
@@ -18,3 +22,4 @@ IconClassNames.set("Dollar-Sign", ["fas", "fa-dollar-sign"]);
 IconClassNames.set("Globe", ["fas", "fa-globe-europe"]);
 IconClassNames.set("Lectures", ["fas", "fa-tasks"]);
 IconClassNames.set("GoToTop", ["fas", "fa-arrow-circle-up"]);
+IconClassNames.set("Language", ["fas", "fa-language"]);

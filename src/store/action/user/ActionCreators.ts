@@ -1,28 +1,20 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 
-import { EUserAsyncActionType } from "../../../typings";
+import { EUserAsyncActionType, IUserData } from "../../../typings";
 import {
   IFetchRequestAction_CreateUser,
   IFetchSucceed_CreateUser,
   IFetchFail_CreateUser,
 } from "./Actions";
 
-export interface ICreateUserData {
-  id: string;
-  email: string;
-  name: string;
-  imageURL: string;
-  platform: string;
-}
-
 export const FetchRequest_CreateUser = (
-  data: ICreateUserData
+  data: IUserData
 ): IFetchRequestAction_CreateUser => {
-  const { id, email, name, imageURL, platform } = data;
+  const { userID, email, name, imageURL, platform } = data;
   return {
     type: EUserAsyncActionType.FetchRequest_CreateUser,
-    id,
+    userID,
     email,
     name,
     imageURL,
@@ -46,7 +38,7 @@ export const FetchFail_CreateUser = (
   err,
 });
 
-export const initFetch_CreateUser = (data: ICreateUserData) => async (
+export const initFetch_CreateUser = (data: IUserData) => async (
   dispatch: ThunkDispatch<{}, {}, AnyAction>
 ) => {
   try {

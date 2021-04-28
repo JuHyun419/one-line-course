@@ -1,4 +1,5 @@
 import React from "react";
+import { getIcon } from "~/src/common";
 
 import "./_LectureViewCount.scss";
 
@@ -7,8 +8,13 @@ interface ILectureViewCountProps {
 }
 
 const LectureViewCount: React.FC<ILectureViewCountProps> = ({ viewCount }) => {
-  // TODO: icon
-  return <div>{viewCount}</div>;
+  const viewCountIcon = getIcon("Users", undefined, { marginRight: "10px" });
+  return (
+    <div>
+      {viewCountIcon}
+      {viewCount} 명
+    </div>
+  );
 };
 
 export default LectureViewCount;

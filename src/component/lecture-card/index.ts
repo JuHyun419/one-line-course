@@ -6,6 +6,7 @@ import LectureSessionCount from "./lecture-card-element/session-count/LectureSes
 import LectureThumbnail from "./lecture-card-element/thumbnail/LectureThumbnail";
 import LectureTitle from "./lecture-card-element/title/LectureTitle";
 import LectureViewCount from "./lecture-card-element/view-count/LectureViewCount";
+import LectureSkills from "./lecture-card-element/skills/LectureSkills";
 
 export {
   LectureBookmark,
@@ -16,4 +17,5 @@ export {
   LectureThumbnail,
   LectureTitle,
   LectureViewCount,
+  LectureSkills,
 };
