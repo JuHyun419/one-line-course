@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { getIcon } from "~/src/common";
 
 import "./_LectureSessionCount.scss";
@@ -13,8 +13,11 @@ const LectureSessionCount: React.FC<ILectureSessionCountProps> = ({
   const sessionCountIcon = getIcon("Lectures", undefined, {
     marginRight: "10px",
   });
-  const actualSessionCount =
-    sessionCount === 1 ? "단일 강좌" : `총 ${sessionCount} 강좌`;
+  const actualSessionCount = useMemo(
+    () => (sessionCount === 1 ? "단일 강좌" : `${sessionCount} 개`),
+    [sessionCount]
+  );
+  
   return (
     <div>
       {sessionCountIcon}

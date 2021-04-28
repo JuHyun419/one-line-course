@@ -1,15 +1,12 @@
-import React, { useCallback, useEffect, useMemo } from "react";
-import { v4 as uuid } from "uuid";
+import React, { useCallback, useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { TCombinedStates } from "../../../store";
-import { ILectureFetchResult } from "../../../typings";
 
 import { initFetch_QueryAllBookmarks } from "~/src/store/action/bookmark-async/query-all-bookmarks/ActionCreators";
 
 import GridView from "./view/GridView";
 import ListView from "./view/ListView";
 
-import SearchResultSummary from "./SearchResultSummary";
 import NoSearchResult from "./NoSearchResult";
 
 import "./_SearchResult.scss";
@@ -29,14 +26,13 @@ const SearchResult = () => {
 
   return (
     <div className="searchResult">
-      <SearchResultSummary />
       {isSearchSucceed ? (
         isGridView ? (
           <GridView />
         ) : null
+      ) : (
         // TODO: List View!
         // <ListView />
-      ) : (
         <NoSearchResult />
       )}
     </div>

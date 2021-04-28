@@ -17,6 +17,7 @@ import { placeIconsRandomly } from "../../common/";
 import Footer from "../../component/footer/Footer";
 
 import "./_Main.scss";
+import SearchResultSummary from "./search-result/SearchResultSummary";
 
 const Main: React.FC<{}> = () => {
   useInitFetch();
@@ -28,6 +29,7 @@ const Main: React.FC<{}> = () => {
         <ImageCarousel />
         <Search />
         <KeywordSelectorCtrl />
+        <SearchResultSummary />
         <SearchResult />
         <MainMenu />
         {placeIconsRandomly(30, { fontSize: "2rem" })}

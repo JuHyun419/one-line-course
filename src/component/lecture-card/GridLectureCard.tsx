@@ -11,7 +11,7 @@ import {
   LecturePrice,
   LecturePlatform,
   LectureSessionCount,
-  LectureSkills,
+  // LectureSkills,
 } from "./";
 
 import "./_LectureCard.scss";
