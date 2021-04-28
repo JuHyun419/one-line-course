@@ -1,7 +1,8 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
+import { post_RegisterUser } from "~/src/service/UserService";
 
-import { EUserAsyncActionType, IUserData } from "../../../typings";
+import { EUserAsyncActionType, IUserData, TStatusCode } from "../../../typings";
 import {
   IFetchRequestAction_CreateUser,
   IFetchSucceed_CreateUser,
@@ -23,18 +24,14 @@ export const FetchRequest_CreateUser = (
 };
 
 export const FetchSucceed_CreateUser = (
-  statusCode: string
+  statusCode: TStatusCode
 ): IFetchSucceed_CreateUser => ({
   type: EUserAsyncActionType.FetchSucceed_CreateUser,
   statusCode,
 });
 
-export const FetchFail_CreateUser = (
-  errCode: string,
-  err: string
-): IFetchFail_CreateUser => ({
+export const FetchFail_CreateUser = (err: string): IFetchFail_CreateUser => ({
   type: EUserAsyncActionType.FetchFail_CreateUser,
-  errCode,
   err,
 });
 
@@ -42,11 +39,12 @@ export const initFetch_CreateUser = (data: IUserData) => async (
   dispatch: ThunkDispatch<{}, {}, AnyAction>
 ) => {
   try {
+    console.log(data);
+    
     dispatch(FetchRequest_CreateUser(data));
-    // TODO: post create user
-    // TODO: get status code
-    dispatch(FetchSucceed_CreateUser("TEST_SUCCEED_CODE"));
+    const status = await post_RegisterUser(data);
+    dispatch(FetchSucceed_CreateUser(status));
   } catch (err) {
-    dispatch(FetchFail_CreateUser("TEST_ERROR_CODE", err));
+    dispatch(FetchFail_CreateUser(err));
   }
 };

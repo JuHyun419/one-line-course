@@ -1,6 +1,8 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { initFetch_CreateUser } from "../store/action/user";
+import { IUserData } from "../typings";
 
 import "./_Auth.scss";
 
@@ -24,43 +26,63 @@ const KakaoOAuth: React.FC = () => {
 };
 
 const useKakaoLoginCallback = (history: any) => {
-  // const dispatch = useDispatch();
-  // const _
+  const dispatch = useDispatch();
+  const _createUser = useCallback(
+    (data: IUserData) => dispatch(initFetch_CreateUser(data)),
+    []
+  );
 
-  const loginWithKakao = () => {
-    Kakao.Auth.login({
-      success: onSuccess => {
-        console.log(onSuccess);
+  const loginWithKakao = useCallback(
+    () =>
+      Kakao.Auth.login({
+        success: onSuccess => {
+          // console.log(onSuccess);
 
-        sessionStorage.setItem("userID", onSuccess.access_token);
-        sessionStorage.setItem("expiresIn", `${onSuccess.expires_in}`);
+          // store the auth info
+          const { access_token, expires_in } = onSuccess;
+          sessionStorage.setItem("userID", access_token);
+          sessionStorage.setItem("expiresIn", `${expires_in}`);
 
-        // request the current user's info
-        requestCurrentUserInfo();
-      },
+          // request the current user's info
+          requestCurrentUserInfo(access_token);
+        },
 
-      fail: onFail => {
-        console.error(onFail);
-      },
-    });
-  };
+        fail: onFail => {
+          console.error(onFail);
+        },
+      }),
+    []
+  );
 
-  const requestCurrentUserInfo = () =>
-    Kakao.API.request({
-      url: "/v2/user/me",
+  const requestCurrentUserInfo = useCallback(
+    (access_token: string) =>
+      Kakao.API.request({
+        url: "/v2/user/me",
 
-      success: onSuccess => {
-        console.log(onSuccess);
-        // TODO: store <id, KakaoAcount(email, nickname, profile_image_url, thumbnail_image_url ...)>
-        // into sessionStorage
-        
-        history.push("/main");
-      },
+        success: onSuccess => {
+          // console.log(onSuccess);
 
-      fail: onFail => {
-        console.error(onFail);
-      },
-    });
+          const kakaoAcount = onSuccess.kakao_account;
+          const { email, profile } = kakaoAcount;
+          const { nickname, profile_image_url } = profile!;
+
+          // TODO: check the endpoint and test again
+          // _createUser({
+          //   userID: access_token,
+          //   email: email!,
+          //   name: nickname!,
+          //   imageURL: profile_image_url!,
+          //   platform: "kakao",
+          // });
+          history.push("/main");
+        },
+
+        fail: onFail => {
+          console.error(onFail);
+        },
+      }),
+    [_createUser]
+  );
 
   return loginWithKakao;
 };

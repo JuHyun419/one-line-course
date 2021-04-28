@@ -35,7 +35,7 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
     currency,
     platform,
     sessionCount,
-    skills,
+    // skills,
   } = lecture!;
   const actualPrice =
     salePrices === 0 || salePrices === undefined ? price : salePrices;

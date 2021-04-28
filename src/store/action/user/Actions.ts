@@ -6,17 +6,16 @@ export interface IFetchRequestAction_CreateUser {
   email: string;
   name: string;
   imageURL: string;
-  platform: string;
+  platform: "google" | "kakao";
 }
 
 export interface IFetchSucceed_CreateUser {
   type: EUserAsyncActionType.FetchSucceed_CreateUser;
-  statusCode: string;
+  statusCode: number;
 }
 
 export interface IFetchFail_CreateUser {
   type: EUserAsyncActionType.FetchFail_CreateUser;
-  errCode: string;
   err: string;
 }
 
