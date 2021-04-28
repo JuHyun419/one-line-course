@@ -36,7 +36,8 @@
 
   - [`DB 설계`](https://www.notion.so/DB-1f0520006f2a4ca582e0cef0a34623ae)
 
-![image](https://user-images.githubusercontent.com/50076031/114146978-2e1e3900-9953-11eb-94b8-94124732f00c.png)
+<img width="520" alt="ERD 다이어그램 최종" src="https://user-images.githubusercontent.com/50076031/116420336-da7b7d00-a878-11eb-9e8d-b3225e363ff1.PNG">
+
 
 <br>
 
