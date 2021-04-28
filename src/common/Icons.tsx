@@ -17,7 +17,7 @@ type TIconStyles = { [propName: string]: string | number };
  */
 export const getIcon = (
   iconName: string,
-  onClick?: () => void,
+  onClick?: ((e: React.MouseEvent<HTMLElement>) => void) | (() => void),
   additionalStyles?: TIconStyles,
   additionalAttributes?: any
 ): JSX.Element | null | undefined => {

@@ -11,13 +11,14 @@ import NavFactory from "../../component/nav/nav-factory/NavFactory";
 import ImageCarousel from "./image-carousel/ImageCarousel";
 import Search from "./search/Search";
 import KeywordSelectorCtrl from "./search/keyword-selector/KeywordSelectorCtrl";
+import SearchResultSummary from "./search-result/SearchResultSummary";
 import SearchResult from "./search-result/SearchResult";
+import GoToTop from "~/src/component/goToTop/GoToTop";
 import MainMenu from "./main-menu/MainMenu";
 import { placeIconsRandomly } from "../../common/";
 import Footer from "../../component/footer/Footer";
 
 import "./_Main.scss";
-import SearchResultSummary from "./search-result/SearchResultSummary";
 
 const Main: React.FC<{}> = () => {
   useInitFetch();
@@ -31,6 +32,7 @@ const Main: React.FC<{}> = () => {
         <KeywordSelectorCtrl />
         <SearchResultSummary />
         <SearchResult />
+        <GoToTop />
         <MainMenu />
         {placeIconsRandomly(30, { fontSize: "2rem" })}
         <Footer />

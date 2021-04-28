@@ -1,10 +1,9 @@
 import React, { useMemo } from "react";
 import { shallowEqual, useSelector } from "react-redux";
+import { TCombinedStates } from "~/src/store";
+
 import GridLectureCard from "~/src/component/lecture-card/GridLectureCard";
 import Pagenator from "~/src/component/pagenator/Pagenator";
-
-import { TCombinedStates } from "~/src/store";
-import { ILectureFetchResult } from "~/src/typings";
 
 import "./_GridView.scss";
 
