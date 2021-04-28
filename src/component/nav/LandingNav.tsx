@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { EButtonSize, EButtonType } from "../../typings/type";
+import { EButtonSize, EButtonType } from "../../typings";
 import { useRedirectToOnButtonClick } from "../../hooks/useRedirectTo";
 
 import Button from "../button/Button";

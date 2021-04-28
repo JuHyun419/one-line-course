@@ -1,51 +1,61 @@
-import React, { useMemo } from "react";
-import { v4 as uuid } from "uuid";
-import { shallowEqual, useSelector } from "react-redux";
+import React, { useCallback, useEffect } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { TCombinedStates } from "../../../store";
-import { ILectureFetchResult } from "../../../typings/type";
+
+import { initFetch_QueryAllBookmarks } from "~/src/store/action/bookmark-async/query-all-bookmarks/ActionCreators";
 
 import GridView from "./view/GridView";
 import ListView from "./view/ListView";
 
+import NoSearchResult from "./NoSearchResult";
+
 import "./_SearchResult.scss";
 
 const SearchResult = () => {
-  const isSearchStarted = useSelector(
-    (state: TCombinedStates) => state.searchResult.isSearchStarted,
+  const isSearchSucceed = useSelector(
+    (state: TCombinedStates) => state.searchResult.isSearchSucceed,
     shallowEqual
   );
-
-  if (isSearchStarted) {
-    return <div className="searchResult"></div>;
-  }
 
   const isGridView = useSelector(
     (state: TCombinedStates) => state.searchResult.isGridView,
     shallowEqual
   );
 
-  const searchedLectures: ILectureFetchResult[] = useSelector(
-    (state: TCombinedStates) => state.searchResult.lectures
-  );
-
-  const searchedLecturesJSX = useMemo(
-    () =>
-      searchedLectures?.map((lec: ILectureFetchResult) => (
-        <li key={uuid()}>
-          {lec.title} {lec.skills[0]}
-        </li>
-      )),
-    [searchedLectures]
-  );
-
-  const resultViewJSX = isGridView ? <GridView /> : <ListView />;
+  fetchBookmarks();
 
   return (
     <div className="searchResult">
-      {resultViewJSX}
-      {searchedLecturesJSX}
+      {isSearchSucceed ? (
+        isGridView ? (
+          <GridView />
+        ) : null
+      ) : (
+        // TODO: List View!
+        // <ListView />
+        <NoSearchResult />
+      )}
     </div>
   );
+};
+
+const fetchBookmarks = () => {
+  const dispatch = useDispatch();
+  const _initFetchBookmarks = useCallback(
+    (userID: string) => dispatch(initFetch_QueryAllBookmarks(userID)),
+    []
+  );
+
+  const userID = localStorage.getItem("userID");
+  if (!userID || userID === "") {
+    // throw new Error("userID is invalid!");
+    return;
+  }
+
+  // fetch all my bookmarks at first!
+  useEffect(() => {
+    _initFetchBookmarks(userID);
+  }, []);
 };
 
 export default SearchResult;

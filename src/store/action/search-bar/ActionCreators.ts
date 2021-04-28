@@ -1,4 +1,4 @@
-import { ESearchBarActionType } from "../../../typings/type";
+import { ESearchBarActionType } from "../../../typings";
 import {
   IToggleSearchBar,
   IOpenSearchBar,

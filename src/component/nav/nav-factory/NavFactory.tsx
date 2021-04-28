@@ -1,12 +1,9 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { ENavType } from "../../../typings/type";
 
-import { TCombinedStates } from "../../../store";
-
-import AfterLoginNav from "../AfterLoginNav";
-import LandingNav from "../LandingNav";
-import SignInNav from "../SignInNav";
+import { ENavType } from "~/src/typings";
+import { TCombinedStates } from "~/src/store";
+import { AfterLoginNav, LandingNav, SignInNav } from "../";
 
 import "./_NavFactory.scss";
 

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-import { EMenuMode, ESeparatorDirection } from "../../../typings/type";
+import { EMenuMode, ESeparatorDirection } from "../../../typings";
 
 import {
   useDarkModeContext,

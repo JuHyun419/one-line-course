@@ -1,22 +1,21 @@
-import { EUserAsyncActionType } from "../../../typings/type";
+import { EUserAsyncActionType } from "../../../typings";
 
 export interface IFetchRequestAction_CreateUser {
   type: EUserAsyncActionType.FetchRequest_CreateUser;
-  id: string;
+  userID: string;
   email: string;
   name: string;
   imageURL: string;
-  platform: string;
+  platform: "google" | "kakao";
 }
 
 export interface IFetchSucceed_CreateUser {
   type: EUserAsyncActionType.FetchSucceed_CreateUser;
-  statusCode: string;
+  statusCode: number;
 }
 
 export interface IFetchFail_CreateUser {
   type: EUserAsyncActionType.FetchFail_CreateUser;
-  errCode: string;
   err: string;
 }
 

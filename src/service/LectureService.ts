@@ -1,9 +1,7 @@
-import { ILectureFetchResult } from "../typings/type";
+import { ILectureFetchResult, TStatusCode } from "~/src/typings";
 import { axiosInstance_Server } from "./Axios";
 
-type TStatusCode = number;
-
-export const getLectures = async (): Promise<{
+export const get_AllLectures = async (): Promise<{
   data: Array<ILectureFetchResult>;
   status: TStatusCode;
 }> => {

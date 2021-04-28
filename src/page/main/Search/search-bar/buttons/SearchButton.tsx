@@ -7,7 +7,7 @@ import {
   EButtonSize,
   EButtonType,
   ILectureFetchResult,
-} from "../../../../../typings/type";
+} from "../../../../../typings";
 import Button from "../../../../../component/button/Button";
 
 import { initSearch } from "../../../../../store/action/search-result";

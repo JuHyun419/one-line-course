@@ -1,12 +1,9 @@
-import {
-  ESearchResultActionType,
-  ILectureFetchResult,
-} from "../../../typings/type";
+import { ESearchResultActionType, ILectureFetchResult } from "../../../typings";
 import { TActions as TSearchResultAction } from "../../action/search-result";
 
 export interface ISearchResult {
   isGridView: boolean;
-  isSearchStarted: boolean;
+  isSearchSucceed: boolean;
   lectures: ILectureFetchResult[];
 }
 
@@ -16,7 +13,7 @@ export interface IState {
 
 export const init: ISearchResult = {
   isGridView: true,
-  isSearchStarted: false,
+  isSearchSucceed: false,
   lectures: [],
 };
 
@@ -28,20 +25,19 @@ const reducer = (
     case ESearchResultActionType.Start_Search:
       return {
         ...state,
-        isSearchStarted: true,
       };
 
     case ESearchResultActionType.Succeed_Search:
       return {
         ...state,
-        isSearchStarted: false,
+        isSearchSucceed: true,
         lectures: action.lectures,
       };
 
     case ESearchResultActionType.Fail_Search:
       return {
         ...state,
-        isSearchStarted: false,
+        isSearchSucceed: false,
       };
 
     case ESearchResultActionType.Toggle_ResultView:

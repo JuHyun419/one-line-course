@@ -1,16 +1,13 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 
-import {
-  ESearchAsyncActionType,
-  ILectureFetchResult,
-} from "../../../typings/type";
+import { ESearchAsyncActionType, ILectureFetchResult } from "~/src/typings";
 import {
   IFetchRequestAction_RetrieveLectures,
   IFetchSucceedAction_RetrieveLectures,
   IFetchFailAction_RetrieveLectures,
 } from "./Actions";
-import { getLectures } from "../../../service/LectureService";
+import { get_AllLectures } from "~/src/service/LectureService";
 
 export const fetchRequest_RetrieveLectures = (): IFetchRequestAction_RetrieveLectures => ({
   type: ESearchAsyncActionType.FetchRequest_RetrieveLectures,
@@ -39,7 +36,7 @@ export const initFetch_RetrieveLectures = () => async (
 ) => {
   try {
     dispatch(fetchRequest_RetrieveLectures());
-    const { data, status } = await getLectures();
+    const { data, status } = await get_AllLectures();
 
     // hasUppercase?
     // data.forEach((d: ILectureFetchResult, i: number) => {
@@ -48,8 +45,9 @@ export const initFetch_RetrieveLectures = () => async (
     //   }
     // });
 
+    console.log(data);
     dispatch(fetchSucceed_RetrieveLectures(status, data));
   } catch (err) {
-    dispatch(fetchFail_RetrieveLectures("TEST_ERR_CODE", err));
+    dispatch(fetchFail_RetrieveLectures(status, err));
   }
 };

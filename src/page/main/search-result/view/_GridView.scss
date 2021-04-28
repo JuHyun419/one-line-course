@@ -1,0 +1,15 @@
+.gridView {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  // width: 95%;
+
+  justify-content: space-around;
+
+  padding: 15px 15px;
+  margin-top: 5%;
+
+  border: 2px dashed #000;
+
+  list-style-type: none;
+}

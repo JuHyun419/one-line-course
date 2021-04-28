@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "../../../component/menu/Menu";
-import { EMenuMode } from "../../../typings/type";
+import { EMenuMode } from "../../../typings";
 
 import "./_MainMenu.scss";
 

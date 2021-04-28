@@ -1,13 +1,13 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 
-import { ECarouselAsyncActionType } from "../../../typings/type";
+import { ECarouselAsyncActionType } from "~/src/typings";
 import {
   IFetchFailAction_CarouselImgURLs,
   IFetchRequestAction_CarouselImageURLs,
   IFetchSucceedAction_CarouselImageURLs,
 } from "./Actions";
-import { getPhotoPage } from "../../../service/UnsplashService";
+import { get_PhotoPages } from "~/src/service/UnsplashService";
 
 // Creators
 export const fetchRequest_CarouselImageURLs = (): IFetchRequestAction_CarouselImageURLs => ({
@@ -24,11 +24,9 @@ export const fetchSucceed_CarouselImageURLs = (
 });
 
 export const fetchFail_CarouselImageURLs = (
-  status: number,
   err: string
 ): IFetchFailAction_CarouselImgURLs => ({
   type: ECarouselAsyncActionType.FetchFail_CarouselImagesURLs,
-  status,
   err,
 });
 
@@ -37,7 +35,7 @@ export const initFetch_CarouselImageURLs = (query: { query: string }) => async (
 ) => {
   try {
     dispatch(fetchRequest_CarouselImageURLs());
-    const { data, status } = await getPhotoPage(query);
+    const { data, status } = await get_PhotoPages(query);
     dispatch(
       fetchSucceed_CarouselImageURLs(
         status,
@@ -45,6 +43,6 @@ export const initFetch_CarouselImageURLs = (query: { query: string }) => async (
       )
     );
   } catch (err) {
-    dispatch(fetchFail_CarouselImageURLs(400, err));
+    dispatch(fetchFail_CarouselImageURLs(err));
   }
 };

@@ -1,15 +1,6 @@
-import React, {
-  useState,
-  useCallback,
-  Dispatch,
-  useEffect,
-  useRef,
-} from "react";
+import React, { useCallback, Dispatch } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import {
-  ISetImageIndicatorCurIdxAction,
-  setImageIndicatorCurIdx,
-} from "../../../../store/action/carousel";
+import { setImageIndicatorCurIdx } from "../../../../store/action/carousel";
 import { TCombinedStates } from "../../../../store";
 import "./_ImageMoveTo.scss";
 
@@ -45,7 +36,7 @@ const useMoveCarousel = (
 
   const _setImageIndicatorCurIdx = useCallback(
     (idx: number) => dispatch(setImageIndicatorCurIdx(idx)),
-    [dispatch]
+    []
   );
 
   const imgWidth = useSelector(

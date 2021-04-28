@@ -1,6 +1,8 @@
 import React from "react";
 // import { Action, CombinedState, Reducer, Store, Dispatch } from "redux";
 
+export type TStatusCode = number;
+
 /**
  *
  */
@@ -52,14 +54,6 @@ export enum ENavType {
 export enum ESeparatorDirection {
   Vertical,
   Horizontal,
-}
-
-/**
- * 
- */
-export enum ELectureCardType {
-  GridView,
-  ListView
 }
 
 /**
@@ -122,6 +116,20 @@ export enum ESearchResultActionType {
   Toggle_ResultView = "TOGGLE_RESULT_VIEW",
 }
 
+export interface IUserData {
+  platform: "google" | "kakao"; // 플랫폼 이름 (=string)
+  userID: string;
+  email: string; // "...@google.com" or "...@kakao.com"
+  name: string; // 실제 이름
+  imageURL: string; // 프로필 이미지 URL
+}
+
+export interface IBookmarkData {
+  bookmarkID: number;
+  userID: string; // 테이블에는 typeof(userID) == bigInt 던데.. 확인 부탁 드려요
+  lectureID: number;
+  createdAt: Date; // 예: Sun Apr 25 2021 21:29:32 GMT+0900 (Korean Standard Time)
+}
 /**
  * User Action Types
  */
@@ -137,6 +145,7 @@ export enum ECommentAsyncActionType {}
 
 export enum ECommentActionType {}
 
+export type TCurrency = "₩" | "$" | "￦";
 export interface ILectureFetchResult {
   id: number;
   imageUrl: string;
@@ -149,7 +158,7 @@ export interface ILectureFetchResult {
   viewCount: number;
   platform: string;
   sessionCount: number;
-  currency: string;
+  currency: TCurrency;
   description: string;
   skills: string;
 }
@@ -164,9 +173,27 @@ export enum ELectureActionType {
   Set_CurrentPage = "SET_CURRENT_PAGE",
 }
 
-export enum EBookmarkAsyncActionType {}
+export enum EBookmarkAsync_AddBookmark_ActionType {
+  FetchRequest = "FETCH_REQUEST_ADD_BOOKMARK",
+  FetchSucceed = "FETCH_SUCCEED_ADD_BOOKMARK",
+  FetchFail = "FETCH_FAIL_ADD_BOOKMARK",
+}
 
-export enum EBookmarkActionType {}
+export enum EBookmarkAsync_RemoveBookmark_ActionType {
+  FetchRequest = "FETCH_REQUEST_REMOVE_BOOKMARK",
+  FetchSucceed = "FETCH_SUCCEED_REMOVE_BOOKMARK",
+  FetchFail = "FETCH_FAIL_REMOVE_BOOKMARK",
+}
+
+export enum EBookmarkAsync_QueryAllBookmarks_ActionType {
+  FetchRequest = "FETCH_REQUEST_QUERY_ALL_BOOKMARKS",
+  FetchSucceed = "FETCH_SUCCEED_QUERY_ALL_BOOKMARKS",
+  FetchFail = "FETCH_FAIL_QUERY_ALL_BOOKMARKS",
+}
+
+export enum EBookmarkActionType {
+  Toggle_Bookmark = "",
+}
 
 /**
  *

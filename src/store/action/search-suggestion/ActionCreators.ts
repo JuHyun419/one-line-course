@@ -1,4 +1,4 @@
-import { ESearchSuggestionActionType } from "../../../typings/type";
+import { ESearchSuggestionActionType } from "../../../typings";
 import { ISetSuggestion, IClearSuggestion } from "./Actions";
 
 export const setSuggestion = (suggestions: Array<string>): ISetSuggestion => ({

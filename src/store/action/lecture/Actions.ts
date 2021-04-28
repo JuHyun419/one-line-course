@@ -1,4 +1,4 @@
-import { ELectureActionType } from "../../../typings/type";
+import { ELectureActionType } from "../../../typings";
 
 // export interface ISet
 
