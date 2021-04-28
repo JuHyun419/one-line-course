@@ -1,23 +1,26 @@
 import React from "react";
-import { ENavType } from "~/src/typings";
-import NavFactory from "../../component/nav/nav-factory/NavFactory";
-import { placeIconsRandomly } from "../../common/";
+import { EMenuMode, ENavType } from "~/src/typings";
+
+import NavFactory from "~/src/component/nav/nav-factory/NavFactory";
 import LandingInfoItems from "./landing-info-item/LandingInfoItems";
-import Footer from "../../component/footer/Footer";
-import "./_Landing.scss";
+import { placeIconsRandomly } from "../../common/";
+import GoToTop from "~/src/component/goToTop/GoToTop";
+import Menu from "~/src/component/menu/Menu";
+import Footer from "~/src/component/footer/Footer";
+
 import "../_Page.scss";
 
-const Landing: React.FC<{}> = () => {
-  return (
-    <div>
-      <NavFactory navType={ENavType.Landing} />
-      <div className="page">
-        <LandingInfoItems />
-        {placeIconsRandomly(30, { fontSize: "2rem" })}
-      </div>
-      <Footer />
+const Landing: React.FC = () => (
+  <div>
+    <NavFactory navType={ENavType.Landing} />
+    <div className="page">
+      <LandingInfoItems />
+      <GoToTop />
+      <Menu menuMode={EMenuMode.BeforeLogin} />
+      {placeIconsRandomly(30, { fontSize: "2rem" })}
     </div>
-  );
-};
+    <Footer />
+  </div>
+);
 
 export default Landing;

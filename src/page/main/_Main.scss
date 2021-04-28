@@ -5,8 +5,9 @@
   align-items: start;
 
   overflow-y: auto;
+  overflow-x: hidden;
 
-  height: 250vh;
+  height: 100%;
 
   position: relative;
 }

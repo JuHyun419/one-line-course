@@ -35,14 +35,7 @@ const Pagenator: React.FC<IPagenatorProps> = ({ postsPerPage, children }) => {
     [currentPage, postsPerPage]
   );
 
-  return (
-    <Fragment>
-      {pagedPosts &&
-        pagedPosts!.map((post: JSX.Element) => (
-          <Fragment key={uuid()}>{post}</Fragment>
-        ))}
-    </Fragment>
-  );
+  return <Fragment>{pagedPosts}</Fragment>;
 };
 
 export default Pagenator;
