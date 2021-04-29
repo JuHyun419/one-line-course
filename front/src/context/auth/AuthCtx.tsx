@@ -1,6 +1,11 @@
 import React from "react";
 import AuthCtxData from "./AuthCtxData";
 
+interface AuthCtxData {
+  isAuth: boolean;
+  authenticate: () => void;
+}
+
 export const AuthCtx = React.createContext<AuthCtxData>({
   isAuth: false,
   authenticate: () => {},

@@ -17,13 +17,15 @@ public class UserService {
     }
 
     // 처음 로그인인지 확인
-    public void signIn(User user) {
-        return;
+    public User searchUser(String userId) {
+        User user = userRepository.findById(userId)
+//                .orElseThrow(() -> new IllegalArgumentException("userId: " + userId + "의 유저가 존재하지 않습니다."));
+                .orElse(null);
+        return user;
     }
 
     // 처음이라서 등록 필요
-    public User save(User user) {
-        return null;
+    public User createUser(User user) {
+        return userRepository.save(user);
     }
-
 }

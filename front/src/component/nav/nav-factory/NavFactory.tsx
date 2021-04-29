@@ -1,11 +1,20 @@
-import React, { Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { ENavType } from "../../../typings/type";
 
-import { ENavType } from "../ENavType";
+import { TCombinedStates } from "../../../store";
+
 import AfterLoginNav from "../AfterLoginNav";
 import LandingNav from "../LandingNav";
 import SignInNav from "../SignInNav";
-import NavFactoryProps from "./NavFactoryProps";
-import { useHistory } from "react-router-dom";
+
+import "./_NavFactory.scss";
+
+interface NavFactoryProps {
+  navType: ENavType;
+  // TODO: Decorator -> @range(0, 4)
+  highlightBtnIdx?: number;
+}
 
 const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
   <Fragment>{makeNav(props)}</Fragment>
@@ -15,10 +24,10 @@ const makeNav = ({
   navType,
   highlightBtnIdx,
 }: NavFactoryProps): JSX.Element => {
-  const history = useHistory();
-  console.log(history);
-  
+  const [sticky, setSticky] = useState("navFactory");
+
   let navJSX: JSX.Element;
+
   switch (navType) {
     case ENavType.Landing:
       navJSX = <LandingNav />;
@@ -30,12 +39,30 @@ const makeNav = ({
 
     case ENavType.AfterLogin:
       navJSX = <AfterLoginNav highlightBtnIdx={highlightBtnIdx} />;
+      const imgRef = useSelector(
+        (state: TCombinedStates) => state.carousel.ref
+      );
+
+      useEffect(() => {
+        if (!imgRef) return;
+
+        window.addEventListener("scroll", function () {
+          if (!imgRef?.current) return;
+
+          setSticky(
+            window.scrollY <= imgRef.current!.getBoundingClientRect().top
+              ? "navFactory"
+              : "navFactory sticky"
+          );
+        });
+      }, [window, imgRef]);
       break;
 
     default:
       throw new Error("Can't react at here!");
   }
-  return navJSX;
+
+  return <div className={sticky}>{navJSX}</div>;
 };
 
 export default NavFactory;

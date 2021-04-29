@@ -15,20 +15,20 @@ import java.util.List;
 public class User {
 
     @Id // 기본키(PK)로 지정
-    @NonNull
+    @Column(name = "id")
     // @GeneratedValue : PK 생성 규칙
     private String id;
 
-    @Column(length = 50, nullable = false)  // 테이블의 컬럼을 나타내며 선언하지 않더라고 해당 클래스의 필드는 모두 컬럼이 됨
+    @Column(name = "email", length = 50, nullable = false)  // 테이블의 컬럼을 나타내며 선언하지 않더라고 해당 클래스의 필드는 모두 컬럼이 됨
     private String email;
 
-    @Column(length = 20, nullable = false)
+    @Column(name = "name", length = 20, nullable = false)
     private String name;
 
-    @Column(length = 500, nullable = false)
+    @Column(name = "image_url", length = 500, nullable = false)
     private String imageUrl;
 
-    @Column(length = 20, nullable = false, unique = true)
+    @Column(name = "platform", length = 20, nullable = false, unique = true)
     private String platform;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy="user")

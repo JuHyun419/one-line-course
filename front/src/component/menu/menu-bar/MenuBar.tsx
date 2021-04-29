@@ -1,24 +1,27 @@
 import React, { Fragment } from "react";
 
+import { EMenuMode, ESeparatorDirection } from "../../../typings/type";
+
 import {
   useDarkModeContext,
-  DarkModeCtxData,
+  DarkModeCtxState,
 } from "../../../context/DarkModeCtx";
+
 import {
   useViewModeContext,
-  ViewModeCtxData,
+  ViewModeCtxState,
 } from "../../../context/ViewModeCtx";
 
 import { joinClasses } from "../../../common/StyleHelper";
 import { getIcon } from "../../../common/Icons";
 import Separator from "../../../component/separator/Separator";
 
-import MenuBarProps from "./MenuBarProps";
-import { EMenuMode } from "../EMenuMode";
-
-import { ESeparatorDirection } from "../../../component/separator/ESeparatorDirection";
-
 import "./_MenuBar.scss";
+
+interface MenuBarProps {
+  menuMode: EMenuMode;
+  isMenuOpen: boolean;
+}
 
 /**
  *
@@ -40,8 +43,8 @@ const MenuBar: React.FC<MenuBarProps> = ({
 
 const makeMenuBarItems = (
   menuMode: EMenuMode,
-  darkModeCtx: DarkModeCtxData,
-  viewModeCtx: ViewModeCtxData
+  darkModeCtx: DarkModeCtxState,
+  viewModeCtx: ViewModeCtxState
 ): JSX.Element => {
   const iconBasicStyles = {
     fontSize: "1.8rem",
@@ -105,7 +108,9 @@ const makeMenuBarItems = (
         gridIconStyles,
         listIconStyles
       );
-      break;
+
+    default:
+      throw new Error("Unknown menu mode");
   }
 };
 
