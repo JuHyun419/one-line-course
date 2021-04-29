@@ -32,6 +32,7 @@ const Main: React.FC<{}> = () => {
         <KeywordSelectorCtrl />
         <SearchResultSummary />
         <SearchResult />
+        
         <GoToTop />
         <Menu menuMode={EMenuMode.AfterLogin} />
         {placeIconsRandomly(30, { fontSize: "2rem" })}
