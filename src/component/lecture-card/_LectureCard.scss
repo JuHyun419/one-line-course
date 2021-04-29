@@ -8,7 +8,7 @@
   border-radius: 5px;
 
   width: 400px;
-  height: auto;
+  // min-height: 400px;
   margin: 10px 0;
 
   font-size: 1.3rem;
@@ -16,8 +16,8 @@
   background-color: $color-nav-weak;
 
   .lectureCard-gird-desc {
-    min-height: 45%;
-    // max-height: 45%;
+    min-height: 25%;
+    // max-height: 25%;
   }
 
   .lectureCard-grid--first-row {
@@ -34,12 +34,5 @@
     justify-content: flex-start;
 
     margin-right: 10px;
-
-    div {
-      margin-bottom: 5px;
-    }
   }
-
-  // .lectureCard-grid--second-row {
-  // }
 }
