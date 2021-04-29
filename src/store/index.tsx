@@ -59,6 +59,26 @@ import bookmarkAsync_QueryAllBookmarks, {
   IBookmarkAsync as IBookmarkAsync_QueryAllBookmarks,
 } from "./reducer/bookmark-async/remove-bookmark/reducer";
 
+// user async (create user) dep
+import userAsync_CreateUser, {
+  IUserAsync as IUserAsync_CreateUser,
+} from "./reducer/user-async/create-user/reducer";
+
+// user async (query all my bookmarks) dep
+import userAsync_QueryAllMyBookmarks, {
+  IUserAsync as IUserAsync_QueryAllMyBookmarks,
+} from "./reducer/user-async/query-all-my-bookmarks/reducer";
+
+// user async (query all my comments) dep
+import userAsync_QueryAllMyComments, {
+  IUserAsync as IUserAsync_QueryAllMyComments,
+} from "./reducer/user-async/query-all-my-comments/reducer";
+
+// use async (query user) dep
+import userAsync_QueryUser, {
+  IUserAsync as IUserAsync_QueryUser,
+} from "./reducer/user-async/query-user/reducer";
+
 import { TActions as TBookmarkAsyncActions } from "./action/bookmark-async";
 
 // user async (create user) dep
@@ -120,6 +140,8 @@ export type TCombinedStates = CombinedState<{
   // comment
   commentAsync_AddComment: ICommentAsync_AddComment;
 }>;
+
+import { TActions as TUserAsyncActions } from "./action/user-async";
 
 export type TCombinedActions =
   | TCarouselAsyncActions
