@@ -45,7 +45,8 @@ export const initFetch_RetrieveLectures = () => async (
     //   }
     // });
 
-    console.log(data);
+    // console.log(data);
+
     dispatch(fetchSucceed_RetrieveLectures(status, data));
   } catch (err) {
     dispatch(fetchFail_RetrieveLectures(status, err));

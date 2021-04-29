@@ -6,20 +6,21 @@ import "./_GoToTop.scss";
 const GoToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const toggleVisibility = () => {
-    setIsVisible(window.pageYOffset > 200);
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
-  }, []);
-
-  const onClickGoToTop = useCallback((_: React.MouseEvent<HTMLElement>) => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
+    window.addEventListener("scroll", () => {
+      setIsVisible(window.pageYOffset > 200);
     });
   }, []);
+
+  const onClickGoToTop = useCallback(
+    (_: React.MouseEvent<HTMLElement>) => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+    [window]
+  );
 
   const goToTopIcon = getIcon("GoToTop", onClickGoToTop, {
     fontSize: "2.8rem",

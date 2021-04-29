@@ -1,8 +1,8 @@
 @import "./Common";
 
 .icon {
-  width: 25px;
-  height: 25px;
+  max-width: 25px;
+  max-height: 25px;
 }
 
 .placed-randomly {
@@ -10,7 +10,7 @@
   z-index: -9999;
 }
 
-@for $i from 0 through 30 {
+@for $i from 0 through 120 {
   .placed-randomly:nth-child(#{$i}) {
     display: inline-block;
     position: absolute;
