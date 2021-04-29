@@ -6,7 +6,7 @@ import { TCombinedStates } from "../../../../../store";
 import {
   EButtonSize,
   EButtonType,
-  ILectureFetchResult,
+  ILectureData,
 } from "../../../../../typings";
 import Button from "../../../../../component/button/Button";
 
@@ -40,7 +40,7 @@ const useOnClickSearchBtn = () => {
     (state: TCombinedStates) => state.search.selectedPlatforms
   );
 
-  const lectures: ILectureFetchResult[] = useSelector(
+  const lectures: ILectureData[] = useSelector(
     (state: TCombinedStates) => state.searchAsync.lectures
   );
 

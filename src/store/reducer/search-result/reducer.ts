@@ -1,10 +1,10 @@
-import { ESearchResultActionType, ILectureFetchResult } from "../../../typings";
+import { ESearchResultActionType, ILectureData } from "../../../typings";
 import { TActions as TSearchResultAction } from "../../action/search-result";
 
 export interface ISearchResult {
   isGridView: boolean;
   isSearchSucceed: boolean;
-  lectures: ILectureFetchResult[];
+  lectures: ILectureData[];
 }
 
 export interface IState {

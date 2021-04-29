@@ -59,6 +59,26 @@ import bookmarkAsync_QueryAllBookmarks, {
   IBookmarkAsync as IBookmarkAsync_QueryAllBookmarks,
 } from "./reducer/bookmark-async/remove-bookmark/reducer";
 
+// user async (create user) dep
+import userAsync_CreateUser, {
+  IUserAsync as IUserAsync_CreateUser,
+} from "./reducer/user-async/create-user/reducer";
+
+// user async (query all my bookmarks) dep
+import userAsync_QueryAllMyBookmarks, {
+  IUserAsync as IUserAsync_QueryAllMyBookmarks,
+} from "./reducer/user-async/query-all-my-bookmarks/reducer";
+
+// user async (query all my comments) dep
+import userAsync_QueryAllMyComments, {
+  IUserAsync as IUserAsync_QueryAllMyComments,
+} from "./reducer/user-async/query-all-my-comments/reducer";
+
+// use async (query user) dep
+import userAsync_QueryUser, {
+  IUserAsync as IUserAsync_QueryUser,
+} from "./reducer/user-async/query-user/reducer";
+
 import { TActions as TBookmarkAsyncActions } from "./action/bookmark-async";
 
 export type TCombinedStates = CombinedState<{
@@ -72,7 +92,13 @@ export type TCombinedStates = CombinedState<{
   bookmarkAsync_AddBookmark: IBookmarkAsync_AddBookmark;
   bookmarkAsync_RemoveBookmark: IBookmarkAsync_RemoveBookmark;
   bookmarkAsync_QueryAllBookmarks: IBookmarkAsync_QueryAllBookmarks;
+  userAsync_CreateUser: IUserAsync_CreateUser;
+  userAsync_QueryAllMyBookmarks: IUserAsync_QueryAllMyBookmarks;
+  userAsync_QueryAllMyComments: IUserAsync_QueryAllMyComments;
+  userAsync_QueryUser: IUserAsync_QueryUser;
 }>;
+
+import { TActions as TUserAsyncActions } from "./action/user-async";
 
 export type TCombinedActions =
   | TCarouselAsyncActions
@@ -82,7 +108,8 @@ export type TCombinedActions =
   | TSearchBarActions
   | TSearchSuggestionActions
   | TSearchResultActions
-  | TBookmarkAsyncActions;
+  | TBookmarkAsyncActions
+  | TUserAsyncActions;
 
 type TRootReducer = Reducer<TCombinedStates, TCombinedActions>;
 
@@ -97,6 +124,10 @@ const rootReducers: TRootReducer = combineReducers({
   bookmarkAsync_AddBookmark,
   bookmarkAsync_RemoveBookmark,
   bookmarkAsync_QueryAllBookmarks,
+  userAsync_CreateUser,
+  userAsync_QueryAllMyBookmarks,
+  userAsync_QueryAllMyComments,
+  userAsync_QueryUser,
 });
 
 const store = createStore(

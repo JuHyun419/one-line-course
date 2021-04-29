@@ -1,7 +1,7 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 
-import { ESearchAsyncActionType, ILectureFetchResult } from "~/src/typings";
+import { ESearchAsyncActionType, ILectureData } from "~/src/typings";
 import {
   IFetchRequestAction_RetrieveLectures,
   IFetchSucceedAction_RetrieveLectures,
@@ -15,7 +15,7 @@ export const fetchRequest_RetrieveLectures = (): IFetchRequestAction_RetrieveLec
 
 export const fetchSucceed_RetrieveLectures = (
   status: number,
-  lectures: Array<ILectureFetchResult>
+  lectures: Array<ILectureData>
 ): IFetchSucceedAction_RetrieveLectures => ({
   type: ESearchAsyncActionType.FetchSucceed_RetrieveLectures,
   status,
