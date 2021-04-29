@@ -23,3 +23,6 @@ IconClassNames.set("Globe", ["fas", "fa-globe-europe"]);
 IconClassNames.set("Lectures", ["fas", "fa-tasks"]);
 IconClassNames.set("GoToTop", ["fas", "fa-arrow-circle-up"]);
 IconClassNames.set("Language", ["fas", "fa-language"]);
+IconClassNames.set("Left-Arrow", ["fas", "fa-arrow-left"]);
+IconClassNames.set("Right-Arrow", ["fas", "fa-arrow-right"]);
+
