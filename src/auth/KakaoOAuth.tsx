@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { initFetch_CreateUser } from "../store/action/user";
+import { initFetch_CreateUser } from "../store/action/user-async";
 import { IUserData } from "../typings";
 
 import "./_Auth.scss";

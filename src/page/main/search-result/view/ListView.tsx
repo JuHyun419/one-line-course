@@ -3,18 +3,18 @@ import { useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
 
 import { TCombinedStates } from "~/src/store";
-import { ILectureFetchResult } from "~/src/typings";
+import { ILectureData } from "~/src/typings";
 
 export interface IListViewProps {}
 
 const ListView: React.FC<IListViewProps> = () => {
-  const searchedLectures: ILectureFetchResult[] = useSelector(
+  const searchedLectures: ILectureData[] = useSelector(
     (state: TCombinedStates) => state.searchResult.lectures
   );
 
   const searchedLecturesJSX = useMemo(
     () =>
-      searchedLectures?.map((lec: ILectureFetchResult) => (
+      searchedLectures?.map((lec: ILectureData) => (
         <li key={uuid()}>
           {lec.title} {lec.skills[0]}
         </li>

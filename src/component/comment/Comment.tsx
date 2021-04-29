@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { TCombinedStates } from "~/src/store";
 
 const Comment = () => {
   // TODO: retrieve user data
+  // const userData = useSelector((state: TCombinedStates) => state.)
   // TODO: retrieve bookmark data
   // TODO: dispatch to bookmark store on interacting comment
   return (
