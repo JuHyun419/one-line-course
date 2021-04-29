@@ -19,13 +19,16 @@ export const post_AddComment = async (
 };
 
 export const patch_fixComment = async (
-  commentID: number
+  commentData: ICommentData
 ): Promise<TStatusCode> => {
   // TODO: commentID Validation
 
   try {
     const { status } = await axiosInstance_Server.patch(
-      `/comments/${commentID}`
+      `/comments/${commentData.commentID}`,
+      {
+        commentData,
+      }
     );
     return status;
   } catch (err) {

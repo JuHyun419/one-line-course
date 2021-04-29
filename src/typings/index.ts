@@ -185,11 +185,38 @@ export enum EUserAsync_QueryAllMyComments_ActionType {
   FetchFail = "FETCH_FAIL_QUERY_ALL_MY_COMMENTS",
 }
 
-export enum EUserActionType {}
+export enum EUserActionType {
+  Set_CurrentUser = "SET_CURRENT_USER",
+}
 
-export enum ECommentAsyncActionType {}
+export enum ECommentAsync_AddComment_ActionType {
+  FetchRequest = "FETCH_REQUEST_ADD_COMMENT",
+  FetchSucceed = "FETCH_SUCCEED_ADD_COMMENT",
+  FetchFail = "FETCH_FAIL_ADD_COMMENT",
+}
 
-export enum ECommentActionType {}
+export enum ECommentAsync_RemoveComment_ActionType {
+  FetchRequest = "FETCH_REQUEST_REMOVE_COMMENT",
+  FetchSucceed = "FETCH_SUCCEED_REMOVE_COMMENT",
+  FetchFail = "FETCH_FAIL_REMOVE_COMMENT",
+}
+
+export enum ECommentAsync_FixComment_ActionType {
+  FetchRequest = "FETCH_REQUEST_FIX_COMMENT",
+  FetchSucceed = "FETCH_SUCCEED_FIX_COMMENT",
+  FetchFail = "FETCH_FAIL_FIX_COMMENT",
+}
+
+export enum ECommentAsync_QueryAllComments_ActionType {
+  FetchRequest = "FETCH_REQUEST_QUERY_ALL_COMMENTS",
+  FetchSucceed = "FETCH_SUCCEED_QUERY_ALL_COMMENTS",
+  FetchFail = "FETCH_FAIL_QUERY_ALL_COMMENTS",
+}
+
+export enum ECommentActionType {
+  Set_Comment = "SET_COMMENTS"
+}
+// Set_
 
 export enum ELectureActionType {
   FetchRequest_QueryLectures = "FETCH_REQUEST_QUERY_LECTURES",
