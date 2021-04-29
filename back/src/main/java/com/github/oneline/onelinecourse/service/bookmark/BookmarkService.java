@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
+import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 @Service
@@ -26,6 +26,7 @@ public class BookmarkService {
     private final LectureRepository lectureRepository;
 
     // 북마크 등록
+    @Transactional
     public Bookmark createBookmark(String userId, Long lectureId) {
         checkNotNull(userId, "userId must be provided");
         checkNotNull(lectureId, "lectureId must be provided");
@@ -50,8 +51,13 @@ public class BookmarkService {
     }
 
     // 북마크 해제
+    @Transactional
     public void deleteBookmark(Long bookmarkId) {
         checkNotNull(bookmarkId, "bookmarkId must be provided");
+        // 북마크를 해제할 id가 존재하는지 체크
+        Bookmark bookmark = bookmarkRepository.findById(bookmarkId)
+                .orElseThrow(() -> new IllegalArgumentException("bookmarkId: " + bookmarkId + "의 북마크가 존재하지 않습니다."));
+
         bookmarkRepository.deleteById(bookmarkId);
     }
 
