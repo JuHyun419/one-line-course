@@ -22,6 +22,8 @@ const Pagenator: React.FC<IPagenatorProps> = ({ postsPerPage, children }) => {
   const [totalPage, setTotalPage] = useState<number>(0);
   const [pagedPosts, setPagedPosts] = useState<JSX.Element[]>();
 
+  const moveToPrevRef = useRef<HTMLDivElement>(null);
+
   // calc total pages
   useEffect(() => {
     if (postsPerPage <= 0) {
