@@ -13,6 +13,8 @@ import Search from "./search/Search";
 import KeywordSelectorCtrl from "./search/keyword-selector/KeywordSelectorCtrl";
 import SearchResultSummary from "./search-result/SearchResultSummary";
 import SearchResult from "./search-result/SearchResult";
+import MoveToPreviousPage from "~/src/component/moveToPage/MoveToPreviousPage";
+import MoveToNextPage from "~/src/component/moveToPage/MoveToNextPage";
 import GoToTop from "~/src/component/goToTop/GoToTop";
 import Menu from "~/src/component/menu/Menu";
 import { placeIconsRandomly } from "../../common/";
@@ -32,6 +34,7 @@ const Main: React.FC<{}> = () => {
         <KeywordSelectorCtrl />
         <SearchResultSummary />
         <SearchResult />
+        
         <GoToTop />
         <Menu menuMode={EMenuMode.AfterLogin} />
         {placeIconsRandomly(30, { fontSize: "2rem" })}
