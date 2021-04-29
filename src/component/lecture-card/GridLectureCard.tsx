@@ -40,6 +40,10 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
   const actualPrice =
     salePrices === 0 || salePrices === undefined ? price : salePrices;
 
+  const onClickCard = (e: React.MouseEvent<HTMLElement>) => {
+    
+  };
+
   return (
     <li className="lectureCard-grid">
       <LectureTitle title={title} />
