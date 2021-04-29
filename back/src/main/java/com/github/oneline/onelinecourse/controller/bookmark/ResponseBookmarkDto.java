@@ -1,25 +1,27 @@
 package com.github.oneline.onelinecourse.controller.bookmark;
 
 import com.github.oneline.onelinecourse.model.bookmark.Bookmark;
-import com.github.oneline.onelinecourse.model.comment.Comment;
-import com.github.oneline.onelinecourse.model.lecture.Lecture;
-import com.github.oneline.onelinecourse.model.user.User;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
-import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
-@Builder
+@ToString
 public class ResponseBookmarkDto {
+
+    @ApiModelProperty(value = "PK", required = true)
     private Long id;
+
+    @ApiModelProperty(value = "북마크 등록 일시", required = true)
     private LocalDateTime createdAt;
-    private String userId;
+
+    @ApiModelProperty(value = "강의 ID", required = true)
     private Long lectureId;
 
     public ResponseBookmarkDto(Bookmark bookmark) {
-        BeanUtils.copyProperties(bookmark, this);
+        this.id = bookmark.getId();
+        this.createdAt = bookmark.getCreatedAt();
+        this.lectureId = bookmark.getLecture().getId();
     }
 }
