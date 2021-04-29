@@ -102,6 +102,7 @@
   - [`MySQL 8.0 대소문자 구분 문제(MySQL 5 버전으로 변경)`](https://zzang9ha.tistory.com/328)
   - [`Java의 LocalDateTime과 MySQL의 datetime 사이의 시차 문제(9시간)`](https://github.com/JuHyun419/one-line-course/issues/62)
   - [`Google oAuth access_token vs id_token`](https://github.com/JuHyun419/one-line-course/issues/89)
+  - [`도메인 연결 80 -> 8080 포트포워딩 삽질`](https://zzang9ha.tistory.com/331)
 
 <br>
 
