@@ -11,7 +11,7 @@ import {
   IFetchSucceedAction_QueryAllBookmarks,
   IFetchFailAction_QueryAllBookmarks,
 } from "./Actions";
-import { get_QueryAllBookmarks } from "~/src/service/BookmarkService";
+import { get_QueryAllMyBookmarks } from "~/src/service/UserService";
 
 const fetchRequest_QueryAllBookmarks = (): IFetchRequestAction_QueryAllBookmarks => ({
   type: EBookmarkAsync_QueryAllBookmarks_ActionType.FetchRequest,
@@ -38,7 +38,7 @@ export const initFetch_QueryAllBookmarks = (userID: string) => async (
 ) => {
   try {
     dispatch(fetchRequest_QueryAllBookmarks());
-    const { bookmarkData, status } = await get_QueryAllBookmarks(userID);
+    const { bookmarkData, status } = await get_QueryAllMyBookmarks(userID);
     dispatch(fetchSucceed_QueryAllBookmarks(status, bookmarkData));
   } catch (err) {
     dispatch(fetchFail_QueryAllBookmarks(err));

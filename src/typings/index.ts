@@ -56,6 +56,48 @@ export enum ESeparatorDirection {
   Horizontal,
 }
 
+export type TCurrency = "₩" | "$" | "￦";
+export interface ILectureData {
+  id: number;
+  imageUrl: string;
+  title: string;
+  price: number;
+  salePrices: number;
+  rating: number;
+  instructor: string;
+  url: string;
+  viewCount: number;
+  platform: string;
+  sessionCount: number;
+  currency: TCurrency;
+  description: string;
+  skills: string;
+}
+
+export interface IUserData {
+  platform: "google" | "kakao"; // 플랫폼 이름 (=string)
+  userID: string;
+  email: string; // "...@google.com" or "...@kakao.com"
+  name: string; // 실제 이름
+  imageURL: string; // 프로필 이미지 URL
+}
+
+export interface IBookmarkData {
+  bookmarkID: number;
+  userID: string; // 테이블에는 typeof(userID) == bigInt 던데.. 확인 부탁 드려요
+  lectureID: number;
+  createdAt: Date; // 예: Sun Apr 25 2021 21:29:32 GMT+0900 (Korean Standard Time)
+}
+
+export interface ICommentData {
+  commentID: number;
+  userID: string;
+  lectureID: number;
+  contents: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 /**
  * Carousel Action Types
  */
@@ -116,52 +158,68 @@ export enum ESearchResultActionType {
   Toggle_ResultView = "TOGGLE_RESULT_VIEW",
 }
 
-export interface IUserData {
-  platform: "google" | "kakao"; // 플랫폼 이름 (=string)
-  userID: string;
-  email: string; // "...@google.com" or "...@kakao.com"
-  name: string; // 실제 이름
-  imageURL: string; // 프로필 이미지 URL
-}
-
-export interface IBookmarkData {
-  bookmarkID: number;
-  userID: string; // 테이블에는 typeof(userID) == bigInt 던데.. 확인 부탁 드려요
-  lectureID: number;
-  createdAt: Date; // 예: Sun Apr 25 2021 21:29:32 GMT+0900 (Korean Standard Time)
-}
 /**
  * User Action Types
  */
-export enum EUserAsyncActionType {
-  FetchRequest_CreateUser = "FETCH_REQUEST_CREATE_USER",
-  FetchSucceed_CreateUser = "FETCH_SUCCEED_CREATE_USER",
-  FetchFail_CreateUser = "FETCH_FAIL_CREATE_USER",
+export enum EUserAsync_CreateUser_ActionType {
+  FetchRequest = "FETCH_REQUEST_CREATE_USER",
+  FetchSucceed = "FETCH_SUCCEED_CREATE_USER",
+  FetchFail = "FETCH_FAIL_CREATE_USER",
 }
 
-export enum EUserActionType {}
-
-export enum ECommentAsyncActionType {}
-
-export enum ECommentActionType {}
-
-export type TCurrency = "₩" | "$" | "￦";
-export interface ILectureFetchResult {
-  id: number;
-  imageUrl: string;
-  title: string;
-  price: number;
-  salePrices: number;
-  rating: number;
-  instructor: string;
-  url: string;
-  viewCount: number;
-  platform: string;
-  sessionCount: number;
-  currency: TCurrency;
-  description: string;
-  skills: string;
+export enum EUserAsync_QueryUser_ActionType {
+  FetchRequest = "FETCH_REQUEST_QUERY_USER",
+  FetchSucceed = "FETCH_SUCCEED_QUERY_USER",
+  FetchFail = "FETCH_FAIL_QUERY_USER",
 }
+
+export enum EUserAsync_QueryAllMyBookmarks_ActionType {
+  FetchRequest = "FETCH_REQUEST_QUERY_ALL_MY_BOOKMARKS",
+  FetchSucceed = "FETCH_SUCCEED_QUERY_ALL_MY_BOOKMARKS",
+  FetchFail = "FETCH_FAIL_QUERY_ALL_MY_BOOKMARKS",
+}
+
+export enum EUserAsync_QueryAllMyComments_ActionType {
+  FetchRequest = "FETCH_REQUEST_QUERY_ALL_MY_COMMENTS",
+  FetchSucceed = "FETCH_SUCCEED_QUERY_ALL_MY_COMMENTS",
+  FetchFail = "FETCH_FAIL_QUERY_ALL_MY_COMMENTS",
+}
+
+export enum EUserActionType {
+  Set_CurrentUser = "SET_CURRENT_USER",
+}
+
+export enum ECommentAsync_AddComment_ActionType {
+  FetchRequest = "FETCH_REQUEST_ADD_COMMENT",
+  FetchSucceed = "FETCH_SUCCEED_ADD_COMMENT",
+  FetchFail = "FETCH_FAIL_ADD_COMMENT",
+}
+
+export enum ECommentAsync_RemoveComment_ActionType {
+  FetchRequest = "FETCH_REQUEST_REMOVE_COMMENT",
+  FetchSucceed = "FETCH_SUCCEED_REMOVE_COMMENT",
+  FetchFail = "FETCH_FAIL_REMOVE_COMMENT",
+}
+
+export enum ECommentAsync_FixComment_ActionType {
+  FetchRequest = "FETCH_REQUEST_FIX_COMMENT",
+  FetchSucceed = "FETCH_SUCCEED_FIX_COMMENT",
+  FetchFail = "FETCH_FAIL_FIX_COMMENT",
+}
+
+export enum ECommentAsync_QueryAllComments_ActionType {
+  FetchRequest = "FETCH_REQUEST_QUERY_ALL_COMMENTS",
+  FetchSucceed = "FETCH_SUCCEED_QUERY_ALL_COMMENTS",
+  FetchFail = "FETCH_FAIL_QUERY_ALL_COMMENTS",
+}
+
+export enum ECommentActionType {
+  // Set_ImageURL ="SET_COMMENT_IMAGE_URL",
+  // Set_UserName = "SET_COMMENT_USER_NAME",
+  // Set_Contents = "SET_COMMENT_CONTENTS",
+  // Set_CreatedAt = "SET_COMMENT_CREATED_AT",
+}
+// Set_
 
 export enum ELectureActionType {
   FetchRequest_QueryLectures = "FETCH_REQUEST_QUERY_LECTURES",
