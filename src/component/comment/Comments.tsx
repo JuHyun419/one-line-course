@@ -4,6 +4,8 @@ import { v4 as uuid } from "uuid";
 
 import { TCombinedStates } from "~/src/store";
 import { initFetch_QueryAllComments } from "~/src/store/action/comment-async";
+import { ICommentData } from "~/src/typings";
+import NewComment from "./NewComment";
 import OtherComment from "./OtherComment";
 
 interface ICommentsProps {
@@ -14,30 +16,59 @@ const Comments: React.FC<ICommentsProps> = ({ lectureID }) => {
   initComments(lectureID);
 
   const user = useSelector((state: TCombinedStates) => state.user.user);
+
+  const myComments = useSelector(
+    (state: TCombinedStates) => state.userAsync_QueryAllMyComments.comments
+  );
   const otherComments = useSelector(
     (state: TCombinedStates) => state.commentAsync_QueryAllComments.comments
   );
 
-  // TODO: 1. Empty Comment
-  // TODO: 2. My Comments
-  // const myComment = useMemo(() => )
+  const myUserID = sessionStorage.getItem("userID");
 
-  // const myCommentsJSX: JSX.Element[] | null = useMemo(() => {
-  //   if ()
-  // })
+  // TODO: 1. New Comment
+  const newCommentJSX: JSX.Element = useMemo(
+    () => <NewComment myUserID={myUserID!} />,
+    [myUserID]
+  );
+
+  // TODO: 2. My Comments
+  const myCommentsJSX: JSX.Element[] | null = useMemo(
+    () =>
+      myComments &&
+      user &&
+      new Array(myComments.length)
+        .fill(0)
+        .map((comment: ICommentData) => (
+          <OtherComment key={comment.commentID} comment={comment} isMyComment />
+        )),
+    [user, myComments]
+  );
 
   // TODO: 3. Other Comments belong to this lecture
-  const otherCommentsJSX: JSX.Element[] | null = useMemo(() => {
-    if (otherComments && user) {
-      return new Array(otherComments.length)
+  const otherCommentsJSX: JSX.Element[] | null = useMemo(
+    () =>
+      otherComments &&
+      user &&
+      new Array(otherComments.length)
         .fill(0)
-        .map(comment => <OtherComment key={uuid()} comment={comment} />);
-    } else {
-      return null;
-    }
-  }, [user, otherComments]);
+        .map((comment: ICommentData) => (
+          <OtherComment
+            key={comment.commentID}
+            comment={comment}
+            isMyComment={false}
+          />
+        )),
+    [user, otherComments]
+  );
 
-  return <div>{otherCommentsJSX}</div>;
+  return (
+    <div>
+      {newCommentJSX}
+      {myCommentsJSX}
+      {otherCommentsJSX}
+    </div>
+  );
 };
 
 const initComments = (lectureID: number) => {

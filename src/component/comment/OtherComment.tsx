@@ -5,26 +5,25 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { get_QueryUser } from "~/src/service/UserService";
-import {
-  EButtonSize,
-  EButtonType,
-  ICommentData,
-  IUserData,
-} from "~/src/typings";
+import { EButtonSize, EButtonType, ICommentData } from "~/src/typings";
+import Button from "../button/Button";
 import {
   CommentUserName,
   CommentUserThumbnail,
   CommentContents,
 } from "./comment-element";
-import CommentCreatedAt from "./comment-element/comment-createdAt/CommentCreatedAt";
+import CommentCreatedAt from "./comment-element/createdAt/CommentCreatedAt";
 import { useUserData } from "./useUserData";
 
 interface ICommentProps {
   comment: ICommentData;
+  isMyComment: boolean;
 }
 
-const OtherComment: React.FC<ICommentProps> = ({ comment }) => {
+const OtherComment: React.FC<ICommentProps> = ({
+  comment,
+  isMyComment = false,
+}) => {
   const [imageURL, setImageURL] = useState("");
   const [userName, setUserName] = useState("");
 
@@ -63,11 +62,38 @@ const OtherComment: React.FC<ICommentProps> = ({ comment }) => {
     [createdAt]
   );
 
+  const onDelete = useCallback((e: React.MouseEvent<HTMLDivElement>) => {}, []);
+  const onFix = useCallback((e: React.MouseEvent<HTMLDivElement>) => {}, []);
+
+  const myCommentButtonsJSX = useMemo(
+    () =>
+      isMyComment && (
+        <Fragment>
+          <Button
+            btnSize={EButtonSize.Small}
+            btnType={EButtonType.Alt}
+            onClick={onFix}
+          >
+            Fix
+          </Button>
+          <Button
+            btnSize={EButtonSize.Small}
+            btnType={EButtonType.Alt}
+            onClick={onDelete}
+          >
+            Delete
+          </Button>
+        </Fragment>
+      ),
+    [isMyComment]
+  );
+
   return (
     <div>
       {thumbnailJSX}
       {nameJSX}
       {contentsJSX}
+      {myCommentButtonsJSX}
       {createdAtJSX}
     </div>
   );

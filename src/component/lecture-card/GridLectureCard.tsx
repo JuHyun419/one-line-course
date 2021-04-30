@@ -28,6 +28,7 @@ export interface IGridLectureCardProps {
 
 const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
   const [isOpened, setIsOpened] = useState(false);
+  
   const lecture = useSelector(
     (state: TCombinedStates) => state.searchResult.lectures[lectureIdx]
   );
@@ -53,15 +54,9 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
   const actualPrice =
     salePrices === 0 || salePrices === undefined ? price : salePrices;
 
-  const openPopup = useCallback(() => {
-    setIsOpened(true);
-  }, []);
+  const openPopup = useCallback(() => setIsOpened(true), []);
 
-  const closePopup = useCallback(() => {
-    setIsOpened(false);
-  }, []);
-
-  // const onClickCard =
+  const closePopup = useCallback(() => setIsOpened(false), []);
 
   const lectureCardInfoJSX = useMemo(
     () => (

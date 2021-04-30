@@ -44,7 +44,6 @@ const SearchResultSummary = () => {
     <div className="searchResult-summary">
       <div>
         <ul>{selectedPlatformsJSX}</ul>
-        {/* <span>&nbsp;에서,</span> */}
       </div>
       <br />
       <div>
