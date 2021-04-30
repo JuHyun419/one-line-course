@@ -1,17 +1,17 @@
 import { TActions as TSearchAsyncActions } from "../../action/search-async";
 import {
   ESearchAsyncActionType,
-  ILectureFetchResult,
-} from "../../../typings/type";
+  ILectureData,
+} from "../../../typings";
 
 export interface ISearchAsync {
-  lectures: Array<ILectureFetchResult>;
+  lectures: Array<ILectureData>;
   err?: string;
   isLoading: boolean;
 }
 
 export interface IState {
-  fetcher: ISearchAsync;
+  state: ISearchAsync;
 }
 
 const init: ISearchAsync = {

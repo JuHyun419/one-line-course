@@ -6,6 +6,7 @@
 .history/
 
 # dependencies
+lib/
 node_modules/
 /.pnp
 .pnp.js

@@ -4,8 +4,7 @@ import { TCombinedStates } from "../../../store";
 
 import { initFetch_RetrieveLectures } from "../../../store/action/search-async";
 
-import KeywordSelectorCtrl from "./Keyword-selector/KeywordSelectorCtrl";
-import SearchCtrl from "./Search-elements/SearchCtrl";
+import SearchCtrl from "./search-ctrl/SearchCtrl";
 import Loading from "../../../component/loading/Loading";
 
 import "./_Search.scss";
@@ -13,13 +12,10 @@ import "./_Search.scss";
 const Search: React.FC<{}> = () => {
   useInitFetch();
 
-  const loadingJSX = useSelector(
+  const isSearchLoading = useSelector(
     (state: TCombinedStates) => state.searchAsync.isLoading,
     shallowEqual
   );
-  if (loadingJSX) {
-    return <Loading />;
-  }
 
   // const errorJSX = useSelector(
   //   (state: TCombinedStates) => state.searchAsync.err,
@@ -31,17 +27,17 @@ const Search: React.FC<{}> = () => {
 
   return (
     <div className="search">
-      <SearchCtrl />
-      <KeywordSelectorCtrl />
+      {isSearchLoading ? <Loading /> : <SearchCtrl />}
     </div>
   );
 };
 
 const useInitFetch = () => {
   const dispatch = useDispatch();
-  const _initFetch = useCallback(() => dispatch(initFetch_RetrieveLectures()), [
-    dispatch,
-  ]);
+  const _initFetch = useCallback(
+    () => dispatch(initFetch_RetrieveLectures()),
+    []
+  );
 
   useEffect(() => {
     _initFetch();

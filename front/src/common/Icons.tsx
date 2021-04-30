@@ -1,5 +1,5 @@
 import React from "react";
-import { joinClasses, setCSSVariable } from "./StyleHelper";
+import { joinClasses } from "./";
 import { IconClassNames } from "./IconsResources";
 
 import "./_Icons.scss";
@@ -17,8 +17,9 @@ type TIconStyles = { [propName: string]: string | number };
  */
 export const getIcon = (
   iconName: string,
-  onClick?: () => void,
-  additionalStyles?: TIconStyles
+  onClick?: ((e: React.MouseEvent<HTMLElement>) => void) | (() => void),
+  additionalStyles?: TIconStyles,
+  additionalAttributes?: any
 ): JSX.Element | null | undefined => {
   const classes = IconClassNames.get(iconName.trim());
   return classes ? (
@@ -26,6 +27,7 @@ export const getIcon = (
       className={joinClasses("icon", ...classes)}
       style={additionalStyles}
       onClick={onClick}
+      {...additionalAttributes}
     />
   ) : null;
 };

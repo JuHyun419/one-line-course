@@ -1,7 +1,7 @@
 import {
   ESearchAsyncActionType,
-  ILectureFetchResult,
-} from "../../../typings/type";
+  ILectureData,
+} from "../../../typings";
 
 export interface IFetchRequestAction_RetrieveLectures {
   type: ESearchAsyncActionType.FetchRequest_RetrieveLectures;
@@ -10,7 +10,7 @@ export interface IFetchRequestAction_RetrieveLectures {
 export interface IFetchSucceedAction_RetrieveLectures {
   type: ESearchAsyncActionType.FetchSucceed_RetrieveLectures;
   status: number;
-  lectures: Array<ILectureFetchResult>;
+  lectures: Array<ILectureData>;
 }
 
 export interface IFetchFailAction_RetrieveLectures {

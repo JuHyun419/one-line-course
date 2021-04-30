@@ -1,4 +1,4 @@
-import { ESearchActionType } from "../../../typings/type";
+import { ESearchActionType } from "../../../typings";
 
 export interface ISetSelectedKeyword {
   type: ESearchActionType.Set_SelectedKeyword;
@@ -10,12 +10,11 @@ export interface ISetSelectedPlatform {
   selectedPlatform: string;
 }
 
-export interface ISetSuggestion {
-  type: ESearchActionType.Set_Suggestion;
-  suggestions: Array<string>;
+export interface IClearSelectedAll {
+  type: ESearchActionType.Clear_SelectedAll;
 }
 
 export type TActions =
   | ISetSelectedKeyword
   | ISetSelectedPlatform
-  | ISetSuggestion;
+  | IClearSelectedAll;
