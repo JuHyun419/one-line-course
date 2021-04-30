@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
 
 import { TCombinedStates } from "~/src/store";
@@ -13,6 +13,11 @@ const SearchResultSummary = () => {
 
   const selectedPlatforms = useSelector(
     (state: TCombinedStates) => state.search.selectedPlatforms
+  );
+
+  const searchResultCount = useSelector(
+    (state: TCombinedStates) => state.searchResult.lectures.length,
+    shallowEqual
   );
 
   const selectedKeywordsJSX = useMemo(
@@ -39,12 +44,19 @@ const SearchResultSummary = () => {
     <div className="searchResult-summary">
       <div>
         <ul>{selectedPlatformsJSX}</ul>
-        <span>&nbsp;에서,</span>
+        {/* <span>&nbsp;에서,</span> */}
       </div>
       <br />
       <div>
         <ul>{selectedKeywordsJSX}</ul>
-        <span>&nbsp;로 찾은 결과입니다.</span>
+        <span>&nbsp;으로 찾은 결과</span>
+      </div>
+      <div>
+        총&nbsp;
+        <span className="searchResult-summary--lectures-count">
+          {searchResultCount}
+        </span>
+        &nbsp;개 입니다.
       </div>
     </div>
   );

@@ -18,6 +18,7 @@ import {
   LectureDescription,
   LectureInstructor,
 } from "./";
+import LectureGoToLecture from "./lecture-card-element/goToLecture/LectureGoToLecture";
 
 import "./_LectureCard.scss";
 
@@ -125,6 +126,7 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
           </div>
           <div className="lectureCard-separator"></div>
           <LectureTitle title={title} isCard={false} />
+          <LectureGoToLecture link={url} />
           <LectureInstructor instructor={instructor} />
           <LectureDescription description={description} />
         </div>

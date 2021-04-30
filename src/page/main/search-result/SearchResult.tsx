@@ -7,8 +7,6 @@ import { initFetch_QueryAllBookmarks } from "~/src/store/action/bookmark-async/q
 import GridView from "./view/GridView";
 import ListView from "./view/ListView";
 
-import NoSearchResult from "./NoSearchResult";
-
 import "./_SearchResult.scss";
 
 const SearchResult = () => {
@@ -26,15 +24,11 @@ const SearchResult = () => {
 
   return (
     <div className="searchResult">
-      {isSearchSucceed ? (
-        isGridView ? (
-          <GridView />
-        ) : null
-      ) : (
+      {
+        isSearchSucceed ? isGridView ? <GridView /> : null : null
         // TODO: List View!
         // <ListView />
-        <NoSearchResult />
-      )}
+      }
     </div>
   );
 };
