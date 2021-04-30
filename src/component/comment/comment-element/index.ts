@@ -1,4 +1,5 @@
-import CommentUserThumbnail from "./UserThumbnail/CommentUserThumbnail";
-import CommentUserName from "./UserName/CommentUserName";
+import CommentUserThumbnail from "./comment-user-thumbnail/CommentUserThumbnail";
+import CommentUserName from "./comment-user-name/CommentUserName";
+import CommentContents from "./comment-contents/CommentContents";
 
-export { CommentUserThumbnail, CommentUserName };
+export { CommentUserThumbnail, CommentUserName, CommentContents };

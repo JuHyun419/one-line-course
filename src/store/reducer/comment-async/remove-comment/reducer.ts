@@ -1,7 +1,8 @@
 import {
-  ECommentAsync_FixComment_ActionType,
+  ECommentAsync_RemoveComment_ActionType,
   TStatusCode,
 } from "~/src/typings";
+
 import { TActions as TCommentAsyncActions } from "../../../action/comment-async";
 
 export interface ICommentAsync {
@@ -25,20 +26,20 @@ const reducer = (
   action: TCommentAsyncActions
 ): ICommentAsync => {
   switch (action.type) {
-    case ECommentAsync_FixComment_ActionType.FetchRequest:
+    case ECommentAsync_RemoveComment_ActionType.FetchRequest:
       return {
         ...state,
         isLoading: true,
       };
 
-    case ECommentAsync_FixComment_ActionType.FetchSucceed:
+    case ECommentAsync_RemoveComment_ActionType.FetchSucceed:
       return {
         ...state,
         status: action.status,
         isLoading: false,
       };
 
-    case ECommentAsync_FixComment_ActionType.FetchFail:
+    case ECommentAsync_RemoveComment_ActionType.FetchFail:
       return {
         ...state,
         err: action.err,

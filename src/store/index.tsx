@@ -59,6 +59,8 @@ import bookmarkAsync_QueryAllBookmarks, {
   IBookmarkAsync as IBookmarkAsync_QueryAllBookmarks,
 } from "./reducer/bookmark-async/remove-bookmark/reducer";
 
+import { TActions as TBookmarkAsyncActions } from "./action/bookmark-async";
+
 // user async (create user) dep
 import userAsync_CreateUser, {
   IUserAsync as IUserAsync_CreateUser,
@@ -79,28 +81,6 @@ import userAsync_QueryUser, {
   IUserAsync as IUserAsync_QueryUser,
 } from "./reducer/user-async/query-user/reducer";
 
-import { TActions as TBookmarkAsyncActions } from "./action/bookmark-async";
-
-// user async (create user) dep
-import userAsync_CreateUser, {
-  IUserAsync as IUserAsync_CreateUser,
-} from "./reducer/user-async/create-user/reducer";
-
-// user async (query all my bookmarks) dep
-import userAsync_QueryAllMyBookmarks, {
-  IUserAsync as IUserAsync_QueryAllMyBookmarks,
-} from "./reducer/user-async/query-all-my-bookmarks/reducer";
-
-// user async (query all my comments) dep
-import userAsync_QueryAllMyComments, {
-  IUserAsync as IUserAsync_QueryAllMyComments,
-} from "./reducer/user-async/query-all-my-comments/reducer";
-
-// user async (query user) dep
-import userAsync_QueryUser, {
-  IUserAsync as IUserAsync_QueryUser,
-} from "./reducer/user-async/query-user/reducer";
-
 import { TActions as TUserAsyncActions } from "./action/user-async";
 
 // user dep
@@ -111,6 +91,21 @@ import { TActions as TUserActions } from "./action/user";
 import commentAsync_AddComment, {
   ICommentAsync as ICommentAsync_AddComment,
 } from "./reducer/comment-async/add-comment/reducer";
+
+// comment async (fix comment) dep
+import commentAsync_FixComment, {
+  ICommentAsync as ICommentAsync_FixComment,
+} from "./reducer/comment-async/fix-comment/reducer";
+
+// comment async (query all comments) dep
+import commentAsync_QueryAllComments, {
+  ICommentAsync as ICommentAsync_QueryAllComments,
+} from "./reducer/comment-async/query-all-comments/reducer";
+
+// comment async (remove comment) dep
+import commentAsync_RemoveComment, {
+  ICommentAsync as ICommentAsync_RemoveComment,
+} from "./reducer/comment-async/remove-comment/reducer";
 
 import { TActions as TCommentAsyncActions } from "./action/comment-async";
 
@@ -139,9 +134,10 @@ export type TCombinedStates = CombinedState<{
   user: IUser;
   // comment
   commentAsync_AddComment: ICommentAsync_AddComment;
+  commentAsync_FixComment: ICommentAsync_FixComment;
+  commentAsync_QueryAllComments: ICommentAsync_QueryAllComments;
+  commentAsync_RemoveComment: ICommentAsync_RemoveComment;
 }>;
-
-import { TActions as TUserAsyncActions } from "./action/user-async";
 
 export type TCombinedActions =
   | TCarouselAsyncActions
@@ -175,6 +171,9 @@ const rootReducers: TRootReducer = combineReducers({
   userAsync_QueryUser,
   user,
   commentAsync_AddComment,
+  commentAsync_FixComment,
+  commentAsync_QueryAllComments,
+  commentAsync_RemoveComment,
 });
 
 const store = createStore(

@@ -1,10 +1,13 @@
 import {
-  ECommentAsync_FixComment_ActionType,
+  ECommentAsync_QueryAllComments_ActionType,
+  ICommentData,
   TStatusCode,
 } from "~/src/typings";
+
 import { TActions as TCommentAsyncActions } from "../../../action/comment-async";
 
 export interface ICommentAsync {
+  comments: Array<ICommentData> | null;
   err?: string;
   status: TStatusCode;
   isLoading: boolean;
@@ -15,6 +18,7 @@ export interface IState {
 }
 
 const init: ICommentAsync = {
+  comments: null,
   err: "",
   status: 0,
   isLoading: false,
@@ -25,20 +29,21 @@ const reducer = (
   action: TCommentAsyncActions
 ): ICommentAsync => {
   switch (action.type) {
-    case ECommentAsync_FixComment_ActionType.FetchRequest:
+    case ECommentAsync_QueryAllComments_ActionType.FetchRequest:
       return {
         ...state,
         isLoading: true,
       };
 
-    case ECommentAsync_FixComment_ActionType.FetchSucceed:
+    case ECommentAsync_QueryAllComments_ActionType.FetchSucceed:
       return {
         ...state,
+        comments: action.comments,
         status: action.status,
         isLoading: false,
       };
 
-    case ECommentAsync_FixComment_ActionType.FetchFail:
+    case ECommentAsync_QueryAllComments_ActionType.FetchFail:
       return {
         ...state,
         err: action.err,
