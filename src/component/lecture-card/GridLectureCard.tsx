@@ -1,7 +1,9 @@
 import React, { Fragment, useCallback, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { TCombinedStates } from "~/src/store";
+import { ESeparatorDirection } from "~/src/typings";
 import LecturePopup from "../lecture-popup/LecturePopup";
+import Separator from "../separator/Separator";
 
 import {
   LectureTitle,
@@ -12,9 +14,10 @@ import {
   LecturePrice,
   LecturePlatform,
   LectureSessionCount,
-  // LectureSkills,
+  LectureLanguage,
+  LectureDescription,
+  LectureInstructor,
 } from "./";
-import LectureLanguage from "./lecture-card-element/language/LectureLanguage";
 
 import "./_LectureCard.scss";
 
@@ -30,15 +33,18 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
 
   const {
     id,
-    title,
     imageUrl,
-    rating,
-    viewCount,
-    salePrices,
+    title,
     price,
-    currency,
+    salePrices,
+    rating,
+    instructor,
+    url,
+    viewCount,
     platform,
     sessionCount,
+    currency,
+    description,
   } = lecture!;
 
   const language = currency === "$" ? "EN" : "KR";
@@ -46,15 +52,23 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
   const actualPrice =
     salePrices === 0 || salePrices === undefined ? price : salePrices;
 
-  const onClickCard = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    setIsOpened(prv => !prv);
+  const openPopup = useCallback(() => {
+    setIsOpened(true);
   }, []);
 
-  const lectureInfoJSX = useMemo(
+  const closePopup = useCallback(() => {
+    setIsOpened(false);
+  }, []);
+
+  // const onClickCard =
+
+  const lectureCardInfoJSX = useMemo(
     () => (
-      <Fragment>
-        <LectureThumbnail imageURL={imageUrl} title={title} />
-        <div className="lectureCard-gird-desc">
+      <div onClick={openPopup}>
+        <LectureTitle title={title} isCard />
+        <LectureBookmark />
+        <LectureThumbnail imageURL={imageUrl} title={title} isCard />
+        <div className="lectureCard-grid-desc">
           <div className="lectureCard-grid--first-row">
             <div className="lectureCard-grid--cl1">
               <LectureRating rating={rating} />
@@ -69,6 +83,50 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
               <LectureLanguage language={language} />
             </div>
           </div>
+        </div>
+      </div>
+    ),
+    [
+      imageUrl,
+      title,
+      rating,
+      platform,
+      viewCount,
+      sessionCount,
+      actualPrice,
+      currency,
+      language,
+    ]
+  );
+
+  const lecturePopupInfoJSX = useMemo(
+    () => (
+      <Fragment>
+        <LectureBookmark />
+        <LectureThumbnail imageURL={imageUrl} title={title} isCard={false} />
+        <div className="lecturePopup-close" onClick={closePopup}>
+          X
+        </div>
+        <div className="lectureCard-separator"></div>
+        <div className="lectureCard-grid-desc">
+          <div className="lectureCard-grid--first-row">
+            <div className="lectureCard-grid--cl1">
+              <LectureRating rating={rating} />
+              <LecturePlatform platform={platform} />
+            </div>
+            <div className="lectureCard-grid--cl2">
+              <LectureViewCount viewCount={viewCount} />
+              <LectureSessionCount sessionCount={sessionCount} />
+            </div>
+            <div className="lectureCard-grid-cl3">
+              <LecturePrice price={actualPrice} currency={currency} />
+              <LectureLanguage language={language} />
+            </div>
+          </div>
+          <div className="lectureCard-separator"></div>
+          <LectureTitle title={title} isCard={false} />
+          <LectureInstructor instructor={instructor} />
+          <LectureDescription description={description} />
         </div>
       </Fragment>
     ),
@@ -88,17 +146,17 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
   const popupJSX = useMemo(
     () =>
       isOpened ? (
-        <LecturePopup lectureID={id}>{lectureInfoJSX}</LecturePopup>
+        <LecturePopup lectureID={id} onClose={closePopup}>
+          {lecturePopupInfoJSX}
+        </LecturePopup>
       ) : null,
-    [isOpened, lectureInfoJSX, id]
+    [isOpened, lecturePopupInfoJSX, id]
   );
 
   return (
-    <li className="lectureCard-grid" onClick={onClickCard}>
+    <li className="lectureCard-grid">
       {popupJSX}
-      <LectureTitle title={title} />
-      <LectureBookmark />
-      {lectureInfoJSX}
+      {lectureCardInfoJSX}
     </li>
   );
 };
