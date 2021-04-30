@@ -1,11 +1,11 @@
 import { TActions as TSearchAsyncActions } from "../../action/search-async";
 import {
   ESearchAsyncActionType,
-  ILectureFetchResult,
+  ILectureData,
 } from "../../../typings";
 
 export interface ISearchAsync {
-  lectures: Array<ILectureFetchResult>;
+  lectures: Array<ILectureData>;
   err?: string;
   isLoading: boolean;
 }

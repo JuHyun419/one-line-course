@@ -40,19 +40,3 @@ export const delete_RemoveBookmark = async (
   }
 };
 
-export const get_QueryAllBookmarks = async (
-  userID: string
-): Promise<{
-  bookmarkData: IBookmarkData[];
-  status: TStatusCode;
-}> => {
-  try {
-    const { data, status } = await axiosInstance_Server.get(
-      `/bookmarks/users/${userID}`
-    );
-    const bookmarkData = data as IBookmarkData[];
-    return { bookmarkData, status };
-  } catch (err) {
-    throw new Error(err);
-  }
-};

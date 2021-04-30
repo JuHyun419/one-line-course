@@ -1,6 +1,6 @@
 import {
   ESearchResultActionType,
-  ILectureFetchResult,
+  ILectureData,
 } from "../../../typings";
 
 export interface IStartSearch {
@@ -9,7 +9,7 @@ export interface IStartSearch {
 
 export interface ISucceedSearch {
   type: ESearchResultActionType.Succeed_Search;
-  lectures: ILectureFetchResult[];
+  lectures: ILectureData[];
 }
 
 export interface IFailSearch {

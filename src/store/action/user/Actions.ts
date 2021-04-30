@@ -1,25 +1,8 @@
-import { EUserAsyncActionType } from "../../../typings";
+import { EUserActionType, IUserData } from "~/src/typings";
 
-export interface IFetchRequestAction_CreateUser {
-  type: EUserAsyncActionType.FetchRequest_CreateUser;
-  userID: string;
-  email: string;
-  name: string;
-  imageURL: string;
-  platform: "google" | "kakao";
+export interface ISetCurrentUser {
+  type: EUserActionType.Set_CurrentUser;
+  user: IUserData;
 }
 
-export interface IFetchSucceed_CreateUser {
-  type: EUserAsyncActionType.FetchSucceed_CreateUser;
-  statusCode: number;
-}
-
-export interface IFetchFail_CreateUser {
-  type: EUserAsyncActionType.FetchFail_CreateUser;
-  err: string;
-}
-
-export type TActions =
-  | IFetchRequestAction_CreateUser
-  | IFetchSucceed_CreateUser
-  | IFetchFail_CreateUser;
+export type TActions = ISetCurrentUser;

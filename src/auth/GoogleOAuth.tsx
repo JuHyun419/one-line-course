@@ -9,7 +9,7 @@ import {
 
 import "./_Auth.scss";
 import { useDispatch } from "react-redux";
-import { initFetch_CreateUser } from "../store/action/user";
+import { initFetch_CreateUser } from "../store/action/user-async";
 import { IUserData } from "../typings";
 
 const GoogleOAuth: React.FC<{}> = () => {
