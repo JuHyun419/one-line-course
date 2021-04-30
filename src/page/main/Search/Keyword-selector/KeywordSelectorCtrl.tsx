@@ -40,10 +40,11 @@ const KeywordSelectorCtrl = () => {
       />
       <KeywordSelector
         title="프로그래밍 언어 / API / 프레임워크"
-        keywords={[
-          ...keywordsKoreanAsArr.slice(keywordsKoreanAsArr.length / 2),
-          ...keywordsEnglishAsArr.slice(0, keywordsEnglishAsArr.length / 2),
-        ]}
+        keywords={[...keywordsKoreanAsArr, ...keywordsEnglishAsArr]}
+        // keywords={[
+        //   ...keywordsKoreanAsArr.slice(keywordsKoreanAsArr.length / 2),
+        //   ...keywordsEnglishAsArr.slice(0, keywordsEnglishAsArr.length / 2),
+        // ]}
         keywordsClassName="keywords"
         dispatchKeyword={_setSelectedKeyword}
       />

@@ -3,7 +3,7 @@ import { ThunkDispatch } from "redux-thunk";
 
 import {
   ESearchResultActionType,
-  ILectureFetchResult,
+  ILectureData,
 } from "../../../typings";
 import {
   IStartSearch,
@@ -17,7 +17,7 @@ export const startSearch = (): IStartSearch => ({
 });
 
 export const succeedSearch = (
-  lectures: ILectureFetchResult[]
+  lectures: ILectureData[]
 ): ISucceedSearch => ({
   type: ESearchResultActionType.Succeed_Search,
   lectures,
@@ -34,7 +34,7 @@ export const toggleResultView = (): IToggleResultView => ({
 export const initSearch = (
   targetPlatforms: string[],
   targetKeywords: string[],
-  lectures: ILectureFetchResult[]
+  lectures: ILectureData[]
 ) => (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
   // start searching
   dispatch(startSearch());
@@ -42,7 +42,7 @@ export const initSearch = (
   // query the fetched lecture by target platforms
   // e.g. ["youtube", "inflearn"] or ["유튜브", "인프런"]
   const lecturesQueriedByTargetPlatforms = lectures.filter(
-    (lecture: ILectureFetchResult) => targetPlatforms.includes(lecture.platform)
+    (lecture: ILectureData) => targetPlatforms.includes(lecture.platform)
   );
   console.log(lecturesQueriedByTargetPlatforms);
 
@@ -52,7 +52,7 @@ export const initSearch = (
   // + lecture.skills 의 기본 구분자는 ','
   // + lecture.skills 의 각 skill 들은 '-', '/' 로 나뉠 수 있다.
   const lecturesQueriedByTargetKeywords = lecturesQueriedByTargetPlatforms.filter(
-    (lecture: ILectureFetchResult) => {
+    (lecture: ILectureData) => {
       const matchedWithTargetKeywords = lecture.skills
         .split(/,/)
         .filter((skill: string) => targetKeywords.includes(skill));

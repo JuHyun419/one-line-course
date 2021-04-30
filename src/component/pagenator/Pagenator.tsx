@@ -3,10 +3,8 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from "react";
-// import { v4 as uuid } from "uuid";
 import MoveToNextPage from "../moveToPage/MoveToNextPage";
 import MoveToPreviousPage from "../moveToPage/MoveToPreviousPage";
 
@@ -22,9 +20,7 @@ const Pagenator: React.FC<IPagenatorProps> = ({ postsPerPage, children }) => {
   const [totalPage, setTotalPage] = useState<number>(0);
   const [pagedPosts, setPagedPosts] = useState<JSX.Element[]>();
 
-  const moveToPrevRef = useRef<HTMLDivElement>(null);
-
-  // calc total pages
+  // calc total pages - calculated at first only once
   useEffect(() => {
     if (postsPerPage <= 0) {
       throw new Error("Posts per page can't be below 0");
@@ -47,36 +43,71 @@ const Pagenator: React.FC<IPagenatorProps> = ({ postsPerPage, children }) => {
     [currentPage, postsPerPage]
   );
 
-  console.log(pagedPosts);
+  const {
+    onClick: onMoveToNextPage,
+    isDisabled: isMoveToNextPageDisabled,
+  } = useMoveToNextPage(currentPage, totalPage, setCurrentPage);
 
-  // TODO: useCallback +
-  const onMoveToPrevPage = (e: React.MouseEvent<HTMLElement>) => {
-    if (currentPage === 0) {
-      return;
-    }
-    setCurrentPage(prv => prv - 1);
-  };
-
-  const onMoveToNextPage = (e: React.MouseEvent<HTMLElement>) => {
-    if (currentPage >= totalPage - 1) {
-      return;
-    }
-    setCurrentPage(prv => prv + 1);
-  };
+  const {
+    onClick: onMoveToPrevPage,
+    isDisabled: isMoveToPrevPageDisabled,
+  } = useMoveToPreviousPage(currentPage, setCurrentPage);
 
   return (
     <Fragment>
       <MoveToPreviousPage
         onClick={onMoveToPrevPage}
-        disable={currentPage === 0}
+        disable={isMoveToPrevPageDisabled}
       />
       <MoveToNextPage
         onClick={onMoveToNextPage}
-        disable={currentPage >= totalPage - 1}
+        disable={isMoveToNextPageDisabled}
       />
       {pagedPosts}
     </Fragment>
   );
+};
+
+const useMoveToPreviousPage = (
+  currentPage: number,
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+) => {
+  const onClick = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
+      if (currentPage === 0) {
+        return;
+      }
+      setCurrentPage(prv => prv - 1);
+    },
+    [currentPage]
+  );
+
+  const isDisabled = useMemo(() => currentPage === 0, [currentPage]);
+
+  return { onClick, isDisabled };
+};
+
+const useMoveToNextPage = (
+  currentPage: number,
+  totalPage: number,
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+) => {
+  const onClick = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
+      if (currentPage >= totalPage - 1) {
+        return;
+      }
+      setCurrentPage(prv => prv + 1);
+    },
+    [currentPage, totalPage]
+  );
+
+  const isDisabled = useMemo(() => currentPage >= totalPage - 1, [
+    currentPage,
+    totalPage,
+  ]);
+
+  return { onClick, isDisabled };
 };
 
 export default Pagenator;
