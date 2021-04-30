@@ -1,0 +1,18 @@
+.lecturePopup {
+  position: fixed;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 80%;
+  height: 80%;
+
+  background-color: #fff;
+
+  z-index: 200;
+
+  .lecturePopup--lecture {
+    overflow-y: scroll;
+  }
+}

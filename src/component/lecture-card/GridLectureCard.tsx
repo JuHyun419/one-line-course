@@ -1,6 +1,7 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { Fragment, useCallback, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { TCombinedStates } from "~/src/store";
+import LecturePopup from "../lecture-popup/LecturePopup";
 
 import {
   LectureTitle,
@@ -13,6 +14,7 @@ import {
   LectureSessionCount,
   // LectureSkills,
 } from "./";
+import LectureLanguage from "./lecture-card-element/language/LectureLanguage";
 
 import "./_LectureCard.scss";
 
@@ -27,6 +29,7 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
   );
 
   const {
+    id,
     title,
     imageUrl,
     rating,
@@ -36,8 +39,10 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
     currency,
     platform,
     sessionCount,
-    // skills,
   } = lecture!;
+
+  const language = currency === "$" ? "EN" : "KR";
+
   const actualPrice =
     salePrices === 0 || salePrices === undefined ? price : salePrices;
 
@@ -45,32 +50,55 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
     setIsOpened(prv => !prv);
   }, []);
 
-  // const popupJSX = useMemo(() => )
+  const lectureInfoJSX = useMemo(
+    () => (
+      <Fragment>
+        <LectureThumbnail imageURL={imageUrl} title={title} />
+        <div className="lectureCard-gird-desc">
+          <div className="lectureCard-grid--first-row">
+            <div className="lectureCard-grid--cl1">
+              <LectureRating rating={rating} />
+              <LecturePlatform platform={platform} />
+            </div>
+            <div className="lectureCard-grid--cl2">
+              <LectureViewCount viewCount={viewCount} />
+              <LectureSessionCount sessionCount={sessionCount} />
+            </div>
+            <div className="lectureCard-grid-cl3">
+              <LecturePrice price={actualPrice} currency={currency} />
+              <LectureLanguage language={language} />
+            </div>
+          </div>
+        </div>
+      </Fragment>
+    ),
+    [
+      imageUrl,
+      title,
+      rating,
+      platform,
+      viewCount,
+      sessionCount,
+      actualPrice,
+      currency,
+      language,
+    ]
+  );
+
+  const popupJSX = useMemo(
+    () =>
+      isOpened ? (
+        <LecturePopup lectureID={id}>{lectureInfoJSX}</LecturePopup>
+      ) : null,
+    [isOpened, lectureInfoJSX, id]
+  );
 
   return (
     <li className="lectureCard-grid" onClick={onClickCard}>
-      
+      {popupJSX}
       <LectureTitle title={title} />
       <LectureBookmark />
-      <LectureThumbnail imageURL={imageUrl} title={title} />
-      <div className="lectureCard-gird-desc">
-        <div className="lectureCard-grid--first-row">
-          <div className="lectureCard-grid--cl1">
-            <LectureRating rating={rating} />
-            <LecturePlatform platform={platform} />
-          </div>
-          <div className="lectureCard-grid--cl2">
-            <LectureViewCount viewCount={viewCount} />
-            <LectureSessionCount sessionCount={sessionCount} />
-          </div>
-          <div className="lectureCard-grid-cl3">
-            <LecturePrice price={actualPrice} currency={currency} />
-          </div>
-        </div>
-        {/* <div className="lectureCard-grid--second-row">
-          <LectureSkills skills={skills.filter(skill => skill !=)} />
-        </div> */}
-      </div>
+      {lectureInfoJSX}
     </li>
   );
 };
