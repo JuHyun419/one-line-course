@@ -63,7 +63,7 @@ public class CommentController {
         return new ResponseEntity<>(response, getStatusCode(response));
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/users/{userId}")
     @ApiOperation(value = "유저 댓글 전체 조회")
     public ResponseEntity<List<CommentResponse>> getUserComments(
             @PathVariable @ApiParam(value = "유저 ID", example = "00002182919823455812") String userId) {
