@@ -104,6 +104,7 @@
   - [`Google oAuth access_token vs id_token`](https://github.com/JuHyun419/one-line-course/issues/89)
   - [`도메인 연결 80 -> 8080 포트포워딩 삽질`](https://zzang9ha.tistory.com/331)
   - [`인텔리제이 Java file outside of source root`](https://stackoverflow.com/questions/63521181/java-file-outside-of-source-root-intellij/64340331)
+  - [`Caused by: java.lang.IllegalArgumentException: invalid target release: 11`](https://zzang9ha.tistory.com/332)
 
 <br>
 
