@@ -1,6 +1,7 @@
 package com.github.oneline.onelinecourse.controller.user;
 
 import com.github.oneline.onelinecourse.model.user.User;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,10 +12,19 @@ import org.springframework.beans.BeanUtils;
 @Setter
 @ToString
 public class ResponseUserDto {
+    @ApiModelProperty(value = "PK", required = true)
     private String id;
+
+    @ApiModelProperty(value = "유저 email", required = true)
     private String email;
+
+    @ApiModelProperty(value = "유저 name", required = true)
     private String name;
+
+    @ApiModelProperty(value = "유저의 이미지 url", required = true)
     private String imageUrl;
+
+    @ApiModelProperty(value = "로그인한 플랫폼", required = true)
     private String platform;
 
     @Builder
