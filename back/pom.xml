@@ -91,49 +91,6 @@
 					</excludes>
 				</configuration>
 			</plugin>
-
-			<!-- maven 실행 시 커맨드라인 실행으로 npm 및 관련 패키지를 자동으로 설치해주는 툴 -->
-			<plugin>
-				<groupId>com.github.eirslett</groupId>
-				<artifactId>frontend-maven-plugin</artifactId>
-				<version>1.9.1</version>
-				<configuration>
-					<!-- package.json 파일이 존재하는 디렉토리 지정 -->
-					<workingDirectory>front</workingDirectory>
-					<!-- node, npm이 설치될 디렉토리 -->
-					<installDirectory>target</installDirectory>
-				</configuration>
-				<executions>
-					<execution>
-						<id>install node and npm</id>
-						<goals>
-							<goal>install-node-and-npm</goal>
-						</goals>
-						<configuration>
-							<nodeVersion>v16.0.0</nodeVersion>
-							<npmVersion>7.10.0</npmVersion>
-						</configuration>
-					</execution>
-					<execution>
-						<id>npm install</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<configuration>
-							<arguments>install</arguments>
-						</configuration>
-					</execution>
-					<execution>
-						<id>npm run build</id>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<configuration>
-							<arguments>run build</arguments>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 
