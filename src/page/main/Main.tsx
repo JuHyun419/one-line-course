@@ -18,7 +18,7 @@ import Footer from "../../component/footer/Footer";
 
 import "./_Main.scss";
 
-const Main: React.FC<{}> = () => {
+const Main: React.FC = () => {
   useInitFetch();
 
   return (
