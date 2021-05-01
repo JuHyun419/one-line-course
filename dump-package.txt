@@ -1,5 +1,0 @@
-"@parcel/runtime-react-refresh": "^2.0.0-nightly.651",
-    "@parcel/transformer-react-refresh-babel": "^2.0.0-nightly.651",
-    "@parcel/transformer-react-refresh-wrap": "^2.0.0-nightly.651",
-    "@parcel/transformer-typescript-tsc": "^2.0.0-nightly.651",
-    "@parcel/validator-typescript": "^2.0.0-nightly.651",
