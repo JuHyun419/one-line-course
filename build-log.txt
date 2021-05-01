@@ -1,0 +1,324 @@
+PS C:\workspace\proj\front-olc> npm run build
+
+> olc@1.0.0 build
+> parcel build ./src/index.html
+
+√ Built in 30.25s
+
+dist\index.7e63cdca.js                                                                              236.43 KB    18.85s
+├── node_modules\react-dom\cjs\react-dom.production.min.js                                          116.56 KB     3.21s  
+├── node_modules\history\esm\history.js                                                               8.36 KB     3.05s  
+├── src\typings\index.ts                                                                              7.47 KB     610ms  
+├── node_modules\react\cjs\react.production.min.js                                                    6.15 KB     1.40s  
+├── node_modules\regenerator-runtime\runtime.js                                                       6.07 KB     2.15s  
+├── node_modules\redux\es\redux.js                                                                     5.6 KB     564ms  
+├── node_modules\scheduler\cjs\scheduler.production.min.js                                            4.66 KB     164ms  
+├── node_modules\react-router\esm\react-router.js                                                     4.29 KB     1.96s  
+├── node_modules\path-to-regexp\index.js                                                               3.1 KB     1.16s  
+└── node_modules\react-router-dom\esm\react-router-dom.js                                             2.57 KB     2.14s  
+└── + 84 more assets
+
+dist\Main.965c3759.js                                                                               106.39 KB    16.04s  
+├── node_modules\unsplash-js\dist\unsplash-js.esm.js                                                  9.02 KB     298ms  
+├── src\component\lecture-card\GridLectureCard.tsx                                                    4.62 KB     2.74s  
+├── src\store\action\bookmark-async\query-all-bookmarks\ActionCreators.ts                             4.05 KB     1.91s  
+├── src\store\action\search-bar\ActionCreators.ts                                                        4 KB     304ms  
+├── src\page\main\image-carousel\ImageCarousel.tsx                                                    3.79 KB     617ms  
+├── src\component\backdrop\Backdrop.tsx                                                               3.64 KB     221ms  
+├── src\component\lecture-popup\LecturePopup.tsx                                                      3.49 KB     250ms  
+├── src\store\action\search-async\ActionCreators.ts                                                   3.14 KB     2.51s  
+├── src\page\main\search\search-bar\buttons\AddButton.tsx                                             2.83 KB     446ms  
+└── Code from unknown sourcefiles                                                                     2.81 KB       0ms  
+└── + 63 more assets
+
+dist\SignIn.bf164259.js                                                                               25.1 KB    18.84s  
+├── node_modules\react-google-login\dist\google-login.js                                             15.83 KB     642ms  
+├── src\auth\GoogleOAuth.tsx                                                                          1.91 KB     1.18s  
+├── Code from unknown sourcefiles                                                                     1.57 KB       0ms  
+├── src\store\action\user-async\query-all-my-comments\ActionCreators.ts                               1.23 KB     291ms  
+├── src\store\action\user-async\query-all-my-bookmarks\ActionCreators.ts                              1.12 KB     227ms  
+├── src\store\action\user-async\create-user\ActionCreators.ts                                         1.07 KB     280ms
+├── src\auth\KakaoOAuth.tsx                                                                             941 B     1.34s  
+├── src\store\action\user-async\query-user\ActionCreators.ts                                            851 B     172ms  
+├── src\page\signIn\SignIn.tsx                                                                          377 B     285ms  
+└── src\auth\AuthCtrl.tsx                                                                               263 B     2.76s  
+
+dist\SignIn.498abb8c.js                                                                              17.92 KB    16.04s  
+├── src\service\UserService.ts                                                                        2.19 KB     1.29s  
+├── node_modules\axios\lib\utils.js                                                                   2.17 KB     150ms  
+├── node_modules\axios\lib\adapters\xhr.js                                                            1.89 KB      85ms  
+├── ..\..\..\Users\dlrnt\AppData\Roaming\npm\node_modules\parcel\node_modules\process\browser.js      1.73 KB     165ms  
+├── node_modules\axios\lib\core\mergeConfig.js                                                        1.14 KB     357ms  
+├── node_modules\axios\lib\defaults.js                                                                1.13 KB     275ms  
+├── node_modules\axios\lib\core\Axios.js                                                               1019 B     163ms  
+├── node_modules\axios\lib\helpers\parseHeaders.js                                                      667 B      92ms  
+├── node_modules\axios\lib\helpers\buildURL.js                                                          631 B      92ms  
+└── node_modules\axios\lib\core\dispatchRequest.js                                                      606 B      92ms  
+└── + 20 more assets
+
+dist\index.214a02ef.css                                                                               16.5 KB    18.85s  
+├── src\common\_Icons.scss                                                                           10.23 KB     2.65s  
+├── src\component\loading\_Loading.scss                                                               1.29 KB     1.25s  
+├── src\component\button\_Button.scss                                                                 1.03 KB     240ms  
+├── src\page\landing\landing-info-item\_LandingInfoItem.scss                                            850 B     728ms  
+├── src\component\footer\_Footer.scss                                                                   806 B     1.19s  
+├── src\component\menu\menu-bar\_MenuBar.scss                                                           759 B     706ms  
+├── src\component\nav\_Nav.scss                                                                         449 B     409ms  
+├── src\component\menu\_Menu.scss                                                                       262 B     1.95s  
+├── src\index.scss                                                                                      251 B     758ms  
+└── %3Cinput%20css%206N8IIo%3E                                                                          209 B       0ms  
+└── + 8 more assets
+
+dist\Main.ad39dbf4.css                                                                                7.73 KB    16.05s  
+├── src\page\main\search\search-bar\_SearchBar.scss                                                   1.47 KB     444ms  
+├── src\page\main\search\keyword-selector\_KeywordSelector.scss                                       1.03 KB     2.03s  
+├── src\component\lecture-card\_LectureCard.scss                                                        796 B     271ms  
+├── src\page\main\search-result\_SearchResultSummary.scss                                               490 B     1.36s  
+├── src\page\main\image-carousel\Image-carousel-elements\_ImagesIndicator.scss                          440 B     2.00s  
+├── src\page\main\image-carousel\_ImageCarousel.scss                                                    380 B     1.11s  
+├── src\page\main\image-carousel\Image-carousel-elements\_ImageMoveTo.scss                              334 B     2.87s  
+├── src\component\lecture-card\lecture-card-element\skills\_LectureSkills.scss                          318 B      33ms  
+├── src\page\main\search\search-ctrl\_SearchCtrl.scss                                                   256 B     2.52s  
+└── src\component\lecture-popup\_LecturePopup.scss                                                      255 B     269ms  
+└── + 21 more assets
+
+dist\LogOut.48116dcd.js                                                                               1.17 KB    15.96s  
+├── Code from unknown sourcefiles                                                                     1.07 KB       0ms  
+└── src\page\logout\LogOut.tsx                                                                          104 B     3.81s  
+
+dist\Comments.7e1b6a93.js                                                                               904 B    16.04s  
+├── Code from unknown sourcefiles                                                                       568 B       0ms  
+└── src\page\comments\Comments.tsx                                                                      336 B     276ms  
+
+dist\Bookmarks.0b8135c0.js                                                                              903 B    15.96s  
+├── Code from unknown sourcefiles                                                                       565 B       0ms  
+└── src\page\bookmarks\Bookmarks.tsx                                                                    338 B     3.79s  
+
+dist\index.html                                                                                         661 B     5.31s  
+└── src\index.html                                                                                    1.64 KB     182ms  
+
+dist\NotFound.1d0f87cb.js                                                                               351 B    15.96s  
+└── src\page\not-found\NotFound.tsx                                                                     144 B     3.81s  
+dist\SignIn.deea3235.css                                                                                230 B    18.85s  
+├── src\auth\_Auth.scss                                                                                 179 B     1.29s  
+├── Code from unknown sourcefiles                                                                        48 B       0ms  
+└── %3Cinput%20css%204PGMhX%3E                                                                            3 B       0ms  
+
+dist\Bookmarks.0b1b8874.css                                                                              52 B    15.96s  
+└── src\page\bookmarks\_Bookmarks.scss                                                                    0 B     807ms  
+
+dist\Comments.8df5064e.css                                                                               51 B    16.05s  
+└── src\page\comments\_Comments.scss                                                                      0 B     1.19s  
+PS C:\workspace\proj\front-olc> npm run build
+
+> olc@1.0.0 build
+> parcel build ./src/index.html
+
+√ Built in 7.45s
+
+dist\index.7e63cdca.js                                                                              236.43 KB     34ms
+├── node_modules\react-dom\cjs\react-dom.production.min.js                                          116.56 KB    1.43s   
+├── node_modules\history\esm\history.js                                                               8.36 KB    982ms   
+├── src\typings\index.ts                                                                              7.47 KB    300ms   
+├── node_modules\react\cjs\react.production.min.js                                                    6.15 KB    1.11s   
+├── node_modules\regenerator-runtime\runtime.js                                                       6.07 KB    311ms   
+├── node_modules\redux\es\redux.js                                                                     5.6 KB    180ms   
+├── node_modules\scheduler\cjs\scheduler.production.min.js                                            4.66 KB     71ms   
+├── node_modules\react-router\esm\react-router.js                                                     4.29 KB    1.38s   
+├── node_modules\path-to-regexp\index.js                                                               3.1 KB     86ms   
+└── node_modules\react-router-dom\esm\react-router-dom.js                                             2.57 KB    348ms   
+└── + 84 more assets
+
+dist\Main.965c3759.js                                                                               106.39 KB     37ms   
+├── node_modules\unsplash-js\dist\unsplash-js.esm.js                                                  9.02 KB    491ms   
+├── src\component\lecture-card\GridLectureCard.tsx                                                    4.62 KB    489ms   
+├── src\store\action\bookmark-async\query-all-bookmarks\ActionCreators.ts                             4.05 KB    376ms   
+├── src\store\action\search-bar\ActionCreators.ts                                                        4 KB    349ms   
+├── src\page\main\image-carousel\ImageCarousel.tsx                                                    3.79 KB    299ms   
+├── src\component\backdrop\Backdrop.tsx                                                               3.64 KB     79ms   
+├── src\component\lecture-popup\LecturePopup.tsx                                                      3.49 KB    214ms   
+├── src\store\action\search-async\ActionCreators.ts                                                   3.14 KB    272ms
+├── src\page\main\search\search-bar\buttons\AddButton.tsx                                             2.83 KB    164ms   
+└── Code from unknown sourcefiles                                                                     2.81 KB      0ms   
+└── + 63 more assets
+
+dist\SignIn.bf164259.js                                                                               25.1 KB     34ms   
+├── node_modules\react-google-login\dist\google-login.js                                             15.83 KB    722ms   
+├── src\auth\GoogleOAuth.tsx                                                                          1.91 KB    324ms   
+├── Code from unknown sourcefiles                                                                     1.57 KB      0ms   
+├── src\store\action\user-async\query-all-my-comments\ActionCreators.ts                               1.23 KB    180ms   
+├── src\store\action\user-async\query-all-my-bookmarks\ActionCreators.ts                              1.12 KB    265ms   
+├── src\store\action\user-async\create-user\ActionCreators.ts                                         1.07 KB    256ms   
+├── src\auth\KakaoOAuth.tsx                                                                             941 B    333ms   
+├── src\store\action\user-async\query-user\ActionCreators.ts                                            851 B    390ms   
+├── src\page\signIn\SignIn.tsx                                                                          377 B    1.87s   
+└── src\auth\AuthCtrl.tsx                                                                               263 B    489ms   
+
+dist\SignIn.498abb8c.js                                                                              17.92 KB     37ms   
+├── src\service\UserService.ts                                                                        2.19 KB    492ms   
+├── node_modules\axios\lib\utils.js                                                                   2.17 KB    103ms   
+├── node_modules\axios\lib\adapters\xhr.js                                                            1.89 KB     72ms   
+├── ..\..\..\Users\dlrnt\AppData\Roaming\npm\node_modules\parcel\node_modules\process\browser.js      1.73 KB    102ms   
+├── node_modules\axios\lib\core\mergeConfig.js                                                        1.14 KB    102ms   
+├── node_modules\axios\lib\defaults.js                                                                1.13 KB    104ms   
+├── node_modules\axios\lib\core\Axios.js                                                               1019 B    101ms   
+├── node_modules\axios\lib\helpers\parseHeaders.js                                                      667 B     48ms   
+├── node_modules\axios\lib\helpers\buildURL.js                                                          631 B     45ms   
+└── node_modules\axios\lib\core\dispatchRequest.js                                                      606 B    206ms   
+└── + 20 more assets
+
+dist\index.214a02ef.css                                                                               16.5 KB     34ms   
+├── src\common\_Icons.scss                                                                           10.23 KB    2.65s   
+├── src\component\loading\_Loading.scss                                                               1.29 KB    1.25s   
+├── src\component\button\_Button.scss                                                                 1.03 KB    240ms   
+├── src\page\landing\landing-info-item\_LandingInfoItem.scss                                            850 B    728ms   
+├── src\component\footer\_Footer.scss                                                                   806 B    1.19s   
+├── src\component\menu\menu-bar\_MenuBar.scss                                                           759 B    706ms   
+├── src\component\nav\_Nav.scss                                                                         449 B    409ms   
+├── src\component\menu\_Menu.scss                                                                       262 B    1.95s   
+├── src\index.scss                                                                                      251 B    758ms   
+└── %3Cinput%20css%206N8IIo%3E                                                                          209 B      0ms   
+└── + 8 more assets
+
+dist\Main.ad39dbf4.css                                                                                7.73 KB     37ms   
+├── src\page\main\search\search-bar\_SearchBar.scss                                                   1.47 KB    444ms   
+├── src\page\main\search\keyword-selector\_KeywordSelector.scss                                       1.03 KB    2.03s   
+├── src\component\lecture-card\_LectureCard.scss                                                        796 B    271ms   
+├── src\page\main\search-result\_SearchResultSummary.scss                                               490 B    1.36s   
+├── src\page\main\image-carousel\Image-carousel-elements\_ImagesIndicator.scss                          440 B    2.00s   
+├── src\page\main\image-carousel\_ImageCarousel.scss                                                    380 B    1.11s   
+├── src\page\main\image-carousel\Image-carousel-elements\_ImageMoveTo.scss                              334 B    2.87s   
+├── src\component\lecture-card\lecture-card-element\skills\_LectureSkills.scss                          318 B     33ms   
+├── src\page\main\search\search-ctrl\_SearchCtrl.scss                                                   256 B    2.52s   
+└── src\component\lecture-popup\_LecturePopup.scss                                                      255 B    269ms   
+└── + 21 more assets
+
+dist\LogOut.48116dcd.js                                                                               1.17 KB     28ms   
+├── Code from unknown sourcefiles                                                                     1.07 KB      0ms   
+└── src\page\logout\LogOut.tsx                                                                          104 B    2.24s   
+
+dist\Comments.7e1b6a93.js                                                                               904 B     37ms   
+├── Code from unknown sourcefiles                                                                       568 B      0ms   
+└── src\page\comments\Comments.tsx                                                                      336 B    2.25s   
+
+dist\Bookmarks.0b8135c0.js                                                                              903 B     28ms   
+├── Code from unknown sourcefiles                                                                       565 B      0ms   
+└── src\page\bookmarks\Bookmarks.tsx                                                                    338 B    2.24s   
+
+dist\index.html                                                                                         661 B     34ms   
+└── src\index.html                                                                                    1.64 KB    162ms   
+
+dist\NotFound.1d0f87cb.js                                                                               351 B     28ms   
+└── src\page\not-found\NotFound.tsx                                                                     144 B    2.25s   
+PS C:\workspace\proj\front-olc> npm run build
+
+> olc@1.0.0 build
+> parcel build ./src/index.html
+
+√ Built in 7.64s
+
+dist\index.7e63cdca.js                                                                              236.43 KB     35ms
+├── node_modules\react-dom\cjs\react-dom.production.min.js                                          116.56 KB    1.58s
+├── node_modules\history\esm\history.js                                                               8.36 KB    1.07s
+├── src\typings\index.ts                                                                              7.47 KB    368ms
+├── node_modules\react\cjs\react.production.min.js                                                    6.15 KB    1.54s
+├── node_modules\regenerator-runtime\runtime.js                                                       6.07 KB    315ms   
+├── node_modules\redux\es\redux.js                                                                     5.6 KB    199ms   
+├── node_modules\scheduler\cjs\scheduler.production.min.js                                            4.66 KB     73ms   
+├── node_modules\react-router\esm\react-router.js                                                     4.29 KB    1.51s   
+├── node_modules\path-to-regexp\index.js                                                               3.1 KB     91ms   
+└── node_modules\react-router-dom\esm\react-router-dom.js                                             2.57 KB    357ms   
+└── + 84 more assets
+
+dist\Main.965c3759.js                                                                               106.39 KB     35ms   
+├── node_modules\unsplash-js\dist\unsplash-js.esm.js                                                  9.02 KB    522ms   
+├── src\component\lecture-card\GridLectureCard.tsx                                                    4.62 KB    416ms   
+├── src\store\action\bookmark-async\query-all-bookmarks\ActionCreators.ts                             4.05 KB    221ms   
+├── src\store\action\search-bar\ActionCreators.ts                                                        4 KB    265ms   
+├── src\page\main\image-carousel\ImageCarousel.tsx                                                    3.79 KB    324ms   
+├── src\component\backdrop\Backdrop.tsx                                                               3.64 KB    122ms   
+├── src\component\lecture-popup\LecturePopup.tsx                                                      3.49 KB    144ms   
+├── src\store\action\search-async\ActionCreators.ts                                                   3.14 KB    279ms   
+├── src\page\main\search\search-bar\buttons\AddButton.tsx                                             2.83 KB    103ms   
+└── Code from unknown sourcefiles                                                                     2.81 KB      0ms   
+└── + 63 more assets
+
+dist\SignIn.bf164259.js                                                                               25.1 KB     35ms   
+├── node_modules\react-google-login\dist\google-login.js                                             15.83 KB    611ms   
+├── src\auth\GoogleOAuth.tsx                                                                          1.91 KB    278ms   
+├── Code from unknown sourcefiles                                                                     1.57 KB      0ms   
+├── src\store\action\user-async\query-all-my-comments\ActionCreators.ts                               1.23 KB    250ms   
+├── src\store\action\user-async\query-all-my-bookmarks\ActionCreators.ts                              1.12 KB    274ms   
+├── src\store\action\user-async\create-user\ActionCreators.ts                                         1.07 KB    437ms   
+├── src\auth\KakaoOAuth.tsx                                                                             941 B    378ms   
+├── src\store\action\user-async\query-user\ActionCreators.ts                                            851 B    328ms   
+├── src\page\signIn\SignIn.tsx                                                                          377 B    2.09s   
+└── src\auth\AuthCtrl.tsx                                                                               263 B    489ms   
+
+dist\SignIn.498abb8c.js                                                                              17.92 KB     35ms   
+├── src\service\UserService.ts                                                                        2.19 KB    323ms   
+├── node_modules\axios\lib\utils.js                                                                   2.17 KB    109ms   
+├── node_modules\axios\lib\adapters\xhr.js                                                            1.89 KB     73ms   
+├── ..\..\..\Users\dlrnt\AppData\Roaming\npm\node_modules\parcel\node_modules\process\browser.js      1.73 KB     75ms   
+├── node_modules\axios\lib\core\mergeConfig.js                                                        1.14 KB     79ms   
+├── node_modules\axios\lib\defaults.js                                                                1.13 KB     81ms   
+├── node_modules\axios\lib\core\Axios.js                                                               1019 B     80ms   
+├── node_modules\axios\lib\helpers\parseHeaders.js                                                      667 B     77ms   
+├── node_modules\axios\lib\helpers\buildURL.js                                                          631 B     61ms   
+└── node_modules\axios\lib\core\dispatchRequest.js                                                      606 B    152ms   
+└── + 20 more assets
+
+dist\index.214a02ef.css                                                                               16.5 KB     35ms   
+├── src\common\_Icons.scss                                                                           10.23 KB    2.65s   
+├── src\component\loading\_Loading.scss                                                               1.29 KB    1.25s   
+├── src\component\button\_Button.scss                                                                 1.03 KB    240ms   
+├── src\page\landing\landing-info-item\_LandingInfoItem.scss                                            850 B    728ms   
+├── src\component\footer\_Footer.scss                                                                   806 B    1.19s   
+├── src\component\menu\menu-bar\_MenuBar.scss                                                           759 B    706ms   
+├── src\component\nav\_Nav.scss                                                                         449 B    409ms   
+├── src\component\menu\_Menu.scss                                                                       262 B    1.95s   
+├── src\index.scss                                                                                      251 B    758ms   
+└── %3Cinput%20css%206N8IIo%3E                                                                          209 B      0ms   
+└── + 8 more assets
+
+dist\Main.ad39dbf4.css                                                                                7.73 KB     35ms   
+├── src\page\main\search\search-bar\_SearchBar.scss                                                   1.47 KB    444ms   
+├── src\page\main\search\keyword-selector\_KeywordSelector.scss                                       1.03 KB    2.03s   
+├── src\component\lecture-card\_LectureCard.scss                                                        796 B    271ms   
+├── src\page\main\search-result\_SearchResultSummary.scss                                               490 B    1.36s   
+├── src\page\main\image-carousel\Image-carousel-elements\_ImagesIndicator.scss                          440 B    2.00s   
+├── src\page\main\image-carousel\_ImageCarousel.scss                                                    380 B    1.11s   
+├── src\page\main\image-carousel\Image-carousel-elements\_ImageMoveTo.scss                              334 B    2.87s   
+├── src\component\lecture-card\lecture-card-element\skills\_LectureSkills.scss                          318 B     33ms   
+├── src\page\main\search\search-ctrl\_SearchCtrl.scss                                                   256 B    2.52s   
+└── src\component\lecture-popup\_LecturePopup.scss                                                      255 B    269ms   
+└── + 21 more assets
+
+dist\LogOut.48116dcd.js                                                                               1.17 KB     25ms   
+├── Code from unknown sourcefiles                                                                     1.07 KB      0ms   
+└── src\page\logout\LogOut.tsx                                                                          104 B    2.47s   
+
+dist\Comments.7e1b6a93.js                                                                               904 B     35ms   
+├── Code from unknown sourcefiles                                                                       568 B      0ms   
+└── src\page\comments\Comments.tsx                                                                      336 B    2.46s   
+
+dist\Bookmarks.0b8135c0.js                                                                              903 B     25ms   
+├── Code from unknown sourcefiles                                                                       565 B      0ms   
+└── src\page\bookmarks\Bookmarks.tsx                                                                    338 B    2.45s   
+
+dist\index.html                                                                                         661 B     34ms   
+└── src\index.html                                                                                    1.64 KB    171ms   
+
+dist\NotFound.1d0f87cb.js                                                                               351 B     25ms   
+└── src\page\not-found\NotFound.tsx                                                                     144 B    2.46s   
+
+dist\SignIn.deea3235.css                                                                                230 B     35ms   
+├── src\auth\_Auth.scss                                                                                 179 B    1.29s   
+├── Code from unknown sourcefiles                                                                        48 B      0ms   
+└── %3Cinput%20css%204PGMhX%3E                                                                            3 B      0ms   
+
+dist\Bookmarks.0b1b8874.css                                                                              52 B     25ms   
+└── src\page\bookmarks\_Bookmarks.scss                                                                    0 B    807ms   
+
+dist\Comments.8df5064e.css                                                                               51 B     35ms   
+└── src\page\comments\_Comments.scss                                                                      0 B    1.19s

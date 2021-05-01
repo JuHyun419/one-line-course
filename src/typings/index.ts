@@ -76,10 +76,10 @@ export interface ILectureData {
 
 export interface IUserData {
   platform: "google" | "kakao"; // 플랫폼 이름 (=string)
-  userID: string;
+  id: string;
   email: string; // "...@google.com" or "...@kakao.com"
   name: string; // 실제 이름
-  imageURL: string; // 프로필 이미지 URL
+  imageUrl: string; // 프로필 이미지 URL
 }
 
 export interface IBookmarkData {

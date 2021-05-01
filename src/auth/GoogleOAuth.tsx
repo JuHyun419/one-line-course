@@ -44,16 +44,16 @@ const GoogleOAuth: React.FC<{}> = () => {
         const id = profile.getId();
         const email = profile.getEmail();
         const name = profile.getName();
-        const imageURL = profile.getImageUrl();
+        const imageUrl = profile.getImageUrl();
 
         // TODO: Check the endpoint and test again
-        // _createUser({
-        //   userID: id,
-        //   email,
-        //   name,
-        //   imageURL,
-        //   platform: "google",
-        // });
+        _createUser({
+          id,
+          email,
+          name,
+          imageUrl,
+          platform: "google",
+        });
       } else {
         const code = (response as GoogleLoginResponseOffline).code;
         console.log("trying to access offline: ", code);
