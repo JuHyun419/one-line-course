@@ -11,6 +11,10 @@ import "./_Auth.scss";
 import { useDispatch } from "react-redux";
 import { initFetch_CreateUser } from "../store/action/user-async";
 import { IUserData } from "../typings";
+import {
+  EXPIRES_IN_SESSION_STORAGE_KEY,
+  USERID_SESSION_STORAGE_KEY,
+} from "../common";
 
 const GoogleOAuth: React.FC<{}> = () => {
   const history = useHistory();
@@ -32,8 +36,8 @@ const GoogleOAuth: React.FC<{}> = () => {
 
         // 1. store the authentication info
         const { access_token, expires_in } = authResponse.getAuthResponse();
-        sessionStorage.setItem("userID", access_token);
-        sessionStorage.setItem("expiresIn", `${expires_in}`);
+        sessionStorage.setItem(USERID_SESSION_STORAGE_KEY, access_token);
+        sessionStorage.setItem(EXPIRES_IN_SESSION_STORAGE_KEY, `${expires_in}`);
 
         // 2. post the user info into the db
         const profile = authResponse.getBasicProfile();
