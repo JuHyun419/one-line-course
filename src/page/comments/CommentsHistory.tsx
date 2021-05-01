@@ -39,22 +39,19 @@ const CommentsHistory = () => {
 
   const historyJSX: JSX.Element[] | null = useMemo(
     () =>
-      new Array(6).fill(0).map(_ => {
-        // const { commentID, createdAt } = comment;
-        return (
-          <div key={uuid()} className="commentsHistory--one-day">
-            <p className="commentsHistory--created-at">
-              {new String(createdAt).slice(0, 25)}
-            </p>
-            <div className="commentsHistory--separator"></div>
-            {new Array(3).fill(0).map(_ => (
-              <div key={uuid()} className="commentsHistory--comment">
-                <OtherComment isMyComment={false} />
-              </div>
-            ))}
-          </div>
-        );
-      }),
+      new Array(6).fill(0).map(_ => (
+        <div key={uuid()} className="commentsHistory--one-day">
+          <p className="commentsHistory--created-at">
+            {new String(createdAt).slice(0, 25)}
+          </p>
+          <div className="commentsHistory--separator"></div>
+          {new Array(3).fill(0).map(_ => (
+            <div key={uuid()} className="commentsHistory--comment">
+              <OtherComment isMyComment={false} />
+            </div>
+          ))}
+        </div>
+      )),
     [createdAt]
   );
   return <div className="commentsHistory">{historyJSX}</div>;

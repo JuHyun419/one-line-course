@@ -15,7 +15,6 @@ const GridView: React.FC<IGridViewProps> = () => {
     shallowEqual
   );
 
-  // TODO: Pagenation
   const lectureCardsJSX = useMemo(
     () =>
       new Array(searchedLecturesLen)

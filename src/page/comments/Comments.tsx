@@ -8,7 +8,7 @@ import NavFactory from "../../component/nav/nav-factory/NavFactory";
 import CommentsHistory from "./CommentsHistory";
 import GoToTop from "~/src/component/goToTop/GoToTop";
 import Menu from "~/src/component/menu/Menu";
-import { placeIconsRandomly } from "../../common/";
+import { placeIconsRandomly, USERID_SESSION_STORAGE_KEY } from "../../common/";
 
 import "./_Comments.scss";
 import "../_Page.scss";
@@ -37,7 +37,7 @@ const initCommentsHistory = () => {
   );
 
   useEffect(() => {
-    const myUserID = sessionStorage.getItem("userID");
+    const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
     if (!myUserID || myUserID === "undefined") {
       return;
     }
