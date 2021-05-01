@@ -27,7 +27,7 @@ const Comments: React.FC<ICommentsProps> = ({ lectureID }) => {
   const myUserID = sessionStorage.getItem("userID");
 
   // TODO: 1. New Comment
-  const newCommentJSX: JSX.Element = useMemo(
+  const newCommentJSX: JSX.Element | null = useMemo(
     () => <NewComment myUserID={myUserID!} />,
     [myUserID]
   );

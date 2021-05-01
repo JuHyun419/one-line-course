@@ -1,3 +1,14 @@
 .comments {
-  
+  display: flex;
+  flex-direction: column;
+
+  justify-content: start;
+  align-items: start;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  height: 100%;
+
+  position: relative;
 }
