@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "parcel serve \"./src/index.html\" --open --https",
-    "build": "parcel build \"./src/index.html\" --dist-dir ./build/output --no-source-maps",
+    "build": "parcel build \"./src/index.html\" --dist-dir ./build --no-source-maps",
     "build-lib": "babel ./src --out-dir lib --extensions \".ts,.tsx\""
   },
   "keywords": [],
