@@ -48,14 +48,14 @@ const SearchResultSummary = () => {
       <br />
       <div>
         <ul>{selectedKeywordsJSX}</ul>
-        <span>&nbsp;으로 찾은 결과</span>
+        <span> 으로 찾은 결과</span>
       </div>
       <div>
-        총&nbsp;
+        총 
         <span className="searchResult-summary--lectures-count">
           {searchResultCount}
         </span>
-        &nbsp;개 입니다.
+        개 입니다.
       </div>
     </div>
   );

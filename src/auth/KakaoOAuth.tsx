@@ -24,6 +24,7 @@ const KakaoOAuth: React.FC = () => {
     <div id="custom-login-btn" className="authBtn" onClick={loginWithKakao}>
       <img
         src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+        alt="kakao login button"
         width="181"
       />
     </div>
@@ -48,7 +49,7 @@ const useKakaoLoginCallback = (history: any) => {
           sessionStorage.setItem(USERID_SESSION_STORAGE_KEY, access_token);
           sessionStorage.setItem(
             EXPIRES_IN_SESSION_STORAGE_KEY,
-            `${expires_in}`
+            expires_in.toString()
           );
           sessionStorage.setItem(PLATFORM_SESSION_STORAGE_KEY, "kakao");
 
@@ -75,13 +76,13 @@ const useKakaoLoginCallback = (history: any) => {
           const { email, profile } = kakaoAcount;
           const { nickname, profile_image_url } = profile!;
 
-          console.log(
-            "Kakao auth -> ",
-            access_token,
-            email,
-            nickname,
-            profile_image_url
-          );
+          // console.log(
+          //   "Kakao auth -> ",
+          //   access_token,
+          //   email,
+          //   nickname,
+          //   profile_image_url
+          // );
 
           _createUser({
             id: access_token,
@@ -94,7 +95,7 @@ const useKakaoLoginCallback = (history: any) => {
         },
 
         fail: onFail => {
-          console.error(onFail);
+          // console.error(onFail);
         },
       }),
     [_createUser]
