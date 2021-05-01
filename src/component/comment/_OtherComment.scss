@@ -1,19 +1,19 @@
-.comment--new-comment {
+@import "../../common/ColorScheme";
+
+.comment--other-comment {
   display: flex;
   flex-direction: row;
 
   border: 1px solid #000;
-  background-color: rgba(155, 155, 155, 0.05);
-
-  position: relative;
+  background-color: rgba(155, 155, 155, 0.15);
 
   padding: 5px;
   margin-bottom: 3%;
   box-sizing: border-box;
 
-  & &-col1 {
-    // width: auto;
+  position: relative;
 
+  & &-col1 {
     display: flex;
     flex-direction: column;
 
@@ -24,8 +24,6 @@
   }
 
   & &-col2 {
-    width: 100%;
-
     display: flex;
     flex-direction: row;
 
@@ -36,9 +34,15 @@
     padding: 10px;
     box-sizing: border-box;
 
-    .btn {
+    .btn:nth-child(n) {
       position: absolute;
-      left: 87%;
+      left: 70%;
+      top: 60%;
+    }
+
+    .btn:nth-child(2n) {
+      position: absolute;
+      left: 58%;
       top: 60%;
     }
   }

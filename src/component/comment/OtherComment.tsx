@@ -15,8 +15,10 @@ import {
 import CommentCreatedAt from "./comment-element/createdAt/CommentCreatedAt";
 import { useUserData } from "./useUserData";
 
+import "./_OtherComment.scss";
+
 interface ICommentProps {
-  comment: ICommentData;
+  comment?: ICommentData;
   isMyComment: boolean;
 }
 
@@ -30,7 +32,19 @@ const OtherComment: React.FC<ICommentProps> = ({
   const [contents, setContents] = useState("");
   const [createdAt, setCreatedAt] = useState<Date>();
 
-  useUserData(comment.userID, setImageURL, setUserName);
+  // TODO: progress After CORS
+  // useUserData(comment.userID, setImageURL, setUserName);
+
+  useEffect(() => {
+    setImageURL(
+      "https://lh3.googleusercontent.com/a/AATXAJx46cywrab804ZxmuhTdu6CZztFn-mlQ-1bEIwX=s96-c"
+    );
+    setUserName("하이피");
+    setContents(
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla quam enim cupiditate quaerat nesciunt veniam soluta dicta, non voluptas. Vitae totam sapiente saepe! Delectus, veritatis."
+    );
+    setCreatedAt(new Date());
+  }, []);
 
   // user thumbnail
   const thumbnailJSX = useMemo(
@@ -44,18 +58,18 @@ const OtherComment: React.FC<ICommentProps> = ({
   ]);
 
   // contents
-  useEffect(() => {
-    setContents(comment.contents);
-  }, [comment.contents]);
+  // useEffect(() => {
+  //   setContents(comment.contents);
+  // }, [comment.contents]);
 
   const contentsJSX = useMemo(() => <CommentContents contents={contents} />, [
     contents,
   ]);
 
   // created at
-  useEffect(() => {
-    setCreatedAt(comment.createdAt);
-  }, [comment.createdAt]);
+  // useEffect(() => {
+  //   setCreatedAt(comment.createdAt);
+  // }, [comment.createdAt]);
 
   const createdAtJSX = useMemo(
     () => <CommentCreatedAt createdAt={createdAt!} />,
@@ -71,17 +85,19 @@ const OtherComment: React.FC<ICommentProps> = ({
         <Fragment>
           <Button
             btnSize={EButtonSize.Small}
-            btnType={EButtonType.Alt}
+            btnType={EButtonType.Primary}
             onClick={onFix}
+            // additionalStyles={{ fontSize: "0.9rem" }}
           >
-            Fix
+            수정
           </Button>
           <Button
             btnSize={EButtonSize.Small}
-            btnType={EButtonType.Alt}
+            btnType={EButtonType.Danger}
             onClick={onDelete}
+            // additionalStyles={{ fontSize: "0.9rem" }}
           >
-            Delete
+            삭제
           </Button>
         </Fragment>
       ),
@@ -89,12 +105,16 @@ const OtherComment: React.FC<ICommentProps> = ({
   );
 
   return (
-    <div>
-      {thumbnailJSX}
-      {nameJSX}
-      {contentsJSX}
-      {myCommentButtonsJSX}
-      {createdAtJSX}
+    <div className="comment--other-comment">
+      <div className="comment--other-comment-col1">
+        {thumbnailJSX}
+        {nameJSX}
+      </div>
+      <div className="comment--other-comment-col2">
+        {contentsJSX}
+        {myCommentButtonsJSX}
+        {createdAtJSX}
+      </div>
     </div>
   );
 };

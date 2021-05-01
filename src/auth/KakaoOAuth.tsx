@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
   EXPIRES_IN_SESSION_STORAGE_KEY,
+  PLATFORM_SESSION_STORAGE_KEY,
   USERID_SESSION_STORAGE_KEY,
 } from "../common";
 import { initFetch_CreateUser } from "../store/action/user-async";
@@ -49,6 +50,7 @@ const useKakaoLoginCallback = (history: any) => {
             EXPIRES_IN_SESSION_STORAGE_KEY,
             `${expires_in}`
           );
+          sessionStorage.setItem(PLATFORM_SESSION_STORAGE_KEY, "kakao");
 
           // request the current user's info
           requestCurrentUserInfo(access_token);
@@ -72,6 +74,14 @@ const useKakaoLoginCallback = (history: any) => {
           const kakaoAcount = onSuccess.kakao_account;
           const { email, profile } = kakaoAcount;
           const { nickname, profile_image_url } = profile!;
+
+          console.log(
+            "Kakao auth -> ",
+            access_token,
+            email,
+            nickname,
+            profile_image_url
+          );
 
           _createUser({
             id: access_token,
