@@ -51,7 +51,7 @@ class CommentControllerTest {
     void getNoDataUserComment() {
         // given
         final String noExistsUserId = RandomStringUtils.randomAlphanumeric(100);
-        final String url = "http://localhost:" + port + "/comments/user/" + noExistsUserId;
+        final String url = "http://localhost:" + port + "/comments/users/" + noExistsUserId;
 
         // when
         ResponseEntity<List> responseEntity = testRestTemplate.getForEntity(url, List.class);
