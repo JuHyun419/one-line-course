@@ -1,0 +1,1 @@
+{"mappings":"+OAEiB","sources":["./src/page/not-found/NotFound.tsx"],"sourcesContent":["import React from 'react'\r\n\r\nconst NotFound = () => {\r\n  return (\r\n    <div>\r\n      Not Found!!\r\n    </div>\r\n  )\r\n}\r\n\r\nexport default NotFound\r\n"],"names":[],"version":3,"file":"NotFound.86858880.js.map"}
