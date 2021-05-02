@@ -23,11 +23,7 @@ public class UserController {
     @GetMapping("/{userid}")    // GET 요청 방식의 API
     @ApiOperation(value = "유저 조회")
     public ResponseEntity<ResponseUserDto> searchUser(
-<<<<<<< HEAD
             @PathVariable ("userid") @ApiParam(value = "유저 ID", example = "1df43fh1246") String userId) {
-=======
-            @PathVariable @ApiParam(value = "유저 ID", example = "1df43fh1246") String userId) {
->>>>>>> 002315a1f1b10814b04831b9dfe189d20b9699ba
         return ResponseEntity.ok(
                 new ResponseUserDto(userService.searchUser(userId))
         );
