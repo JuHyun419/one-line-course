@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Backdrop from "../backdrop/Backdrop";
-import Comments from "../comment/Comments";
+import LecturePopupComments from "./LecturePopupComments";
 
 import "./_LecturePopup.scss";
 
@@ -16,13 +16,15 @@ const LecturePopup: React.FC<ILecturePopupProps> = ({
   onClose,
 }) => {
   console.log("lecture ID", lectureID);
-  
+
   return (
     <Fragment>
-      <Backdrop isUsed={true} onClose={onClose}/>
+      <Backdrop isUsed={true} onClose={onClose} />
       <div className="lecturePopup">
-        <div className="lecturePopup--lecture">{children}</div>
-        <Comments lectureID={lectureID} />
+        <div className="lecturePopup--lecture">
+          {children}
+          <LecturePopupComments lectureID={lectureID} />
+        </div>
       </div>
     </Fragment>
   );

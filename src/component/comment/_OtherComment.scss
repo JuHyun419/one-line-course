@@ -1,0 +1,49 @@
+@import "../../common/ColorScheme";
+
+.comment--other-comment {
+  display: flex;
+  flex-direction: row;
+
+  border: 1px solid #000;
+  background-color: rgba(155, 155, 155, 0.15);
+
+  padding: 5px;
+  margin-bottom: 3%;
+  box-sizing: border-box;
+
+  position: relative;
+
+  & &-col1 {
+    display: flex;
+    flex-direction: column;
+
+    border-right: 1px dashed #000;
+
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  & &-col2 {
+    display: flex;
+    flex-direction: row;
+
+    border-left: none;
+
+    position: relative;
+
+    padding: 10px;
+    box-sizing: border-box;
+
+    .btn:nth-child(n) {
+      position: absolute;
+      left: 70%;
+      top: 60%;
+    }
+
+    .btn:nth-child(2n) {
+      position: absolute;
+      left: 58%;
+      top: 60%;
+    }
+  }
+}

@@ -39,6 +39,8 @@ export const initFetch_QueryAllComments = (lectureID: number) => async (
   try {
     dispatch(fetchRequest_QueryAllComments());
     const { commentData, status } = await get_QueryAllComments(lectureID);
+    console.log("fetched all comments from the lecture", commentData);
+    
     const comments = commentData as ICommentData[];
     dispatch(fetchSucceed_QueryAllComments(comments, status));
   } catch (err) {

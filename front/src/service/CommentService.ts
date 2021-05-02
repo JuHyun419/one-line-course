@@ -25,7 +25,7 @@ export const patch_fixComment = async (
 
   try {
     const { status } = await axiosInstance_Server.patch(
-      `/comments/${commentData.commentID}`,
+      `/comments/${commentData.id}`,
       {
         commentData,
       }
@@ -58,6 +58,9 @@ export const get_QueryAllComments = async (
   status: TStatusCode;
 }> => {
   try {
+    // const { data, status } = await axiosInstance_Server.get(
+    //   `/comments/lectures/1`
+    // );
     const { data, status } = await axiosInstance_Server.get(
       `/comments/lectures/${lectureID}`
     );
