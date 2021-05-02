@@ -5,7 +5,7 @@ import { v4 as uuid } from "uuid";
 import OtherComment from "~/src/component/comment/OtherComment";
 import GridLectureCard from "~/src/component/lecture-card/GridLectureCard";
 import { TCombinedStates } from "~/src/store";
-import { ICommentData } from "~/src/typings";
+import { IBookmarkData, ICommentData } from "~/src/typings";
 
 import "./_BookmarksHistory.scss";
 
@@ -14,27 +14,27 @@ const BookmarksHistory = () => {
     (state: TCombinedStates) => state.userAsync_QueryAllMyBookmarks.bookmarks
   );
 
-  const [createdAt, setCreatedAt] = useState<Date>();
-  useEffect(() => {
-    setCreatedAt(new Date());
-  }, []);
+  // const [createdAt, setCreatedAt] = useState<Date>();
+  // useEffect(() => {
+  //   setCreatedAt(new Date());
+  // }, []);
 
   const historyJSX: JSX.Element[] | null = useMemo(
     () =>
-      new Array(3).fill(0).map(_ => (
+      allMyBookmarks && allMyBookmarks.map((bookmark: IBookmarkData) => (
         <div key={uuid()} className="bookmarksHistory--one-day">
           <p className="bookmarksHistory--created-at">
-            {new String(createdAt).slice(0, 25)}
+            {new String(bookmark.createdAt).slice(0, 25)}
           </p>
           <div className="bookmarksHistory--separator"></div>
           {new Array(3).fill(0).map(_ => (
             <div key={uuid()} className="bookmarksHistory--bookmark">
-              <GridLectureCard lectureIdx={1} />
+              <GridLectureCard lectureIdx={bookmark.lectureId} />
             </div>
           ))}
         </div>
       )),
-    [createdAt]
+    [allMyBookmarks]
   );
 
   return <div className="bookmarksHistory">{historyJSX}</div>;

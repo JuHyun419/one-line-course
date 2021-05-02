@@ -17,7 +17,7 @@ import {
   USERID_SESSION_STORAGE_KEY,
 } from "../common";
 
-const GoogleOAuth: React.FC<{}> = () => {
+const GoogleOAuth: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const _createUser = useCallback(
@@ -31,9 +31,9 @@ const GoogleOAuth: React.FC<{}> = () => {
 
       if ((response as GoogleLoginResponse) !== null) {
         const authResponse = response as GoogleLoginResponse;
-        if (!authResponse) {
-          throw new Error("no valid auth response!");
-        }
+        // if (!authResponse) {
+        //   throw new Error("no valid auth response!");
+        // }
 
         // 1. store the authentication info
         const { access_token, expires_in } = authResponse.getAuthResponse();

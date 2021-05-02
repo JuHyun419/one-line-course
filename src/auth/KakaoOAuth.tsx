@@ -17,8 +17,7 @@ import "./_Auth.scss";
 // };
 
 const KakaoOAuth: React.FC = () => {
-  const history = useHistory();
-  const loginWithKakao = useKakaoLoginCallback(history);
+  const loginWithKakao = useKakaoLoginCallback();
 
   return (
     <div id="custom-login-btn" className="authBtn" onClick={loginWithKakao}>
@@ -31,7 +30,8 @@ const KakaoOAuth: React.FC = () => {
   );
 };
 
-const useKakaoLoginCallback = (history: any) => {
+const useKakaoLoginCallback = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const _createUser = useCallback(
     (data: IUserData) => dispatch(initFetch_CreateUser(data)),

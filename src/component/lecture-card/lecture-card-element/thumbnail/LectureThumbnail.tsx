@@ -15,16 +15,16 @@ const LectureThumbnail: React.FC<ILectureThumbnailProps> = ({
 }) => {
   return (
     <Fragment>
-      imageURL === "undefined" ? (
-      <img
-        src={imageURL}
-        alt={`thumbnail--${title}`}
-        loading="lazy"
-        className={
-          isCard ? "lectureCard--thumbnail" : "lecturePopup--thumbnail"
-        }
-      />
-      ) : null;
+      {imageURL ? (
+        <img
+          src={imageURL}
+          alt={`thumbnail--${title}`}
+          loading="lazy"
+          className={
+            isCard ? "lectureCard--thumbnail" : "lecturePopup--thumbnail"
+          }
+        />
+      ) : null}
     </Fragment>
   );
 };
