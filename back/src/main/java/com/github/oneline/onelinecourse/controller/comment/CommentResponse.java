@@ -17,6 +17,9 @@ public class CommentResponse {
     @ApiModelProperty(value = "PK", required = true)
     private Long id;
 
+    @ApiModelProperty(value = "유저 ID", required = true)
+    private String userId;
+
     @ApiModelProperty(value = "댓글 내용", required = true)
     private String content;
 
@@ -25,5 +28,6 @@ public class CommentResponse {
 
     public CommentResponse(Comment source) {
         BeanUtils.copyProperties(source, this);
+        this.userId = source.getUser().getId();
     }
 }
