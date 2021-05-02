@@ -105,6 +105,7 @@
   - [`도메인 연결 80 -> 8080 포트포워딩 삽질`](https://zzang9ha.tistory.com/331)
   - [`인텔리제이 Java file outside of source root`](https://stackoverflow.com/questions/63521181/java-file-outside-of-source-root-intellij/64340331)
   - [`Caused by: java.lang.IllegalArgumentException: invalid target release: 11`](https://zzang9ha.tistory.com/332)
+  - [`@RequestBody에 왜 기본 생성자는 필요하고, Setter는 필요없을까?`](https://velog.io/@conatuseus/RequestBody%EC%97%90-%EA%B8%B0%EB%B3%B8-%EC%83%9D%EC%84%B1%EC%9E%90%EB%8A%94-%EC%99%9C-%ED%95%84%EC%9A%94%ED%95%9C%EA%B0%80)
 
 <br>
 
