@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { EMenuMode, ENavType } from "../../typings";
 import { initFetch_CarouselImageURLs } from "../../store/action/carousel-async/";
+import { initFetch_RetrieveLectures } from "../../store/action/search-async";
 
 import NavFactory from "../../component/nav/nav-factory/NavFactory";
 
@@ -19,7 +20,8 @@ import Footer from "../../component/footer/Footer";
 import "./_Main.scss";
 
 const Main: React.FC = () => {
-  useInitFetch();
+  initCarouselImages();
+  initLectures();
 
   return (
     <div>
@@ -39,7 +41,7 @@ const Main: React.FC = () => {
   );
 };
 
-const useInitFetch = () => {
+const initCarouselImages = () => {
   const dispatch = useDispatch();
   const _initFetchRandomCarouselImages = useCallback(
     (query: string) => dispatch(initFetch_CarouselImageURLs({ query })),
@@ -49,6 +51,18 @@ const useInitFetch = () => {
   // TODO: Fetch Random Images times passing by
   useEffect(() => {
     _initFetchRandomCarouselImages("office");
+  }, []);
+};
+
+const initLectures = () => {
+  const dispatch = useDispatch();
+  const _initFetch = useCallback(
+    () => dispatch(initFetch_RetrieveLectures()),
+    []
+  );
+
+  useEffect(() => {
+    _initFetch();
   }, []);
 };
 

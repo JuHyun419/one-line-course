@@ -14,27 +14,50 @@ const BookmarksHistory = () => {
     (state: TCombinedStates) => state.userAsync_QueryAllMyBookmarks.bookmarks
   );
 
-  // const [createdAt, setCreatedAt] = useState<Date>();
-  // useEffect(() => {
-  //   setCreatedAt(new Date());
-  // }, []);
+  const allDatesYMD = useMemo(
+    () =>
+      allMyBookmarks &&
+      // make unique array
+      Array.from(
+        new Set(
+          allMyBookmarks.map((bookmark: IBookmarkData) =>
+            bookmark.createdAt.toString().slice(0, 10)
+          )
+        )
+      ),
+    [allMyBookmarks]
+  );
+
+  const lectures = useSelector(
+    (state: TCombinedStates) => state.searchAsync.lectures
+  );
 
   const historyJSX: JSX.Element[] | null = useMemo(
     () =>
-      allMyBookmarks && allMyBookmarks.map((bookmark: IBookmarkData) => (
+      allDatesYMD &&
+      allMyBookmarks &&
+      allDatesYMD.map((date: string) => (
         <div key={uuid()} className="bookmarksHistory--one-day">
-          <p className="bookmarksHistory--created-at">
-            {new String(bookmark.createdAt).slice(0, 25)}
-          </p>
+          <p className="bookmarksHistory--created-at">{date}</p>
           <div className="bookmarksHistory--separator"></div>
-          {new Array(3).fill(0).map(_ => (
-            <div key={uuid()} className="bookmarksHistory--bookmark">
-              <GridLectureCard lectureIdx={bookmark.lectureId} />
-            </div>
-          ))}
+          {allMyBookmarks
+            .filter((bookmark: IBookmarkData) => {
+              const comparerYMD = bookmark.createdAt.toString().slice(0, 10);
+              return comparerYMD === date;
+            })
+            .map((bookmark: IBookmarkData) => (
+              <div key={bookmark.id} className="bookmarksHistory--lecture">
+                <GridLectureCard
+                  lecture={
+                    lectures.length > 0 ? lectures[bookmark.lectureId]! : null
+                  }
+                  bookmark={bookmark}
+                />
+              </div>
+            ))}
         </div>
       )),
-    [allMyBookmarks]
+    [allMyBookmarks, allDatesYMD, lectures]
   );
 
   return <div className="bookmarksHistory">{historyJSX}</div>;

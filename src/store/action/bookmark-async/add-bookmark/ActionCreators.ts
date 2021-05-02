@@ -19,9 +19,11 @@ const fetchRequest_AddBookmark = (): IFetchRequestAction_AddBookmark => ({
 });
 
 const fetchSucceed_AddBookmark = (
+  createdBookmark: IBookmarkData,
   statusCode: TStatusCode
 ): IFetchSucceedAction_AddBookmark => ({
   type: EBookmarkAsync_AddBookmark_ActionType.FetchSucceed,
+  createdBookmark,
   statusCode,
 });
 
@@ -36,8 +38,11 @@ export const initFetch_AddBookmark = (
 ) => async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
   try {
     dispatch(fetchRequest_AddBookmark());
-    const status = await post_AddBookmark(userID, bookmarkData);
-    dispatch(fetchSucceed_AddBookmark(status));
+    const { createdBookmark, status } = await post_AddBookmark(
+      userID,
+      bookmarkData
+    );
+    dispatch(fetchSucceed_AddBookmark(createdBookmark, status));
   } catch (err) {
     dispatch(fetchFail_AddBookmark(err));
   }

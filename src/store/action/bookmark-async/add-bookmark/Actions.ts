@@ -1,4 +1,7 @@
-import { EBookmarkAsync_AddBookmark_ActionType } from "~/src/typings";
+import {
+  EBookmarkAsync_AddBookmark_ActionType,
+  IBookmarkData,
+} from "~/src/typings";
 
 export interface IFetchRequestAction_AddBookmark {
   type: EBookmarkAsync_AddBookmark_ActionType.FetchRequest;
@@ -6,6 +9,7 @@ export interface IFetchRequestAction_AddBookmark {
 
 export interface IFetchSucceedAction_AddBookmark {
   type: EBookmarkAsync_AddBookmark_ActionType.FetchSucceed;
+  createdBookmark: IBookmarkData;
   statusCode: number;
 }
 

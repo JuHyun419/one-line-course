@@ -36,22 +36,7 @@ const OtherComment: React.FC<ICommentProps> = ({
     return null;
   }
 
-  console.log(comment);
-  
-
-  // TODO: progress After CORS
-  useUserData(comment.userID, setImageURL, setUserName);
-
-  // useEffect(() => {
-  //   setImageURL(
-  //     "https://lh3.googleusercontent.com/a/AATXAJx46cywrab804ZxmuhTdu6CZztFn-mlQ-1bEIwX=s96-c"
-  //   );
-  //   setUserName("하이피");
-  //   setContents(
-  //     "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla quam enim cupiditate quaerat nesciunt veniam soluta dicta, non voluptas. Vitae totam sapiente saepe! Delectus, veritatis."
-  //   );
-  //   setCreatedAt(new Date());
-  // }, []);
+  useUserData(comment.userId, setImageURL, setUserName);
 
   // user thumbnail
   const thumbnailJSX = useMemo(

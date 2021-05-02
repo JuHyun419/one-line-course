@@ -11,7 +11,6 @@ export const useUserData = (
       const curUser = await get_QueryUser(userID).catch(err => {
         throw new Error(err);
       });
-      console.log(curUser);
 
       const { imageUrl: imageURL, name } = curUser.userData!;
       setImageURL(imageURL);

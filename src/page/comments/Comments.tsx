@@ -38,10 +38,10 @@ const initCommentsHistory = () => {
 
   useEffect(() => {
     const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
-    if (!myUserID || myUserID === "undefined") {
+    console.log(myUserID);
+    if (myUserID === null) {
       return;
     }
-
     _queryAllMyComments(myUserID);
   }, []);
 };

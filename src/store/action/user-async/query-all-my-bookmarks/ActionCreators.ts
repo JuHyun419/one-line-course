@@ -38,8 +38,11 @@ export const initFetch_QueryAllMyBookmarks = (userID: string) => async (
 ) => {
   try {
     dispatch(FetchRequest_QueryAllMyBookmarks());
-    const { bookmarkData, status } = await get_QueryAllMyBookmarks(userID);
-    dispatch(FetchSucceed_QueryAllMyBookmarks(bookmarkData, status));
+    const { bookmarkData: bookmarks, status } = await get_QueryAllMyBookmarks(
+      userID
+    );
+    // console.log(bookmarks, status);
+    dispatch(FetchSucceed_QueryAllMyBookmarks(bookmarks, status));
   } catch (err) {
     dispatch(FetchFail_QueryAllMyBookmarks(err));
   }
