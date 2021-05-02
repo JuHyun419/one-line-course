@@ -3,7 +3,11 @@ package com.github.oneline.onelinecourse.controller.user;
 import com.github.oneline.onelinecourse.model.user.User;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
+@NoArgsConstructor
 public class CreateUserRequestDto {
     @ApiModelProperty(value = "유저 ID", required = true)
     private String id;
