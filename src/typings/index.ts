@@ -62,7 +62,7 @@ export interface ILectureData {
   imageUrl: string;
   title: string;
   price: number;
-  salePrices: number;
+  salePrice: number;
   rating: number;
   instructor: string;
   url: string;
@@ -75,25 +75,23 @@ export interface ILectureData {
 }
 
 export interface IUserData {
-  platform: "google" | "kakao"; // 플랫폼 이름 (=string)
   id: string;
   email: string; // "...@google.com" or "...@kakao.com"
   name: string; // 실제 이름
   imageUrl: string; // 프로필 이미지 URL
+  platform: "google" | "kakao"; // 플랫폼 이름 (=string)
 }
 
 export interface IBookmarkData {
-  bookmarkID: number;
-  userID: string; // 테이블에는 typeof(userID) == bigInt 던데.. 확인 부탁 드려요
-  lectureID: number;
+  id: number;
+  lectureId: number;
   createdAt: Date; // 예: Sun Apr 25 2021 21:29:32 GMT+0900 (Korean Standard Time)
 }
 
 export interface ICommentData {
-  commentID: number;
-  userID: string;
-  lectureID: number;
-  contents: string;
+  id: number;
+  userId: string;
+  content: string;
   createdAt: Date;
   updatedAt: Date;
 }

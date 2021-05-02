@@ -17,7 +17,7 @@ import {
   USERID_SESSION_STORAGE_KEY,
 } from "../common";
 
-const GoogleOAuth: React.FC<{}> = () => {
+const GoogleOAuth: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const _createUser = useCallback(
@@ -31,28 +31,31 @@ const GoogleOAuth: React.FC<{}> = () => {
 
       if ((response as GoogleLoginResponse) !== null) {
         const authResponse = response as GoogleLoginResponse;
-        if (!authResponse) {
-          throw new Error("no valid auth response!");
-        }
+        // if (!authResponse) {
+        //   throw new Error("no valid auth response!");
+        // }
 
         // 1. store the authentication info
         const { access_token, expires_in } = authResponse.getAuthResponse();
         sessionStorage.setItem(USERID_SESSION_STORAGE_KEY, access_token);
-        sessionStorage.setItem(EXPIRES_IN_SESSION_STORAGE_KEY, `${expires_in}`);
+        sessionStorage.setItem(
+          EXPIRES_IN_SESSION_STORAGE_KEY,
+          expires_in.toString()
+        );
         sessionStorage.setItem(PLATFORM_SESSION_STORAGE_KEY, "google");
 
         // 2. post the user info into the db
         const profile = authResponse.getBasicProfile();
-        if (!profile) {
-          throw new Error("No profile is valid!");
-        }
+        // if (!profile) {
+        //   throw new Error("No profile is valid!");
+        // }
 
         // const id = profile.getId();
         const email = profile.getEmail();
         const name = profile.getName();
         const imageUrl = profile.getImageUrl();
 
-        console.log("Google auth -> ", access_token, email, name, imageUrl);
+        // console.log("Google auth -> ", access_token, email, name, imageUrl);
 
         // TODO: Check the endpoint and test again
         _createUser({
@@ -63,8 +66,8 @@ const GoogleOAuth: React.FC<{}> = () => {
           platform: "google",
         });
       } else {
-        const code = (response as GoogleLoginResponseOffline).code;
-        console.log("trying to access offline: ", code);
+        // const code = (response as GoogleLoginResponseOffline).code;
+        // console.log("trying to access offline: ", code);
       }
       history.push("/main");
     },

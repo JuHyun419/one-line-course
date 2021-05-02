@@ -14,7 +14,7 @@ import "./_Comments.scss";
 import "../_Page.scss";
 
 const Comments = () => {
-  // initCommentsHistory();
+  initCommentsHistory();
   return (
     <div>
       <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={1} />

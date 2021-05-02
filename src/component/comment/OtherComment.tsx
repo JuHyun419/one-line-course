@@ -32,19 +32,26 @@ const OtherComment: React.FC<ICommentProps> = ({
   const [contents, setContents] = useState("");
   const [createdAt, setCreatedAt] = useState<Date>();
 
-  // TODO: progress After CORS
-  // useUserData(comment.userID, setImageURL, setUserName);
+  if (!comment) {
+    return null;
+  }
 
-  useEffect(() => {
-    setImageURL(
-      "https://lh3.googleusercontent.com/a/AATXAJx46cywrab804ZxmuhTdu6CZztFn-mlQ-1bEIwX=s96-c"
-    );
-    setUserName("하이피");
-    setContents(
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla quam enim cupiditate quaerat nesciunt veniam soluta dicta, non voluptas. Vitae totam sapiente saepe! Delectus, veritatis."
-    );
-    setCreatedAt(new Date());
-  }, []);
+  console.log(comment);
+  
+
+  // TODO: progress After CORS
+  useUserData(comment.userID, setImageURL, setUserName);
+
+  // useEffect(() => {
+  //   setImageURL(
+  //     "https://lh3.googleusercontent.com/a/AATXAJx46cywrab804ZxmuhTdu6CZztFn-mlQ-1bEIwX=s96-c"
+  //   );
+  //   setUserName("하이피");
+  //   setContents(
+  //     "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla quam enim cupiditate quaerat nesciunt veniam soluta dicta, non voluptas. Vitae totam sapiente saepe! Delectus, veritatis."
+  //   );
+  //   setCreatedAt(new Date());
+  // }, []);
 
   // user thumbnail
   const thumbnailJSX = useMemo(
@@ -58,18 +65,18 @@ const OtherComment: React.FC<ICommentProps> = ({
   ]);
 
   // contents
-  // useEffect(() => {
-  //   setContents(comment.contents);
-  // }, [comment.contents]);
+  useEffect(() => {
+    setContents(comment.content);
+  }, [comment]);
 
   const contentsJSX = useMemo(() => <CommentContents contents={contents} />, [
     contents,
   ]);
 
   // created at
-  // useEffect(() => {
-  //   setCreatedAt(comment.createdAt);
-  // }, [comment.createdAt]);
+  useEffect(() => {
+    setCreatedAt(comment.createdAt);
+  }, [comment]);
 
   const createdAtJSX = useMemo(
     () => <CommentCreatedAt createdAt={createdAt!} />,

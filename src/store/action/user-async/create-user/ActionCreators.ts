@@ -35,7 +35,7 @@ export const initFetch_CreateUser = (data: IUserData) => async (
   try {
     dispatch(FetchRequest_CreateUser());
     const status = await post_RegisterUser(data);
-    console.log("User data is sent by POST!", data);
+    // console.log("User data is sent by POST!", data);
     dispatch(FetchSucceed_CreateUser(status));
   } catch (err) {
     dispatch(FetchFail_CreateUser(err));

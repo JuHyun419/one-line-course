@@ -15,65 +15,55 @@ interface ICommentsProps {
 import "./_LecturePopupComments.scss";
 
 const LecturePopupComments: React.FC<ICommentsProps> = ({ lectureID }) => {
-  // initComments(lectureID);
+  initComments(lectureID);
 
   // const user = useSelector((state: TCombinedStates) => state.user.user);
 
-  // const myComments = useSelector(
-  //   (state: TCombinedStates) => state.userAsync_QueryAllMyComments.comments
-  // );
-  // const otherComments = useSelector(
-  //   (state: TCombinedStates) => state.commentAsync_QueryAllComments.comments
-  // );
+  const myComments = useSelector(
+    (state: TCombinedStates) => state.userAsync_QueryAllMyComments.comments
+  );
+  const otherComments = useSelector(
+    (state: TCombinedStates) => state.commentAsync_QueryAllComments.comments
+  );
 
   const newCommentJSX: JSX.Element | null = useMemo(() => <NewComment />, []);
 
-  // const myCommentsJSX: JSX.Element[] | null = useMemo(
-  //   () =>
-  //     myComments &&
-  //     user &&
-  //     new Array(myComments.length)
-  //       .fill(0)
-  //       .map((comment: ICommentData) => (
-  //         <OtherComment key={comment.commentID} comment={comment} isMyComment />
-  //       )),
-  //   [user, myComments]
-  // );
   const myCommentsJSX: JSX.Element[] | null = useMemo(
     () =>
-      new Array(5)
-        .fill(0)
-        .map((comment: ICommentData) => (
-          <OtherComment key={uuid()} comment={comment} isMyComment />
-        )),
-    []
+      myComments &&
+      myComments.map((comment: ICommentData) => (
+        <OtherComment key={uuid()} comment={comment} isMyComment />
+      )),
+    [myComments]
   );
-
-  // TODO: 3. Other Comments belong to this lecture
-  // const otherCommentsJSX: JSX.Element[] | null = useMemo(
+  // const myCommentsJSX: JSX.Element[] | null = useMemo(
   //   () =>
-  //     otherComments &&
-  //     user &&
-  //     new Array(otherComments.length)
+  //     new Array(5)
   //       .fill(0)
   //       .map((comment: ICommentData) => (
-  //         <OtherComment
-  //           key={comment.commentID}
-  //           comment={comment}
-  //           isMyComment={false}
-  //         />
+  //         <OtherComment key={uuid()} comment={comment} isMyComment />
   //       )),
-  //   [user, otherComments]
+  //   []
   // );
+
+  // TODO: 3. Other Comments belong to this lecture
   const otherCommentsJSX: JSX.Element[] | null = useMemo(
     () =>
-      new Array(5)
-        .fill(0)
-        .map((comment: ICommentData) => (
-          <OtherComment key={uuid()} comment={comment} isMyComment={false} />
-        )),
-    []
+      otherComments &&
+      otherComments.map((comment: ICommentData) => (
+        <OtherComment key={uuid()} comment={comment} isMyComment={false} />
+      )),
+    [otherComments]
   );
+  // const otherCommentsJSX: JSX.Element[] | null = useMemo(
+  //   () =>
+  //     new Array(5)
+  //       .fill(0)
+  //       .map((comment: ICommentData) => (
+  //         <OtherComment key={uuid()} comment={comment} isMyComment={false} />
+  //       )),
+  //   []
+  // );
 
   return (
     <div className="lecturePopup--comments">
