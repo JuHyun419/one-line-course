@@ -1,5 +1,5 @@
 import React from "react";
-import { EButtonSize, EButtonType, TOnClick } from "../../typings/type";
+import { EButtonSize, EButtonType, TOnClickButton } from "../../typings";
 
 import { joinClasses } from "../../common/StyleHelper";
 
@@ -11,7 +11,11 @@ interface ButtonProps {
   highlight?: boolean;
   additionalClassName?: string;
   additionalStyles?: { [prop: string]: string };
-  onClick?: TOnClick | undefined;
+  onClick?:
+    | TOnClickButton<HTMLDivElement>
+    | ((e: React.MouseEvent<HTMLDivElement>) => void)
+    | undefined;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLDivElement>) => void;
   children?: any | undefined;
 }
 
@@ -28,6 +32,7 @@ const Button: React.FC<ButtonProps> = ({
   additionalClassName,
   additionalStyles,
   onClick,
+  onKeyPress,
   children,
 }) => {
   return (
@@ -42,6 +47,7 @@ const Button: React.FC<ButtonProps> = ({
       )}
       style={additionalStyles}
       onClick={onClick}
+      onKeyPress={onKeyPress}
     >
       <span>{children}</span>
     </div>

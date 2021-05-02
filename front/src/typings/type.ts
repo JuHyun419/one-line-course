@@ -1,5 +1,5 @@
 import React from "react";
-import { Action, CombinedState, Reducer, Store, Dispatch } from "redux";
+// import { Action, CombinedState, Reducer, Store, Dispatch } from "redux";
 
 /**
  *
@@ -23,9 +23,10 @@ export enum EButtonType {
 /**
  *
  */
-export interface TOnClick {
-  (event?: React.MouseEvent<HTMLDivElement>, linkTo?: string): void;
+export interface TOnClickButton<T extends HTMLElement> {
+  (event?: React.MouseEvent<T>, linkTo?: string): void;
 }
+
 
 /**
  *
@@ -53,11 +54,77 @@ export enum ESeparatorDirection {
   Horizontal,
 }
 
-/**
- *
- */
+export enum ECarouselAsyncActionType {
+  FetchRequest_CarouselImagesURLs = "FETCH_REQUEST_CAROUSEL_IMAGES_URLS",
+  FetchSucceed_CarouselImagesURLs = "FETCH_SUCCEED_CAROUSEL_IMAGES_URLS",
+  FetchFail_CarouselImagesURLs = "FETCH_FAIL_CAROUSEL_IMAGES_URLS",
+}
 
+export enum ECarouselActionType {
+  Set_ImageIndicatorCurIdx = "SET_IMAGE_INDICATOR_CURRENT_INDEX",
+  Set_ImagePlacerRef = "SET_IMAGE_PLACER_REF",
+  Set_ImageWidth = "SET_IMAGE_WIDTH",
+}
 
+export enum ESearchActionType {
+  Set_SelectedKeyword = "SET_SELECTED_KEYWORD",
+  Set_SelectedPlatform = "SET_SELECTED_PLATFORM",
+  Set_Suggestion = "SET_SUGGESTION",
+}
+
+export enum ESearchAsyncActionType {
+  FetchRequest_RetrieveLectures = "FETCH_REQUEST_RETRIEVE_LECTURES",
+  FetchSucceed_RetrieveLectures = "FETCH_SUCCEED_RETRIEVE_LECTURES",
+  FetchFail_RetrieveLectures = "FETCH_FAIL_RETRIEVE_LECTURES",
+}
+
+export enum EUserAsyncActionType {
+  FetchRequest_CreateUser = "FETCH_REQUEST_CREATE_USER",
+  FetchSucceed_CreateUser = "FETCH_SUCCEED_CREATE_USER",
+  FetchFail_CreateUser = "FETCH_FAIL_CREATE_USER",
+}
+
+export enum EUserActionType {}
+
+export enum ECommentAsyncActionType {}
+
+export enum ECommentActionType {}
+
+export enum ELecturePlatform {
+  Youtube,
+  Inflearn,
+}
+
+export interface ILectureFetchResult {
+  id: number;
+  imageUrl: string;
+  title: string;
+  price: number;
+  salePrices: number;
+  rating: number;
+  instructor: string;
+  url: string;
+  viewCount: number;
+  platform: string;
+  sessionCount: number;
+  currency: string;
+  description: string;
+  skills: string;
+}
+
+export enum ELectureAsyncActionType {
+  FetchRequest_QueryLectures = "FETCH_REQUEST_QUERY_LECTURES",
+}
+
+export enum ELectureActionType {
+  Set_ViewType = "SET_VIEW_TYPE",
+  // Set_LectureCountPerPage = "SET_LECTURE_COUNT_PER_PAGE",
+  Set_CurrentPage = "SET_CURRENT_PAGE",
+}
+
+export enum EBookmarkAsyncActionType {}
+
+export enum EBookmarkActionType {}
 
 /**
  *

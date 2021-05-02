@@ -1,0 +1,18 @@
+.gridView {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-basis: 80%;
+  justify-content: space-around;
+  // align-items: center;
+
+  height: 100%;
+
+  padding: 15px 15px;
+  margin: 5% 0;
+
+
+  border: 2px dashed #000;
+
+  list-style-type: none;
+}

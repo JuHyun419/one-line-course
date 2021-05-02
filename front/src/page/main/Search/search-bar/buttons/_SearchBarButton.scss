@@ -1,0 +1,22 @@
+@import "../../../../../common/BoxShadow";
+@import "../../../../../common/ColorScheme";
+
+.searchBar {
+  .searchBar--btn-add {
+    position: absolute;
+    left: 83%;
+    top: 35%;
+  }
+
+  .searchBar--btn-search {
+    position: absolute;
+    left: 83%;
+    top: 45%;
+  }
+
+  .searchBar--clearBtn {
+    position: absolute;
+    left: 83%;
+    top: 87%;
+  }
+}

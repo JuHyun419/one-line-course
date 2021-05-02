@@ -1,15 +1,26 @@
 @import "../../common/ColorScheme";
 
-.menu {
-  width: 30px;
-}
+.menu-placer {
+  transform: scale(1.5);
+  position: fixed;
+  left: 96%;
+  top: 65vh;
 
-.menu {
-  &.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .menu {
     width: 30px;
-    height: 4px;
-    margin-bottom: 5px;
-    background-color: $color-black;
+  }
+
+  .menu {
+    &.hamburger {
+      width: 30px;
+      height: 4px;
+      margin-bottom: 5px;
+      background-color: $color-black;
+    }
   }
 }
-

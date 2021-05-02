@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from "react";
 
 import { getIcon } from "../../../../common";
-import SearchBar from "./SearchBar";
+import SearchBar from "./search-bar/SearchBar";
 
 import "./_SearchCtrl.scss";
 
@@ -19,7 +19,7 @@ const SearchCtrl: React.FC<{}> = () => {
   );
 
   return (
-    <div>
+    <div className="searchCtrl">
       {!isSearchBarToggled && <SearchBar searchIcon={searchIcon} />}
       <button
         className={

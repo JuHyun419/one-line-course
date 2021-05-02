@@ -1,32 +1,48 @@
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
-import { FetchFail, FetchReq, FetchSucceed } from "./Actions";
-import { getPhotoPage } from "../../../service/UnsplashService";
+
+import { ECarouselAsyncActionType } from "~/src/typings";
+import {
+  IFetchFailAction_CarouselImgURLs,
+  IFetchRequestAction_CarouselImageURLs,
+  IFetchSucceedAction_CarouselImageURLs,
+} from "./Actions";
+import { get_PhotoPages } from "~/src/service/UnsplashService";
 
 // Creators
-export const fetchRequest = (): FetchReq => ({
-  type: "FETCH_REQUEST",
+export const fetchRequest_CarouselImageURLs = (): IFetchRequestAction_CarouselImageURLs => ({
+  type: ECarouselAsyncActionType.FetchRequest_CarouselImagesURLs,
 });
 
-export const fetchSucceed = (urls: Array<string>): FetchSucceed => ({
-  type: "FETCH_SUCCEED",
+export const fetchSucceed_CarouselImageURLs = (
+  status: number,
+  urls: Array<string>
+): IFetchSucceedAction_CarouselImageURLs => ({
+  type: ECarouselAsyncActionType.FetchSucceed_CarouselImagesURLs,
+  status,
   urls,
 });
 
-export const fetchFail = (err: string): FetchFail => ({
-  type: "FETCH_FAIL",
+export const fetchFail_CarouselImageURLs = (
+  err: string
+): IFetchFailAction_CarouselImgURLs => ({
+  type: ECarouselAsyncActionType.FetchFail_CarouselImagesURLs,
   err,
 });
 
-export const initFetch = (query: { query: string }) => async (
+export const initFetch_CarouselImageURLs = (query: { query: string }) => async (
   dispatch: ThunkDispatch<{}, {}, AnyAction>
 ) => {
   try {
-    dispatch(fetchRequest());
-    const queryResult = await getPhotoPage(query);
-    const imageURLs = queryResult?.results;
-    dispatch(fetchSucceed(imageURLs.map(el => el.urls.regular)));
+    dispatch(fetchRequest_CarouselImageURLs());
+    const { data, status } = await get_PhotoPages(query);
+    dispatch(
+      fetchSucceed_CarouselImageURLs(
+        status,
+        data!.results.map(el => el.urls.regular)
+      )
+    );
   } catch (err) {
-    dispatch(fetchFail(err));
+    dispatch(fetchFail_CarouselImageURLs(err));
   }
 };

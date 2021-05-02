@@ -1,0 +1,22 @@
+.lectureCard--skills {
+  display: flex;
+  flex-direction: row;
+
+  i {
+    text-align: center;
+  }
+
+  .lectureCard--skills-each {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  li {
+    padding: 2px 15px;
+    border: 1px solid #000;
+    border-radius: 25px;
+
+  }
+}

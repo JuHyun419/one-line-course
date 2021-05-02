@@ -36,7 +36,8 @@
 
   - [`DB 설계`](https://www.notion.so/DB-1f0520006f2a4ca582e0cef0a34623ae)
 
-![image](https://user-images.githubusercontent.com/50076031/114146978-2e1e3900-9953-11eb-94b8-94124732f00c.png)
+<img width="520" alt="ERD 다이어그램 최종" src="https://user-images.githubusercontent.com/50076031/116420336-da7b7d00-a878-11eb-9e8d-b3225e363ff1.PNG">
+
 
 <br>
 
@@ -54,8 +55,8 @@
 
 ## 🐱‍💻 백엔드 역할 분담
   - 주현
-    - [ ] 강의(Lecture)
-    - [ ] 댓글(Comment)
+    - [x] 강의(Lecture)
+    - [x] 댓글(Comment)
     - [ ] 인프라(AWS) 설정
   - 소연
     - [ ] 북마크(Bookmark)
@@ -100,11 +101,19 @@
   - [`MySQL referencing column and referenced column are incompatible`](https://github.com/JuHyun419/one-line-course/issues/8)
   - [`MySQL 8.0 대소문자 구분 문제(MySQL 5 버전으로 변경)`](https://zzang9ha.tistory.com/328)
   - [`Java의 LocalDateTime과 MySQL의 datetime 사이의 시차 문제(9시간)`](https://github.com/JuHyun419/one-line-course/issues/62)
+  - [`Google oAuth access_token vs id_token`](https://github.com/JuHyun419/one-line-course/issues/89)
+  - [`도메인 연결 80 -> 8080 포트포워딩 삽질`](https://zzang9ha.tistory.com/331)
+  - [`인텔리제이 Java file outside of source root`](https://stackoverflow.com/questions/63521181/java-file-outside-of-source-root-intellij/64340331)
+  - [`Caused by: java.lang.IllegalArgumentException: invalid target release: 11`](https://zzang9ha.tistory.com/332)
 
 <br>
 
 ## 📜 보완해야 할 부분(성능, 추가 기능, 코드 등등)
   - 검색 조건에 강의자(instructor) 추가
+  - 환경 변수(application.properties) 관리(외부 노출 X)
+  - 테스트 코드(통합 테스트, 단위 테스트) 추가
+  - 예외처리(Exception Handling) - 유저, 댓글, 강의 등등 추가
+  - OAuth2 Front -> Back
 
 <br><br>
 

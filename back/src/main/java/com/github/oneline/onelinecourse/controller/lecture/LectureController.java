@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.github.oneline.onelinecourse.util.StatusCode.getStatusCode;
+
 @RequiredArgsConstructor
 @RestController
 public class LectureController {
@@ -19,11 +21,11 @@ public class LectureController {
     @GetMapping("/lectures")
     @ApiOperation(value = "강의 전체 조회")
     public ResponseEntity<List<LectureResponse>> getLectures() {
-        return ResponseEntity.ok(
-                lectureService.findAllLectures()
-                        .stream()
-                        .map(LectureResponse::new)
-                        .collect(Collectors.toList())
-        );
+        List<LectureResponse> response = lectureService.findAllLectures()
+                .stream()
+                .map(LectureResponse::new)
+                .collect(Collectors.toList());
+
+        return new ResponseEntity<>(response, getStatusCode(response));
     }
 }

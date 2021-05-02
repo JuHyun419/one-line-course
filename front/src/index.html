@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
+      name="google-site-verification"
+      content="ZdydloKE19U6-v4wOi8N7jRduwR7vjIl7Ef46bpwCbs"
+    />
+    <meta
       name="원라인코스 (one-line-course)"
       content="Search your lectures everywhere!"
     />
@@ -25,6 +29,10 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' https://apis.google.com 'unsafe-inline' 'unsafe-eval';"
+    /> -->
     <title>원 라인 코스</title>
 
     <!-- Font Awesome for adding icons -->
@@ -33,7 +41,11 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="https://developers.kakao.com/sdk/js/kakao.js" async></script>
+    <script
+      src="https://developers.kakao.com/sdk/js/kakao.js"
+      async
+      crossorigin="anonymous"
+    ></script>
 
     <!-- React entry point -->
     <script type="module" src="./index.tsx" defer></script>

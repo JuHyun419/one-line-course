@@ -1,12 +1,9 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { ENavType } from "../../../typings/type";
 
-import { CombinedCarousel } from "../../../store";
-
-import AfterLoginNav from "../AfterLoginNav";
-import LandingNav from "../LandingNav";
-import SignInNav from "../SignInNav";
+import { ENavType } from "~/src/typings";
+import { TCombinedStates } from "~/src/store";
+import { AfterLoginNav, LandingNav, SignInNav } from "../";
 
 import "./_NavFactory.scss";
 
@@ -40,7 +37,7 @@ const makeNav = ({
     case ENavType.AfterLogin:
       navJSX = <AfterLoginNav highlightBtnIdx={highlightBtnIdx} />;
       const imgRef = useSelector(
-        (state: CombinedCarousel) => state.carousel.ref
+        (state: TCombinedStates) => state.carousel.ref
       );
 
       useEffect(() => {
