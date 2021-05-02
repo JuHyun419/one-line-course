@@ -28,17 +28,23 @@ export interface IGridLectureCardProps {
 
 const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
   const [isOpened, setIsOpened] = useState(false);
-  
+
   const lecture = useSelector(
     (state: TCombinedStates) => state.searchResult.lectures[lectureIdx]
   );
+
+  const lectures = useSelector(
+    (state: TCombinedStates) => state.searchResult.lectures
+  );
+
+  console.log(lectures);
 
   const {
     id,
     imageUrl,
     title,
     price,
-    salePrices,
+    salePrice: salePrices,
     rating,
     instructor,
     url,

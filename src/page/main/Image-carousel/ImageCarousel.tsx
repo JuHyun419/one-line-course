@@ -75,6 +75,7 @@ const useImg = (dispatch: Dispatch<any>) => {
                 "imageCarousel--image",
                 `${curIdx !== i ? "hidden" : ""}`,
               ].join(" ")}
+              alt="carousel image"
               ref={imgTmpRef}
             />
           );
@@ -87,6 +88,7 @@ const useImg = (dispatch: Dispatch<any>) => {
                 "imageCarousel--image",
                 `${curIdx !== i ? "hidden" : ""}`,
               ].join(" ")}
+              alt="carousel image"
             />
           );
         }

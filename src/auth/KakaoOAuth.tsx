@@ -1,6 +1,11 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import {
+  EXPIRES_IN_SESSION_STORAGE_KEY,
+  PLATFORM_SESSION_STORAGE_KEY,
+  USERID_SESSION_STORAGE_KEY,
+} from "../common";
 import { initFetch_CreateUser } from "../store/action/user-async";
 import { IUserData } from "../typings";
 
@@ -12,20 +17,21 @@ import "./_Auth.scss";
 // };
 
 const KakaoOAuth: React.FC = () => {
-  const history = useHistory();
-  const loginWithKakao = useKakaoLoginCallback(history);
+  const loginWithKakao = useKakaoLoginCallback();
 
   return (
     <div id="custom-login-btn" className="authBtn" onClick={loginWithKakao}>
       <img
         src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+        alt="kakao login button"
         width="181"
       />
     </div>
   );
 };
 
-const useKakaoLoginCallback = (history: any) => {
+const useKakaoLoginCallback = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const _createUser = useCallback(
     (data: IUserData) => dispatch(initFetch_CreateUser(data)),
@@ -40,8 +46,12 @@ const useKakaoLoginCallback = (history: any) => {
 
           // store the auth info
           const { access_token, expires_in } = onSuccess;
-          sessionStorage.setItem("userID", access_token);
-          sessionStorage.setItem("expiresIn", `${expires_in}`);
+          sessionStorage.setItem(USERID_SESSION_STORAGE_KEY, access_token);
+          sessionStorage.setItem(
+            EXPIRES_IN_SESSION_STORAGE_KEY,
+            expires_in.toString()
+          );
+          sessionStorage.setItem(PLATFORM_SESSION_STORAGE_KEY, "kakao");
 
           // request the current user's info
           requestCurrentUserInfo(access_token);
@@ -66,19 +76,26 @@ const useKakaoLoginCallback = (history: any) => {
           const { email, profile } = kakaoAcount;
           const { nickname, profile_image_url } = profile!;
 
-          // TODO: check the endpoint and test again
-          // _createUser({
-          //   userID: access_token,
-          //   email: email!,
-          //   name: nickname!,
-          //   imageURL: profile_image_url!,
-          //   platform: "kakao",
-          // });
+          // console.log(
+          //   "Kakao auth -> ",
+          //   access_token,
+          //   email,
+          //   nickname,
+          //   profile_image_url
+          // );
+
+          _createUser({
+            id: access_token,
+            email: email!,
+            name: nickname!,
+            imageUrl: profile_image_url!,
+            platform: "kakao",
+          });
           history.push("/main");
         },
 
         fail: onFail => {
-          console.error(onFail);
+          // console.error(onFail);
         },
       }),
     [_createUser]
