@@ -40,7 +40,7 @@ const OtherComment: React.FC<ICommentProps> = ({
   
 
   // TODO: progress After CORS
-  useUserData(comment.userID, setImageURL, setUserName);
+  useUserData(comment.userId, setImageURL, setUserName);
 
   // useEffect(() => {
   //   setImageURL(

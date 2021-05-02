@@ -1,0 +1,1 @@
+import{$295f6fd335ee16aea2a0a21600bed0ad$init as e}from"./index.b9e2c482.js";var d={};Object.defineProperty(d,"__esModule",{value:!0});var t=void 0;d.default=t;var a,u=(a=e())&&a.__esModule?a:{default:a};t=function(){return u.default.createElement("div",null,"Not Found!!")},d.default=t;export default d;
