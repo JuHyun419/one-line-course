@@ -20,7 +20,6 @@ public class BookmarkController {
         this.bookmarkService = bookmarkService;
     }
 
-    // 북마크 등록
     @PostMapping
     @ApiOperation(value = "북마크 등록")
     public ResponseEntity<ResponseBookmarkDto> createBookmark(
@@ -32,16 +31,14 @@ public class BookmarkController {
         );
     }
 
-    // 북마크 해제
     @DeleteMapping("/{bookmarkId}")
     @ApiOperation(value = "북마크 삭제")
     public ResponseEntity<Void> deleteBookmark(
             @PathVariable @ApiParam(value = "북마크 ID", example = "1") Long bookmarkId) {
         bookmarkService.deleteBookmark(bookmarkId);
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // 유저가 등록한 모든 북마크 가져오기
     @GetMapping("/users/{userId}")
     @ApiOperation(value = "유저가 등록한 모든 북마크 가져오기")
     public ResponseEntity<List<ResponseBookmarkDto>> getUserBookmark(
