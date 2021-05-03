@@ -5,6 +5,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CommentUpdateRequest {
 
     @ApiModelProperty(value = "수정할 댓글 내용", required = true)

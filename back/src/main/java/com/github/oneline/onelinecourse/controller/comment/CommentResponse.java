@@ -2,16 +2,15 @@ package com.github.oneline.onelinecourse.controller.comment;
 
 import com.github.oneline.onelinecourse.model.comment.Comment;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.beans.BeanUtils;
 
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
-@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CommentResponse {
 
     @ApiModelProperty(value = "PK", required = true)

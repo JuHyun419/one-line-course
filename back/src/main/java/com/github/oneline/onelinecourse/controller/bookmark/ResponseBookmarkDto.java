@@ -7,7 +7,9 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Getter
-@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResponseBookmarkDto {
 
     @ApiModelProperty(value = "PK", required = true)

@@ -2,14 +2,13 @@ package com.github.oneline.onelinecourse.controller.lecture;
 
 import com.github.oneline.onelinecourse.model.lecture.Lecture;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.beans.BeanUtils;
 
 @Getter
-@Setter
-@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LectureResponse {
 
     @ApiModelProperty(value = "PK", required = true)

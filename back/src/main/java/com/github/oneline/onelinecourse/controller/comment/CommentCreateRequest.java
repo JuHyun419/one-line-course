@@ -4,10 +4,10 @@ import com.github.oneline.onelinecourse.model.comment.Comment;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CommentCreateRequest {
 
     @ApiModelProperty(value = "댓글 내용", required = true)

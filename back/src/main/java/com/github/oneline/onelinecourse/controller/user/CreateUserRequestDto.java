@@ -2,12 +2,15 @@ package com.github.oneline.onelinecourse.controller.user;
 
 import com.github.oneline.onelinecourse.model.user.User;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class CreateUserRequestDto {
     @ApiModelProperty(value = "유저 ID", required = true)
     private String id;
@@ -23,15 +26,6 @@ public class CreateUserRequestDto {
 
     @ApiModelProperty(value = "로그인한 플랫폼", required = true)
     private String platform;
-
-    @Builder
-    public CreateUserRequestDto(String id, String email, String name, String imageUrl, String platform) {
-        this.id = id;
-        this.email = email;
-        this.name = name;
-        this.imageUrl = imageUrl;
-        this.platform = platform;
-    }
 
     // DTO -> Entity 변환
     public User toEntity() {
