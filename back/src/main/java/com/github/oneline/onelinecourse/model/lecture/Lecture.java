@@ -9,9 +9,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "Lectures")
 public class Lecture {
