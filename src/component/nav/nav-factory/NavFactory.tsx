@@ -44,7 +44,7 @@ const makeNav = ({
         if (!imgRef?.current) return;
 
         setSticky(
-          window.scrollY <= imgRef.current!.getBoundingClientRect().top
+          window.scrollY <= imgRef.current!.getBoundingClientRect().bottom
             ? "navFactory"
             : "navFactory sticky"
         );

@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-<<<<<<< HEAD
     "start": "parcel serve \"./src/index.html\" --open",
-=======
-    "start": "parcel serve \"./src/index.html\" --open --https",
->>>>>>> release/1.0
     "build": "parcel build \"./src/index.html\" --dist-dir ./build/output --no-source-maps",
     "build-lib": "babel ./src --out-dir lib --extensions \".ts,.tsx\""
   },
