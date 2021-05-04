@@ -1,4 +1,6 @@
-@import "../../../common/OpenCloseAnimation";
+@import "../../../common/Animation";
+@import "../../../common/FadeInOut";
+
 
 .imageCarousel {
   position: relative;
@@ -21,28 +23,32 @@
       border-radius: 15px;
       z-index: inherit;
 
-      animation: {
-        name: anim-open;
-        duration: 0.2s;
-        delay: 0.1s;
-        iteration-count: 1;
-        direction: normal;
-        timing-function: ease-in;
-        fill-mode: both;
-      }
+      // animation: {
+      //   name: anim-open;
+      //   duration: 0.2s;
+      //   delay: 0.1s;
+      //   iteration-count: 1;
+      //   direction: normal;
+      //   timing-function: ease-in;
+      //   fill-mode: both;
+      // }
+
+      @include animation("fade-in .2s linear .1s 1 both");
 
       &.hidden {
         visibility: hidden;
 
-        animation: {
-          name: anim-close;
-          duration: 0.2s;
-          delay: 0.1s;
-          iteration-count: 1;
-          direction: normal;
-          timing-function: ease-in-out;
-          fill-mode: both;
-        }
+        @include animation("fade-out .2s linear .1s 1 both");
+
+        // animation: {
+        //   name: anim-close;
+        //   duration: 0.2s;
+        //   delay: 0.1s;
+        //   iteration-count: 1;
+        //   direction: normal;
+        //   timing-function: ease-in-out;
+        //   fill-mode: both;
+        // }
       }
     }
   }
