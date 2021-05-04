@@ -8,13 +8,13 @@ import NavFactory from "../../component/nav/nav-factory/NavFactory";
 import CommentsHistory from "./CommentsHistory";
 import GoToTop from "~/src/component/goToTop/GoToTop";
 import Menu from "~/src/component/menu/Menu";
-import { placeIconsRandomly } from "../../common/";
+import { placeIconsRandomly, USERID_SESSION_STORAGE_KEY } from "../../common/";
 
 import "./_Comments.scss";
 import "../_Page.scss";
 
 const Comments = () => {
-  // initCommentsHistory();
+  initCommentsHistory();
   return (
     <div>
       <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={1} />
@@ -37,11 +37,11 @@ const initCommentsHistory = () => {
   );
 
   useEffect(() => {
-    const myUserID = sessionStorage.getItem("userID");
-    if (!myUserID || myUserID === "undefined") {
+    const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
+    console.log(myUserID);
+    if (myUserID === null) {
       return;
     }
-
     _queryAllMyComments(myUserID);
   }, []);
 };

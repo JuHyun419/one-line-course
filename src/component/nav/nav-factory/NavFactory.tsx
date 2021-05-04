@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 
 import { ENavType } from "~/src/typings";
@@ -40,19 +40,22 @@ const makeNav = ({
         (state: TCombinedStates) => state.carousel.ref
       );
 
+      const listener = useCallback(() => {
+        if (!imgRef?.current) return;
+
+        setSticky(
+          window.scrollY <= imgRef.current!.getBoundingClientRect().top
+            ? "navFactory"
+            : "navFactory sticky"
+        );
+      }, [window, imgRef]);
+
       useEffect(() => {
         if (!imgRef) return;
 
-        window.addEventListener("scroll", function () {
-          if (!imgRef?.current) return;
-
-          setSticky(
-            window.scrollY <= imgRef.current!.getBoundingClientRect().top
-              ? "navFactory"
-              : "navFactory sticky"
-          );
-        });
-      }, [window, imgRef]);
+        window.addEventListener("scroll", listener);
+        return () => window.removeEventListener("scroll", listener);
+      }, [window, imgRef, listener]);
       break;
 
     default:

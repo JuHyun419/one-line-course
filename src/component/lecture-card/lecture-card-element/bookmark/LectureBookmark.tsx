@@ -1,55 +1,67 @@
-import React, { useCallback, useMemo, useState } from "react";
-import { useDispatch } from "react-redux";
-import { getIcon } from "~/src/common";
+import React, { useCallback, useMemo, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getIcon, USERID_SESSION_STORAGE_KEY } from "~/src/common";
+import { TCombinedStates } from "~/src/store";
 import {
   initFetch_AddBookmark,
   initFetch_RemoveBookmark,
 } from "~/src/store/action/bookmark-async";
+import { IBookmarkData } from "~/src/typings";
 
 import "./_LectureBookmark.scss";
 
-const LectureBookmark = () => {
-  const { BookmarkIcon_Disabled, BookmarkIcon_Enabled } = makeBookmarkIcon();
+interface ILectureBookmarkProps {
+  bookmark: IBookmarkData;
+}
 
-  return <div className="lectureCard--bookmark">{BookmarkIcon_Disabled}</div>;
+const LectureBookmark: React.FC<ILectureBookmarkProps> = ({ bookmark }) => {
+  const bookmarkIcon = makeBookmarkIcon(bookmark);
+
+  return <div className="lectureCard--bookmark">{bookmarkIcon}</div>;
 };
 
-const makeBookmarkIcon = () => {
+const makeBookmarkIcon = (bookmark: IBookmarkData) => {
   const [isBookmarkEnabled, setIsBookmarkEnabled] = useState(false);
   const dispatch = useDispatch();
+  const userID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
+  const createdBookmark = useSelector(
+    (state: TCombinedStates) => state.bookmarkAsync_AddBookmark.createdBookmark
+  );
 
-  const userID = localStorage.getItem("userID");
-  if (!userID || userID === "") {
-    // console.error("userID is invalid!");
-  }
+  const _addBookmark = useCallback(
+    () => dispatch(initFetch_AddBookmark(userID!, bookmark)),
+    [userID, bookmark]
+  );
 
-  // const _addBookmark = useCallback(() => dispatch(initFetch_AddBookmark()), []);
-  // const _removeBookmark = useCallback(
-  //   () => dispatch(initFetch_RemoveBookmark()),
-  //   []
-  // );
+  const _removeBookmark = useCallback(
+    () => dispatch(initFetch_RemoveBookmark(createdBookmark!.id)),
+    [bookmark, createdBookmark]
+  );
 
-  const onClickBookmarkIcon = useCallback(() => {
-    if (isBookmarkEnabled) {
-    } else {
+  const toggleBookmarkIcon = useCallback(() => {
+    setIsBookmarkEnabled((prv: boolean) => {
+      if (prv) {
+        _removeBookmark();
+      } else {
+        _addBookmark();
+      }
+      return !prv;
+    });
+  }, [setIsBookmarkEnabled, _removeBookmark, _addBookmark]);
+
+  const BookmarkIcon_Disabled = getIcon(
+    "Bookmark-Disabled",
+    toggleBookmarkIcon,
+    {
+      fontSize: "2rem",
     }
-    setIsBookmarkEnabled(prv => !prv);
-  }, [isBookmarkEnabled, setIsBookmarkEnabled]);
-
-  const BookmarkIcon_Disabled = useMemo(
-    () => getIcon("BookmarkIcon_Disabled", onClickBookmarkIcon),
-    [onClickBookmarkIcon]
   );
 
-  const BookmarkIcon_Enabled = useMemo(
-    () => getIcon("BookmarkIcon_Enabled", onClickBookmarkIcon),
-    [onClickBookmarkIcon]
-  );
+  const BookmarkIcon_Enabled = getIcon("Bookmark-Enabled", toggleBookmarkIcon, {
+    fontSize: "2rem",
+  });
 
-  return {
-    BookmarkIcon_Enabled,
-    BookmarkIcon_Disabled,
-  };
+  return isBookmarkEnabled ? BookmarkIcon_Enabled! : BookmarkIcon_Disabled!;
 };
 
 export default LectureBookmark;

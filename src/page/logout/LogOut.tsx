@@ -1,13 +1,32 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
+import {
+  setImageIndicatorCurIdx,
+  setImagePlacerRef,
+  setImgWidth,
+} from "~/src/store/action/carousel";
+import { clearSelectedAll } from "~/src/store/action/search";
+import { closeSearchBar, setCurrentInput } from "~/src/store/action/search-bar";
+import { clearSuggestion } from "~/src/store/action/search-suggestion";
 
 const LogOut = () => {
   // TODO: Resource disposal (oAuth)
-  return (
-    <Fragment>
-      <Redirect to="/" />
-    </Fragment>
-  );
+  sessionStorage.clear();
+
+  // TODO: auth disposal of Google oAuth and Kakao oAuth (highly possible)!
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setImgWidth(0));
+    // dispatch(setImagePlacerRef(null));
+    dispatch(setImageIndicatorCurIdx(0));
+    dispatch(clearSelectedAll());
+    dispatch(setCurrentInput(""));
+    dispatch(closeSearchBar());
+    dispatch(clearSuggestion());
+  }, []);
+  return <Redirect to="/" />;
 };
 
 export default LogOut;

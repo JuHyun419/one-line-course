@@ -13,24 +13,25 @@ import "./_Auth.scss";
 
 // type TKakaoOnSucceed = {
 //   response: LoginResponse;
-//   profile?: UserProfile;
+//   profile?: UserProfÎile;
 // };
 
 const KakaoOAuth: React.FC = () => {
-  const history = useHistory();
-  const loginWithKakao = useKakaoLoginCallback(history);
+  const loginWithKakao = useKakaoLoginCallback();
 
   return (
     <div id="custom-login-btn" className="authBtn" onClick={loginWithKakao}>
       <img
         src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+        alt="kakao login button"
         width="181"
       />
     </div>
   );
 };
 
-const useKakaoLoginCallback = (history: any) => {
+const useKakaoLoginCallback = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const _createUser = useCallback(
     (data: IUserData) => dispatch(initFetch_CreateUser(data)),
@@ -45,10 +46,10 @@ const useKakaoLoginCallback = (history: any) => {
 
           // store the auth info
           const { access_token, expires_in } = onSuccess;
-          sessionStorage.setItem(USERID_SESSION_STORAGE_KEY, access_token);
+
           sessionStorage.setItem(
             EXPIRES_IN_SESSION_STORAGE_KEY,
-            `${expires_in}`
+            expires_in.toString()
           );
           sessionStorage.setItem(PLATFORM_SESSION_STORAGE_KEY, "kakao");
 
@@ -71,20 +72,16 @@ const useKakaoLoginCallback = (history: any) => {
         success: onSuccess => {
           // console.log(onSuccess);
 
-          const kakaoAcount = onSuccess.kakao_account;
-          const { email, profile } = kakaoAcount;
+          const id = onSuccess.id;
+          const { email, profile } = onSuccess.kakao_account;
           const { nickname, profile_image_url } = profile!;
 
-          console.log(
-            "Kakao auth -> ",
-            access_token,
-            email,
-            nickname,
-            profile_image_url
-          );
+          console.log("Kakao auth -> ", id, email, nickname, profile_image_url);
+
+          sessionStorage.setItem(USERID_SESSION_STORAGE_KEY, id.toString());
 
           _createUser({
-            id: access_token,
+            id: id.toString(),
             email: email!,
             name: nickname!,
             imageUrl: profile_image_url!,
@@ -94,7 +91,7 @@ const useKakaoLoginCallback = (history: any) => {
         },
 
         fail: onFail => {
-          console.error(onFail);
+          // console.error(onFail);
         },
       }),
     [_createUser]

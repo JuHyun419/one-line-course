@@ -39,6 +39,7 @@ export const initFetch_QueryAllMyComments = (userID: string) => async (
   try {
     dispatch(FetchRequest_QueryAllMyComments());
     const { commentData, status } = await get_QueryAllMyComments(userID);
+    console.log(commentData, status);
     dispatch(FetchSucceed_QueryAllMyComments(commentData, status));
   } catch (err) {
     dispatch(FetchFail_QueryAllMyComments(err));

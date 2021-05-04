@@ -5,20 +5,21 @@ import "./_GoToTop.scss";
 
 const GoToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const listener = () => {
+    setIsVisible(window.pageYOffset > 200);
+  };
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setIsVisible(window.pageYOffset > 200);
-    });
-  }, []);
+    window.addEventListener("scroll", listener);
+    return () => window.removeEventListener("scroll", listener);
+  }, [window, listener]);
 
   const onClickGoToTop = useCallback(
-    (_: React.MouseEvent<HTMLElement>) => {
+    (_: React.MouseEvent<HTMLElement>) =>
       window.scrollTo({
         top: 0,
         behavior: "smooth",
-      });
-    },
+      }),
     [window]
   );
 

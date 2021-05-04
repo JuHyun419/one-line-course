@@ -1,4 +1,4 @@
-@import "../../../../common/ColorScheme";
+@import "../../../common/ColorScheme";
 
 .imagesIndicator {
   display: flex;
@@ -16,6 +16,8 @@
   position: relative;
   margin: 0 auto;
   top: 90%;
+
+  z-index: inherit;
 
   div {
     background-color: #ddd;

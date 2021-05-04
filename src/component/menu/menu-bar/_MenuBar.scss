@@ -1,4 +1,5 @@
 @import "../../../common/ColorScheme";
+@import "../../../common/OpenCloseAnimation";
 
 .menu-bar {
   display: flex;
@@ -44,27 +45,5 @@
       timing-function: ease-in-out;
       fill-mode: both;
     }
-  }
-}
-
-@keyframes anim-open {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-@keyframes anim-close {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    visibility: hidden;
   }
 }

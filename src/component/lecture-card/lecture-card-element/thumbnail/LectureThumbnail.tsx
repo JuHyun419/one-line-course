@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import "./_LectureThumbnail.scss";
 
@@ -12,13 +12,20 @@ const LectureThumbnail: React.FC<ILectureThumbnailProps> = ({
   imageURL,
   title,
   isCard = true,
-}) => (
-  <img
-    src={imageURL}
-    alt={`thumbnail--${title}`}
-    loading="lazy"
-    className={isCard ? "lectureCard--thumbnail" : "lecturePopup--thumbnail"}
-  />
-);
-
+}) => {
+  return (
+    <Fragment>
+      {imageURL ? (
+        <img
+          src={imageURL}
+          alt={`thumbnail--${title}`}
+          loading="lazy"
+          className={
+            isCard ? "lectureCard--thumbnail" : "lecturePopup--thumbnail"
+          }
+        />
+      ) : null}
+    </Fragment>
+  );
+};
 export default LectureThumbnail;
