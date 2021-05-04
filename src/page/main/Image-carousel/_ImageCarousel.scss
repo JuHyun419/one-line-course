@@ -1,15 +1,16 @@
+@import "../../../common/OpenCloseAnimation";
+
 .imageCarousel {
   position: relative;
   overflow-x: hidden;
-  // height: 300vh;
 
   &-imagePlacer {
     display: flex;
     flex-direction: row;
+    z-index: 0;
 
     width: 70%;
     margin: 0 auto;
-    // height: 80%;
 
     margin-top: 2%;
 
@@ -17,10 +18,31 @@
       width: 100%;
       min-width: 100%;
       height: 100%;
-      visibility: visible;
+      border-radius: 15px;
+      z-index: inherit;
+
+      animation: {
+        name: anim-open;
+        duration: 0.2s;
+        delay: 0.1s;
+        iteration-count: 1;
+        direction: normal;
+        timing-function: ease-in;
+        fill-mode: both;
+      }
 
       &.hidden {
         visibility: hidden;
+
+        animation: {
+          name: anim-close;
+          duration: 0.2s;
+          delay: 0.1s;
+          iteration-count: 1;
+          direction: normal;
+          timing-function: ease-in-out;
+          fill-mode: both;
+        }
       }
     }
   }
@@ -31,5 +53,6 @@
     top: 0;
     height: 100%;
     width: 100vw;
+    z-index: 1000;
   }
 }

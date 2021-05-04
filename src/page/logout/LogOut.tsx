@@ -14,10 +14,12 @@ const LogOut = () => {
   // TODO: Resource disposal (oAuth)
   sessionStorage.clear();
 
+  // TODO: auth disposal of Google oAuth and Kakao oAuth (highly possible)!
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setImgWidth(0));
-    dispatch(setImagePlacerRef(null));
+    // dispatch(setImagePlacerRef(null));
     dispatch(setImageIndicatorCurIdx(0));
     dispatch(clearSelectedAll());
     dispatch(setCurrentInput(""));

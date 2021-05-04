@@ -1,12 +1,13 @@
-import React, { useCallback, Dispatch, useEffect } from "react";
-import { useSelector, useDispatch, shallowEqual } from "react-redux";
+import React, { useCallback, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import {
   ISetImageIndicatorCurIdxAction,
   setImageIndicatorCurIdx,
-} from "../../../../store/action/carousel";
-import { TCombinedStates } from "../../../../store";
+} from "../../../store/action/carousel";
+import { TCombinedStates } from "../../../store";
+
 import "./_ImageMoveTo.scss";
-import Loading from "~/src/component/loading/Loading";
 
 const ImageMoveTo: React.FC = () => {
   const dispatch = useDispatch();
@@ -16,19 +17,20 @@ const ImageMoveTo: React.FC = () => {
     []
   );
 
-  useEffect(() => {
-    console.log("init!");
-    _setImageIndicatorCurIdx(0);
-    if (placerEl && placerEl.current) {
-      placerEl.current!.style.transform = `translate(0px, 0px)`;
-    }
-  }, []);
+  // useEffect(() => {
+  //   console.log("init!");
+  //   _setImageIndicatorCurIdx(0);
+  //   if (placerEl && placerEl.current) {
+  //     placerEl.current!.style.transform = `translate(0px, 0px)`;
+  //   }
+  // }, []);
 
   const onMoveToLeft = useMoveCarousel(
     "left",
     placerEl!,
     _setImageIndicatorCurIdx
   );
+
   const onMoveToRight = useMoveCarousel(
     "right",
     placerEl!,
@@ -67,6 +69,9 @@ const useMoveCarousel = (
       ) {
         return;
       }
+
+      console.log("move to clicked!", direction);
+      
 
       if (direction === "left") {
         if (curIdx === 0) {
