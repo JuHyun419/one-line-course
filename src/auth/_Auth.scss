@@ -1,17 +1,38 @@
-.authCtrl {  
+.authCtrl {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
+  justify-content: center;
+  align-items: center;
 
   padding: 25px 20px;
 
-  border: 2px dashed #a2a2a2;
-  border-radius: 20%;
+  // border: 2px dashed #a2a2a2;
+  // border-radius: 20%;
 
   .authBtn {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    width: 20%;
+    height: 10%;
+
+    &-kakao {
+      width: 50%;
+      height: 50%;
+
+      img {
+        display: block;
+        margin: 0 auto;
+
+        width: 100%;
+        cursor: pointer;
+      }
+    }
+
+    &-google {
+      width: 50%;
+      height: 110%;
+    }
   }
 }

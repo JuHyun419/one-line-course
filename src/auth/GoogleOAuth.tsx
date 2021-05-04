@@ -80,17 +80,16 @@ const GoogleOAuth: React.FC = () => {
   }, []);
 
   return (
-    <div className="authBtn">
-      <GoogleLogin
-        clientId={process.env.GOOGLE_OAUTH_CLIENT_ID}
-        buttonText="Sign in with Google"
-        onSuccess={onLoginSuccess}
-        onFailure={onLoginFail}
-        cookiePolicy={"single_host_origin"}
-        // theme={"dark"}
-        // isSignedIn
-      />
-    </div>
+    <GoogleLogin
+      clientId={process.env.GOOGLE_OAUTH_CLIENT_ID}
+      buttonText="Sign in with Google"
+      onSuccess={onLoginSuccess}
+      onFailure={onLoginFail}
+      cookiePolicy={"single_host_origin"}
+      className="authBtn-google"
+      // theme={"dark"}
+      // isSignedIn
+    />
   );
 };
 

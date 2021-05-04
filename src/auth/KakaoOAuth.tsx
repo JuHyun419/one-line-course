@@ -1,11 +1,13 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 import {
   EXPIRES_IN_SESSION_STORAGE_KEY,
   PLATFORM_SESSION_STORAGE_KEY,
   USERID_SESSION_STORAGE_KEY,
 } from "../common";
+
 import { initFetch_CreateUser } from "../store/action/user-async";
 import { IUserData } from "../typings";
 
@@ -20,11 +22,14 @@ const KakaoOAuth: React.FC = () => {
   const loginWithKakao = useKakaoLoginCallback();
 
   return (
-    <div id="custom-login-btn" className="authBtn" onClick={loginWithKakao}>
+    <div
+      id="custom-login-btn"
+      className="authBtn-kakao"
+      onClick={loginWithKakao}
+    >
       <img
         src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
         alt="kakao login button"
-        width="181"
       />
     </div>
   );
