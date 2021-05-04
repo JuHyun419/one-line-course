@@ -1,14 +1,39 @@
-import React, { useCallback, Dispatch } from "react";
+import React, { useCallback, Dispatch, useEffect } from "react";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import { setImageIndicatorCurIdx } from "../../../../store/action/carousel";
+import {
+  ISetImageIndicatorCurIdxAction,
+  setImageIndicatorCurIdx,
+} from "../../../../store/action/carousel";
 import { TCombinedStates } from "../../../../store";
 import "./_ImageMoveTo.scss";
+import Loading from "~/src/component/loading/Loading";
 
 const ImageMoveTo: React.FC = () => {
   const dispatch = useDispatch();
+  const placerEl = useSelector((state: TCombinedStates) => state.carousel.ref);
+  const _setImageIndicatorCurIdx = useCallback(
+    (idx: number) => dispatch(setImageIndicatorCurIdx(idx)),
+    []
+  );
 
-  const onMoveToLeft = useMoveCarousel("left", dispatch);
-  const onMoveToRight = useMoveCarousel("right", dispatch);
+  useEffect(() => {
+    console.log("init!");
+    _setImageIndicatorCurIdx(0);
+    if (placerEl && placerEl.current) {
+      placerEl.current!.style.transform = `translate(0px, 0px)`;
+    }
+  }, []);
+
+  const onMoveToLeft = useMoveCarousel(
+    "left",
+    placerEl!,
+    _setImageIndicatorCurIdx
+  );
+  const onMoveToRight = useMoveCarousel(
+    "right",
+    placerEl!,
+    _setImageIndicatorCurIdx
+  );
 
   return (
     <div className="imageMoveTo">
@@ -20,28 +45,17 @@ const ImageMoveTo: React.FC = () => {
 
 const useMoveCarousel = (
   direction: "left" | "right",
-  dispatch: Dispatch<any>
+  placerEl: React.RefObject<HTMLDivElement>,
+  _setImageIndicatorCurIdx: (idx: number) => ISetImageIndicatorCurIdxAction
 ) => {
-  const placerEl = useSelector((state: TCombinedStates) => state.carousel.ref);
-
   const imgLen = useSelector(
-    (state: TCombinedStates) => state.carouselAsync.urls?.length,
-    shallowEqual
+    (state: TCombinedStates) => state.carouselAsync.urls?.length
   );
 
-  const curIdx = useSelector(
-    (state: TCombinedStates) => state.carousel.idx,
-    shallowEqual
-  );
-
-  const _setImageIndicatorCurIdx = useCallback(
-    (idx: number) => dispatch(setImageIndicatorCurIdx(idx)),
-    []
-  );
+  const curIdx = useSelector((state: TCombinedStates) => state.carousel.idx);
 
   const imgWidth = useSelector(
-    (state: TCombinedStates) => state.carousel.imgWidth,
-    shallowEqual
+    (state: TCombinedStates) => state.carousel.imgWidth
   );
 
   return useCallback(
@@ -80,7 +94,7 @@ const useMoveCarousel = (
         }
       }
     },
-    [imgLen, curIdx, _setImageIndicatorCurIdx, imgWidth]
+    [imgLen, curIdx, _setImageIndicatorCurIdx, imgWidth, placerEl]
   );
 };
 

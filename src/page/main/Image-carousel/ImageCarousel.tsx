@@ -106,7 +106,7 @@ const useImgRef = (dispatch: Dispatch<any>) => {
   );
 
   return useCallback((ref: HTMLDivElement) => {
-    if (ref && !imgRef?.current) {
+    if (ref && imgRef && imgRef.current && imgRef.current !== ref) {
       _setImgRef({ current: ref });
     }
   }, []);
