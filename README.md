@@ -59,8 +59,8 @@
     - [x] 댓글(Comment)
     - [ ] 인프라(AWS) 설정
   - 소연
-    - [ ] 북마크(Bookmark)
-    - [ ] 유저(User)
+    - [x] 북마크(Bookmark)
+    - [x] 유저(User)
 
 <br>
 
