@@ -56,13 +56,13 @@ const initCarouselImages = () => {
 
 const initLectures = () => {
   const dispatch = useDispatch();
-  const _initFetch = useCallback(
+  const _initFetchRetrieveLectures = useCallback(
     () => dispatch(initFetch_RetrieveLectures()),
     []
   );
 
   useEffect(() => {
-    _initFetch();
+    _initFetchRetrieveLectures();
   }, []);
 };
 

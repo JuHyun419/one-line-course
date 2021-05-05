@@ -2,8 +2,7 @@ import React from "react";
 
 import CarouselRotator from "./carousel-rotator/CarouselRotator";
 import CarouselIndicator from "./carousel-indicator/CarouselIndicator";
-
-import CarouselImagePlacer from "./CarouselImagePlacer";
+import CarouselImagePlacer from "./carousel-image-placer/CarouselImagePlacer";
 
 import "./_Carousel.scss";
 

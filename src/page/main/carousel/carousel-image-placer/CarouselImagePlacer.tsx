@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { setImagePlacerRef } from "../../../store/action/carousel";
-import CarouselImages from "./CarouselImages";
+import { setImagePlacerRef } from "../../../../store/action/carousel";
+import CarouselImages from "../carousel-images/CarouselImages";
 
 const CarouselImagePlacer: React.FC = () => {
   const dispatch = useDispatch();
