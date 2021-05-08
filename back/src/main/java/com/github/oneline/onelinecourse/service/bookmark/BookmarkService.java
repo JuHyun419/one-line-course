@@ -57,7 +57,7 @@ public class BookmarkService {
         Bookmark bookmark = bookmarkRepository.findById(bookmarkId)
                 .orElseThrow(() -> new IllegalArgumentException("bookmarkId: " + bookmarkId + "의 북마크가 존재하지 않습니다."));
 
-        bookmarkRepository.deleteById(bookmarkId);
+        bookmarkRepository.delete(bookmark);
     }
 
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.github.oneline.onelinecourse.util.StatusCode.getStatusCode;
+import static com.github.oneline.onelinecourse.util.Utils.getStatusCode;
 
 @RequiredArgsConstructor
 @RequestMapping("/comments")

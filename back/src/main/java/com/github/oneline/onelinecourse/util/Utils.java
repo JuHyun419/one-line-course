@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
-public class StatusCode {
+public class Utils {
 
-    private StatusCode() { }
+    private Utils() { }
 
     public static <T> HttpStatus getStatusCode(final List<T> response) {
         return response.isEmpty()
