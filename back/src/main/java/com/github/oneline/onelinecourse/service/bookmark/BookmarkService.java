@@ -1,5 +1,8 @@
 package com.github.oneline.onelinecourse.service.bookmark;
 
+import com.github.oneline.onelinecourse.common.error.exception.BookmarkNotFoundException;
+import com.github.oneline.onelinecourse.common.error.exception.LectureNotFoundException;
+import com.github.oneline.onelinecourse.common.error.exception.UserNotFoundException;
 import com.github.oneline.onelinecourse.model.bookmark.Bookmark;
 import com.github.oneline.onelinecourse.model.lecture.Lecture;
 import com.github.oneline.onelinecourse.model.user.User;
@@ -24,16 +27,15 @@ public class BookmarkService {
 
     private final LectureRepository lectureRepository;
 
-    // 북마크 등록
     @Transactional
     public Bookmark createBookmark(String userId, Long lectureId) {
         checkNotNull(userId, "userId must be provided");
         checkNotNull(lectureId, "lectureId must be provided");
 
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("userId: " + userId + "의 유저가 존재하지 않습니다."));
+                .orElseThrow(UserNotFoundException::new);
         Lecture lecture = lectureRepository.findById(lectureId)
-                .orElseThrow(() -> new IllegalArgumentException("lectureId: " + lectureId + "의 강의가 존재하지 않습니다."));
+                .orElseThrow(LectureNotFoundException::new);
 
         Bookmark newBookmark = Bookmark.builder()
                 .user(user)
@@ -53,9 +55,9 @@ public class BookmarkService {
     @Transactional
     public void deleteBookmark(Long bookmarkId) {
         checkNotNull(bookmarkId, "bookmarkId must be provided");
-        // 북마크를 해제할 id가 존재하는지 체크
+
         Bookmark bookmark = bookmarkRepository.findById(bookmarkId)
-                .orElseThrow(() -> new IllegalArgumentException("bookmarkId: " + bookmarkId + "의 북마크가 존재하지 않습니다."));
+                .orElseThrow(BookmarkNotFoundException::new);
 
         bookmarkRepository.delete(bookmark);
     }

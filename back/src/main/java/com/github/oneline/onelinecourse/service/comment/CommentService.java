@@ -1,5 +1,8 @@
 package com.github.oneline.onelinecourse.service.comment;
 
+import com.github.oneline.onelinecourse.common.error.exception.BookmarkNotFoundException;
+import com.github.oneline.onelinecourse.common.error.exception.CommentNotFoundException;
+import com.github.oneline.onelinecourse.common.error.exception.UserNotFoundException;
 import com.github.oneline.onelinecourse.model.comment.Comment;
 import com.github.oneline.onelinecourse.model.lecture.Lecture;
 import com.github.oneline.onelinecourse.model.user.User;
@@ -36,10 +39,10 @@ public class CommentService {
 
     private Comment convertToComment(final Comment comment, final String userId, final Long lectureId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("userId: " + userId + "의 유저가 존재하지 않습니다."));
+                .orElseThrow(UserNotFoundException::new);
 
         Lecture lecture = lectureRepository.findById(lectureId)
-                .orElseThrow(() -> new IllegalArgumentException("lectureId: " + lectureId + "의 강의가 존재하지 않습니다."));
+                .orElseThrow(BookmarkNotFoundException::new);
 
         return Comment.builder()
                 .content(comment.getContent())
@@ -53,7 +56,7 @@ public class CommentService {
         checkArgument(commentId > 0, "commentId must be positive number");
 
         final Comment comment = commentRepository.findById(commentId)
-                .orElseThrow(() -> new IllegalArgumentException("commentId: " + commentId + "번에 해당하는 댓글이 존재하지 않습니다."));
+                .orElseThrow(CommentNotFoundException::new);
 
         comment.updateContent(requestComment.getContent());
         comment.updateDate();
@@ -64,7 +67,7 @@ public class CommentService {
         checkArgument(commentId > 0, "commentId must be positive number");
 
         final Comment comment = commentRepository.findById(commentId)
-                .orElseThrow(() -> new IllegalArgumentException(commentId + "번에 해당하는 댓글이 존재하지 않습니다."));
+                .orElseThrow(CommentNotFoundException::new);
 
         commentRepository.delete(comment);
     }
