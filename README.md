@@ -57,7 +57,7 @@
   - 주현
     - [x] 강의(Lecture)
     - [x] 댓글(Comment)
-    - [ ] 인프라(AWS) 설정
+    - [x] 인프라(AWS) 설정
   - 소연
     - [x] 북마크(Bookmark)
     - [x] 유저(User)
