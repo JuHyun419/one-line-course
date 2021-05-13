@@ -7,10 +7,11 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseBookmarkDto {
+public class BookmarkResponse {
 
     @ApiModelProperty(value = "PK", required = true)
     private Long id;
@@ -21,7 +22,7 @@ public class ResponseBookmarkDto {
     @ApiModelProperty(value = "강의 ID", required = true)
     private Long lectureId;
 
-    public ResponseBookmarkDto(Bookmark bookmark) {
+    public BookmarkResponse(Bookmark bookmark) {
         this.id = bookmark.getId();
         this.createdAt = bookmark.getCreatedAt();
         this.lectureId = bookmark.getLecture().getId();
