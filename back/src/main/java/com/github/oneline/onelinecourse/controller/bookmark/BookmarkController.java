@@ -22,10 +22,10 @@ public class BookmarkController {
 
     @PostMapping
     @ApiOperation(value = "북마크 등록")
-    public ResponseEntity<ResponseBookmarkDto> createBookmark(
-            @RequestBody CreateBookmarkRequestDto createBookmarkRequestDto) {
+    public ResponseEntity<BookmarkResponse> createBookmark(
+            @RequestBody BookmarkCreateRequest createBookmarkRequestDto) {
         return ResponseEntity.ok(
-                new ResponseBookmarkDto(bookmarkService.createBookmark(
+                new BookmarkResponse(bookmarkService.createBookmark(
                         createBookmarkRequestDto.getUserId(), createBookmarkRequestDto.getLectureId()
                 ))
         );
@@ -41,12 +41,12 @@ public class BookmarkController {
 
     @GetMapping("/users/{userId}")
     @ApiOperation(value = "유저가 등록한 모든 북마크 가져오기")
-    public ResponseEntity<List<ResponseBookmarkDto>> getUserBookmark(
+    public ResponseEntity<List<BookmarkResponse>> getUserBookmark(
             @PathVariable @ApiParam(value = "유저 ID", example = "0ae24sk3234") String userId) {
         return ResponseEntity.ok(
                 bookmarkService.findAllUserBookmark(userId)
                 .stream()
-                .map(ResponseBookmarkDto::new)
+                .map(BookmarkResponse::new)
                 .collect(Collectors.toList())
         );
     }

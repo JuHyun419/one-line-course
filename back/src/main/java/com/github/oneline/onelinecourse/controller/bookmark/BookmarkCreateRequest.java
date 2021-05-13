@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateBookmarkRequestDto {
+public class BookmarkCreateRequest {
 
     @ApiModelProperty(value = "유저 ID", required = true)
     private String userId;

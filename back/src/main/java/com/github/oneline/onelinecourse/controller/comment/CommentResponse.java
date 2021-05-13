@@ -8,6 +8,7 @@ import org.springframework.beans.BeanUtils;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
