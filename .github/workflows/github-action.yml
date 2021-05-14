@@ -21,7 +21,5 @@ jobs: # job - 하나의 인스턴스에서 여러 Step을 그룹시켜 실행하
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Grant execute permission for mvnw
-        run: chmod +x ./mvnw
       - name: Build with Maven
-        run: ./mvnw clean build
+        run: mvn -B package --file back/pom.xml
