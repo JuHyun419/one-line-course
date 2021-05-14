@@ -1,3 +1,5 @@
+[![GitHub-Action with Java Maven](https://github.com/JuHyun419/one-line-course/actions/workflows/github-action.yml/badge.svg)](https://github.com/JuHyun419/one-line-course/actions/workflows/github-action.yml)
+
 ## 👨‍👨‍👧 원라인코스(One-Line Course)
   - 본인에게 적합한 개발 관련 온라인 강의를 통합해 검색할 수 있는 개인형 강의 추천 사이트
 

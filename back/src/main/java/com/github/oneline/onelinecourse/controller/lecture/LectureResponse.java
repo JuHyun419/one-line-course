@@ -6,6 +6,7 @@ import lombok.*;
 import org.springframework.beans.BeanUtils;
 
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

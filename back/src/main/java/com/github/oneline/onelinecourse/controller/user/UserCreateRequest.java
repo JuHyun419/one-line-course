@@ -2,15 +2,17 @@ package com.github.oneline.onelinecourse.controller.user;
 
 import com.github.oneline.onelinecourse.model.user.User;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.*;
-import org.springframework.beans.BeanUtils;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseUserDto {
-    @ApiModelProperty(value = "PK", required = true)
+public class UserCreateRequest {
+    @ApiModelProperty(value = "유저 ID", required = true)
     private String id;
 
     @ApiModelProperty(value = "유저 email", required = true)
@@ -25,11 +27,15 @@ public class ResponseUserDto {
     @ApiModelProperty(value = "로그인한 플랫폼", required = true)
     private String platform;
 
-    // Entity -> DTO ??????
-    public ResponseUserDto(User user) {
-        // 객체를 쉽고 간결하게 복사
-        // copyProperties(원본 객체, 복사 객체)
-        BeanUtils.copyProperties(user, this);
+    // DTO -> Entity 변환
+    public User toEntity() {
+        return User.builder()
+                .id(id)
+                .email(email)
+                .name(name)
+                .imageUrl(imageUrl)
+                .platform(platform)
+                .build();
     }
 
 }
