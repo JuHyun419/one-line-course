@@ -23,15 +23,15 @@ jobs: # job - 하나의 인스턴스에서 여러 Step을 그룹시켜 실행하
           java-version: '11'
           distribution: 'adopt'
 
-      - name: Build with Maven # build
-        run: mvn -B package --file back/pom.xml
-
       - name: Cache Maven packages # cache
         uses: actions/cache@v2
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+
+      - name: Build with Maven # build
+        run: mvn -B package --file back/pom.xml
 
       - name: Get Current Time # time
         uses: 1466587594/get-current-time@v2
