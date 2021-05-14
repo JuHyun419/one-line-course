@@ -29,7 +29,7 @@ public class Swagger2Config implements WebMvcConfigurer {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Oneline-Course")
-                .description("Hello world")
+                .description("https://github.com/JuHyun419/one-line-course")
                 .version("v1.0")
                 .build();
     }

@@ -39,6 +39,13 @@ public class BookmarkController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @DeleteMapping
+    @ApiOperation(value = "북마크 전체 삭제")
+    public ResponseEntity<Void> deleteAllBookmark() {
+        bookmarkService.deleteAll();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @GetMapping("/users/{userId}")
     @ApiOperation(value = "유저가 등록한 모든 북마크 가져오기")
     public ResponseEntity<List<BookmarkResponse>> getUserBookmark(
