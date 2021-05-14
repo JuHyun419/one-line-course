@@ -23,23 +23,27 @@ jobs: # job - 하나의 인스턴스에서 여러 Step을 그룹시켜 실행하
           java-version: '11'
           distribution: 'adopt'
 
-      - name: Cache Maven packages # cache
+      # Caching dependencies
+      - name: Cache Maven packages
         uses: actions/cache@v2
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Build with Maven # build
+      # build
+      - name: Build with Maven
         run: mvn -B package --file back/pom.xml
 
-      - name: Get Current Time # time
+      # time
+      - name: Get Current Time
         uses: 1466587594/get-current-time@v2
         id: current-time
         with:
           format: YYYY-MM-DDTHH:mm:ss
           utcOffset: "+09:00" # 기준이 UTC이기 때문에 한국시간인 KST를 맞추기 위해 +9시간 추가
 
-      - name: Print Current Time # print time
+      # print time
+      - name: Print Current Time
         run: echo "Current Time=${{steps.current-time.outputs.formattedTime}}" # current-time 에서 지정한 포맷대로 현재 시간 출력
         shell: bash
