@@ -56,11 +56,17 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lecture }) => {
 
   const closePopup = useCallback(() => setIsOpened(false), []);
 
+  const [isBookmarkUpdated, setIsBookmarkUpdated] = useState(false);
+
   const lectureCardInfoJSX = useMemo(
     () => (
       <div onClick={openPopup}>
         <LectureTitle title={title} isCard />
-        <LectureBookmark lectureId={id} />
+        <LectureBookmark
+          lectureId={id}
+          isUpdated={isBookmarkUpdated}
+          setIsUpdated={setIsBookmarkUpdated}
+        />
         <LectureThumbnail imageURL={imageUrl} title={title} isCard />
         <div className="lectureCard-grid-desc">
           <div className="lectureCard-grid--first-row">
@@ -86,7 +92,11 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lecture }) => {
   const lecturePopupInfoJSX = useMemo(
     () => (
       <Fragment>
-        <LectureBookmark lectureId={id} />
+        <LectureBookmark
+          lectureId={id}
+          isUpdated={isBookmarkUpdated}
+          setIsUpdated={setIsBookmarkUpdated}
+        />
         <LectureThumbnail imageURL={imageUrl} title={title} isCard={false} />
         <div className="lecturePopup-close" onClick={closePopup}>
           X
