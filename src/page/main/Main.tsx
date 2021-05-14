@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { Dispatch, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { EMenuMode, ENavType } from "../../typings";
@@ -14,14 +14,16 @@ import SearchResultSummary from "./search-result/SearchResultSummary";
 import SearchResult from "./search-result/SearchResult";
 import GoToTop from "~/src/component/goToTop/GoToTop";
 import Menu from "~/src/component/menu/Menu";
-import { placeIconsRandomly } from "../../common/";
+import { placeIconsRandomly, USERID_SESSION_STORAGE_KEY } from "../../common/";
 import Footer from "../../component/footer/Footer";
 
 import "./_Main.scss";
+import { initFetch_QueryAllMyBookmarks } from "~/src/store/action/user-async";
 
 const Main: React.FC = () => {
   initCarouselImages();
   initLectures();
+  initBookmarks();
 
   return (
     <div>
@@ -63,6 +65,23 @@ const initLectures = () => {
 
   useEffect(() => {
     _initFetch();
+  }, []);
+};
+
+const initBookmarks = () => {
+  const dispatch = useDispatch();
+  const _queryAllMyBookmarks = useCallback(
+    (myUserID: string) => dispatch(initFetch_QueryAllMyBookmarks(myUserID)),
+    []
+  );
+
+  useEffect(() => {
+    const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
+    if (myUserID === "" || !myUserID) {
+      return;
+    }
+
+    _queryAllMyBookmarks(myUserID);
   }, []);
 };
 

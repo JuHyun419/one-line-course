@@ -23,14 +23,10 @@ import LectureGoToLecture from "./lecture-card-element/goToLecture/LectureGoToLe
 import "./_LectureCard.scss";
 
 export interface IGridLectureCardProps {
-  lecture: ILectureData | null;
-  bookmark: IBookmarkData | null;
+  lecture: ILectureData | undefined;
 }
 
-const GridLectureCard: React.FC<IGridLectureCardProps> = ({
-  lecture,
-  bookmark,
-}) => {
+const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lecture }) => {
   const [isOpened, setIsOpened] = useState(false);
 
   if (!lecture) return null;
@@ -64,7 +60,7 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({
     () => (
       <div onClick={openPopup}>
         <LectureTitle title={title} isCard />
-        <LectureBookmark bookmark={bookmark!} />
+        <LectureBookmark lectureId={id} />
         <LectureThumbnail imageURL={imageUrl} title={title} isCard />
         <div className="lectureCard-grid-desc">
           <div className="lectureCard-grid--first-row">
@@ -90,7 +86,7 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({
   const lecturePopupInfoJSX = useMemo(
     () => (
       <Fragment>
-        <LectureBookmark bookmark={bookmark!} />
+        <LectureBookmark lectureId={id} />
         <LectureThumbnail imageURL={imageUrl} title={title} isCard={false} />
         <div className="lecturePopup-close" onClick={closePopup}>
           X

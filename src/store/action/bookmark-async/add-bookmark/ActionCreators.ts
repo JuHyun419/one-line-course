@@ -32,18 +32,19 @@ const fetchFail_AddBookmark = (err: string): IFetchFailAction_AddBookmark => ({
   err,
 });
 
-export const initFetch_AddBookmark = (
-  userID: string,
-  bookmarkData: IBookmarkData
-) => async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
-  try {
-    dispatch(fetchRequest_AddBookmark());
-    const { createdBookmark, status } = await post_AddBookmark(
-      userID,
-      bookmarkData
-    );
-    dispatch(fetchSucceed_AddBookmark(createdBookmark, status));
-  } catch (err) {
-    dispatch(fetchFail_AddBookmark(err));
-  }
-};
+export const initFetch_AddBookmark =
+  (userID: string, bookmarkData: IBookmarkData) =>
+  async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
+    try {
+      dispatch(fetchRequest_AddBookmark());
+      const { createdBookmark, status } = await post_AddBookmark(
+        userID,
+        bookmarkData
+      );
+      console.log("created bookmarks!", createdBookmark, status);
+
+      dispatch(fetchSucceed_AddBookmark(createdBookmark, status));
+    } catch (err) {
+      dispatch(fetchFail_AddBookmark(err));
+    }
+  };
