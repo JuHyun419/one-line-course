@@ -49,6 +49,14 @@ public class CommentController {
                 .build();
     }
 
+    @DeleteMapping
+    @ApiOperation(value = "댓글 전체 삭제")
+    public ResponseEntity<Void> deleteAllComment() {
+        commentService.deleteAll();
+        return ResponseEntity.ok()
+                .build();
+    }
+
     @GetMapping("/lectures/{lectureId}")
     @ApiOperation(value = "강의 댓글 전체 조회")
     public ResponseEntity<List<CommentResponse>> getLectureComments(
