@@ -50,8 +50,8 @@ jobs: # job - 하나의 인스턴스에서 여러 Step을 그룹시켜 실행하
         shell: bash
 
       # deploy
-      - name: Deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v17
+      - name: Deploy to EB!!!!!!!!!!!!
+        uses: einaregilsson/beanstalk-deploy@v14
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
