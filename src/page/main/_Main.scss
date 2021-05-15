@@ -10,8 +10,13 @@
   height: 100%;
 
   position: relative;
+  background-color: #fff;
 
   .menu-placer {
     top: 73.4%;
+  }
+
+  &.dark {
+    background-color: #000;
   }
 }

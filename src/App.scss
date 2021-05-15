@@ -2,5 +2,10 @@
   width: 100vw;
   height: 100vh;
   position: relative;
-  // display: flex;
+
+  background-color: #fff;
+
+  &.dark {
+    background-color: #000;
+  }
 }

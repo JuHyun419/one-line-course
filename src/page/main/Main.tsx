@@ -17,10 +17,12 @@ import Menu from "~/src/component/menu/Menu";
 import { placeIconsRandomly, USERID_SESSION_STORAGE_KEY } from "../../common/";
 import Footer from "../../component/footer/Footer";
 import { initFetch_QueryAllMyBookmarks } from "~/src/store/action/user-async";
+import { useDarkModeContext } from "~/src/context/DarkModeCtx";
 
 import "./_Main.scss";
 
 const Main: React.FC = () => {
+  const darkModeCtx = useDarkModeContext();
   initCarouselImages();
   initLectures();
   initBookmarks();
@@ -28,7 +30,11 @@ const Main: React.FC = () => {
   return (
     <div>
       <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={0} />
-      <div className="page main">
+      <div
+        className={["page", "main", darkModeCtx.isDark ? "dark" : ""]
+          .join(" ")
+          .trim()}
+      >
         <Carousel />
         <Search />
         <KeywordSelectorCtrl />

@@ -12,8 +12,11 @@ const notFoundPage = React.lazy(() => import("./page/not-found/NotFound"));
 import Loading from "./component/loading/Loading";
 
 import "./app.scss";
+import { useDarkModeContext } from "./context/DarkModeCtx";
 
 const App = () => {
+  const darkModeCtx = useDarkModeContext();
+
   let routeJSX = (
     <Suspense fallback={<Loading />}>
       <Switch>
@@ -31,7 +34,11 @@ const App = () => {
     </Suspense>
   );
 
-  return <div className="app">{routeJSX}</div>;
+  return (
+    <div className={["app", darkModeCtx.isDark ? "dark" : ""].join(" ").trim()}>
+      {routeJSX}
+    </div>
+  );
 };
 
 export default App;
