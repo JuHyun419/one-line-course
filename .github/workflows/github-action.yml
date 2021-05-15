@@ -14,6 +14,7 @@ jobs: # job - 하나의 인스턴스에서 여러 Step을 그룹시켜 실행하
     runs-on: ubuntu-latest
 
     steps: # 순차적으로 명령어 수행
+
       # Caching dependencies
       - name: Cache Maven packages
         uses: actions/cache@v2
@@ -47,3 +48,16 @@ jobs: # job - 하나의 인스턴스에서 여러 Step을 그룹시켜 실행하
       - name: Print Current Time
         run: echo "Current Time=${{steps.current-time.outputs.formattedTime}}" # current-time 에서 지정한 포맷대로 현재 시간 출력
         shell: bash
+
+      # deploy
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v17
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: Oneline-Course
+          environment_name: Onelinecourse-env
+          version_label: github-action-${{steps.current-time.outputs.formattedTime}}
+          region: ap-northeast-2
+          deployment_package: one-line-course/back/target/oneline-course-0.0.1-SNAPSHOT.jar
+
