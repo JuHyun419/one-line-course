@@ -21,7 +21,6 @@ jobs: # job - 하나의 인스턴스에서 여러 Step을 그룹시켜 실행하
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-
       - name: Checkout
         uses: actions/checkout@v2
 
