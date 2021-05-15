@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "parcel serve \"./src/index.html\" --open",
+    "start": "parcel \"./src/index.html\" --open",
     "build": "parcel build \"./src/index.html\" --dist-dir ./build/output --no-source-maps",
     "build-lib": "babel ./src --out-dir lib --extensions \".ts,.tsx\""
   },
@@ -29,7 +29,6 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/uuid": "^8.3.0",
     "babel-loader": "^8.2.2",
-    "concurrently": "^6.0.1",
     "eslint": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "redux-devtools-extension": "^2.13.9"
@@ -38,6 +37,7 @@
     "axios": "^0.21.1",
     "node": "^15.12.0",
     "node-sass": "^5.0.0",
+    "parcel": "^2.0.0-beta.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
