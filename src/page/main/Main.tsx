@@ -16,9 +16,9 @@ import GoToTop from "~/src/component/goToTop/GoToTop";
 import Menu from "~/src/component/menu/Menu";
 import { placeIconsRandomly, USERID_SESSION_STORAGE_KEY } from "../../common/";
 import Footer from "../../component/footer/Footer";
+import { initFetch_QueryAllMyBookmarks } from "~/src/store/action/user-async";
 
 import "./_Main.scss";
-import { initFetch_QueryAllMyBookmarks } from "~/src/store/action/user-async";
 
 const Main: React.FC = () => {
   initCarouselImages();

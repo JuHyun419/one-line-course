@@ -8,7 +8,10 @@ import App from "./App";
 
 import "./hot-module";
 import "./Ext";
+
 import ReduxProvider from "./store";
+import { DarkModeCtxProvider } from "./context/DarkModeCtx";
+import { ViewModeCtxProvider } from "./context/ViewModeCtx";
 
 // import AuthCtxProvider from "./context/AuthCtx";
 
@@ -17,9 +20,13 @@ import "./index.scss";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ReduxProvider>
-        <App />
-      </ReduxProvider>
+      <DarkModeCtxProvider>
+        <ViewModeCtxProvider>
+          <ReduxProvider>
+            <App />
+          </ReduxProvider>
+        </ViewModeCtxProvider>
+      </DarkModeCtxProvider>
     </BrowserRouter>
     {/* <AuthCtxProvider>
     </AuthCtxProvider> */}
