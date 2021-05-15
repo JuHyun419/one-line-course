@@ -15,9 +15,8 @@ interface ILectureBookmarkProps {
   isUpdated: boolean;
   setIsUpdated: React.Dispatch<React.SetStateAction<boolean>>;
   lectureId?: number;
+  isOnlyDisplay: boolean;
 }
-
-let timer: NodeJS.Timeout;
 
 const LectureBookmark: React.FC<ILectureBookmarkProps> = props => {
   const bookmarkIcon = makeBookmarkIcon(props);
@@ -28,62 +27,70 @@ const makeBookmarkIcon = ({
   lectureId,
   isUpdated,
   setIsUpdated,
+  isOnlyDisplay = true,
 }: ILectureBookmarkProps) => {
   const [isBookmarkEnabled, setIsBookmarkEnabled] = useState(false);
 
   const dispatch = useDispatch();
+  const addBookmark = useCallback(
+    (userID: string, usedBookmark: IBookmarkData, afterCallback: Function) =>
+      dispatch(initFetch_AddBookmark(userID, usedBookmark, afterCallback)),
+    []
+  );
+
+  const deleteBookmark = useCallback(
+    (target: number, afterCallback: Function) =>
+      dispatch(initFetch_RemoveBookmark(target, afterCallback)),
+    []
+  );
+
   const userID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
 
   const allMyBookmarks = useSelector(
     (state: TCombinedStates) => state.userAsync_QueryAllMyBookmarks.bookmarks
   );
 
-  const fetchUpdatedAllMyBookmarks = useCallback(() => {
-    dispatch(initFetch_QueryAllMyBookmarks(userID!));
-  }, []);
+  const fetchUpdatedAllMyBookmarks = useCallback(
+    async (userID: string) => dispatch(initFetch_QueryAllMyBookmarks(userID)),
+    []
+  );
 
   let usedBookmark: IBookmarkData = {
     lectureId: lectureId!,
     createdAt: new Date(),
   };
-  fetchUpdatedAllMyBookmarks;
 
-  useEffect(() => {
-    (async () => {
-      if (allMyBookmarks && lectureId) {
-        // check whether the previous bookmark exists
-        setIsUpdated(false);
+  // useEffect(() => {
+  //   (async () => {
+  //     if (!userID) return;
+  //     if (allMyBookmarks && lectureId) {
+  //       // check whether the previous bookmark exists
+  //       setIsUpdated(false);
 
-        fetchUpdatedAllMyBookmarks();
+  //       await fetchUpdatedAllMyBookmarks(userID);
 
-        timer = setTimeout(() => {}, 1000);
+  //       const prvBookmark = allMyBookmarks.find(
+  //         (bookmark: IBookmarkData) => bookmark.lectureId === lectureId
+  //       )!;
 
-        const prvBookmark = allMyBookmarks.find(
-          (bookmark: IBookmarkData) => bookmark.lectureId === lectureId
-        )!;
+  //       if (!prvBookmark) {
+  //         return;
+  //       }
+  //       // replace the previous bookmark as the current bookmark
+  //       usedBookmark = prvBookmark;
+  //       console.log("automatically updated my bookmarks", usedBookmark);
+  //       // enable the icon
+  //       setIsBookmarkEnabled(true);
+  //     }
+  //   })();
+  // }, [isUpdated, userID]);
 
-        if (!prvBookmark) {
-          return;
-        }
-        // replace the previous bookmark as the current bookmark
-        usedBookmark = prvBookmark;
-        console.log("prv bookmark", usedBookmark);
-        // enable the icon
-        setIsBookmarkEnabled(true);
-      }
-    })();
-
-    return () => {
-      if (timer) {
-        clearTimeout(timer);
-      }
-    };
-  }, [isUpdated]);
-
-  const _addBookmark = useCallback(() => {
-    if (!userID) {
+  const _addBookmark = useCallback(async () => {
+    if (isOnlyDisplay || !userID) {
       return;
     }
+
+    await fetchUpdatedAllMyBookmarks(userID);
 
     if (allMyBookmarks) {
       console.log("all my compared bookmarks", allMyBookmarks, lectureId);
@@ -91,44 +98,53 @@ const makeBookmarkIcon = ({
       const prv = allMyBookmarks?.filter(
         (bookmark: IBookmarkData) => bookmark.lectureId === lectureId
       );
-      console.log("previous bookmarks exist, before adding a bookmark", prv);
 
       if (prv.length > 0) {
+        console.log("previous bookmark exists, before adding a bookmark", prv);
         return;
       }
     }
+    await addBookmark(userID, usedBookmark, () => setIsUpdated(true));
+    await fetchUpdatedAllMyBookmarks(userID);
+  }, [userID, usedBookmark, allMyBookmarks]);
 
-    dispatch(
-      initFetch_AddBookmark(userID, usedBookmark, () => setIsUpdated(true))
-    );
-    console.log("bookmark added!", usedBookmark);
-  }, [userID, usedBookmark, allMyBookmarks, setIsUpdated]);
-
-  const _removeBookmark = useCallback(() => {
-    if (!allMyBookmarks || !lectureId) {
+  const _deleteBookmark = useCallback(async () => {
+    if (isOnlyDisplay || !allMyBookmarks || !lectureId || !userID) {
       return;
     }
-    console.log("bookmark deleted!", allMyBookmarks, lectureId);
-    return dispatch(
-      initFetch_RemoveBookmark(
-        allMyBookmarks.find(
-          (bookmark: IBookmarkData) => bookmark.lectureId === lectureId
-        )?.id!,
-        () => setIsUpdated(true)
-      )
-    );
-  }, [allMyBookmarks, setIsUpdated]);
+
+    const targetBookmarkId: number | undefined = allMyBookmarks.find(
+      (bookmark: IBookmarkData) => bookmark.lectureId === lectureId
+    )?.id;
+
+    if (targetBookmarkId === undefined) {
+      return;
+    }
+
+    console.log(targetBookmarkId, " will be deleted");
+
+    await deleteBookmark(targetBookmarkId, () => setIsUpdated(true));
+    await fetchUpdatedAllMyBookmarks(userID);
+    // setTimeout(async () => {
+
+    // }, 4000);
+  }, [userID, allMyBookmarks, setIsUpdated]);
 
   const toggleBookmarkIcon = useCallback(() => {
-    setIsBookmarkEnabled((prv: boolean) => {
-      if (prv) {
-        _removeBookmark();
-      } else {
-        _addBookmark();
-      }
-      return !prv;
-    });
-  }, []);
+    if (isOnlyDisplay) {
+      return;
+    }
+
+    // console.log("bookmark icon clicked!");
+
+    if (isBookmarkEnabled) {
+      _deleteBookmark();
+    } else {
+      _addBookmark();
+    }
+
+    setIsBookmarkEnabled(prv => !prv);
+  }, [isBookmarkEnabled, isOnlyDisplay, allMyBookmarks]);
 
   const BookmarkIcon_Disabled = getIcon(
     "Bookmark-Disabled",

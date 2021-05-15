@@ -66,6 +66,7 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lecture }) => {
           lectureId={id}
           isUpdated={isBookmarkUpdated}
           setIsUpdated={setIsBookmarkUpdated}
+          isOnlyDisplay
         />
         <LectureThumbnail imageURL={imageUrl} title={title} isCard />
         <div className="lectureCard-grid-desc">
@@ -96,6 +97,7 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lecture }) => {
           lectureId={id}
           isUpdated={isBookmarkUpdated}
           setIsUpdated={setIsBookmarkUpdated}
+          isOnlyDisplay={false}
         />
         <LectureThumbnail imageURL={imageUrl} title={title} isCard={false} />
         <div className="lecturePopup-close" onClick={closePopup}>

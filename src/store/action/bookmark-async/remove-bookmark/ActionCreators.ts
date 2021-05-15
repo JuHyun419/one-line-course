@@ -36,9 +36,9 @@ export const initFetch_RemoveBookmark =
     try {
       dispatch(fetchRequest_RemoveBookmark());
       const status = await delete_RemoveBookmark(bookmarkID);
+      console.log("bookmark DELETED", status);
       dispatch(fetchSucceed_RemoveBookmark(status));
       after();
-      console.log("bookmark DELETED", status);
     } catch (err) {
       dispatch(fetchFail_RemoveBookmark(err));
     }
