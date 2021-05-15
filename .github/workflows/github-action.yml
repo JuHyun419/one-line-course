@@ -56,7 +56,7 @@ jobs: # job - 하나의 인스턴스에서 여러 Step을 그룹시켜 실행하
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: Oneline-Course
-          environment_name: Onelinecourse-env
+          environment_name: Oneline-Course
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
           region: ap-northeast-2
           deployment_package: back/target/oneline-course-0.0.1-SNAPSHOT.jar
