@@ -14,6 +14,14 @@ jobs: # job - 하나의 인스턴스에서 여러 Step을 그룹시켜 실행하
     runs-on: ubuntu-latest
 
     steps: # 순차적으로 명령어 수행
+      # Caching dependencies
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -22,14 +30,6 @@ jobs: # job - 하나의 인스턴스에서 여러 Step을 그룹시켜 실행하
         with:
           java-version: '11'
           distribution: 'adopt'
-
-      # Caching dependencies
-      - name: Cache Maven packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
 
       # build
       - name: Build with Maven
