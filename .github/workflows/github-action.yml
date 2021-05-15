@@ -5,21 +5,59 @@ name: Oneline-GitHub Action
 
 on: # 이벤트 감지, 워크플로우를 실행시키는 조건 설정
   push:
-    branches: [ main ]
+    branches: [ main ] # push 되면 실행될 브랜치 선택(main)
   pull_request:
-    branches: [ main ]
+    branches: [ main ] # push 되면 실행될 브랜치 선택(main)
 
 jobs: # job - 하나의 인스턴스에서 여러 Step을 그룹시켜 실행하는 역할, 병렬로 실행
   build:
-
     runs-on: ubuntu-latest
 
     steps: # 순차적으로 명령어 수행
-      - uses: actions/checkout@v2
+
+      # Caching dependencies
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
+
+      # build
       - name: Build with Maven
         run: mvn -B package --file back/pom.xml
+
+      # time
+      - name: Get Current Time
+        uses: 1466587594/get-current-time@v2
+        id: current-time
+        with:
+          format: YYYY-MM-DDTHH:mm:ss
+          utcOffset: "+09:00" # 기준이 UTC 이므로 한국시간인 KST 로 맞추기 위해 9시간을 더한다
+
+      # print time
+      - name: Print Current Time
+        run: echo "Current Time=${{steps.current-time.outputs.formattedTime}}" # current-time 에서 지정한 포맷대로 현재 시간 출력
+        shell: bash
+
+      # deploy
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v17
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: Oneline-Course
+          environment_name: Oneline-Course
+          version_label: github-action-${{steps.current-time.outputs.formattedTime}}
+          region: ap-northeast-2
+          deployment_package: back/target/oneline-course-0.0.1-SNAPSHOT.jar
+
