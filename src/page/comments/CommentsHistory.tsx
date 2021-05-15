@@ -14,23 +14,19 @@ const CommentsHistory = () => {
   // );
   // const totalMyCommentsCount = allMyComments?.length;
 
-  // Loop through all comments count and filter by the date
-  // const historyJSX: JSX.Element[] | null = useMemo(
-  //   () =>
-  //     allMyComments?.map((comment: ICommentData) => {
-  //       const { commentID, createdAt } = comment;
-  //       return (
-  //         <div key={commentID}>
-  //           <p className="commentsHistory--created-at">{createdAt}</p>
-  //           <div className="commentsHistory--separator"></div>
-  //           <div className="commentsHistory--comment">
-  //             <OtherComment comment={comment} isMyComment={false} />
-  //           </div>
-  //         </div>
-  //       );
-  //     }),
-  //   [allMyComments]
-  // );
+  const allDatesYMD = useMemo(
+    () =>
+      allMyComments &&
+      // make unique array
+      Array.from(
+        new Set(
+          allMyComments.map((comment: ICommentData) =>
+            comment.createdAt!.toString().slice(0, 10)
+          )
+        )
+      ),
+    [allMyComments]
+  );
 
   const [createdAt, setCreatedAt] = useState<Date>();
   useEffect(() => {
@@ -39,18 +35,23 @@ const CommentsHistory = () => {
 
   const historyJSX: JSX.Element[] | null = useMemo(
     () =>
-      new Array(6).fill(0).map(_ => {
-        // const { commentID, createdAt } = comment;
-        return (
-          <div key={uuid()} className="commentsHistory--one-day">
-            <p className="commentsHistory--created-at">
-              {new String(createdAt).slice(0, 25)}
-            </p>
-            <div className="commentsHistory--separator"></div>
-            {new Array(3).fill(0).map(_ => (
-              <div key={uuid()} className="commentsHistory--comment">
-                <OtherComment isMyComment={false} />
-              </div>
+      allDatesYMD &&
+      allMyComments &&
+      allDatesYMD.map((date: string) => (
+        <div key={uuid()}>
+          <p className="commentsHistory--created-at">{date}</p>
+          <div className="commentsHistory--separator"></div>
+          {allMyComments
+            .filter((comment: ICommentData) => {
+              const comparerYMD = comment.createdAt!.toString().slice(0, 10);
+              return comparerYMD === date;
+            })
+            .map((comment: ICommentData) => (
+              <OtherComment
+                key={comment.id}
+                comment={comment}
+                isMyComment={true}
+              />
             ))}
           </div>
         );

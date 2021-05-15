@@ -17,9 +17,18 @@ import { placeIconsRandomly } from "../../common/";
 import Footer from "../../component/footer/Footer";
 
 import "./_Main.scss";
+import {
+  initFetch_QueryAllMyBookmarks,
+  initFetch_QueryUser,
+} from "~/src/store/action/user-async";
+import { init } from "~/src/store/reducer/search-result/reducer";
 
 const Main: React.FC = () => {
-  useInitFetch();
+  const dispatch = useDispatch();
+  initCarouselImages(dispatch);
+  initLectures(dispatch);
+  initBookmarks(dispatch);
+  initUser(dispatch);
 
   return (
     <div>
@@ -39,8 +48,7 @@ const Main: React.FC = () => {
   );
 };
 
-const useInitFetch = () => {
-  const dispatch = useDispatch();
+const initCarouselImages = (dispatch: Dispatch<unknown>) => {
   const _initFetchRandomCarouselImages = useCallback(
     (query: string) => dispatch(initFetch_CarouselImageURLs({ query })),
     []
@@ -49,6 +57,49 @@ const useInitFetch = () => {
   // TODO: Fetch Random Images times passing by
   useEffect(() => {
     _initFetchRandomCarouselImages("office");
+  }, []);
+};
+
+const initLectures = (dispatch: Dispatch<unknown>) => {
+  const _initFetchRetrieveLectures = useCallback(
+    () => dispatch(initFetch_RetrieveLectures()),
+    []
+  );
+
+  useEffect(() => {
+    _initFetchRetrieveLectures();
+  }, []);
+};
+
+const initBookmarks = (dispatch: Dispatch<unknown>) => {
+  const _queryAllMyBookmarks = useCallback(
+    (myUserID: string) => dispatch(initFetch_QueryAllMyBookmarks(myUserID)),
+    []
+  );
+
+  useEffect(() => {
+    const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
+    if (myUserID === "" || !myUserID) {
+      return;
+    }
+
+    _queryAllMyBookmarks(myUserID);
+  }, []);
+};
+
+const initUser = (dispatch: Dispatch<unknown>) => {
+  const _queryUser = useCallback(
+    (myUserID: string) => dispatch(initFetch_QueryUser(myUserID)),
+    []
+  );
+
+  useEffect(() => {
+    const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
+    if (myUserID === "" || !myUserID) {
+      return;
+    }
+
+    _queryUser(myUserID);
   }, []);
 };
 

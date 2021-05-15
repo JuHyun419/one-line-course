@@ -2,16 +2,17 @@ import { ICommentData, TStatusCode } from "../typings";
 import { axiosInstance_Server } from "./Axios";
 
 export const post_AddComment = async (
-  lectureID: number,
   commentData: ICommentData
 ): Promise<TStatusCode> => {
-  // TODO: lectureID validation
-
   try {
-    const { status } = await axiosInstance_Server.post(`/comments`, {
-      lectureID,
-      commentData,
-    });
+    console.log("Comment data", commentData);
+
+    const { status } = await axiosInstance_Server.post(
+      `/comments/`,
+      commentData
+    );
+    console.log("comment created!", status);
+
     return status;
   } catch (err) {
     throw new Error(err);

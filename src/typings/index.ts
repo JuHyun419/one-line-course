@@ -90,12 +90,12 @@ export interface IBookmarkData {
 }
 
 export interface ICommentData {
-  commentID: number;
-  userID: string;
-  lectureID: number;
-  contents: string;
-  createdAt: Date;
-  updatedAt: Date;
+  id?: number;
+  userId: string;
+  lectureId: number;
+  content: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 /**
@@ -213,12 +213,11 @@ export enum ECommentAsync_QueryAllComments_ActionType {
   FetchFail = "FETCH_FAIL_QUERY_ALL_COMMENTS",
 }
 
-export enum ECommentActionType {
-  // Set_ImageURL ="SET_COMMENT_IMAGE_URL",
-  // Set_UserName = "SET_COMMENT_USER_NAME",
-  // Set_Contents = "SET_COMMENT_CONTENTS",
-  // Set_CreatedAt = "SET_COMMENT_CREATED_AT",
-}
+export enum ECommentActionType {}
+// Set_ImageURL ="SET_COMMENT_IMAGE_URL",
+// Set_UserName = "SET_COMMENT_USER_NAME",
+// Set_Contents = "SET_COMMENT_CONTENTS",
+// Set_CreatedAt = "SET_COMMENT_CREATED_AT",
 // Set_
 
 export enum ELectureActionType {

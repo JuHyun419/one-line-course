@@ -1,41 +1,57 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { USERID_SESSION_STORAGE_KEY } from "~/src/common";
-import { EButtonSize, EButtonType } from "~/src/typings";
+import { useSelector } from "react-redux";
+import { post_AddComment } from "~/src/service/CommentService";
+import { TCombinedStates } from "~/src/store";
+import { EButtonSize, EButtonType, IUserData } from "~/src/typings";
 import Button from "../button/Button";
 import { CommentUserName, CommentUserThumbnail } from "./comment-element";
 import CommentTextArea from "./comment-element/text-area/CommentTextArea";
-import { useUserData } from "./useUserData";
 
 import "./_NewComment.scss";
 
-const NewComment = () => {
-  const [imageURL, setImageURL] = useState("");
-  const [userName, setUserName] = useState("");
+interface INewCommentProps {
+  lectureID: number;
+}
 
-  useEffect(() => {
-    setImageURL(
-      "https://lh3.googleusercontent.com/a/AATXAJx46cywrab804ZxmuhTdu6CZztFn-mlQ-1bEIwX=s96-c"
-    );
-    setUserName("하이피");
-  }, []);
-
-  // const userID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
-  // useUserData(userID!, setImageURL, setUserName);
+const NewComment: React.FC<INewCommentProps> = ({ lectureID }) => {
+  const [commentContents, setCommentContents] = useState("");
+  const user: IUserData | null = useSelector(
+    (state: TCombinedStates) => state.userAsync_QueryUser.user
+  );
 
   // user thumbnail
-  const thumbnailJSX: JSX.Element | null = useMemo(
-    () => <CommentUserThumbnail imageURL={imageURL} altName={userName} />,
-    [imageURL, userName]
-  );
+  const thumbnailJSX: JSX.Element | null = useMemo(() => {
+    if (!user) {
+      return null;
+    }
+
+    return (
+      <CommentUserThumbnail imageURL={user.imageUrl} altName={user.name} />
+    );
+  }, [user]);
 
   // user name
-  const nameJSX: JSX.Element | null = useMemo(
-    () => <CommentUserName name={userName} />,
-    [userName]
-  );
+  const nameJSX: JSX.Element | null = useMemo(() => {
+    if (!user) {
+      return null;
+    }
 
-  // TODO:
-  const onSubmit = useCallback((e: React.MouseEvent<HTMLDivElement>) => {}, []);
+    return <CommentUserName name={user.name} />;
+  }, [user]);
+
+  const onSubmit = useCallback(
+    async _ => {
+      if (!user) {
+        return;
+      }
+      await post_AddComment(lectureID, {
+        content: commentContents,
+        lectureId: lectureID,
+        userId: user.id,
+      });
+    },
+    [user, commentContents, lectureID]
+  );
 
   return (
     <div className="comment--new-comment">
@@ -44,7 +60,7 @@ const NewComment = () => {
         {nameJSX}
       </div>
       <div className="comment--new-comment-col2">
-        <CommentTextArea />
+        <CommentTextArea setContents={setCommentContents} />
         <Button
           btnSize={EButtonSize.Small}
           btnType={EButtonType.Warning}

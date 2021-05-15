@@ -15,38 +15,12 @@ interface ICommentsProps {
 import "./_LecturePopupComments.scss";
 
 const LecturePopupComments: React.FC<ICommentsProps> = ({ lectureID }) => {
-  // initComments(lectureID);
-
-  // const user = useSelector((state: TCombinedStates) => state.user.user);
-
-  // const myComments = useSelector(
-  //   (state: TCombinedStates) => state.userAsync_QueryAllMyComments.comments
-  // );
-  // const otherComments = useSelector(
-  //   (state: TCombinedStates) => state.commentAsync_QueryAllComments.comments
-  // );
-
-  const newCommentJSX: JSX.Element | null = useMemo(() => <NewComment />, []);
-
-  // const myCommentsJSX: JSX.Element[] | null = useMemo(
-  //   () =>
-  //     myComments &&
-  //     user &&
-  //     new Array(myComments.length)
-  //       .fill(0)
-  //       .map((comment: ICommentData) => (
-  //         <OtherComment key={comment.commentID} comment={comment} isMyComment />
-  //       )),
-  //   [user, myComments]
-  // );
-  const myCommentsJSX: JSX.Element[] | null = useMemo(
-    () =>
-      new Array(5)
-        .fill(0)
-        .map((comment: ICommentData) => (
-          <OtherComment key={uuid()} comment={comment} isMyComment />
-        )),
-    []
+  const { myUserId, otherComments } = initComments(lectureID);
+  const newCommentJSX: JSX.Element | null = makeNewComment(lectureID);
+  // Other Comments belong to this lecture, except for the comments written by me
+  const otherCommentsJSX: JSX.Element[] | null = makeOtherComments(
+    otherComments,
+    myUserId
   );
 
   // TODO: 3. Other Comments belong to this lecture
@@ -94,6 +68,41 @@ const initComments = (lectureID: number) => {
   useEffect(() => {
     _queryAllComments();
   }, [lectureID]);
+};
+
+const makeNewComment = (lectureID: number): JSX.Element | null =>
+  useMemo(() => <NewComment lectureID={lectureID} />, []);
+
+const makeOtherComments = (
+  otherComments: ICommentData[] | null,
+  myUserId: string
+): JSX.Element[] | null => {
+  return useMemo(
+    () =>
+      otherComments &&
+      otherComments
+        .filter((comment: ICommentData) => comment.userId !== myUserId)
+        .map((comment: ICommentData) => (
+          <OtherComment key={uuid()} comment={comment} isMyComment={false} />
+        )),
+    [otherComments, myUserId]
+  );
+};
+
+const makeMyComments = (
+  otherComments: ICommentData[] | null,
+  myUserId: string
+): JSX.Element[] | null => {
+  return useMemo(
+    () =>
+      otherComments &&
+      otherComments
+        .filter((comment: ICommentData) => comment.userId === myUserId)
+        .map((comment: ICommentData, i: number) => (
+          <OtherComment key={uuid()} comment={comment} isMyComment />
+        )),
+    [otherComments, myUserId]
+  );
 };
 
 export default LecturePopupComments;
