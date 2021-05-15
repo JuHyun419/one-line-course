@@ -76,7 +76,7 @@ import userAsync_QueryAllMyComments, {
   IUserAsync as IUserAsync_QueryAllMyComments,
 } from "./reducer/user-async/query-all-my-comments/reducer";
 
-// use async (query user) dep
+// user async (query user) dep
 import userAsync_QueryUser, {
   IUserAsync as IUserAsync_QueryUser,
 } from "./reducer/user-async/query-user/reducer";
@@ -131,6 +131,7 @@ export type TCombinedStates = CombinedState<{
   userAsync_QueryAllMyBookmarks: IUserAsync_QueryAllMyBookmarks;
   userAsync_QueryAllMyComments: IUserAsync_QueryAllMyComments;
   userAsync_QueryUser: IUserAsync_QueryUser;
+
   user: IUser;
   // comment
   commentAsync_AddComment: ICommentAsync_AddComment;

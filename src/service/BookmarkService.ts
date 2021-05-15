@@ -9,10 +9,8 @@ export const post_AddBookmark = async (
   status: TStatusCode;
 }> => {
   try {
-    console.log(bookmarkData);
-
     const { data, status } = await axiosInstance_Server.post(`/bookmarks`, {
-      userId: userId,
+      userId,
       lectureId: bookmarkData.lectureId,
     });
     const createdBookmark = data as IBookmarkData;
@@ -25,11 +23,6 @@ export const post_AddBookmark = async (
 export const delete_RemoveBookmark = async (
   bookmarkID: number
 ): Promise<TStatusCode> => {
-  // TODO: bookmarkID Validation
-  // if (bookmarkId === "") {
-  //   throw new Error("bookmarkId can't be empty");
-  // }
-
   try {
     const { status } = await axiosInstance_Server.delete(
       `/bookmarks/${bookmarkID}`

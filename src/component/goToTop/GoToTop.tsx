@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { getIcon } from "~/src/common";
 
 import "./_GoToTop.scss";
 
 const GoToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const listener = () => {
+  const listener = useCallback(() => {
     setIsVisible(window.pageYOffset > 200);
-  };
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", listener);
@@ -23,9 +23,13 @@ const GoToTop = () => {
     [window]
   );
 
-  const goToTopIcon = getIcon("GoToTop", onClickGoToTop, {
-    fontSize: "2.8rem",
-  });
+  const goToTopIcon = useMemo(
+    () =>
+      getIcon("GoToTop", onClickGoToTop, {
+        fontSize: "2.8rem",
+      }),
+    []
+  );
 
   return <div className="goToTop">{isVisible && goToTopIcon}</div>;
 };

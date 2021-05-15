@@ -83,7 +83,7 @@ export interface IUserData {
 }
 
 export interface IBookmarkData {
-  id: number;
+  id?: number;
   lectureId: number;
   createdAt: Date; // 예: Sun Apr 25 2021 21:29:32 GMT+0900 (Korean Standard Time)
 }
@@ -211,12 +211,11 @@ export enum ECommentAsync_QueryAllComments_ActionType {
   FetchFail = "FETCH_FAIL_QUERY_ALL_COMMENTS",
 }
 
-export enum ECommentActionType {
-  // Set_ImageURL ="SET_COMMENT_IMAGE_URL",
-  // Set_UserName = "SET_COMMENT_USER_NAME",
-  // Set_Contents = "SET_COMMENT_CONTENTS",
-  // Set_CreatedAt = "SET_COMMENT_CREATED_AT",
-}
+export enum ECommentActionType {}
+// Set_ImageURL ="SET_COMMENT_IMAGE_URL",
+// Set_UserName = "SET_COMMENT_USER_NAME",
+// Set_Contents = "SET_COMMENT_CONTENTS",
+// Set_CreatedAt = "SET_COMMENT_CREATED_AT",
 // Set_
 
 export enum ELectureActionType {

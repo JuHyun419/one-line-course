@@ -16,25 +16,16 @@ const GridView: React.FC<IGridViewProps> = () => {
   );
 
   const lectures = useSelector(
-    (state: TCombinedStates) => state.searchAsync.lectures
-  );
-
-  const allMyBookmarks = useSelector(
-    (state: TCombinedStates) => state.userAsync_QueryAllMyBookmarks.bookmarks
+    (state: TCombinedStates) => state.searchResult.lectures
   );
 
   const lectureCardsJSX = useMemo(
     () =>
-      new Array(searchedLecturesLen)
-        .fill(0)
-        .map((_, i: number) => (
-          <GridLectureCard
-            key={i}
-            lecture={lectures[i]!}
-            bookmark={allMyBookmarks[i]!}
-          />
-        )),
-    [searchedLecturesLen, allMyBookmarks]
+      lectures &&
+      lectures.map((_, i: number) => (
+        <GridLectureCard key={i} lecture={lectures[i]} />
+      )),
+    [searchedLecturesLen, lectures]
   );
 
   return (

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { Dispatch, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { EMenuMode, ENavType } from "../../typings";
@@ -15,8 +15,11 @@ import { placeIconsRandomly, USERID_SESSION_STORAGE_KEY } from "../../common/";
 import "./_Bookmarks.scss";
 
 const Bookmarks = () => {
-  initBookmarks();
-  initLectures();
+  const dispatch = useDispatch();
+
+  initBookmarks(dispatch);
+  initLectures(dispatch);
+
   return (
     <div>
       <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={2} />
@@ -30,8 +33,7 @@ const Bookmarks = () => {
   );
 };
 
-const initBookmarks = () => {
-  const dispatch = useDispatch();
+const initBookmarks = (dispatch: Dispatch<unknown>) => {
   const _queryAllMyBookmarks = useCallback(
     (myUserID: string) => dispatch(initFetch_QueryAllMyBookmarks(myUserID)),
     []
@@ -47,8 +49,7 @@ const initBookmarks = () => {
   }, []);
 };
 
-const initLectures = () => {
-  const dispatch = useDispatch();
+const initLectures = (dispatch: Dispatch<unknown>) => {
   const _initFetch = useCallback(
     () => dispatch(initFetch_RetrieveLectures()),
     []

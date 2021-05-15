@@ -5,7 +5,7 @@ import { v4 as uuid } from "uuid";
 import OtherComment from "~/src/component/comment/OtherComment";
 import GridLectureCard from "~/src/component/lecture-card/GridLectureCard";
 import { TCombinedStates } from "~/src/store";
-import { IBookmarkData, ICommentData } from "~/src/typings";
+import { IBookmarkData, ICommentData, ILectureData } from "~/src/typings";
 
 import "./_BookmarksHistory.scss";
 
@@ -32,7 +32,7 @@ const BookmarksHistory = () => {
     (state: TCombinedStates) => state.searchAsync.lectures
   );
 
-  const historyJSX: JSX.Element[] | null = useMemo(
+  const historyJSX: JSX.Element[] | null | undefined = useMemo(
     () =>
       allDatesYMD &&
       allMyBookmarks &&
@@ -48,10 +48,9 @@ const BookmarksHistory = () => {
             .map((bookmark: IBookmarkData) => (
               <div key={bookmark.id} className="bookmarksHistory--lecture">
                 <GridLectureCard
-                  lecture={
-                    lectures.length > 0 ? lectures[bookmark.lectureId]! : null
-                  }
-                  bookmark={bookmark}
+                  lecture={lectures.find(
+                    (lecture: ILectureData) => lecture.id === bookmark.lectureId
+                  )}
                 />
               </div>
             ))}
