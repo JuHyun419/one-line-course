@@ -9,8 +9,7 @@ import "./_Search.scss";
 
 const Search: React.FC = () => {
   const isSearchLoading = useSelector(
-    (state: TCombinedStates) => state.searchAsync.isLoading,
-    shallowEqual
+    (state: TCombinedStates) => state.searchAsync.isLoading
   );
 
   // const errorJSX = useSelector(

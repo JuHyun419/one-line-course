@@ -1,5 +1,6 @@
 @import "../../../common/ColorScheme";
-@import "../../../common/OpenCloseAnimation";
+@import "../../../common/Animation";
+@import "../../../common/FadeInOut";
 
 .menu-bar {
   display: flex;
@@ -22,28 +23,12 @@
   }
 
   &.open {
-    // animation: 0.5s ease-in 0.1s 1 normal both anim-open;
-    animation: {
-      name: anim-open;
-      duration: 0.5s;
-      delay: 0.1s;
-      iteration-count: 1;
-      direction: normal;
-      timing-function: ease-in;
-      fill-mode: both;
-    }
+    // animation: 0.5s ease-in 0.1s 1 normal anim-open;
+    @include animation("fade-in .5s ease-in-out .1s 1 both");
   }
 
   &.closed {
-    // animation: 0.5s ease-out 0.1s 1 normal both anim-close;
-    animation: {
-      name: anim-close;
-      duration: 0.5s;
-      delay: 0.1s;
-      iteration-count: 1;
-      direction: normal;
-      timing-function: ease-in-out;
-      fill-mode: both;
-    }
+    // animation: 0.5s ease-out 0.1s 1 normal anim-close;
+    @include animation("fade-out .5s ease-in-out .1s 1 both");
   }
 }

@@ -7,7 +7,7 @@ import { initFetch_RetrieveLectures } from "../../store/action/search-async";
 
 import NavFactory from "../../component/nav/nav-factory/NavFactory";
 
-import ImageCarousel from "./image-carousel/ImageCarousel";
+import Carousel from "./carousel/Carousel";
 import Search from "./search/Search";
 import KeywordSelectorCtrl from "./search/keyword-selector/KeywordSelectorCtrl";
 import SearchResultSummary from "./search-result/SearchResultSummary";
@@ -29,7 +29,7 @@ const Main: React.FC = () => {
     <div>
       <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={0} />
       <div className="page main">
-        <ImageCarousel />
+        <Carousel />
         <Search />
         <KeywordSelectorCtrl />
         <SearchResultSummary />
@@ -58,13 +58,13 @@ const initCarouselImages = () => {
 
 const initLectures = () => {
   const dispatch = useDispatch();
-  const _initFetch = useCallback(
+  const _initFetchRetrieveLectures = useCallback(
     () => dispatch(initFetch_RetrieveLectures()),
     []
   );
 
   useEffect(() => {
-    _initFetch();
+    _initFetchRetrieveLectures();
   }, []);
 };
 
