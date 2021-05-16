@@ -62,4 +62,8 @@ public class BookmarkService {
         bookmarkRepository.delete(bookmark);
     }
 
+    @Transactional
+    public void deleteAll() {
+        bookmarkRepository.deleteAll();
+    }
 }

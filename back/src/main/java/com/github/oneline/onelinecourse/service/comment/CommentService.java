@@ -85,4 +85,9 @@ public class CommentService {
 
         return commentRepository.findAllByUserIdOrderByCreatedAtDesc(userId);
     }
+
+    @Transactional
+    public void deleteAll() {
+        commentRepository.deleteAll();
+    }
 }
