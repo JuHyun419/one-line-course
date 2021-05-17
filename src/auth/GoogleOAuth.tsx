@@ -48,7 +48,6 @@ const GoogleOAuth: React.FC = () => {
 
         console.log("Google auth -> ", id, email, name, imageUrl);
 
-        // TODO: Check the endpoint and test again
         _createUser({
           id,
           email,

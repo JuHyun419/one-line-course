@@ -33,14 +33,13 @@ const makeBookmarkIcon = ({
 
   const dispatch = useDispatch();
   const addBookmark = useCallback(
-    (userID: string, usedBookmark: IBookmarkData, afterCallback: Function) =>
-      dispatch(initFetch_AddBookmark(userID, usedBookmark, afterCallback)),
+    (userID: string, usedBookmark: IBookmarkData) =>
+      dispatch(initFetch_AddBookmark(userID, usedBookmark)),
     []
   );
 
   const deleteBookmark = useCallback(
-    (target: number, afterCallback: Function) =>
-      dispatch(initFetch_RemoveBookmark(target, afterCallback)),
+    (target: number) => dispatch(initFetch_RemoveBookmark(target)),
     []
   );
 
@@ -60,30 +59,30 @@ const makeBookmarkIcon = ({
     createdAt: new Date(),
   };
 
-  // useEffect(() => {
-  //   (async () => {
-  //     if (!userID) return;
-  //     if (allMyBookmarks && lectureId) {
-  //       // check whether the previous bookmark exists
-  //       setIsUpdated(false);
+  useEffect(() => {
+    (async () => {
+      if (!userID) return;
+      if (allMyBookmarks && lectureId) {
+        // check whether the previous bookmark exists
+        setIsUpdated(false);
 
-  //       await fetchUpdatedAllMyBookmarks(userID);
+        await fetchUpdatedAllMyBookmarks(userID);
 
-  //       const prvBookmark = allMyBookmarks.find(
-  //         (bookmark: IBookmarkData) => bookmark.lectureId === lectureId
-  //       )!;
+        const prvBookmark = allMyBookmarks.find(
+          (bookmark: IBookmarkData) => bookmark.lectureId === lectureId
+        )!;
 
-  //       if (!prvBookmark) {
-  //         return;
-  //       }
-  //       // replace the previous bookmark as the current bookmark
-  //       usedBookmark = prvBookmark;
-  //       console.log("automatically updated my bookmarks", usedBookmark);
-  //       // enable the icon
-  //       setIsBookmarkEnabled(true);
-  //     }
-  //   })();
-  // }, [isUpdated, userID]);
+        if (!prvBookmark) {
+          return;
+        }
+        // replace the previous bookmark as the current bookmark
+        usedBookmark = prvBookmark;
+        console.log("automatically updated my bookmarks", usedBookmark);
+        // enable the icon
+        setIsBookmarkEnabled(true);
+      }
+    })();
+  }, [isUpdated, userID]);
 
   const _addBookmark = useCallback(async () => {
     if (isOnlyDisplay || !userID) {
@@ -104,8 +103,9 @@ const makeBookmarkIcon = ({
         return;
       }
     }
-    await addBookmark(userID, usedBookmark, () => setIsUpdated(true));
+    await addBookmark(userID, usedBookmark);
     await fetchUpdatedAllMyBookmarks(userID);
+    setIsUpdated(true);
   }, [userID, usedBookmark, allMyBookmarks]);
 
   const _deleteBookmark = useCallback(async () => {
@@ -123,11 +123,9 @@ const makeBookmarkIcon = ({
 
     console.log(targetBookmarkId, " will be deleted");
 
-    await deleteBookmark(targetBookmarkId, () => setIsUpdated(true));
+    await deleteBookmark(targetBookmarkId);
     await fetchUpdatedAllMyBookmarks(userID);
-    // setTimeout(async () => {
-
-    // }, 4000);
+    setIsUpdated(true);
   }, [userID, allMyBookmarks, setIsUpdated]);
 
   const toggleBookmarkIcon = useCallback(() => {

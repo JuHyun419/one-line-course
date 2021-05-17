@@ -42,22 +42,6 @@ const KeywordSelector: React.FC<{
     []
   );
 
-  // const selectedKeywords = useSelector(
-  //   (state: TCombinedStates) => state.search.selectedKeywords
-  // );
-
-  // const selectedPlatforms = useSelector(
-  //   (state: TCombinedStates) => state.search.selectedPlatforms
-  // );
-
-  // useEffect(() => {
-  //   // 1. compare selected keywords with
-  // }, [selectedKeywords]);
-
-  // useEffect(() => {
-
-  // }, [selectedPlatforms]);
-
   const selectedKeywordsJSX = useMemo(
     () =>
       keywords?.map((keyword: string) => (

@@ -1,9 +1,8 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import {
   setImageIndicatorCurIdx,
-  setImagePlacerRef,
   setImgWidth,
 } from "~/src/store/action/carousel";
 import { clearSelectedAll } from "~/src/store/action/search";
@@ -19,7 +18,6 @@ const LogOut = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setImgWidth(0));
-    // dispatch(setImagePlacerRef(null));
     dispatch(setImageIndicatorCurIdx(0));
     dispatch(clearSelectedAll());
     dispatch(setCurrentInput(""));

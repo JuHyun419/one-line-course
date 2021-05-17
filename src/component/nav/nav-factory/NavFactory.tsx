@@ -7,20 +7,20 @@ import { AfterLoginNav, LandingNav, SignInNav } from "../";
 
 import "./_NavFactory.scss";
 
-interface NavFactoryProps {
+interface INavFactoryProps {
   navType: ENavType;
   // TODO: Decorator -> @range(0, 4)
   highlightBtnIdx?: number;
 }
 
-const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
+const NavFactory: React.FC<INavFactoryProps> = (props: INavFactoryProps) => (
   <Fragment>{makeNav(props)}</Fragment>
 );
 
 const makeNav = ({
   navType,
   highlightBtnIdx,
-}: NavFactoryProps): JSX.Element => {
+}: INavFactoryProps): JSX.Element => {
   const [sticky, setSticky] = useState("navFactory");
 
   let navJSX: JSX.Element;

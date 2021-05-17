@@ -31,14 +31,13 @@ const fetchFail_RemoveBookmark = (
 });
 
 export const initFetch_RemoveBookmark =
-  (bookmarkID: number, after: Function) =>
+  (bookmarkID: number) =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     try {
       dispatch(fetchRequest_RemoveBookmark());
       const status = await delete_RemoveBookmark(bookmarkID);
       console.log("bookmark DELETED", status);
       dispatch(fetchSucceed_RemoveBookmark(status));
-      after();
     } catch (err) {
       dispatch(fetchFail_RemoveBookmark(err));
     }
