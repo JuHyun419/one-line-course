@@ -22,7 +22,7 @@ const Bookmarks = () => {
 
   return (
     <div>
-      <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={2} />
+      <NavFactory navType={ENavType.Main} highlightBtnIdx={2} />
       <div className="page bookmarks">
         <BookmarksHistory />
         <GoToTop />

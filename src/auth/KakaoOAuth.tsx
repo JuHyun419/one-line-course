@@ -7,6 +7,7 @@ import {
   PLATFORM_SESSION_STORAGE_KEY,
   USERID_SESSION_STORAGE_KEY,
 } from "../common";
+import { useAuthContext } from "../context/AuthCtx";
 
 import { initFetch_CreateUser } from "../store/action/user-async";
 import { IUserData } from "../typings";
@@ -36,6 +37,7 @@ const KakaoOAuth: React.FC = () => {
 };
 
 const useKakaoLoginCallback = () => {
+  const authCtx = useAuthContext();
   const history = useHistory();
   const dispatch = useDispatch();
   const _createUser = useCallback(
@@ -92,7 +94,9 @@ const useKakaoLoginCallback = () => {
             imageUrl: profile_image_url!,
             platform: "kakao",
           });
-          history.push("/main");
+
+          authCtx.authenticate();
+          history.push("/");
         },
 
         fail: onFail => {

@@ -42,9 +42,8 @@ export enum EMenuMode {
  *
  */
 export enum ENavType {
-  Landing,
   SignIn,
-  AfterLogin,
+  Main,
 }
 
 /**

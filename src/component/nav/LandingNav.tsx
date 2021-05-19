@@ -9,7 +9,7 @@ import "./_Nav.scss";
 
 const toSignIn = "/signIn";
 
-const LandingNav: React.FC<NavProps> = ({ children }) => {
+const LandingNav: React.FC<INavProps> = ({ children }) => {
   const history = useHistory();
   const redirectToSignIn = useRedirectToOnButtonClick(history, toSignIn);
 

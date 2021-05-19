@@ -17,7 +17,7 @@ const Comments = () => {
   initCommentsHistory();
   return (
     <div>
-      <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={1} />
+      <NavFactory navType={ENavType.Main} highlightBtnIdx={1} />
       <div className="page comments">
         <CommentsHistory />
         <GoToTop />

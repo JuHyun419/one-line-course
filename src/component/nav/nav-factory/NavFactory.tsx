@@ -3,9 +3,10 @@ import { useSelector } from "react-redux";
 
 import { ENavType } from "~/src/typings";
 import { TCombinedStates } from "~/src/store";
-import { AfterLoginNav, LandingNav, SignInNav } from "../";
+import { AfterLoginNav as MainNav, LandingNav, SignInNav } from "../";
 
 import "./_NavFactory.scss";
+import { useAuthContext } from "~/src/context/AuthCtx";
 
 interface INavFactoryProps {
   navType: ENavType;
@@ -20,22 +21,17 @@ const NavFactory: React.FC<INavFactoryProps> = (props: INavFactoryProps) => (
 const makeNav = ({
   navType,
   highlightBtnIdx,
-}: INavFactoryProps): JSX.Element => {
+}: INavFactoryProps): JSX.Element => {  
   const [sticky, setSticky] = useState("navFactory");
-
   let navJSX: JSX.Element;
 
   switch (navType) {
-    case ENavType.Landing:
-      navJSX = <LandingNav />;
-      break;
-
     case ENavType.SignIn:
       navJSX = <SignInNav />;
       break;
 
-    case ENavType.AfterLogin:
-      navJSX = <AfterLoginNav highlightBtnIdx={highlightBtnIdx} />;
+    case ENavType.Main:
+      navJSX = <MainNav highlightBtnIdx={highlightBtnIdx} />;
       const imgRef = useSelector(
         (state: TCombinedStates) => state.carousel.ref
       );

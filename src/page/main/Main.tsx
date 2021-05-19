@@ -21,9 +21,11 @@ import {
   initFetch_QueryAllMyBookmarks,
   initFetch_QueryUser,
 } from "~/src/store/action/user-async";
+import { useDarkModeContext } from "~/src/context/DarkModeCtx";
+import { ViewModeCtxProvider } from "~/src/context/ViewModeCtx";
+import { AuthCtxProvider } from "~/src/context/AuthCtx";
 
 import "./_Main.scss";
-import { useDarkModeContext } from "~/src/context/DarkModeCtx";
 
 const Main: React.FC = () => {
   const dispatch = useDispatch();
@@ -35,24 +37,26 @@ const Main: React.FC = () => {
   const darkModeCtx = useDarkModeContext();
 
   return (
-    <div>
-      <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={0} />
-      <div
-        className={["page", "main", darkModeCtx.isDark ? "dark" : ""]
-          .join(" ")
-          .trim()}
-      >
-        <Carousel />
-        <Search />
-        <KeywordSelectorCtrl />
-        <SearchResultSummary />
-        <SearchResult />
-        <GoToTop />
-        <Menu menuMode={EMenuMode.AfterLogin} />
-        {placeIconsRandomly(30, { fontSize: "2rem" })}
-        <Footer />
+    <ViewModeCtxProvider>
+      <div>
+        <NavFactory navType={ENavType.Main} highlightBtnIdx={0} />
+        <div
+          className={["page", "main", darkModeCtx.isDark ? "dark" : ""]
+            .join(" ")
+            .trim()}
+        >
+          <Carousel />
+          <Search />
+          <KeywordSelectorCtrl />
+          <SearchResultSummary />
+          <SearchResult />
+          <GoToTop />
+          <Menu menuMode={EMenuMode.AfterLogin} />
+          {placeIconsRandomly(30, { fontSize: "2rem" })}
+          <Footer />
+        </div>
       </div>
-    </div>
+    </ViewModeCtxProvider>
   );
 };
 
