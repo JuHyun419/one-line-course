@@ -1,35 +1,40 @@
-.imageCarousel {
+@import "../../../common/Animation";
+@import "../../../common/FadeInOut";
+
+.carousel {
   position: relative;
   overflow-x: hidden;
-  // height: 300vh;
 
-  &-imagePlacer {
+  &--imagePlacer {
     display: flex;
     flex-direction: row;
 
     width: 70%;
     margin: 0 auto;
-    // height: 80%;
 
     margin-top: 2%;
 
-    & .imageCarousel--image {
+    & .carousel--image {
       width: 100%;
       min-width: 100%;
       height: 100%;
-      visibility: visible;
+      border-radius: 15px;
+
+      @include animation("fade-in .2s linear .1s 1 both");
 
       &.hidden {
         visibility: hidden;
+        @include animation("fade-out .01s linear .1s 1 both");
       }
     }
   }
 
-  &-indicator {
+  &--indicator {
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
-    // width: 100vw;
+    width: 100vw;
+    z-index: 1000;
   }
 }

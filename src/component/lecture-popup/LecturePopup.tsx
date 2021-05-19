@@ -15,8 +15,7 @@ const LecturePopup: React.FC<ILecturePopupProps> = ({
   children,
   onClose,
 }) => {
-  console.log("lecture ID", lectureID);
-
+  // console.log("lecture ID", lectureID);
   return (
     <Fragment>
       <Backdrop isUsed={true} onClose={onClose} />

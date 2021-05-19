@@ -1,7 +1,7 @@
 import React, { Fragment, useCallback, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { TCombinedStates } from "~/src/store";
-import { ESeparatorDirection } from "~/src/typings";
+import { ILectureData, IBookmarkData } from "~/src/typings";
 import LecturePopup from "../lecture-popup/LecturePopup";
 import Separator from "../separator/Separator";
 
@@ -23,22 +23,20 @@ import LectureGoToLecture from "./lecture-card-element/goToLecture/LectureGoToLe
 import "./_LectureCard.scss";
 
 export interface IGridLectureCardProps {
-  lectureIdx: number;
+  lecture: ILectureData | undefined;
 }
 
-const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
+const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lecture }) => {
   const [isOpened, setIsOpened] = useState(false);
-  
-  const lecture = useSelector(
-    (state: TCombinedStates) => state.searchResult.lectures[lectureIdx]
-  );
+
+  if (!lecture) return null;
 
   const {
     id,
     imageUrl,
     title,
     price,
-    salePrices,
+    salePrice,
     rating,
     instructor,
     url,
@@ -47,22 +45,29 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
     sessionCount,
     currency,
     description,
-  } = lecture!;
+  } = lecture;
 
   const language = currency === "$" ? "EN" : "KR";
 
   const actualPrice =
-    salePrices === 0 || salePrices === undefined ? price : salePrices;
+    salePrice === 0 || salePrice === undefined ? price : salePrice;
 
   const openPopup = useCallback(() => setIsOpened(true), []);
 
   const closePopup = useCallback(() => setIsOpened(false), []);
 
+  const [isBookmarkUpdated, setIsBookmarkUpdated] = useState(false);
+
   const lectureCardInfoJSX = useMemo(
     () => (
       <div onClick={openPopup}>
         <LectureTitle title={title} isCard />
-        <LectureBookmark />
+        <LectureBookmark
+          lectureId={id}
+          isUpdated={isBookmarkUpdated}
+          setIsUpdated={setIsBookmarkUpdated}
+          isOnlyDisplay
+        />
         <LectureThumbnail imageURL={imageUrl} title={title} isCard />
         <div className="lectureCard-grid-desc">
           <div className="lectureCard-grid--first-row">
@@ -82,23 +87,18 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
         </div>
       </div>
     ),
-    [
-      imageUrl,
-      title,
-      rating,
-      platform,
-      viewCount,
-      sessionCount,
-      actualPrice,
-      currency,
-      language,
-    ]
+    [lecture]
   );
 
   const lecturePopupInfoJSX = useMemo(
     () => (
       <Fragment>
-        <LectureBookmark />
+        <LectureBookmark
+          lectureId={id}
+          isUpdated={isBookmarkUpdated}
+          setIsUpdated={setIsBookmarkUpdated}
+          isOnlyDisplay={false}
+        />
         <LectureThumbnail imageURL={imageUrl} title={title} isCard={false} />
         <div className="lecturePopup-close" onClick={closePopup}>
           X
@@ -127,17 +127,7 @@ const GridLectureCard: React.FC<IGridLectureCardProps> = ({ lectureIdx }) => {
         </div>
       </Fragment>
     ),
-    [
-      imageUrl,
-      title,
-      rating,
-      platform,
-      viewCount,
-      sessionCount,
-      actualPrice,
-      currency,
-      language,
-    ]
+    [lecture]
   );
 
   const popupJSX = useMemo(

@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 
 import { ENavType } from "~/src/typings";
@@ -7,20 +7,20 @@ import { AfterLoginNav, LandingNav, SignInNav } from "../";
 
 import "./_NavFactory.scss";
 
-interface NavFactoryProps {
+interface INavFactoryProps {
   navType: ENavType;
   // TODO: Decorator -> @range(0, 4)
   highlightBtnIdx?: number;
 }
 
-const NavFactory: React.FC<NavFactoryProps> = (props: NavFactoryProps) => (
+const NavFactory: React.FC<INavFactoryProps> = (props: INavFactoryProps) => (
   <Fragment>{makeNav(props)}</Fragment>
 );
 
 const makeNav = ({
   navType,
   highlightBtnIdx,
-}: NavFactoryProps): JSX.Element => {
+}: INavFactoryProps): JSX.Element => {
   const [sticky, setSticky] = useState("navFactory");
 
   let navJSX: JSX.Element;
@@ -40,19 +40,22 @@ const makeNav = ({
         (state: TCombinedStates) => state.carousel.ref
       );
 
+      const listener = useCallback(() => {
+        if (!imgRef?.current) return;
+
+        setSticky(
+          window.scrollY <= imgRef.current!.getBoundingClientRect().bottom
+            ? "navFactory"
+            : "navFactory sticky"
+        );
+      }, [window, imgRef]);
+
       useEffect(() => {
         if (!imgRef) return;
 
-        window.addEventListener("scroll", function () {
-          if (!imgRef?.current) return;
-
-          setSticky(
-            window.scrollY <= imgRef.current!.getBoundingClientRect().top
-              ? "navFactory"
-              : "navFactory sticky"
-          );
-        });
-      }, [window, imgRef]);
+        window.addEventListener("scroll", listener);
+        return () => window.removeEventListener("scroll", listener);
+      }, [window, imgRef, listener]);
       break;
 
     default:

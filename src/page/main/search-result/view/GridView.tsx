@@ -15,13 +15,17 @@ const GridView: React.FC<IGridViewProps> = () => {
     shallowEqual
   );
 
-  // TODO: Pagenation
+  const lectures = useSelector(
+    (state: TCombinedStates) => state.searchResult.lectures
+  );
+
   const lectureCardsJSX = useMemo(
     () =>
-      new Array(searchedLecturesLen)
-        .fill(0)
-        .map((_, i: number) => <GridLectureCard key={i} lectureIdx={i} />),
-    [searchedLecturesLen]
+      lectures &&
+      lectures.map((_, i: number) => (
+        <GridLectureCard key={i} lecture={lectures[i]} />
+      )),
+    [searchedLecturesLen, lectures]
   );
 
   return (

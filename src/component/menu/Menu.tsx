@@ -1,9 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { EMenuMode } from "../../typings";
 
-import { DarkModeCtxProvider } from "../../context/DarkModeCtx";
-import { ViewModeCtxProvider } from "../../context/ViewModeCtx";
-
 import MenuHamburger from "./MenuHamburger";
 import MenuBar from "./menu-bar/MenuBar";
 
@@ -23,11 +20,7 @@ const Menu: React.FC<MenuProps> = ({ menuMode = EMenuMode.AfterLogin }) => {
 
   return (
     <div className="menu-placer">
-      <DarkModeCtxProvider>
-        <ViewModeCtxProvider>
-          <MenuBar menuMode={menuMode} isMenuOpen={isMenuOpen} />
-        </ViewModeCtxProvider>
-      </DarkModeCtxProvider>
+      <MenuBar menuMode={menuMode} isMenuOpen={isMenuOpen} />
       <div className="menu" onClick={onClickMenu}>
         <MenuHamburger />
         <MenuHamburger />

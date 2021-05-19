@@ -1,20 +1,15 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { TCombinedStates } from "../../../store";
-
-import { initFetch_RetrieveLectures } from "../../../store/action/search-async";
 
 import SearchCtrl from "./search-ctrl/SearchCtrl";
 import Loading from "../../../component/loading/Loading";
 
 import "./_Search.scss";
 
-const Search: React.FC<{}> = () => {
-  useInitFetch();
-
+const Search: React.FC = () => {
   const isSearchLoading = useSelector(
-    (state: TCombinedStates) => state.searchAsync.isLoading,
-    shallowEqual
+    (state: TCombinedStates) => state.searchAsync.isLoading
   );
 
   // const errorJSX = useSelector(
@@ -30,18 +25,6 @@ const Search: React.FC<{}> = () => {
       {isSearchLoading ? <Loading /> : <SearchCtrl />}
     </div>
   );
-};
-
-const useInitFetch = () => {
-  const dispatch = useDispatch();
-  const _initFetch = useCallback(
-    () => dispatch(initFetch_RetrieveLectures()),
-    []
-  );
-
-  useEffect(() => {
-    _initFetch();
-  }, []);
 };
 
 export default Search;

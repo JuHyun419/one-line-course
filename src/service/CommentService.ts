@@ -26,7 +26,7 @@ export const patch_fixComment = async (
 
   try {
     const { status } = await axiosInstance_Server.patch(
-      `/comments/${commentData.commentID}`,
+      `/comments/${commentData.id}`,
       {
         commentData,
       }

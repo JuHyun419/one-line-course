@@ -19,9 +19,11 @@ const fetchRequest_AddBookmark = (): IFetchRequestAction_AddBookmark => ({
 });
 
 const fetchSucceed_AddBookmark = (
+  createdBookmark: IBookmarkData,
   statusCode: TStatusCode
 ): IFetchSucceedAction_AddBookmark => ({
   type: EBookmarkAsync_AddBookmark_ActionType.FetchSucceed,
+  createdBookmark,
   statusCode,
 });
 

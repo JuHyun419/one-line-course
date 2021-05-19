@@ -2,5 +2,11 @@
   width: 100vw;
   height: 100vh;
   position: relative;
-  // display: flex;
+
+  background-color: #fff;
+  box-sizing: border-box;
+
+  &.dark {
+    background-color: #000;
+  }
 }

@@ -9,7 +9,7 @@ export interface IFetchRequestAction_QueryAllMyBookmarks {
 
 export interface IFetchSucceed_QueryAllMyBookmarks {
   type: EUserAsync_QueryAllMyBookmarks_ActionType.FetchSucceed;
-  bookmarks: IBookmarkData[];
+  bookmarks: IBookmarkData[] | undefined;
   statusCode: number;
 }
 
