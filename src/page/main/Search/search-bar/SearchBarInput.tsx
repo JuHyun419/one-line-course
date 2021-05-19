@@ -27,18 +27,17 @@ const SearchBarInput = () => {
 
   const _setSelectedKeyword = useCallback(
     (keyword: string) => dispatch(setSelectedKeyword(keyword)),
-    [dispatch]
+    []
   );
   const clearCurrentInput = useCallback(
-    (input: string) => dispatch(setCurrentInput(input)),
-    [dispatch]
+    () => dispatch(setCurrentInput("")),
+    []
   );
-  const _clearSuggestion = useCallback(() => dispatch(clearSuggestion()), [
-    dispatch,
-  ]);
+  const _clearSuggestion = useCallback(() => dispatch(clearSuggestion()), []);
+
   const _toggleInvalidKeywordWarning = useCallback(
     () => dispatch(ToggleInvalidKeywordWarningRef()),
-    [dispatch]
+    []
   );
 
   const onSubmitInput = useCallback(
@@ -46,6 +45,7 @@ const SearchBarInput = () => {
       if (e.key === "Enter") {
         if (!suggestions.includes(input)) {
           _toggleInvalidKeywordWarning();
+          // turn off invalid keyword warning automatically
           setTimeout(() => _toggleInvalidKeywordWarning(), 3000);
         } else {
           // add input to selected keywords
@@ -53,18 +53,11 @@ const SearchBarInput = () => {
         }
 
         // wipe out the current input & suggestion
-        clearCurrentInput("");
+        clearCurrentInput();
         _clearSuggestion();
       }
     },
-    [
-      input,
-      suggestions,
-      _setSelectedKeyword,
-      clearCurrentInput,
-      _clearSuggestion,
-      _toggleInvalidKeywordWarning,
-    ]
+    [input, suggestions]
   );
 
   return (

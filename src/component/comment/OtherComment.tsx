@@ -20,11 +20,13 @@ import "./_OtherComment.scss";
 interface ICommentProps {
   comment?: ICommentData;
   isMyComment: boolean;
+  isHistory: boolean;
 }
 
 const OtherComment: React.FC<ICommentProps> = ({
   comment,
   isMyComment = false,
+  isHistory = false,
 }) => {
   const [imageURL, setImageURL] = useState("");
   const [userName, setUserName] = useState("");
@@ -45,18 +47,20 @@ const OtherComment: React.FC<ICommentProps> = ({
   );
 
   // user name
-  const nameJSX = useMemo(() => <CommentUserName name={userName} />, [
-    userName,
-  ]);
+  const nameJSX = useMemo(
+    () => <CommentUserName name={userName} />,
+    [userName]
+  );
 
   // contents
   useEffect(() => {
     setContents(comment.content);
   }, [comment]);
 
-  const contentsJSX = useMemo(() => <CommentContents contents={contents} />, [
-    contents,
-  ]);
+  const contentsJSX = useMemo(
+    () => <CommentContents contents={contents} />,
+    [contents]
+  );
 
   // created at
   useEffect(() => {
@@ -68,30 +72,38 @@ const OtherComment: React.FC<ICommentProps> = ({
     [createdAt]
   );
 
-  const onDelete = useCallback((e: React.MouseEvent<HTMLDivElement>) => {}, []);
+  const onGoToLecture = useCallback((e: React.MouseEvent<HTMLDivElement>) => {},
+  []);
   const onFix = useCallback((e: React.MouseEvent<HTMLDivElement>) => {}, []);
+  const onDelete = useCallback((e: React.MouseEvent<HTMLDivElement>) => {}, []);
 
   const myCommentButtonsJSX = useMemo(
     () =>
       isMyComment && (
-        <Fragment>
+        <div>
+          {/* TODO: 강의로 가기 -> API, 스키마 작업 필요 */}
           <Button
-            btnSize={EButtonSize.Small}
+            btnSize={EButtonSize.Medium}
+            btnType={EButtonType.Warning}
+            onClick={onGoToLecture}
+          >
+            강의로 가기
+          </Button>
+          <Button
+            btnSize={EButtonSize.Medium}
             btnType={EButtonType.Primary}
             onClick={onFix}
-            // additionalStyles={{ fontSize: "0.9rem" }}
           >
             수정
           </Button>
           <Button
-            btnSize={EButtonSize.Small}
+            btnSize={EButtonSize.Medium}
             btnType={EButtonType.Danger}
             onClick={onDelete}
-            // additionalStyles={{ fontSize: "0.9rem" }}
           >
             삭제
           </Button>
-        </Fragment>
+        </div>
       ),
     [isMyComment]
   );

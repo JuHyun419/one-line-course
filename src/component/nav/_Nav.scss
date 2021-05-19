@@ -2,7 +2,7 @@
 @import "../button/Button";
 
 @mixin nav-common {
-  width: 100vw;
+  // width: 100vw;
   height: 10vh;
 
   display: flex;
@@ -10,30 +10,20 @@
   align-items: center;
 
   background-color: $color-nav;
-  border: 1px dashed #eee;
-
-  
+  padding-right: 25px;
 
   @content;
 }
 
 .nav {
-  &-landing {
-    @include nav-common;
-    justify-content: flex-end;
-
-    & .btn {
-      margin-right: 5%;
+  &-signIn {
+    @include nav-common {
+      height: 30vh;
     }
   }
 
-  &-signIn {
-    @include nav-common;    
-    justify-content: space-around;
-  }
-
-  &-afterLogin {
+  &-main {
     @include nav-common;
-    justify-content: flex-end;
+    flex-direction: row-reverse;
   }
 }

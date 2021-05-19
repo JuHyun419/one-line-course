@@ -11,13 +11,11 @@ import "./_SearchResult.scss";
 
 const SearchResult = () => {
   const isSearchSucceed = useSelector(
-    (state: TCombinedStates) => state.searchResult.isSearchSucceed,
-    shallowEqual
+    (state: TCombinedStates) => state.searchResult.isSearchSucceed
   );
 
   const isGridView = useSelector(
-    (state: TCombinedStates) => state.searchResult.isGridView,
-    shallowEqual
+    (state: TCombinedStates) => state.searchResult.isGridView
   );
 
   fetchBookmarks();

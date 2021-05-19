@@ -22,7 +22,7 @@ import "./_LecturePopupComments.scss";
 
 const LecturePopupComments: React.FC<ICommentsProps> = ({ lectureID }) => {
   const { myUserId, otherComments } = initComments(lectureID);
-  const newCommentJSX: JSX.Element | null = makeNewComment();
+  const newCommentJSX: JSX.Element | null = makeNewComment(lectureID);
   // Other Comments belong to this lecture, except for the comments written by me
   const otherCommentsJSX: JSX.Element[] | null = makeOtherComments(
     otherComments,
@@ -66,8 +66,8 @@ const initComments = (lectureID: number): IRetTypeInitComments => {
   return { myUserId, otherComments };
 };
 
-const makeNewComment = (): JSX.Element | null =>
-  useMemo(() => <NewComment />, []);
+const makeNewComment = (lectureID: number): JSX.Element | null =>
+  useMemo(() => <NewComment lectureId={lectureID} />, []);
 
 const makeOtherComments = (
   otherComments: ICommentData[] | null,
@@ -79,7 +79,12 @@ const makeOtherComments = (
       otherComments
         .filter((comment: ICommentData) => comment.userId !== myUserId)
         .map((comment: ICommentData) => (
-          <OtherComment key={uuid()} comment={comment} isMyComment={false} />
+          <OtherComment
+            key={uuid()}
+            comment={comment}
+            isMyComment={false}
+            isHistory={false}
+          />
         )),
     [otherComments, myUserId]
   );
@@ -95,7 +100,12 @@ const makeMyComments = (
       otherComments
         .filter((comment: ICommentData) => comment.userId === myUserId)
         .map((comment: ICommentData, i: number) => (
-          <OtherComment key={uuid()} comment={comment} isMyComment />
+          <OtherComment
+            key={uuid()}
+            comment={comment}
+            isMyComment
+            isHistory={false}
+          />
         )),
     [otherComments, myUserId]
   );

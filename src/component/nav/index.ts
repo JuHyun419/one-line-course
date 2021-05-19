@@ -1,6 +1,5 @@
 import NavFactory from "./nav-factory/NavFactory";
-import AfterLoginNav from "./AfterLoginNav";
-import LandingNav from "./LandingNav";
+import MainNav from "./MainNav";
 import SignInNav from "./SignInNav";
 
-export { NavFactory, AfterLoginNav, LandingNav, SignInNav };
+export { NavFactory, MainNav, SignInNav };

@@ -39,7 +39,8 @@ const makeBookmarkIcon = ({
   );
 
   const deleteBookmark = useCallback(
-    (target: number) => dispatch(initFetch_RemoveBookmark(target)),
+    (targetBookmarkId: number) =>
+      dispatch(initFetch_RemoveBookmark(targetBookmarkId)),
     []
   );
 
@@ -132,8 +133,6 @@ const makeBookmarkIcon = ({
     if (isOnlyDisplay) {
       return;
     }
-
-    // console.log("bookmark icon clicked!");
 
     if (isBookmarkEnabled) {
       _deleteBookmark();

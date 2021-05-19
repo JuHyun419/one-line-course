@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { ENavType } from "~/src/typings";
 import { TCombinedStates } from "~/src/store";
-import { AfterLoginNav, LandingNav, SignInNav } from "../";
+import { MainNav, SignInNav } from "../";
 
 import "./_NavFactory.scss";
 
@@ -22,20 +22,15 @@ const makeNav = ({
   highlightBtnIdx,
 }: INavFactoryProps): JSX.Element => {
   const [sticky, setSticky] = useState("navFactory");
-
   let navJSX: JSX.Element;
 
   switch (navType) {
-    case ENavType.Landing:
-      navJSX = <LandingNav />;
-      break;
-
     case ENavType.SignIn:
       navJSX = <SignInNav />;
       break;
 
-    case ENavType.AfterLogin:
-      navJSX = <AfterLoginNav highlightBtnIdx={highlightBtnIdx} />;
+    case ENavType.Main:
+      navJSX = <MainNav highlightBtnIdx={highlightBtnIdx} />;
       const imgRef = useSelector(
         (state: TCombinedStates) => state.carousel.ref
       );

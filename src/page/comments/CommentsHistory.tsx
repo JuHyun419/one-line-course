@@ -20,7 +20,7 @@ const CommentsHistory = () => {
       Array.from(
         new Set(
           allMyComments.map((comment: ICommentData) =>
-            comment.createdAt.toString().slice(0, 10)
+            comment.createdAt!.toString().slice(0, 10)
           )
         )
       ),
@@ -38,7 +38,7 @@ const CommentsHistory = () => {
           <div className="commentsHistory--separator"></div>
           {allMyComments
             .filter((comment: ICommentData) => {
-              const comparerYMD = comment.createdAt.toString().slice(0, 10);
+              const comparerYMD = comment.createdAt!.toString().slice(0, 10);
               return comparerYMD === date;
             })
             .map((comment: ICommentData) => (
@@ -46,6 +46,7 @@ const CommentsHistory = () => {
                 key={comment.id}
                 comment={comment}
                 isMyComment={true}
+                isHistory={true}
               />
             ))}
         </div>

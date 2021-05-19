@@ -28,18 +28,17 @@ const fetchFail_AddComment = (err: string): IFetchFailAction_AddComment => ({
   err,
 });
 
-export const initFetch_AddComment = (
-  lectureID: number,
-  commentData: ICommentData
-) => async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
-  // TODO: lectureID validation
-  // TODO: cooment validation
+export const initFetch_AddComment =
+  (commentData: ICommentData) =>
+  async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
+    // TODO: lectureID validation
+    // TODO: cooment validation
 
-  try {
-    dispatch(fetchRequest_AddComment());
-    const status = await post_AddComment(lectureID, commentData);
-    dispatch(fetchSucceed_AddComment(status));
-  } catch (err) {
-    dispatch(fetchFail_AddComment(err));
-  }
-};
+    try {
+      dispatch(fetchRequest_AddComment());
+      const status = await post_AddComment(commentData);
+      dispatch(fetchSucceed_AddComment(status));
+    } catch (err) {
+      dispatch(fetchFail_AddComment(err));
+    }
+  };

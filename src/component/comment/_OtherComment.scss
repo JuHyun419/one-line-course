@@ -1,5 +1,7 @@
 @import "../../common/ColorScheme";
 
+$left-offset: 56%;
+
 .comment--other-comment {
   display: flex;
   flex-direction: row;
@@ -33,16 +35,21 @@
 
     padding: 10px;
 
-    .btn:nth-child(n) {
+    .btn {
       position: absolute;
-      left: 70%;
-      top: 60%;
+      top: 50%;
     }
 
-    .btn:nth-child(2n) {
-      position: absolute;
-      left: 58%;
-      top: 60%;
+    .btn:nth-child(1) {
+      left: $left-offset;
+    }
+
+    .btn:nth-child(2) {
+      left: $left-offset + 9%;
+    }
+
+    .btn:nth-child(3) {
+      left: $left-offset + 9% * 2;
     }
   }
 }

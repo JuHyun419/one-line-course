@@ -11,21 +11,21 @@ import "./Ext";
 
 import ReduxProvider from "./store";
 import { DarkModeCtxProvider } from "./context/DarkModeCtx";
-import { ViewModeCtxProvider } from "./context/ViewModeCtx";
 
 // import AuthCtxProvider from "./context/AuthCtx";
 
 import "./index.scss";
+import { AuthCtxProvider } from "./context/AuthCtx";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <DarkModeCtxProvider>
-        <ViewModeCtxProvider>
+        <AuthCtxProvider>
           <ReduxProvider>
             <App />
           </ReduxProvider>
-        </ViewModeCtxProvider>
+        </AuthCtxProvider>
       </DarkModeCtxProvider>
     </BrowserRouter>
     {/* <AuthCtxProvider>

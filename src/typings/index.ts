@@ -42,9 +42,8 @@ export enum EMenuMode {
  *
  */
 export enum ENavType {
-  Landing,
   SignIn,
-  AfterLogin,
+  Main,
 }
 
 /**
@@ -89,11 +88,12 @@ export interface IBookmarkData {
 }
 
 export interface ICommentData {
-  id: number;
+  id?: number;
   userId: string;
+  lectureId: number;
   content: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 /**
@@ -152,6 +152,7 @@ export enum ESearchResultActionType {
   Start_Search = "START_SEARCH",
   Succeed_Search = "SUCCEED_SEARCH",
   Fail_Search = "FAIL_SEARCH",
+  Clear_Search = "CLEAR_SEARCH",
 
   Toggle_ResultView = "TOGGLE_RESULT_VIEW",
 }

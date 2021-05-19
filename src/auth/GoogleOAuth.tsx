@@ -16,8 +16,10 @@ import {
 } from "react-google-login";
 
 import "./_Auth.scss";
+import { useAuthContext } from "../context/AuthCtx";
 
 const GoogleOAuth: React.FC = () => {
+  const authCtx = useAuthContext();
   const history = useHistory();
   const dispatch = useDispatch();
   const _createUser = useCallback(
@@ -68,7 +70,9 @@ const GoogleOAuth: React.FC = () => {
         // const code = (response as GoogleLoginResponseOffline).code;
         // console.log("trying to access offline: ", code);
       }
-      history.push("/main");
+
+      authCtx.authenticate();
+      history.push("/");
     },
     [history, _createUser]
   );

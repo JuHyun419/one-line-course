@@ -16,41 +16,51 @@ import GoToTop from "~/src/component/goToTop/GoToTop";
 import Menu from "~/src/component/menu/Menu";
 import { placeIconsRandomly, USERID_SESSION_STORAGE_KEY } from "../../common/";
 import Footer from "../../component/footer/Footer";
-import { initFetch_QueryAllMyBookmarks } from "~/src/store/action/user-async";
+
+import {
+  initFetch_QueryAllMyBookmarks,
+  initFetch_QueryUser,
+} from "~/src/store/action/user-async";
 import { useDarkModeContext } from "~/src/context/DarkModeCtx";
+import { ViewModeCtxProvider } from "~/src/context/ViewModeCtx";
+import { AuthCtxProvider } from "~/src/context/AuthCtx";
 
 import "./_Main.scss";
 
 const Main: React.FC = () => {
+  const dispatch = useDispatch();
+  initCarouselImages(dispatch);
+  initLectures(dispatch);
+  initBookmarks(dispatch);
+  initUser(dispatch);
+
   const darkModeCtx = useDarkModeContext();
-  initCarouselImages();
-  initLectures();
-  initBookmarks();
 
   return (
-    <div>
-      <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={0} />
-      <div
-        className={["page", "main", darkModeCtx.isDark ? "dark" : ""]
-          .join(" ")
-          .trim()}
-      >
-        <Carousel />
-        <Search />
-        <KeywordSelectorCtrl />
-        <SearchResultSummary />
-        <SearchResult />
-        <GoToTop />
-        <Menu menuMode={EMenuMode.AfterLogin} />
-        {placeIconsRandomly(30, { fontSize: "2rem" })}
-        <Footer />
+    <ViewModeCtxProvider>
+      <div>
+        <NavFactory navType={ENavType.Main} highlightBtnIdx={0} />
+        <div
+          className={["page", "main", darkModeCtx.isDark ? "dark" : ""]
+            .join(" ")
+            .trim()}
+        >
+          <Carousel />
+          <Search />
+          <KeywordSelectorCtrl />
+          <SearchResultSummary />
+          <SearchResult />
+          <GoToTop />
+          <Menu menuMode={EMenuMode.AfterLogin} />
+          {placeIconsRandomly(30, { fontSize: "2rem" })}
+          <Footer />
+        </div>
       </div>
-    </div>
+    </ViewModeCtxProvider>
   );
 };
 
-const initCarouselImages = () => {
-  const dispatch = useDispatch();
+const initCarouselImages = (dispatch: Dispatch<unknown>) => {
   const _initFetchRandomCarouselImages = useCallback(
     (query: string) => dispatch(initFetch_CarouselImageURLs({ query })),
     []
@@ -62,8 +72,7 @@ const initCarouselImages = () => {
   }, []);
 };
 
-const initLectures = () => {
-  const dispatch = useDispatch();
+const initLectures = (dispatch: Dispatch<unknown>) => {
   const _initFetchRetrieveLectures = useCallback(
     () => dispatch(initFetch_RetrieveLectures()),
     []
@@ -74,8 +83,7 @@ const initLectures = () => {
   }, []);
 };
 
-const initBookmarks = () => {
-  const dispatch = useDispatch();
+const initBookmarks = (dispatch: Dispatch<unknown>) => {
   const _queryAllMyBookmarks = useCallback(
     (myUserID: string) => dispatch(initFetch_QueryAllMyBookmarks(myUserID)),
     []
@@ -88,6 +96,22 @@ const initBookmarks = () => {
     }
 
     _queryAllMyBookmarks(myUserID);
+  }, []);
+};
+
+const initUser = (dispatch: Dispatch<unknown>) => {
+  const _queryUser = useCallback(
+    (myUserID: string) => dispatch(initFetch_QueryUser(myUserID)),
+    []
+  );
+
+  useEffect(() => {
+    const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
+    if (myUserID === "" || !myUserID) {
+      return;
+    }
+
+    _queryUser(myUserID);
   }, []);
 };
 

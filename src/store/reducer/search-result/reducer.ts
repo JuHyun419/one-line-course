@@ -40,6 +40,13 @@ const reducer = (
         isSearchSucceed: false,
       };
 
+    case ESearchResultActionType.Clear_Search:
+      return {
+        ...state,
+        lectures: [],
+        isSearchSucceed: false,
+      };
+
     case ESearchResultActionType.Toggle_ResultView:
       return {
         ...state,
