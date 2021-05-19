@@ -3,10 +3,9 @@ import { useSelector } from "react-redux";
 
 import { ENavType } from "~/src/typings";
 import { TCombinedStates } from "~/src/store";
-import { AfterLoginNav as MainNav, LandingNav, SignInNav } from "../";
+import { MainNav, SignInNav } from "../";
 
 import "./_NavFactory.scss";
-import { useAuthContext } from "~/src/context/AuthCtx";
 
 interface INavFactoryProps {
   navType: ENavType;
@@ -21,7 +20,7 @@ const NavFactory: React.FC<INavFactoryProps> = (props: INavFactoryProps) => (
 const makeNav = ({
   navType,
   highlightBtnIdx,
-}: INavFactoryProps): JSX.Element => {  
+}: INavFactoryProps): JSX.Element => {
   const [sticky, setSticky] = useState("navFactory");
   let navJSX: JSX.Element;
 

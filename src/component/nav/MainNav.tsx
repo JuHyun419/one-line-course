@@ -9,7 +9,7 @@ import Button from "../button/Button";
 import "./_Nav.scss";
 
 const MainNav: React.FC<INavProps> = props => (
-  <div className="nav-afterLogin">{makeButtonsOnHistory(props)}</div>
+  <div className="nav-main">{makeButtonsOnHistory(props)}</div>
 );
 
 const makeButtonsOnHistory = ({

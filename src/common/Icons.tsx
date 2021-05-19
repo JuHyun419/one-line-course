@@ -4,9 +4,6 @@ import { IconClassNames } from "./IconsResources";
 
 import "./_Icons.scss";
 
-/**
- * Font-Awesome static class
- */
 type TIconStyles = { [propName: string]: string | number };
 
 /**
