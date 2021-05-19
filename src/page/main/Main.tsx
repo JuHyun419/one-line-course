@@ -16,15 +16,14 @@ import GoToTop from "~/src/component/goToTop/GoToTop";
 import Menu from "~/src/component/menu/Menu";
 import { placeIconsRandomly, USERID_SESSION_STORAGE_KEY } from "../../common/";
 import Footer from "../../component/footer/Footer";
-import { initFetch_QueryAllMyBookmarks } from "~/src/store/action/user-async";
-import { useDarkModeContext } from "~/src/context/DarkModeCtx";
 
-import "./_Main.scss";
 import {
   initFetch_QueryAllMyBookmarks,
   initFetch_QueryUser,
 } from "~/src/store/action/user-async";
-import { init } from "~/src/store/reducer/search-result/reducer";
+
+import "./_Main.scss";
+import { useDarkModeContext } from "~/src/context/DarkModeCtx";
 
 const Main: React.FC = () => {
   const dispatch = useDispatch();
@@ -32,6 +31,8 @@ const Main: React.FC = () => {
   initLectures(dispatch);
   initBookmarks(dispatch);
   initUser(dispatch);
+
+  const darkModeCtx = useDarkModeContext();
 
   return (
     <div>

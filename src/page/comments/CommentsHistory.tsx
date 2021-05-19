@@ -46,6 +46,7 @@ const CommentsHistory = () => {
                 key={comment.id}
                 comment={comment}
                 isMyComment={true}
+                isHistory={true}
               />
             ))}
         </div>

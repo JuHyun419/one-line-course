@@ -4,9 +4,13 @@ import "./_CommentTextArea.scss";
 
 interface ICommentTextAreaProps {
   setContents: React.Dispatch<React.SetStateAction<string>>;
+  value: string;
 }
 
-const CommentTextArea: React.FC<ICommentTextAreaProps> = ({ setContents }) => {
+const CommentTextArea: React.FC<ICommentTextAreaProps> = ({
+  setContents,
+  value,
+}) => {
   const onChangeTextArea = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       console.log(e.target.value);
@@ -22,6 +26,7 @@ const CommentTextArea: React.FC<ICommentTextAreaProps> = ({ setContents }) => {
       wrap="soft"
       required
       onChange={onChangeTextArea}
+      value={value}
     />
   );
 };

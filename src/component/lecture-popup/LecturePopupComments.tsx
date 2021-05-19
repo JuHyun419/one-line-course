@@ -67,7 +67,7 @@ const initComments = (lectureID: number): IRetTypeInitComments => {
 };
 
 const makeNewComment = (lectureID: number): JSX.Element | null =>
-  useMemo(() => <NewComment lectureID={lectureID} />, []);
+  useMemo(() => <NewComment lectureId={lectureID} />, []);
 
 const makeOtherComments = (
   otherComments: ICommentData[] | null,
@@ -79,7 +79,12 @@ const makeOtherComments = (
       otherComments
         .filter((comment: ICommentData) => comment.userId !== myUserId)
         .map((comment: ICommentData) => (
-          <OtherComment key={uuid()} comment={comment} isMyComment={false} />
+          <OtherComment
+            key={uuid()}
+            comment={comment}
+            isMyComment={false}
+            isHistory={false}
+          />
         )),
     [otherComments, myUserId]
   );
@@ -95,7 +100,12 @@ const makeMyComments = (
       otherComments
         .filter((comment: ICommentData) => comment.userId === myUserId)
         .map((comment: ICommentData, i: number) => (
-          <OtherComment key={uuid()} comment={comment} isMyComment />
+          <OtherComment
+            key={uuid()}
+            comment={comment}
+            isMyComment
+            isHistory={false}
+          />
         )),
     [otherComments, myUserId]
   );

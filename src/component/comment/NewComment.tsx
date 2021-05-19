@@ -10,57 +10,56 @@ import CommentTextArea from "./comment-element/text-area/CommentTextArea";
 import "./_NewComment.scss";
 
 interface INewCommentProps {
-  lectureID: number;
+  lectureId: number;
 }
 
-const NewComment: React.FC<INewCommentProps> = ({ lectureID }) => {
+const NewComment: React.FC<INewCommentProps> = ({ lectureId }) => {
   const [commentContents, setCommentContents] = useState("");
   const user: IUserData | null = useSelector(
     (state: TCombinedStates) => state.userAsync_QueryUser.user
   );
 
   // user thumbnail
-  const thumbnailJSX: JSX.Element | null = useMemo(() => {
-    if (!user) {
-      return null;
-    }
-
-    return (
-      <CommentUserThumbnail imageURL={user.imageUrl} altName={user.name} />
-    );
-  }, [user]);
+  const thumbnailJSX: JSX.Element | null = useMemo(
+    () =>
+      user ? (
+        <CommentUserThumbnail imageURL={user.imageUrl} altName={user.name} />
+      ) : null,
+    [user]
+  );
 
   // user name
-  const nameJSX: JSX.Element | null = useMemo(() => {
-    if (!user) {
-      return null;
-    }
-
-    return <CommentUserName name={user.name} />;
-  }, [user]);
+  const userNameJSX: JSX.Element | null = useMemo(
+    () => (user ? <CommentUserName name={user.name} /> : null),
+    [user]
+  );
 
   const onSubmit = useCallback(
     async _ => {
       if (!user) {
         return;
       }
-      await post_AddComment(lectureID, {
+
+      await post_AddComment({
         content: commentContents,
-        lectureId: lectureID,
+        lectureId,
         userId: user.id,
       });
+
+      // wipe out the comment area after submit
+      setCommentContents("");
     },
-    [user, commentContents, lectureID]
+    [user, commentContents, lectureId]
   );
 
   return (
     <div className="comment--new-comment">
       <div className="comment--new-comment-col1">
         {thumbnailJSX}
-        {nameJSX}
+        {userNameJSX}
       </div>
       <div className="comment--new-comment-col2">
-        <CommentTextArea setContents={setCommentContents} />
+        <CommentTextArea setContents={setCommentContents} value={commentContents}/>
         <Button
           btnSize={EButtonSize.Small}
           btnType={EButtonType.Warning}
