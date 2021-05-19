@@ -16,6 +16,10 @@ export interface IFailSearch {
   type: ESearchResultActionType.Fail_Search;
 }
 
+export interface IClearSearch {
+  type: ESearchResultActionType.Clear_Search;
+}
+
 export interface IToggleResultView {
   type: ESearchResultActionType.Toggle_ResultView;
 }
@@ -24,4 +28,5 @@ export type TActions =
   | IStartSearch
   | ISucceedSearch
   | IFailSearch
+  | IClearSearch
   | IToggleResultView;

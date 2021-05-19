@@ -5,8 +5,11 @@ import {
   setImageIndicatorCurIdx,
   setImgWidth,
 } from "~/src/store/action/carousel";
-import { clearSelectedAll } from "~/src/store/action/search";
+import {
+  clearSelectedAll,
+} from "~/src/store/action/search";
 import { closeSearchBar, setCurrentInput } from "~/src/store/action/search-bar";
+import { clearSearch } from "~/src/store/action/search-result";
 import { clearSuggestion } from "~/src/store/action/search-suggestion";
 
 const LogOut = () => {
@@ -21,6 +24,8 @@ const LogOut = () => {
     dispatch(setImageIndicatorCurIdx(0));
     dispatch(clearSelectedAll());
     dispatch(setCurrentInput(""));
+    dispatch(clearSelectedAll());
+    dispatch(clearSearch());
     dispatch(closeSearchBar());
     dispatch(clearSuggestion());
   }, []);

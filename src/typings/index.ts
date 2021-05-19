@@ -153,6 +153,7 @@ export enum ESearchResultActionType {
   Start_Search = "START_SEARCH",
   Succeed_Search = "SUCCEED_SEARCH",
   Fail_Search = "FAIL_SEARCH",
+  Clear_Search = "CLEAR_SEARCH",
 
   Toggle_ResultView = "TOGGLE_RESULT_VIEW",
 }
