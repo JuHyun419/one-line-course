@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import { EMenuMode, ESeparatorDirection } from "../../../typings";
 
@@ -115,10 +115,10 @@ const makeMenuBarItemsBeforeLogin = (
   ...iconStyles: Array<{ [content: string]: string }>
 ): JSX.Element => (
   // only sun & moon
-  <Fragment>
+  <>
     {getIcon("Sun", toggleDarkMode, iconStyles[0])}
     {getIcon("Moon", toggleDarkMode, iconStyles[1])}
-  </Fragment>
+  </>
 );
 
 const makeMenuBarItemsAfterLogin = (
@@ -126,13 +126,13 @@ const makeMenuBarItemsAfterLogin = (
   toggleViewMode: () => void,
   ...iconStyles: Array<{ [content: string]: string }>
 ) => (
-  <Fragment>
+  <>
     {getIcon("Sun", toggleDarkMode, iconStyles[0])}
     {getIcon("Moon", toggleDarkMode, iconStyles[1])}
     <Separator direction={ESeparatorDirection.Horizontal} />
     {getIcon("Grid", toggleViewMode, iconStyles[2])}
     {getIcon("List", toggleViewMode, iconStyles[3])}
-  </Fragment>
+  </>
 );
 
 export default MenuBar;

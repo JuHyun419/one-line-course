@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo } from "react";
+import React, { useMemo } from "react";
 import { useHistory } from "react-router-dom";
 import { EButtonSize, EButtonType } from "../../typings";
 import { useRedirectToOnButtonClick } from "../../hooks/useRedirectTo";
@@ -28,7 +28,7 @@ const makeButtonsOnHistory = ({
   const jsx = useMemo(
     () =>
       authCtx && authCtx.isAuth ? (
-        <Fragment>
+        <>
           <Button
             btnSize={EButtonSize.Large}
             btnType={EButtonType.Alt}
@@ -61,9 +61,9 @@ const makeButtonsOnHistory = ({
           >
             로그아웃
           </Button>
-        </Fragment>
+        </>
       ) : (
-        <Fragment>
+        <>
           <Button
             btnSize={EButtonSize.Large}
             btnType={EButtonType.Warning}
@@ -72,16 +72,16 @@ const makeButtonsOnHistory = ({
           >
             로그인
           </Button>
-        </Fragment>
+        </>
       ),
     [authCtx.isAuth]
   );
 
   return (
-    <Fragment>
+    <>
       {jsx}
       {children}
-    </Fragment>
+    </>
   );
 };
 

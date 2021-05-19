@@ -1,11 +1,10 @@
-import React, { Fragment, useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
 
-import OtherComment from "~/src/component/comment/OtherComment";
 import GridLectureCard from "~/src/component/lecture-card/GridLectureCard";
 import { TCombinedStates } from "~/src/store";
-import { IBookmarkData, ICommentData, ILectureData } from "~/src/typings";
+import { IBookmarkData, ILectureData } from "~/src/typings";
 
 import "./_BookmarksHistory.scss";
 
@@ -45,12 +44,13 @@ const BookmarksHistory = () => {
               const comparerYMD = bookmark.createdAt.toString().slice(0, 10);
               return comparerYMD === date;
             })
-            .map((bookmark: IBookmarkData) => (
+            .map((bookmark: IBookmarkData, i: number) => (
               <div key={bookmark.id} className="bookmarksHistory--lecture">
                 <GridLectureCard
                   lecture={lectures.find(
                     (lecture: ILectureData) => lecture.id === bookmark.lectureId
                   )}
+                  popupIdx={i}
                 />
               </div>
             ))}

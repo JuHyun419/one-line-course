@@ -21,6 +21,15 @@ body p h1 h2 h3 div span {
   padding: 0;
 }
 
+#backdrop-root {
+  display: block;
+  overflow: hidden;
+}
+
+#popup-root {
+  display: flex;
+}
+
 // .root {
 //
 // }

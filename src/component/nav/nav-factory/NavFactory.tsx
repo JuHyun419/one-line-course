@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 
 import { ENavType } from "~/src/typings";
@@ -14,7 +14,7 @@ interface INavFactoryProps {
 }
 
 const NavFactory: React.FC<INavFactoryProps> = (props: INavFactoryProps) => (
-  <Fragment>{makeNav(props)}</Fragment>
+  <>{makeNav(props)}</>
 );
 
 const makeNav = ({

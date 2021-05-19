@@ -1,10 +1,4 @@
-import React, {
-  Fragment,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { EButtonSize, EButtonType, ICommentData } from "~/src/typings";
 import Button from "../button/Button";
 import {

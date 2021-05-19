@@ -12,8 +12,6 @@ import { IBookmarkData } from "~/src/typings";
 import "./_LectureBookmark.scss";
 
 interface ILectureBookmarkProps {
-  isUpdated: boolean;
-  setIsUpdated: React.Dispatch<React.SetStateAction<boolean>>;
   lectureId?: number;
   isOnlyDisplay: boolean;
 }
@@ -25,8 +23,6 @@ const LectureBookmark: React.FC<ILectureBookmarkProps> = props => {
 
 const makeBookmarkIcon = ({
   lectureId,
-  isUpdated,
-  setIsUpdated,
   isOnlyDisplay = true,
 }: ILectureBookmarkProps) => {
   const [isBookmarkEnabled, setIsBookmarkEnabled] = useState(false);
@@ -65,7 +61,7 @@ const makeBookmarkIcon = ({
       if (!userID) return;
       if (allMyBookmarks && lectureId) {
         // check whether the previous bookmark exists
-        setIsUpdated(false);
+        // setIsUpdated(false);
 
         await fetchUpdatedAllMyBookmarks(userID);
 
@@ -83,7 +79,7 @@ const makeBookmarkIcon = ({
         setIsBookmarkEnabled(true);
       }
     })();
-  }, [isUpdated, userID]);
+  }, [userID]);
 
   const _addBookmark = useCallback(async () => {
     if (isOnlyDisplay || !userID) {
@@ -106,7 +102,7 @@ const makeBookmarkIcon = ({
     }
     await addBookmark(userID, usedBookmark);
     await fetchUpdatedAllMyBookmarks(userID);
-    setIsUpdated(true);
+    // setIsUpdated(true);
   }, [userID, usedBookmark, allMyBookmarks]);
 
   const _deleteBookmark = useCallback(async () => {
@@ -126,8 +122,8 @@ const makeBookmarkIcon = ({
 
     await deleteBookmark(targetBookmarkId);
     await fetchUpdatedAllMyBookmarks(userID);
-    setIsUpdated(true);
-  }, [userID, allMyBookmarks, setIsUpdated]);
+    // setIsUpdated(true);
+  }, [userID, allMyBookmarks]);
 
   const toggleBookmarkIcon = useCallback(() => {
     if (isOnlyDisplay) {

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { ESeparatorDirection } from "../../typings";
 import "./_Separator.scss";
 
@@ -34,7 +34,7 @@ const Separator: React.FC<SeparatorProps> = ({
       );
       break;
   }
-  return <Fragment>{separator}</Fragment>;
+  return <>{separator}</>;
 };
 
 export default Separator;

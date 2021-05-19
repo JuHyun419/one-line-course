@@ -1,18 +1,20 @@
-import React, { useMemo } from "react";
-import { shallowEqual, useSelector } from "react-redux";
+import React, { Fragment, useMemo } from "react";
+import { useSelector } from "react-redux";
+
 import { TCombinedStates } from "~/src/store";
 
 import GridLectureCard from "~/src/component/lecture-card/GridLectureCard";
 import Pagenator from "~/src/component/pagenator/Pagenator";
 
 import "./_GridView.scss";
+import LectureCardPopup from "~/src/component/lecture-card/LectureCardPopup";
+import { ILectureData } from "~/src/typings";
 
 export interface IGridViewProps {}
 
 const GridView: React.FC<IGridViewProps> = () => {
   const searchedLecturesLen: number = useSelector(
-    (state: TCombinedStates) => state.searchResult.lectures.length,
-    shallowEqual
+    (state: TCombinedStates) => state.searchResult.lectures.length
   );
 
   const lectures = useSelector(
@@ -22,10 +24,13 @@ const GridView: React.FC<IGridViewProps> = () => {
   const lectureCardsJSX = useMemo(
     () =>
       lectures &&
-      lectures.map((_, i: number) => (
-        <GridLectureCard key={i} lecture={lectures[i]} />
+      lectures.map((lec: ILectureData, i: number) => (
+        <Fragment key={lec.id}>
+          <GridLectureCard lecture={lec} popupIdx={i} />
+          <LectureCardPopup lecture={lec} popupIdx={i} />
+        </Fragment>
       )),
-    [searchedLecturesLen, lectures]
+    [searchedLecturesLen]
   );
 
   return (

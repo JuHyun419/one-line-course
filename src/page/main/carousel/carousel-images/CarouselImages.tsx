@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, Fragment } from "react";
+import React, { useCallback, useMemo } from "react";
 import { v4 as uuid } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import { TCombinedStates } from "~/src/store";
@@ -14,8 +14,6 @@ const CarouselImages: React.FC = () => {
     (imgWidth: number) => dispatch(setImgWidth(imgWidth)),
     []
   );
-
-  // const carouselImageWidthRef = useRef<HTMLImageElement>(null);
 
   const curIdx = useSelector((state: TCombinedStates) => state.carousel.idx);
 
@@ -54,7 +52,7 @@ const CarouselImages: React.FC = () => {
     [carouselImageUrls, curIdx]
   );
 
-  return <Fragment>{carouselImagesJSX}</Fragment>;
+  return <>{carouselImagesJSX}</>;
 };
 
 export default CarouselImages;

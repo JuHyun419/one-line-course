@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import "./_Backdrop.scss";
 
@@ -8,7 +8,7 @@ interface IBackdropProps {
 }
 
 const Backdrop: React.FC<IBackdropProps> = ({ isUsed, onClose }) => (
-  <Fragment>{isUsed ? <div className="backdrop" onClick={onClose}></div> : null}</Fragment>
+  <>{isUsed ? <div className="backdrop" onClick={onClose}></div> : null}</>
 );
 
 export default Backdrop;

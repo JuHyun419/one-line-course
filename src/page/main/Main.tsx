@@ -68,7 +68,7 @@ const initCarouselImages = (dispatch: Dispatch<unknown>) => {
 
   // TODO: Fetch Random Images times passing by
   useEffect(() => {
-    _initFetchRandomCarouselImages("office");
+    _initFetchRandomCarouselImages("dev");
   }, []);
 };
 
