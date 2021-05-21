@@ -22,7 +22,8 @@
     - Typescript, React, SCSS
     
   - Back End - [`방소연`](https://github.com/bsy3764), [`이주현`](https://github.com/JuHyun419)
-    - Java, Python(크롤링), SpringBoot, Spring Data JPA, Maven, AWS, MySQL
+    - Java, Python(크롤링) 
+    - SpringBoot, Spring Data JPA, MySQL, AWS
 
 <br>
 
