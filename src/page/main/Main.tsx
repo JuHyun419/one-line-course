@@ -51,7 +51,7 @@ const Main: React.FC = () => {
           <SearchResultSummary />
           <SearchResult />
           <GoToTop />
-          <Menu menuMode={EMenuMode.AfterLogin} />
+          <Menu menuMode={EMenuMode.Main} />
           {placeIconsRandomly(30, { fontSize: "2rem" })}
           <Footer />
         </div>
@@ -60,59 +60,31 @@ const Main: React.FC = () => {
   );
 };
 
-const initCarouselImages = (dispatch: Dispatch<unknown>) => {
-  const _initFetchRandomCarouselImages = useCallback(
-    (query: string) => dispatch(initFetch_CarouselImageURLs({ query })),
-    []
-  );
+// TODO: Fetch Random Images times passing by
+const initCarouselImages = (dispatch: Dispatch<unknown>) =>
+  useEffect(() => dispatch(initFetch_CarouselImageURLs({ query: "dev" })), []);
 
-  // TODO: Fetch Random Images times passing by
-  useEffect(() => {
-    _initFetchRandomCarouselImages("dev");
-  }, []);
-};
+const initLectures = (dispatch: Dispatch<unknown>) =>
+  useEffect(() => dispatch(initFetch_RetrieveLectures()), []);
 
-const initLectures = (dispatch: Dispatch<unknown>) => {
-  const _initFetchRetrieveLectures = useCallback(
-    () => dispatch(initFetch_RetrieveLectures()),
-    []
-  );
-
-  useEffect(() => {
-    _initFetchRetrieveLectures();
-  }, []);
-};
-
-const initBookmarks = (dispatch: Dispatch<unknown>) => {
-  const _queryAllMyBookmarks = useCallback(
-    (myUserID: string) => dispatch(initFetch_QueryAllMyBookmarks(myUserID)),
-    []
-  );
-
+const initBookmarks = (dispatch: Dispatch<unknown>) =>
   useEffect(() => {
     const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
     if (myUserID === "" || !myUserID) {
       return;
     }
 
-    _queryAllMyBookmarks(myUserID);
+    dispatch(initFetch_QueryAllMyBookmarks(myUserID));
   }, []);
-};
 
-const initUser = (dispatch: Dispatch<unknown>) => {
-  const _queryUser = useCallback(
-    (myUserID: string) => dispatch(initFetch_QueryUser(myUserID)),
-    []
-  );
-
+const initUser = (dispatch: Dispatch<unknown>) =>
   useEffect(() => {
     const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
     if (myUserID === "" || !myUserID) {
       return;
     }
 
-    _queryUser(myUserID);
+    dispatch(initFetch_QueryUser(myUserID));
   }, []);
-};
 
 export default Main;

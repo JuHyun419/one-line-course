@@ -10,7 +10,7 @@ interface MenuProps {
   menuMode: EMenuMode;
 }
 
-const Menu: React.FC<MenuProps> = ({ menuMode = EMenuMode.AfterLogin }) => {
+const Menu: React.FC<MenuProps> = ({ menuMode = EMenuMode.Main }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const onClickMenu = useCallback(

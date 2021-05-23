@@ -9,7 +9,7 @@ import App from "./App";
 import "./hot-module";
 import "./Ext";
 
-import ReduxProvider from "./store";
+import { ReduxProvider } from "./store";
 import { DarkModeCtxProvider } from "./context/DarkModeCtx";
 
 // import AuthCtxProvider from "./context/AuthCtx";
@@ -28,8 +28,6 @@ ReactDOM.render(
         </AuthCtxProvider>
       </DarkModeCtxProvider>
     </BrowserRouter>
-    {/* <AuthCtxProvider>
-    </AuthCtxProvider> */}
   </React.StrictMode>,
   document.querySelector(".root")
 );

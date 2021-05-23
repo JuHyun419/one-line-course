@@ -12,10 +12,7 @@ const MainNav: React.FC<INavProps> = props => (
   <div className="nav-main">{makeButtonsOnHistory(props)}</div>
 );
 
-const makeButtonsOnHistory = ({
-  highlightBtnIdx,
-  children,
-}: INavProps): JSX.Element => {
+const makeButtonsOnHistory = ({ highlightBtnIdx }: INavProps): JSX.Element => {
   const authCtx = useAuthContext();
   const history = useHistory();
 
@@ -77,12 +74,7 @@ const makeButtonsOnHistory = ({
     [authCtx.isAuth]
   );
 
-  return (
-    <>
-      {jsx}
-      {children}
-    </>
-  );
+  return <>{jsx}</>;
 };
 
 export default MainNav;

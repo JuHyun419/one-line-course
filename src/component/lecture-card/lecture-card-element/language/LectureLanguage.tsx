@@ -7,17 +7,11 @@ interface ILectureLanguageProps {
   language: string;
 }
 
-const LectureLanguage: React.FC<ILectureLanguageProps> = ({ language }) => {
-  const languageIcon = useMemo(
-    () => getIcon("Language", undefined, { marginRight: "10px" }),
-    []
-  );
-  return (
-    <div className="lectureCard--language">
-      {languageIcon}
-      {language}
-    </div>
-  );
-};
+const LectureLanguage: React.FC<ILectureLanguageProps> = ({ language }) => (
+  <div className="lectureCard--language">
+    {getIcon("Language", undefined, { marginRight: "10px" })}
+    {language}
+  </div>
+);
 
 export default LectureLanguage;

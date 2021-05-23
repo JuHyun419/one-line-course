@@ -7,7 +7,6 @@ import AuthCtrl from "~/src/auth/AuthCtrl";
 import Menu from "~/src/component/menu/Menu";
 import Footer from "~/src/component/footer/Footer";
 
-import "./_SignIn.scss";
 import "../_Page.scss";
 
 const SignIn: React.FC<{}> = () => {
@@ -16,7 +15,7 @@ const SignIn: React.FC<{}> = () => {
       <NavFactory navType={ENavType.SignIn} />
       <div className="page">
         <AuthCtrl />
-        <Menu menuMode={EMenuMode.BeforeLogin} />
+        <Menu menuMode={EMenuMode.Others} />
         {placeIconsRandomly(30, { fontSize: "2rem" })}
       </div>
       <Footer />

@@ -177,13 +177,11 @@ const rootReducers: TRootReducer = combineReducers({
   commentAsync_RemoveComment,
 });
 
-const store = createStore(
+export const store = createStore(
   rootReducers,
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-const ReduxProvider: React.FC<{
+export const ReduxProvider: React.FC<{
   children: JSX.Element;
 }> = ({ children }) => <Provider store={store}>{children}</Provider>;
-
-export default ReduxProvider;

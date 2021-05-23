@@ -3,9 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { USERID_SESSION_STORAGE_KEY } from "~/src/common";
 import { TCombinedStates } from "~/src/store";
 import { initFetch_QueryAllMyBookmarks } from "~/src/store/action/user-async";
-import { IBookmarkData } from "~/src/typings";
-
-interface IBookmarkHistoryElementProps {}
 
 const BookmarkHistoryElement: React.FC = () => {
   const userID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
@@ -18,11 +15,14 @@ const BookmarkHistoryElement: React.FC = () => {
     []
   );
 
+  // update bookmarks initially
   useEffect(() => {
-    // update bookmarks initially
     (async () => {
-      if (!userID || !allMyBookmarks) {
-        // check the prerequisites are valid
+      if (!userID) {
+        return;
+      }
+
+      if (!allMyBookmarks) {
         return;
       }
 

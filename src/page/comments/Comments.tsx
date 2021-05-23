@@ -21,7 +21,7 @@ const Comments = () => {
       <div className="page comments">
         <CommentsHistory />
         <GoToTop />
-        <Menu menuMode={EMenuMode.BeforeLogin} />
+        <Menu menuMode={EMenuMode.Others} />
         {placeIconsRandomly(30, { fontSize: "2rem" })}
       </div>
     </div>
@@ -37,11 +37,7 @@ const initCommentsHistory = () => {
   );
 
   useEffect(() => {
-    const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
-    console.log(myUserID);
-    if (myUserID === null) {
-      return;
-    }
+    const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY)!;    
     _queryAllMyComments(myUserID);
   }, []);
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { joinClasses } from "./";
 import { IconClassNames } from "./IconsResources";
 
@@ -12,16 +12,16 @@ type TIconStyles = { [propName: string]: string | number };
  * @param additionalStyles
  * @returns
  */
-export const getIcon = (
+export const getIconJSX = (
   iconName: string,
   onClick?: ((e: React.MouseEvent<HTMLElement>) => void) | (() => void),
   additionalStyles?: TIconStyles,
   additionalAttributes?: any
-): JSX.Element | null | undefined => {
-  const classes = IconClassNames.get(iconName.trim());
-  return classes ? (
+) => {
+  const classNames = IconClassNames.get(iconName.trim());
+  return classNames ? (
     <i
-      className={joinClasses("icon", ...classes)}
+      className={joinClasses("icon", ...classNames)}
       style={additionalStyles}
       onClick={onClick}
       {...additionalAttributes}
@@ -29,13 +29,14 @@ export const getIcon = (
   ) : null;
 };
 
-export const placeIconsRandomly = (
+export const placeIconsJSXRandomly = (
   count: number,
   additionalStyles?: TIconStyles
-): JSX.Element | null | undefined => {
-  if (count > 30 || count < 0) {
-    throw new Error("random icons can't be under 0 or over 30!");
-  }
+) => {
+  // TODO: fix the boundary at the end
+  // if (count > 30 || count < 0) {
+  //   throw new Error("random icons can't be under 0 or over 30!");
+  // }
 
   const asArr = Array.from(IconClassNames.values());
   const iconsJSX: Array<JSX.Element> = [];
@@ -55,5 +56,5 @@ export const placeIconsRandomly = (
     );
   }
 
-  return <div>{iconsJSX}</div>;
+  return <>{iconsJSX}</>;
 };

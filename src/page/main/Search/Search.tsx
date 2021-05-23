@@ -1,5 +1,5 @@
 import React from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { TCombinedStates } from "../../../store";
 
 import SearchCtrl from "./search-ctrl/SearchCtrl";
@@ -11,14 +11,6 @@ const Search: React.FC = () => {
   const isSearchLoading = useSelector(
     (state: TCombinedStates) => state.searchAsync.isLoading
   );
-
-  // const errorJSX = useSelector(
-  //   (state: TCombinedStates) => state.searchAsync.err,
-  //   shallowEqual
-  // );
-  // if (errorJSX) {
-  //   // TODO: Render Error
-  // }
 
   return (
     <div className="search">

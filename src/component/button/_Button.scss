@@ -5,7 +5,7 @@
   width: #{$width}px;
   height: #{$height}px;
   background-color: $color;
-  color: #fff;
+  color: var(--color-text-white);
 
   border-radius: 5px;
 

@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap");
+@import "./common/ColorScheme";
+
+:root {
+  --color-border-default: #{$color-border-default};
+  --color-border-darker: #{$color-border-darker};
+  --color-text-white: #{$color-text-white};
+  --color-text-black: #{$color-text-black};
+}
 
 * {
   margin: 0;

@@ -3,7 +3,7 @@
 .lectureCard-grid {
   padding: 5px 10px;
 
-  border: 1px dashed #000;
+  border: 1px dashed var(--color-border-default);
   border-radius: 5px;
 
   width: 400px;
@@ -13,6 +13,7 @@
   font-size: 1.3rem;
 
   background-color: $color-nav-weak;
+  color: var(--color-text-black);
 
   .lectureCard-grid-desc {
     // min-height: 25%;

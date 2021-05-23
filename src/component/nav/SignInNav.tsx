@@ -2,8 +2,6 @@ import React from "react";
 
 import "./_Nav.scss";
 
-const SignInNav: React.FC<INavProps> = ({ children }) => {
-  return <div className="nav-signIn">{children}</div>;
-};
+const SignInNav: React.FC<INavProps> = () => <div className="nav-signIn"></div>;
 
 export default SignInNav;

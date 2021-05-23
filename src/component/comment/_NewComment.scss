@@ -1,8 +1,10 @@
+@import "../../common/ColorScheme";
+
 .comment--new-comment {
   display: flex;
   flex-direction: row;
 
-  border: 1px solid #000;
+  border: 1px solid var(--color-border-default);
   background-color: rgba(155, 155, 155, 0.05);
 
   position: relative;

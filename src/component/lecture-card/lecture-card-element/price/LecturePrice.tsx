@@ -27,10 +27,10 @@ const LecturePrice: React.FC<ILecturePriceProps> = ({ price, currency }) => {
       finalPrice = price === 0 ? "무료" : `${price} 원`;
       break;
   }
-  const priceIcon = getIcon(currencyID, undefined, { marginRight: "10px" });
+
   return (
     <div className="lectureCard--price">
-      {priceIcon}
+      {getIcon(currencyID, undefined, { marginRight: "10px" })}
       {finalPrice}
     </div>
   );

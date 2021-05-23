@@ -12,20 +12,19 @@ const LectureThumbnail: React.FC<ILectureThumbnailProps> = ({
   imageURL,
   title,
   isCard = true,
-}) => {
-  return (
-    <>
-      {imageURL ? (
-        <img
-          src={imageURL}
-          alt={`thumbnail--${title}`}
-          loading="lazy"
-          className={
-            isCard ? "lectureCard--thumbnail" : "lecturePopup--thumbnail"
-          }
-        />
-      ) : null}
-    </>
-  );
-};
+}) => (
+  <>
+    {imageURL ? (
+      <img
+        src={imageURL}
+        alt={`thumbnail--${title}`}
+        loading="lazy"
+        className={
+          isCard ? "lectureCard--thumbnail" : "lecturePopup--thumbnail"
+        }
+      />
+    ) : null}
+  </>
+);
+
 export default LectureThumbnail;

@@ -34,8 +34,8 @@ export interface TOnClickButton<T extends HTMLElement> {
  *
  */
 export enum EMenuMode {
-  BeforeLogin,
-  AfterLogin,
+  Others,
+  Main,
 }
 
 /**

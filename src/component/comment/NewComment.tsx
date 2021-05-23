@@ -59,7 +59,10 @@ const NewComment: React.FC<INewCommentProps> = ({ lectureId }) => {
         {userNameJSX}
       </div>
       <div className="comment--new-comment-col2">
-        <CommentTextArea setContents={setCommentContents} value={commentContents}/>
+        <CommentTextArea
+          setContents={setCommentContents}
+          value={commentContents}
+        />
         <Button
           btnSize={EButtonSize.Small}
           btnType={EButtonType.Warning}

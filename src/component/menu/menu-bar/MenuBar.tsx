@@ -70,14 +70,14 @@ const makeMenuBarItems = (
   };
 
   switch (menuMode) {
-    case EMenuMode.BeforeLogin:
-      return makeMenuBarItemsBeforeLogin(
+    case EMenuMode.Others:
+      return makeMenuBarItemsOthers(
         darkModeCtx.toggleDarkMode,
         sunIconStyles,
         moonIconStyles
       );
 
-    case EMenuMode.AfterLogin:
+    case EMenuMode.Main:
       const viewModeIndicatorForGrid = {
         border: viewModeCtx.isGrid ? indicatorBorder : "0",
       };
@@ -96,7 +96,7 @@ const makeMenuBarItems = (
         ...viewModeIndicatorForList,
       };
 
-      return makeMenuBarItemsAfterLogin(
+      return makeMenuBarItemsMain(
         darkModeCtx.toggleDarkMode,
         viewModeCtx.toggleViewMode,
         sunIconStyles,
@@ -110,10 +110,10 @@ const makeMenuBarItems = (
   }
 };
 
-const makeMenuBarItemsBeforeLogin = (
+const makeMenuBarItemsOthers = (
   toggleDarkMode: () => void,
   ...iconStyles: Array<{ [content: string]: string }>
-): JSX.Element => (
+) => (
   // only sun & moon
   <>
     {getIcon("Sun", toggleDarkMode, iconStyles[0])}
@@ -121,7 +121,7 @@ const makeMenuBarItemsBeforeLogin = (
   </>
 );
 
-const makeMenuBarItemsAfterLogin = (
+const makeMenuBarItemsMain = (
   toggleDarkMode: () => void,
   toggleViewMode: () => void,
   ...iconStyles: Array<{ [content: string]: string }>

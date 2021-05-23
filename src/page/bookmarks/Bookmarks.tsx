@@ -26,38 +26,20 @@ const Bookmarks = () => {
       <div className="page bookmarks">
         <BookmarksHistory />
         <GoToTop />
-        <Menu menuMode={EMenuMode.BeforeLogin} />
+        <Menu menuMode={EMenuMode.Others} />
         {placeIconsRandomly(30, { fontSize: "2rem" })}
       </div>
     </div>
   );
 };
 
-const initBookmarks = (dispatch: Dispatch<unknown>) => {
-  const _queryAllMyBookmarks = useCallback(
-    (myUserID: string) => dispatch(initFetch_QueryAllMyBookmarks(myUserID)),
-    []
-  );
-
+const initBookmarks = (dispatch: Dispatch<unknown>) =>
   useEffect(() => {
     const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
-    if (myUserID === "" || !myUserID) {
-      return;
-    }
-
-    _queryAllMyBookmarks(myUserID);
+    dispatch(initFetch_QueryAllMyBookmarks(myUserID!));
   }, []);
-};
 
-const initLectures = (dispatch: Dispatch<unknown>) => {
-  const _initFetch = useCallback(
-    () => dispatch(initFetch_RetrieveLectures()),
-    []
-  );
-
-  useEffect(() => {
-    _initFetch();
-  }, []);
-};
+const initLectures = (dispatch: Dispatch<unknown>) =>
+  useEffect(() => dispatch(initFetch_RetrieveLectures()), []);
 
 export default Bookmarks;

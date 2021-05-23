@@ -3,7 +3,7 @@
 .keywordSelector {
   display: flex;
   flex-direction: row;
-  border: 2px dashed #000;
+  border: 2px dashed var(--color-border-default);
   border-radius: 25px;
 
   padding: 15px 25px;
@@ -53,7 +53,7 @@
         background-color: $color-not-selected;
         color: #fff;
 
-        border: 1px solid #000;
+        border: 1px solid var(--color-border-darker);
         border-radius: 15px;
         padding: 5px 15px;
         margin-right: 5px;

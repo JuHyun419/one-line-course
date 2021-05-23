@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import MoveToNextPage from "../moveToPage/MoveToNextPage";
 import MoveToPreviousPage from "../moveToPage/MoveToPreviousPage";
-
+import useMoveToNextPage from "./useMoveToNextPage";
+import useMoveToPreviousPage from "./useMoveToPreviousPage";
 
 interface IPagenatorProps {
   postsPerPage: number;
@@ -55,48 +56,6 @@ const Pagenator: React.FC<IPagenatorProps> = ({ postsPerPage, children }) => {
       {pagedPosts}
     </>
   );
-};
-
-const useMoveToPreviousPage = (
-  currentPage: number,
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
-) => {
-  const onClick = useCallback(
-    _ => {
-      if (currentPage === 0) {
-        return;
-      }
-      setCurrentPage(prv => prv - 1);
-    },
-    [currentPage]
-  );
-
-  const isDisabled = useMemo(() => currentPage === 0, [currentPage]);
-
-  return { onClick, isDisabled };
-};
-
-const useMoveToNextPage = (
-  currentPage: number,
-  totalPage: number,
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
-) => {
-  const onClick = useCallback(
-    _ => {
-      if (currentPage >= totalPage - 1) {
-        return;
-      }
-      setCurrentPage(prv => prv + 1);
-    },
-    [currentPage, totalPage]
-  );
-
-  const isDisabled = useMemo(
-    () => currentPage >= totalPage - 1,
-    [currentPage, totalPage]
-  );
-
-  return { onClick, isDisabled };
 };
 
 export default Pagenator;

@@ -3,26 +3,27 @@ import React from "react";
 import { TFooterDevCardData, FooterDevCardData } from "./FooterDevCardData";
 
 import { getIcon } from "../../../common";
+
 import "../_Footer.scss";
 
-
-const FooterDevCard: React.FC<{}> = () => {
-  const devCardsJSX: Array<JSX.Element> = FooterDevCardData.map(
-    (d: TFooterDevCardData) => (
-      <div className="footer-dev-card" key={d.name}>
+const FooterDevCard: React.FC = () => {
+  const devCardsJSX = FooterDevCardData.map((data: TFooterDevCardData) => {
+    const { name, portrait, position, gitHubRepoLink } = data;
+    return (
+      <div key={name} className="footer-dev-card">
         <div className="left">
-          {/* <img src={d.portrait} alt="portrait photo" /> */}
-          {getIcon(d.portrait, undefined, { fontSize: "2.3rem" })}
-          <h2>{d.name}</h2>
+          {getIcon(portrait, undefined, { fontSize: "2.3rem" })}
+          <h2>{name}</h2>
         </div>
         <div className="right">
-          <p>{d.position}</p>
+          <p>{position}</p>
           {/* TODO: Link to real repo */}
-          <p>{d.gitHubRepoLink}</p>
+          <p>{gitHubRepoLink}</p>
         </div>
       </div>
-    )
-  );
+    );
+  });
+
   return <div className="footer-dev-cards">{devCardsJSX}</div>;
 };
 

@@ -103,7 +103,7 @@ const useKakaoLoginCallback = () => {
           // console.error(onFail);
         },
       }),
-    [_createUser]
+    []
   );
 
   return loginWithKakao;

@@ -21,21 +21,23 @@ const isKorean = (input: string) => input.match(koreanCheckReg) !== null;
 export const useSuggestion = () => {
   const nextInputAwaitTimer = useRef<NodeJS.Timeout>();
   const dispatch = useDispatch();
+
   const suggestions = useSelector(
     (state: TCombinedStates) => state.searchSuggestion.suggestions
   );
-  const _setSuggestion = useCallback(
+  const _setSuggestionResult = useCallback(
     (suggestion: string[]) => dispatch(setSuggestion(suggestion)),
-    [dispatch]
+    []
   );
   const _setInput = useCallback(
     (input: string) => dispatch(setCurrentInput(input)),
-    [dispatch]
+    []
   );
 
   return useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       _setInput(e.target.value);
+
       // dispose the time if it already exists
       if (nextInputAwaitTimer.current) {
         clearTimeout(nextInputAwaitTimer.current);
@@ -43,18 +45,23 @@ export const useSuggestion = () => {
 
       nextInputAwaitTimer.current = setTimeout(() => {
         const { value } = e.target;
-        // match regex with input and decide whether using Korean or English
-        // and suggest
+        // match regex with input and decide whether using Korean or English and suggest
 
         suggest(
           isKorean(value) ? keywordsKoreanAsArr : keywordsEnglishAsArr,
           value,
           suggestions,
-          _setSuggestion
+          _setSuggestionResult
         );
+
+        return () => {
+          if (nextInputAwaitTimer.current) {
+            clearTimeout(nextInputAwaitTimer.current);
+          }
+        };
       }, 300);
     },
-    [keywordsEnglishAsArr, keywordsKoreanAsArr, _setSuggestion]
+    [keywordsEnglishAsArr, keywordsKoreanAsArr]
   );
 };
 
@@ -62,14 +69,14 @@ const suggest = (
   keywords: string[],
   input: string,
   suggestions: string[],
-  _setSuggestion: (suggestion: string[]) => ISetSuggestion
+  _setSuggestionResult: (suggestion: string[]) => ISetSuggestion
 ) => {
   // no empty input allowed
   if (input === "") {
     // wipe out the previous suggestions if any remains
     // if (suggestions && suggestions.length > 0) {
     // }
-    _setSuggestion([]);
+    _setSuggestionResult([]);
 
     return;
   }
@@ -78,11 +85,7 @@ const suggest = (
   const matchedKeywords: string[] = keywords.filter((keywords: string) =>
     keywords.includes(input)
   );
-  // disapatch action to the store
-  _setSuggestion(matchedKeywords);
 
-  // console.log(
-  //   `keywords query count : ${keywords.length}`,
-  //   `\nmatched keywords : ${matchedKeywords}`
-  // );
+  // disapatch action to the store
+  _setSuggestionResult(matchedKeywords);
 };

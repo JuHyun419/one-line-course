@@ -10,21 +10,20 @@ import "./_SearchCtrl.scss";
 const SearchCtrl: React.FC<{}> = () => {
   const { isSearchBarClosed, _toggleSearchBar } = useToggleSearchBar();
 
-  const searchIcon: JSX.Element = useMemo(
-    () => getIcon("Search", toggleSearchBar, { fontSize: "2rem" })!,
-    []
-  );
+  const searchIconJSX = getIcon("Search", toggleSearchBar, {
+    fontSize: "2rem",
+  })!;
 
   return (
     <div className="searchCtrl">
-      {!isSearchBarClosed && <SearchBar searchIcon={searchIcon} />}
+      {!isSearchBarClosed && <SearchBar searchIcon={searchIconJSX!} />}
       <button
         className={
           isSearchBarClosed ? "searchBar-toggle" : "searchBar-toggle active"
         }
         onClick={_toggleSearchBar}
       >
-        {searchIcon}
+        {getIcon("Search", toggleSearchBar, { fontSize: "2rem" })}
       </button>
     </div>
   );

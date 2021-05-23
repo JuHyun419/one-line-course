@@ -12,12 +12,8 @@ const CommentTextArea: React.FC<ICommentTextAreaProps> = ({
   value,
 }) => {
   const onChangeTextArea = useCallback(
-    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      console.log(e.target.value);
-
-      setContents(e.target.value!);
-    },
-    [setContents]
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => setContents(e.target.value!),
+    []
   );
 
   return (
