@@ -6,8 +6,8 @@ interface ICommentContentsProps {
   contents: string;
 }
 
-const CommentContents: React.FC<ICommentContentsProps> = ({ contents }) => {
-  return <div className="comment--contents">{contents}</div>;
-};
+const CommentContents: React.FC<ICommentContentsProps> = ({ contents }) => (
+  <div className="comment--contents">{contents}</div>
+);
 
 export default CommentContents;

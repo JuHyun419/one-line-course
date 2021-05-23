@@ -1,4 +1,5 @@
 @import "../../../../common/BoxShadow";
+@import "../../../../common/ColorScheme";
 
 .searchCtrl {
   margin-top: 15px;
@@ -16,7 +17,7 @@
 
   background-color: #fff;
 
-  border: 0.7px dashed rgba(150, 150, 150, 0.6);
+  border: 0.7px dashed var(--color-border-default);
   border-radius: 15px;
 
   @include make-box-shadow(1, 1, 1);

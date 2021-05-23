@@ -11,7 +11,7 @@ export const setImageIndicatorCurIdx = (idx: number): ISetImageIndicatorCurIdxAc
 });
 
 export const setImagePlacerRef = (
-  ref: React.RefObject<HTMLDivElement>
+  ref: React.RefObject<HTMLDivElement> | null
 ): ISetImagePlacerRefAction => ({
   type: ECarouselActionType.Set_ImagePlacerRef,
   ref,

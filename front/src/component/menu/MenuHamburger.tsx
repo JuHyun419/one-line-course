@@ -2,10 +2,10 @@ import React from "react";
 
 import { joinClasses } from "../../common/StyleHelper";
 
-const MenuHamburger: React.FC<{}> = () => (
-  <React.Fragment>
+const MenuHamburger: React.FC = () => (
+  <>
     <div className={joinClasses("menu", "hamburger")}></div>
-  </React.Fragment>
+  </>
 );
 
 export default MenuHamburger;

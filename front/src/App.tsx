@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-import landingPage from "./page/landing/Landing";
 const signInPage = React.lazy(() => import("./page/signIn/SignIn"));
 const mainPage = React.lazy(() => import("./page/main/Main"));
 const commentsPage = React.lazy(() => import("./page/comments/Comments"));
@@ -12,18 +11,20 @@ const notFoundPage = React.lazy(() => import("./page/not-found/NotFound"));
 import Loading from "./component/loading/Loading";
 
 import "./app.scss";
+import { useDarkModeContext } from "./context/DarkModeCtx";
 
 const App = () => {
+  const darkModeCtx = useDarkModeContext();
+
   let routeJSX = (
     <Suspense fallback={<Loading />}>
       <Switch>
         <Route path="/signIn" component={signInPage} />
-        <Route path="/main" component={mainPage} />
         <Route path="/comments" component={commentsPage} />
         <Route path="/bookmarks" component={bookmarksPage} />
         <Route path="/logout" component={logOutPage} />
 
-        <Route path="/" exact component={landingPage} />
+        <Route path="/" component={mainPage} />
 
         <Redirect to="/notFound" />
         <Route path="/notFound" component={notFoundPage} />
@@ -31,7 +32,11 @@ const App = () => {
     </Suspense>
   );
 
-  return <div className="app">{routeJSX}</div>;
+  return (
+    <div className={["app", darkModeCtx.isDark ? "dark" : ""].join(" ").trim()}>
+      {routeJSX}
+    </div>
+  );
 };
 
 export default App;

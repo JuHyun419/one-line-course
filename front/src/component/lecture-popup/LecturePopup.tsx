@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
+import ReactDOM from "react-dom";
 import Backdrop from "../backdrop/Backdrop";
 import LecturePopupComments from "./LecturePopupComments";
 
@@ -14,20 +15,19 @@ const LecturePopup: React.FC<ILecturePopupProps> = ({
   lectureID,
   children,
   onClose,
-}) => {
-  console.log("lecture ID", lectureID);
-
-  return (
-    <Fragment>
-      <Backdrop isUsed={true} onClose={onClose} />
-      <div className="lecturePopup">
-        <div className="lecturePopup--lecture">
-          {children}
-          <LecturePopupComments lectureID={lectureID} />
-        </div>
+}) => (
+  <>
+    {ReactDOM.createPortal(
+      <Backdrop isUsed={true} onClose={onClose} />,
+      document.getElementById("backdrop-root")!
+    )}
+    <div className="lecturePopup">
+      <div className="lecturePopup--lecture">
+        {children}
+        <LecturePopupComments lectureID={lectureID} />
       </div>
-    </Fragment>
-  );
-};
+    </div>
+  </>
+);
 
 export default LecturePopup;

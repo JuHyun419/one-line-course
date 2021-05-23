@@ -34,17 +34,16 @@ export interface TOnClickButton<T extends HTMLElement> {
  *
  */
 export enum EMenuMode {
-  BeforeLogin,
-  AfterLogin,
+  Others,
+  Main,
 }
 
 /**
  *
  */
 export enum ENavType {
-  Landing,
   SignIn,
-  AfterLogin,
+  Main,
 }
 
 /**
@@ -83,17 +82,18 @@ export interface IUserData {
 }
 
 export interface IBookmarkData {
-  id: number;
+  id?: number;
   lectureId: number;
   createdAt: Date; // 예: Sun Apr 25 2021 21:29:32 GMT+0900 (Korean Standard Time)
 }
 
 export interface ICommentData {
-  id: number;
+  id?: number;
   userId: string;
+  lectureId: number;
   content: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 /**
@@ -152,6 +152,7 @@ export enum ESearchResultActionType {
   Start_Search = "START_SEARCH",
   Succeed_Search = "SUCCEED_SEARCH",
   Fail_Search = "FAIL_SEARCH",
+  Clear_Search = "CLEAR_SEARCH",
 
   Toggle_ResultView = "TOGGLE_RESULT_VIEW",
 }
@@ -211,12 +212,11 @@ export enum ECommentAsync_QueryAllComments_ActionType {
   FetchFail = "FETCH_FAIL_QUERY_ALL_COMMENTS",
 }
 
-export enum ECommentActionType {
-  // Set_ImageURL ="SET_COMMENT_IMAGE_URL",
-  // Set_UserName = "SET_COMMENT_USER_NAME",
-  // Set_Contents = "SET_COMMENT_CONTENTS",
-  // Set_CreatedAt = "SET_COMMENT_CREATED_AT",
-}
+export enum ECommentActionType {}
+// Set_ImageURL ="SET_COMMENT_IMAGE_URL",
+// Set_UserName = "SET_COMMENT_USER_NAME",
+// Set_Contents = "SET_COMMENT_CONTENTS",
+// Set_CreatedAt = "SET_COMMENT_CREATED_AT",
 // Set_
 
 export enum ELectureActionType {

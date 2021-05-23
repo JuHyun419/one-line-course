@@ -1,18 +1,14 @@
 .commentsHistory {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // width: auto;
+  width: 80%;
   margin: 0 auto;
 
-  &--one-day {
-    // width: 100%;
+  position: relative;
+  margin-top: 10%;
 
+  &--one-day {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    // width: 100%;
   }
 
   & &--created-at {
@@ -31,5 +27,7 @@
 
   & &--comment {
     width: auto;
+    
+
   }
 }

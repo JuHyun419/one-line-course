@@ -2,21 +2,19 @@ import { IBookmarkData, TStatusCode } from "~/src/typings";
 import { axiosInstance_Server } from "./Axios";
 
 export const post_AddBookmark = async (
-  userID: string,
+  userId: string,
   bookmarkData: IBookmarkData
-): Promise<TStatusCode> => {
-  if (userID === "") {
-    throw new Error("userID can't be empty");
-  }
-
+): Promise<{
+  createdBookmark: IBookmarkData;
+  status: TStatusCode;
+}> => {
   try {
-    const { status } = await axiosInstance_Server.post(
-      `/bookmarks/user/${userID}`,
-      {
-        bookmarkData,
-      }
-    );
-    return status;
+    const { data, status } = await axiosInstance_Server.post(`/bookmarks`, {
+      userId,
+      lectureId: bookmarkData.lectureId,
+    });
+    const createdBookmark = data as IBookmarkData;
+    return { createdBookmark, status };
   } catch (err) {
     throw new Error(err);
   }
@@ -25,11 +23,6 @@ export const post_AddBookmark = async (
 export const delete_RemoveBookmark = async (
   bookmarkID: number
 ): Promise<TStatusCode> => {
-  // TODO: bookmarkID Validation
-  // if (bookmarkId === "") {
-  //   throw new Error("bookmarkId can't be empty");
-  // }
-
   try {
     const { status } = await axiosInstance_Server.delete(
       `/bookmarks/${bookmarkID}`
@@ -39,4 +32,3 @@ export const delete_RemoveBookmark = async (
     throw new Error(err);
   }
 };
-

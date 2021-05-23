@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   closeSearchBar,
@@ -11,8 +11,7 @@ import { TCombinedStates } from "../../../../../store";
 
 export const useToggleSearchBar = () => {
   const isSearchBarClosed = useSelector(
-    (state: TCombinedStates) => state.searchBar.isSearchBarClose,
-    shallowEqual
+    (state: TCombinedStates) => state.searchBar.isSearchBarClose
   );
 
   const dispatch = useDispatch();

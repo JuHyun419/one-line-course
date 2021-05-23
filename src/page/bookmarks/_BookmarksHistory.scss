@@ -1,8 +1,34 @@
 .bookmarksHistory {
+  width: 80%;
+  margin: 0 auto;
 
-  & &--one-day {
+  position: relative;
+  margin-top: 10%;
 
+  &--one-day {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    // justify-content: center;
+
+    list-style-type: none;
   }
 
-  
+  & &--created-at {
+    margin: 10px 5px;
+    font-size: 2rem;
+    text-align: justify;
+  }
+
+  & &--separator {
+    width: 90%;
+    height: 1px;
+    background-color: #000;
+
+    margin: 15px;
+  }
+
+  & &--lecture {
+    margin-right: 10px;
+  }
 }

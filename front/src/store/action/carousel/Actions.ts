@@ -7,7 +7,7 @@ export interface ISetImageIndicatorCurIdxAction {
 
 export interface ISetImagePlacerRefAction {
   type: ECarouselActionType.Set_ImagePlacerRef;
-  ref: React.RefObject<HTMLDivElement>;
+  ref: React.RefObject<HTMLDivElement> | null;
 }
 
 export interface ISetImageWidthAction {

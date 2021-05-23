@@ -8,20 +8,15 @@ interface ILectureSkillsProps {
 }
 
 const LectureSkills: React.FC<ILectureSkillsProps> = ({ skills }) => {
-  const eachSkills: JSX.Element[] = useMemo(
-    () =>
-      skills
-        ?.split(",")
-        .map((skill: string) => `${skill} `)
-        .map(skill => <li>{skill}</li>),
+  const eachSkillsJSXs: JSX.Element[] = useMemo(
+    () => skills?.split(",").map((skill: string) => <li>{skill}</li>),
     [skills]
   );
-  const skillIcon = getIcon("Language", undefined, { marginRight: "10px" });
 
   return (
     <div className="lectureCard--skills">
-      {skillIcon}
-      <div className="lectureCard--skills-each">{eachSkills}</div>
+      {getIcon("Language", undefined, { marginRight: "10px" })}
+      <div className="lectureCard--skills-each">{eachSkillsJSXs}</div>
     </div>
   );
 };

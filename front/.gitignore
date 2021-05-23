@@ -15,6 +15,7 @@ node_modules/
 /coverage
 
 # dev
+.cache/
 dist/
 .parcel-cache/
 

@@ -7,14 +7,11 @@ interface ILectureViewCountProps {
   viewCount: number;
 }
 
-const LectureViewCount: React.FC<ILectureViewCountProps> = ({ viewCount }) => {
-  const viewCountIcon = getIcon("Users", undefined, { marginRight: "10px" });
-  return (
-    <div>
-      {viewCountIcon}
-      {viewCount} 명
-    </div>
-  );
-};
+const LectureViewCount: React.FC<ILectureViewCountProps> = ({ viewCount }) => (
+  <>
+    {getIcon("Users", undefined, { marginRight: "10px" })}
+    {viewCount} 명
+  </>
+);
 
 export default LectureViewCount;

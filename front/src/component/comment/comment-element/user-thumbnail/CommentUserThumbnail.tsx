@@ -10,16 +10,14 @@ interface ICommentUserThumbnailProps {
 const CommentUserThumbnail: React.FC<ICommentUserThumbnailProps> = ({
   imageURL,
   altName,
-}) => {
-  return (
-    <img
-      src={imageURL}
-      alt={`${altName}'s thumbnail`}
-      // TODO: default image in the case of when image is loaded invalid
-      className="comment--user-thumbnail"
-      loading="lazy"
-    ></img>
-  );
-};
+}) => (
+  <img
+    src={imageURL}
+    alt={`${altName}'s thumbnail`}
+    // TODO: default image in the case of when image is loaded invalid
+    className="comment--user-thumbnail"
+    loading="lazy"
+  ></img>
+);
 
 export default CommentUserThumbnail;

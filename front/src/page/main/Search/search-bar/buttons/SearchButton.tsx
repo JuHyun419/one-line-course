@@ -3,11 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { TCombinedStates } from "../../../../../store";
 
-import {
-  EButtonSize,
-  EButtonType,
-  ILectureData,
-} from "../../../../../typings";
+import { EButtonSize, EButtonType, ILectureData } from "../../../../../typings";
 import Button from "../../../../../component/button/Button";
 
 import { initSearch } from "../../../../../store/action/search-result";
@@ -45,16 +41,15 @@ const useOnClickSearchBtn = () => {
   );
 
   // start search
-  const _initSearch = useCallback(() => {
-    // console.log("selected keywords ", selectedKeywords);
-    // console.log("selected platforms ", selectedPlatforms);
+  const _initSearch = useCallback(
+    () => dispatch(initSearch(selectedPlatforms, selectedKeywords, lectures)),
+    [selectedPlatforms, selectedKeywords, lectures]
+  );
 
-    dispatch(initSearch(selectedPlatforms, selectedKeywords, lectures));
-  }, [selectedPlatforms, selectedKeywords, lectures]);
-
-  return useCallback((_: React.MouseEvent<HTMLDivElement>) => _initSearch(), [
-    _initSearch,
-  ]);
+  return useCallback(
+    (_: React.MouseEvent<HTMLDivElement>) => _initSearch(),
+    [_initSearch]
+  );
 };
 
 export default SearchButton;
