@@ -8,16 +8,16 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
-@ToString
+@ToString(exclude = {"bookmarks", "comments"})
 @Entity // JPA에서 사용한 Entity class 선언, 테이블과 링크될 클래스
 @Table(name = "Users")  // JPA에서 DB를 매칭할 테이블명
 public class User {
 
-    @Id // 기본키(PK)로 지정
+    @Id
     @Column(name = "id")
     private String id;
 
-    @Column(name = "email", length = 50, nullable = false)  // 테이블의 컬럼을 나타내며 선언하지 않더라고 해당 클래스의 필드는 모두 컬럼이 됨
+    @Column(name = "email", length = 50, nullable = false)
     private String email;
 
     @Column(name = "name", length = 20, nullable = false)
@@ -36,11 +36,17 @@ public class User {
     private List<Comment> comments;
 
     @Builder    // 모든 필드에 대해서 매개변수를 받는 기본 생성자를 생성
-    public User(String id, String email, String name, String imageUrl, String platform) {
+    public User(final String id, final String email, final String name, final String imageUrl, final String platform) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.imageUrl = imageUrl;
         this.platform = platform;
+    }
+
+    public User update(final String name, final String imageUrl) {
+        this.name = name;
+        this.imageUrl = imageUrl;
+        return this;
     }
 }
