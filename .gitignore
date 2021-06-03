@@ -2,6 +2,8 @@
 
 .env
 .vscode/
+.cache/
+.parcel-cache/
 
 # local history - vscode ext
 .history/
