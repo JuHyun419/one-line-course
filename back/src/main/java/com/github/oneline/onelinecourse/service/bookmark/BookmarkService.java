@@ -28,16 +28,16 @@ public class BookmarkService {
     private final LectureRepository lectureRepository;
 
     @Transactional
-    public Bookmark createBookmark(String userId, Long lectureId) {
+    public Bookmark createBookmark(final String userId, final Long lectureId) {
         checkNotNull(userId, "userId must be provided");
         checkNotNull(lectureId, "lectureId must be provided");
 
-        User user = userRepository.findById(userId)
+        final User user = userRepository.findById(userId)
                 .orElseThrow(UserNotFoundException::new);
-        Lecture lecture = lectureRepository.findById(lectureId)
+        final Lecture lecture = lectureRepository.findById(lectureId)
                 .orElseThrow(LectureNotFoundException::new);
 
-        Bookmark newBookmark = Bookmark.builder()
+        final Bookmark newBookmark = Bookmark.builder()
                 .user(user)
                 .lecture(lecture)
                 .build();
@@ -48,17 +48,19 @@ public class BookmarkService {
     @Transactional(readOnly = true)
     public List<Bookmark> findAllUserBookmark(final String userId) {
         checkNotNull(userId, "userId must be provided");
-        return bookmarkRepository.findAllByUserId(userId);
+
+        final User user = userRepository.findById(userId)
+                .orElseThrow(UserNotFoundException::new);
+        return bookmarkRepository.findAllByUser(user);
     }
 
     // 북마크 해제
     @Transactional
-    public void deleteBookmark(Long bookmarkId) {
+    public void deleteBookmark(final Long bookmarkId) {
         checkNotNull(bookmarkId, "bookmarkId must be provided");
 
-        Bookmark bookmark = bookmarkRepository.findById(bookmarkId)
+        final Bookmark bookmark = bookmarkRepository.findById(bookmarkId)
                 .orElseThrow(BookmarkNotFoundException::new);
-
         bookmarkRepository.delete(bookmark);
     }
 

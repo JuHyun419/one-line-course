@@ -2,6 +2,7 @@ package com.github.oneline.onelinecourse.service.comment;
 
 import com.github.oneline.onelinecourse.common.error.exception.BookmarkNotFoundException;
 import com.github.oneline.onelinecourse.common.error.exception.CommentNotFoundException;
+import com.github.oneline.onelinecourse.common.error.exception.LectureNotFoundException;
 import com.github.oneline.onelinecourse.common.error.exception.UserNotFoundException;
 import com.github.oneline.onelinecourse.model.comment.Comment;
 import com.github.oneline.onelinecourse.model.lecture.Lecture;
@@ -32,16 +33,14 @@ public class CommentService {
         checkNotNull(userId, "userId must be provided");
         checkNotNull(lectureId, "lectureId must be provided");
 
-        Comment newComment = convertToComment(comment, userId, lectureId);
-
+        final Comment newComment = convertToComment(comment, userId, lectureId);
         return commentRepository.save(newComment);
     }
 
     private Comment convertToComment(final Comment comment, final String userId, final Long lectureId) {
-        User user = userRepository.findById(userId)
+        final User user = userRepository.findById(userId)
                 .orElseThrow(UserNotFoundException::new);
-
-        Lecture lecture = lectureRepository.findById(lectureId)
+        final Lecture lecture = lectureRepository.findById(lectureId)
                 .orElseThrow(BookmarkNotFoundException::new);
 
         return Comment.builder()
@@ -68,22 +67,27 @@ public class CommentService {
 
         final Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(CommentNotFoundException::new);
-
         commentRepository.delete(comment);
     }
 
+    // TODO: 존재하지 않는 강의에 대한 검증 추가
     @Transactional(readOnly = true)
     public List<Comment> findAllLectureComments(final Long lectureId) {
         checkArgument(lectureId > 0, "lectureId must be positive number");
 
-        return commentRepository.findAllByLectureIdOrderByCreatedAtDesc(lectureId);
+        final Lecture lecture = lectureRepository.findById(lectureId)
+                .orElseThrow(LectureNotFoundException::new);
+        return commentRepository.findAllByLectureOrderByCreatedAtDesc(lecture);
     }
 
+    // TODO: 존재하지 않는 유저에 대한 검증 추가
     @Transactional(readOnly = true)
     public List<Comment> findAllUserComments(final String userId) {
         checkNotNull(userId, "userId must be provided");
 
-        return commentRepository.findAllByUserIdOrderByCreatedAtDesc(userId);
+        final User user = userRepository.findById(userId)
+                .orElseThrow(UserNotFoundException::new);
+        return commentRepository.findAllByUserOrderByCreatedAtDesc(user);
     }
 
     @Transactional

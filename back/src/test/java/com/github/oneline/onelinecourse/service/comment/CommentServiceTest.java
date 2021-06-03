@@ -102,7 +102,7 @@ class CommentServiceTest {
         final String tooLongComment = RandomStringUtils.randomAlphanumeric(1010);
 
         // when
-        CommentCreateRequest request = CommentCreateRequest.builder()
+        final CommentCreateRequest request = CommentCreateRequest.builder()
                 .content(tooLongComment)
                 .lectureId(testLecture.getId())
                 .userId(testUser.getId())
@@ -128,7 +128,6 @@ class CommentServiceTest {
 
         // then
         assertThat(comment.getContent()).isEqualTo(update);
-
     }
 
     @DisplayName("강의 댓글을 삭제한다.")
