@@ -14,31 +14,27 @@ public class UserController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {    // DI 의존성 주입....
-
+    public UserController(final UserService userService) {
         this.userService = userService;
     }
 
-    // 회원 조회
-    @GetMapping("/{userId}")    // GET 요청 방식의 API
+    @GetMapping("/{userId}")
     @ApiOperation(value = "유저 조회")
     public ResponseEntity<UserResponse> searchUser(
-            @PathVariable @ApiParam(value = "유저 ID", example = "1df43fh1246") String userId) {
+            @PathVariable @ApiParam(value = "유저 ID", example = "1df43fh1246") final String userId) {
         return ResponseEntity.ok(
                 new UserResponse(userService.searchUser(userId))
         );
     }
 
-    // 회원 등록(최초 방문)
-    @PostMapping    // POST 요청 방식의 API
+    @PostMapping
     @ApiOperation(value = "최초 로그인 여부 확인 및 유저 등록")
-    // ResponseEntity
     // HTTP 요청(Request) 또는 응답(Response)에 해당하는 HttpHeader와 HttpBody를 포함하는 클래스
     public ResponseEntity<UserResponse> createUser(
-            @RequestBody UserCreateRequest createUserRequestDto) { // @RequestBody : 클라이언트가 전송하는 Http 요청의 Body내용을 Java Object로 변환시켜주는 역할
+            @RequestBody final UserCreateRequest createUserRequestDto) { // @RequestBody : 클라이언트가 전송하는 Http 요청의 Body내용을 Java Object로 변환시켜주는 역할
 
         // 회원이 등록되어 있는지 체크
-        User user = userService.searchUser(createUserRequestDto.toEntity().getId());
+        final User user = userService.searchUser(createUserRequestDto.toEntity().getId());
         if(user != null) {  // 등록되어 있다면
             return ResponseEntity.ok(
                     new UserResponse(userService.searchUser(createUserRequestDto.toEntity().getId()))
