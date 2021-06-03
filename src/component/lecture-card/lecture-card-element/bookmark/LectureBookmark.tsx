@@ -16,16 +16,17 @@ interface ILectureBookmarkProps {
   isOnlyDisplay: boolean;
 }
 
-const LectureBookmark: React.FC<ILectureBookmarkProps> = props => (
-  <div className="lectureCard--bookmark">{makeBookmarkIcon(props)}</div>
-);
+const LectureBookmark: React.FC<ILectureBookmarkProps> = props => {
+  const jsx = makeBookmarkIcon(props);
+  return <div className="lectureCard--bookmark">{jsx}</div>;
+};
 
 const makeBookmarkIcon = ({
   lectureId,
   isOnlyDisplay = true,
 }: ILectureBookmarkProps) => {
   const dispatch = useDispatch();
-  
+
   const [isBookmarkEnabled, setIsBookmarkEnabled] = useState(false);
 
   const addBookmark = useCallback(
@@ -55,39 +56,40 @@ const makeBookmarkIcon = ({
   };
 
   useEffect(() => {
-    (async () => {
+    (() => {
       if (!allMyBookmarks) {
-        return;
-      }
-
-      if (!lectureId) {
         return;
       }
 
       // check whether the previous bookmark exists
       // setIsUpdated(false);
-      const userID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
-      if (!userID) {
-        return;
-      }
+      // const userID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
+      // if (!userID) {
+      //   return;
+      // }
 
-      await fetchUpdatedAllMyBookmarks(userID);
+      // await fetchUpdatedAllMyBookmarks(userID);
 
       const prvBookmark = allMyBookmarks.find(
         (bookmark: IBookmarkData) => bookmark.lectureId === lectureId
       )!;
 
-      if (!prvBookmark) {
-        return;
-      }
-      // replace the previous bookmark as the current bookmark
-      usedBookmark = prvBookmark;
+      // if (!prvBookmark) {
+      //   return;
+      // }
 
-      console.log("automatically updated my bookmarks", usedBookmark);
+      // // replace the previous bookmark as the current bookmark
+      // usedBookmark = prvBookmark;
+
+      // console.log("automatically updated my bookmarks", usedBookmark);
       // enable the icon
-      setIsBookmarkEnabled(true);
+      if (prvBookmark) {
+        setIsBookmarkEnabled(true);
+      } else {
+        setIsBookmarkEnabled(false);
+      }
     })();
-  }, [allMyBookmarks]);
+  }, []);
 
   const _addBookmark = useCallback(async () => {
     if (isOnlyDisplay) {

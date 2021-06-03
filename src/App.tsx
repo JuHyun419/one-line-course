@@ -10,8 +10,9 @@ const notFoundPage = React.lazy(() => import("./page/not-found/NotFound"));
 
 import Loading from "./component/loading/Loading";
 
-import "./app.scss";
 import { useDarkModeContext } from "./context/DarkModeCtx";
+
+import "./app.scss";
 
 const App = () => {
   const darkModeCtx = useDarkModeContext();

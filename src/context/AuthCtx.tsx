@@ -19,6 +19,7 @@ export const AuthCtxProvider: React.FC<{
     "isAuth",
     "authenticate"
   );
+
   return <AuthCtx.Provider value={providerValue}>{children}</AuthCtx.Provider>;
 };
 

@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -35,6 +35,7 @@ const KakaoOAuth: React.FC = () => {
     </div>
   );
 };
+
 
 const useKakaoLoginCallback = () => {
   const authCtx = useAuthContext();
