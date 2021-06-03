@@ -5,18 +5,17 @@
   top: 50%;
   transform: translate(-50%, -50%);
 
-  box-sizing: border-box;
-
   width: 80%;
   height: 80%;
 
-  background-color: #fff;
+  background-color: var(--color-text-white);
 
   z-index: 200;
 
+  overflow-y: hidden;
+
   .lecturePopup--lecture {
     overflow-y: scroll;
-    box-sizing: border-box;
     padding: 2% 5%;
     height: 100%;
   }

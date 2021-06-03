@@ -1,13 +1,12 @@
 @import "./Common";
 
 .icon {
-  max-width: 25px;
-  max-height: 25px;
+  max-width: 50px;
+  max-height: 50px;
 }
 
 .placed-randomly {
-  opacity: 0.3;
-  z-index: -9999;
+  opacity: 0.08;
 }
 
 @for $i from 0 through 120 {

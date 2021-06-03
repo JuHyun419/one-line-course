@@ -1,8 +1,10 @@
-.imageMoveTo {
+.carousel--rotator {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  z-index: inherit;
 
   width: 100vw;
 
@@ -12,10 +14,10 @@
   div {
     font-size: 5rem;
     background-color: rgba(177, 177, 177, 0.7);
-    color: #fff;
-    
+    color: var(--color-text-white);
+
     padding: 5px 15px;
-    border-radius: 25px;
+    border-radius: 30px;
 
     &:nth-child(1) {
       margin-left: 5%;

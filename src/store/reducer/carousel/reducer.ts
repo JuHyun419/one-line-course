@@ -2,7 +2,7 @@ import { ECarouselActionType } from "../../../typings";
 import { TActions as TCarouselActions } from "../../action/carousel";
 
 export interface ICarousel {
-  ref?: React.RefObject<HTMLDivElement>;
+  ref: React.RefObject<HTMLDivElement> | null;
   idx: number;
   imgWidth: number;
 }
@@ -12,7 +12,7 @@ export interface IState {
 }
 
 const init: ICarousel = {
-  ref: undefined,
+  ref: null,
   idx: 0,
   imgWidth: 0,
 };

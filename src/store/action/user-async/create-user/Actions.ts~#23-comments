@@ -1,13 +1,3 @@
-<<<<<<< HEAD:src/store/action/user/Actions.ts
-import { EUserActionType, IUserData } from "~/src/typings";
-
-export interface ISetCurrentUser {
-  type: EUserActionType.Set_CurrentUser;
-  user: IUserData;
-}
-
-export type TActions = ISetCurrentUser;
-=======
 import { EUserAsync_CreateUser_ActionType, IUserData } from "~/src/typings";
 
 export interface IFetchRequestAction_CreateUser {
@@ -28,4 +18,3 @@ export type TActions =
   | IFetchRequestAction_CreateUser
   | IFetchSucceed_CreateUser
   | IFetchFail_CreateUser;
->>>>>>> #23-comments:src/store/action/user-async/create-user/Actions.ts

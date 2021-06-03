@@ -30,7 +30,11 @@ export const post_RegisterUser = async (
 ): Promise<TStatusCode> => {
   try {
     const { status } = await axiosInstance_Server.post(`/users`, {
-      userData,
+      id: userData.id,
+      email: userData.email,
+      name: userData.name,
+      imageUrl: userData.imageUrl,
+      platform: userData.platform,
     });
     return status;
   } catch (err) {

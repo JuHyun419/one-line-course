@@ -1,18 +1,19 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { getIcon } from "~/src/common";
 
 import "./_GoToTop.scss";
 
-const GoToTop = () => {
+const GoToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const listener = () => {
+
+  const listener = useCallback(() => {
     setIsVisible(window.pageYOffset > 200);
-  };
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", listener);
     return () => window.removeEventListener("scroll", listener);
-  }, [window, listener]);
+  }, []);
 
   const onClickGoToTop = useCallback(
     (_: React.MouseEvent<HTMLElement>) =>
@@ -20,14 +21,17 @@ const GoToTop = () => {
         top: 0,
         behavior: "smooth",
       }),
-    [window]
+    []
   );
 
-  const goToTopIcon = getIcon("GoToTop", onClickGoToTop, {
-    fontSize: "2.8rem",
-  });
-
-  return <div className="goToTop">{isVisible && goToTopIcon}</div>;
+  return (
+    <div className="goToTop">
+      {isVisible &&
+        getIcon("GoToTop", onClickGoToTop, {
+          fontSize: "2.8rem",
+        })}
+    </div>
+  );
 };
 
 export default GoToTop;

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import { EMenuMode, ESeparatorDirection } from "../../../typings";
 
@@ -70,14 +70,14 @@ const makeMenuBarItems = (
   };
 
   switch (menuMode) {
-    case EMenuMode.BeforeLogin:
-      return makeMenuBarItemsBeforeLogin(
+    case EMenuMode.Others:
+      return makeMenuBarItemsOthers(
         darkModeCtx.toggleDarkMode,
         sunIconStyles,
         moonIconStyles
       );
 
-    case EMenuMode.AfterLogin:
+    case EMenuMode.Main:
       const viewModeIndicatorForGrid = {
         border: viewModeCtx.isGrid ? indicatorBorder : "0",
       };
@@ -96,7 +96,7 @@ const makeMenuBarItems = (
         ...viewModeIndicatorForList,
       };
 
-      return makeMenuBarItemsAfterLogin(
+      return makeMenuBarItemsMain(
         darkModeCtx.toggleDarkMode,
         viewModeCtx.toggleViewMode,
         sunIconStyles,
@@ -110,29 +110,29 @@ const makeMenuBarItems = (
   }
 };
 
-const makeMenuBarItemsBeforeLogin = (
+const makeMenuBarItemsOthers = (
   toggleDarkMode: () => void,
   ...iconStyles: Array<{ [content: string]: string }>
-): JSX.Element => (
+) => (
   // only sun & moon
-  <Fragment>
+  <>
     {getIcon("Sun", toggleDarkMode, iconStyles[0])}
     {getIcon("Moon", toggleDarkMode, iconStyles[1])}
-  </Fragment>
+  </>
 );
 
-const makeMenuBarItemsAfterLogin = (
+const makeMenuBarItemsMain = (
   toggleDarkMode: () => void,
   toggleViewMode: () => void,
   ...iconStyles: Array<{ [content: string]: string }>
 ) => (
-  <Fragment>
+  <>
     {getIcon("Sun", toggleDarkMode, iconStyles[0])}
     {getIcon("Moon", toggleDarkMode, iconStyles[1])}
     <Separator direction={ESeparatorDirection.Horizontal} />
     {getIcon("Grid", toggleViewMode, iconStyles[2])}
     {getIcon("List", toggleViewMode, iconStyles[3])}
-  </Fragment>
+  </>
 );
 
 export default MenuBar;

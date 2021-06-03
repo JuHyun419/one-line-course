@@ -9,21 +9,11 @@ interface ILectureSessionCountProps {
 
 const LectureSessionCount: React.FC<ILectureSessionCountProps> = ({
   sessionCount,
-}) => {
-  const sessionCountIcon = getIcon("Lectures", undefined, {
-    marginRight: "10px",
-  });
-  const actualSessionCount = useMemo(
-    () => (sessionCount === 1 ? "단일 강좌" : `${sessionCount} 개`),
-    [sessionCount]
-  );
-  
-  return (
-    <div>
-      {sessionCountIcon}
-      {actualSessionCount}
-    </div>
-  );
-};
+}) => (
+  <>
+    {getIcon("Lectures", undefined, { marginRight: "10px" })}
+    {sessionCount === 1 ? "단일 강좌" : `${sessionCount} 개`}
+  </>
+);
 
 export default LectureSessionCount;

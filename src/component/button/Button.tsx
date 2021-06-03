@@ -34,25 +34,23 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   onKeyPress,
   children,
-}) => {
-  return (
-    <div
-      // ["btn", btnType.toString(), btnSize.toString()].join(" ")
-      className={joinClasses(
-        "btn",
-        btnType.toString(),
-        btnSize.toString(),
-        `${highlight ? "highlight" : null}`,
-        additionalClassName || ""
-      )}
-      style={additionalStyles}
-      onClick={onClick}
-      onKeyPress={onKeyPress}
-    >
-      <span>{children}</span>
-    </div>
-  );
-};
+}) => (
+  <div
+    // ["btn", btnType.toString(), btnSize.toString()].join(" ")
+    className={joinClasses(
+      "btn",
+      btnType.toString(),
+      btnSize.toString(),
+      `${highlight ? "highlight" : null}`,
+      additionalClassName || ""
+    )}
+    style={additionalStyles}
+    onClick={onClick}
+    onKeyPress={onKeyPress}
+  >
+    <span>{children}</span>
+  </div>
+);
 
 export default Button;
 

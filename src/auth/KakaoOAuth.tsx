@@ -1,11 +1,14 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 import {
   EXPIRES_IN_SESSION_STORAGE_KEY,
   PLATFORM_SESSION_STORAGE_KEY,
   USERID_SESSION_STORAGE_KEY,
 } from "../common";
+import { useAuthContext } from "../context/AuthCtx";
+
 import { initFetch_CreateUser } from "../store/action/user-async";
 import { IUserData } from "../typings";
 
@@ -13,24 +16,29 @@ import "./_Auth.scss";
 
 // type TKakaoOnSucceed = {
 //   response: LoginResponse;
-//   profile?: UserProfile;
+//   profile?: UserProfÎile;
 // };
 
 const KakaoOAuth: React.FC = () => {
   const loginWithKakao = useKakaoLoginCallback();
 
   return (
-    <div id="custom-login-btn" className="authBtn" onClick={loginWithKakao}>
+    <div
+      id="custom-login-btn"
+      className="authBtn-kakao"
+      onClick={loginWithKakao}
+    >
       <img
         src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
         alt="kakao login button"
-        width="181"
       />
     </div>
   );
 };
 
+
 const useKakaoLoginCallback = () => {
+  const authCtx = useAuthContext();
   const history = useHistory();
   const dispatch = useDispatch();
   const _createUser = useCallback(
@@ -46,7 +54,7 @@ const useKakaoLoginCallback = () => {
 
           // store the auth info
           const { access_token, expires_in } = onSuccess;
-          sessionStorage.setItem(USERID_SESSION_STORAGE_KEY, access_token);
+
           sessionStorage.setItem(
             EXPIRES_IN_SESSION_STORAGE_KEY,
             expires_in.toString()
@@ -72,33 +80,31 @@ const useKakaoLoginCallback = () => {
         success: onSuccess => {
           // console.log(onSuccess);
 
-          const kakaoAcount = onSuccess.kakao_account;
-          const { email, profile } = kakaoAcount;
+          const id = onSuccess.id;
+          const { email, profile } = onSuccess.kakao_account;
           const { nickname, profile_image_url } = profile!;
 
-          // console.log(
-          //   "Kakao auth -> ",
-          //   access_token,
-          //   email,
-          //   nickname,
-          //   profile_image_url
-          // );
+          console.log("Kakao auth -> ", id, email, nickname, profile_image_url);
+
+          sessionStorage.setItem(USERID_SESSION_STORAGE_KEY, id.toString());
 
           _createUser({
-            id: access_token,
+            id: id.toString(),
             email: email!,
             name: nickname!,
             imageUrl: profile_image_url!,
             platform: "kakao",
           });
-          history.push("/main");
+
+          authCtx.authenticate();
+          history.push("/");
         },
 
         fail: onFail => {
           // console.error(onFail);
         },
       }),
-    [_createUser]
+    []
   );
 
   return loginWithKakao;

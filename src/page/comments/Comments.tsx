@@ -17,11 +17,11 @@ const Comments = () => {
   initCommentsHistory();
   return (
     <div>
-      <NavFactory navType={ENavType.AfterLogin} highlightBtnIdx={1} />
+      <NavFactory navType={ENavType.Main} highlightBtnIdx={1} />
       <div className="page comments">
         <CommentsHistory />
         <GoToTop />
-        <Menu menuMode={EMenuMode.BeforeLogin} />
+        <Menu menuMode={EMenuMode.Others} />
         {placeIconsRandomly(30, { fontSize: "2rem" })}
       </div>
     </div>
@@ -37,11 +37,7 @@ const initCommentsHistory = () => {
   );
 
   useEffect(() => {
-    const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY);
-    if (!myUserID || myUserID === "undefined") {
-      return;
-    }
-
+    const myUserID = sessionStorage.getItem(USERID_SESSION_STORAGE_KEY)!;    
     _queryAllMyComments(myUserID);
   }, []);
 };

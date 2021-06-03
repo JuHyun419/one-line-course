@@ -30,14 +30,15 @@ const fetchFail_RemoveBookmark = (
   err,
 });
 
-export const initFetch_RemoveBookmark = (bookmarkID: number) => async (
-  dispatch: ThunkDispatch<{}, {}, AnyAction>
-) => {
-  try {
-    dispatch(fetchRequest_RemoveBookmark());
-    const status = await delete_RemoveBookmark(bookmarkID);
-    dispatch(fetchSucceed_RemoveBookmark(status));
-  } catch (err) {
-    dispatch(fetchFail_RemoveBookmark(err));
-  }
-};
+export const initFetch_RemoveBookmark =
+  (bookmarkID: number) =>
+  async (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
+    try {
+      dispatch(fetchRequest_RemoveBookmark());
+      const status = await delete_RemoveBookmark(bookmarkID);
+      dispatch(fetchSucceed_RemoveBookmark(status));
+      console.log("bookmark DELETED", status);
+    } catch (err) {
+      dispatch(fetchFail_RemoveBookmark(err));
+    }
+  };

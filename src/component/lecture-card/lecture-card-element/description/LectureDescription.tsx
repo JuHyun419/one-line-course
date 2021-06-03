@@ -8,8 +8,6 @@ interface ILectureDescriptionProps {
 
 const LectureDescription: React.FC<ILectureDescriptionProps> = ({
   description,
-}) => {
-  return <div className="lectureCard--description">{description}</div>;
-};
+}) => <div className="lectureCard--description">{description}</div>;
 
 export default LectureDescription;

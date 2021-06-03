@@ -3,9 +3,9 @@ import { shallowEqual, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { TCombinedStates } from "~/src/store";
 
-import "./_ImagesIndicator.scss";
+import "./_CarouselIndicator.scss";
 
-const ImagesIndicator: React.FC = () => {
+const CarouselIndicator: React.FC = () => {
   const imgLen = useSelector(
     (state: TCombinedStates) => state.carouselAsync.urls?.length,
     shallowEqual
@@ -26,7 +26,7 @@ const ImagesIndicator: React.FC = () => {
     [imgLen, curIdx]
   );
 
-  return <div className="imagesIndicator">{indicatorJSX}</div>;
+  return <div className="carousel--Indicator">{indicatorJSX}</div>;
 };
 
-export default ImagesIndicator;
+export default CarouselIndicator;

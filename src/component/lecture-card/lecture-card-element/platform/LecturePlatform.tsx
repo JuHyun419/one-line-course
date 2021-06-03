@@ -7,14 +7,11 @@ interface ILecturePlatformProps {
   platform: string;
 }
 
-const LecturePlatform: React.FC<ILecturePlatformProps> = ({ platform }) => {
-  const platformIcon = getIcon("Globe", undefined, { marginRight: "10px" });
-  return (
-    <div className="lectureCard--platform">
-      {platformIcon}
-      {platform}
-    </div>
-  );
-};
+const LecturePlatform: React.FC<ILecturePlatformProps> = ({ platform }) => (
+  <div className="lectureCard--platform">
+    {getIcon("Globe", undefined, { marginRight: "10px" })}
+    {platform}
+  </div>
+);
 
 export default LecturePlatform;

@@ -12,7 +12,7 @@ export const useToggleProvider = <TContextData extends {}>(
 ) => {
   const [isOn, setIsOn] = useState(false);
 
-  const onToggle = useCallback(() => setIsOn(prv => !prv), [setIsOn]);
+  const onToggle = useCallback(() => setIsOn(prv => !prv), []);
 
   const providerValue = useMemo(
     () =>
@@ -20,7 +20,7 @@ export const useToggleProvider = <TContextData extends {}>(
         [stateName]: isOn,
         [toggleName]: onToggle,
       } as TContextData),
-    [isOn, onToggle, stateName, toggleName]
+    [isOn, stateName, toggleName]
   );
 
   return { providerValue };

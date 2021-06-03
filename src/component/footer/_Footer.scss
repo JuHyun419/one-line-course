@@ -11,9 +11,8 @@
   width: 100vw;
   height: 15vh;
   background-color: $color-footer;
-  border: 1px dashed #eee;
-  color: #fff;
-  box-sizing: border-box;
+  border: 1px dashed var(--color-border-default);
+  color: var(--color-text-white);
 
   &-dev-cards {
     width: 100%;
@@ -25,7 +24,7 @@
       margin: 10px;
       display: inherit;
       flex-direction: row;
-      border: 2px dashed #d3d3d3;
+      border: 2px dashed var(--color-border-darker);
       border-radius: 15px;
     }
 
@@ -41,7 +40,7 @@
       & i {
         // padding-top: 15px;
         text-align: center;
-        color: #fff;
+        color: var(--color-text-white);
       }
 
       & h2 {

@@ -1,6 +1,21 @@
+@import "./common/ColorScheme";
+
 .app {
-  width: 100vw;
-  height: 100vh;
   position: relative;
-  // display: flex;
+
+  width: 100vw;
+  // height: 100vh;
+
+  background-color: #fff;
+  box-sizing: border-box;
+
+  &.dark {
+    background-color: #444;
+    
+    --color-text-white: #000;
+    --color-text-black: #fff;
+
+    --color-border-default: #fff;
+    --color-border-darker: #bbb;
+  }
 }

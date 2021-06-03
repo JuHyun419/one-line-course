@@ -1,10 +1,9 @@
 @import "../../common/ColorScheme";
 
 .lectureCard-grid {
-  box-sizing: border-box;
   padding: 5px 10px;
 
-  border: 1px dashed #000;
+  border: 1px dashed var(--color-border-default);
   border-radius: 5px;
 
   width: 400px;
@@ -14,16 +13,7 @@
   font-size: 1.3rem;
 
   background-color: $color-nav-weak;
-
-  .lecturePopup-close {
-    position: absolute;
-    left: 95%;
-    top: -2%;
-    background-color: rgba(155, 155, 155, 0.8);
-    padding: 10px 15px;
-    border: 1px solid;
-    border-radius: 30%;
-  }
+  color: var(--color-text-black);
 
   .lectureCard-grid-desc {
     // min-height: 25%;

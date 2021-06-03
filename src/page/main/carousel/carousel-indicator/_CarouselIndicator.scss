@@ -1,6 +1,6 @@
 @import "../../../../common/ColorScheme";
 
-.imagesIndicator {
+.carousel--Indicator {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -16,6 +16,8 @@
   position: relative;
   margin: 0 auto;
   top: 90%;
+
+  z-index: inherit;
 
   div {
     background-color: #ddd;

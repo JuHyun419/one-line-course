@@ -5,7 +5,7 @@ import {
 } from "~/src/typings";
 
 export interface IUserAsync {
-  bookmarks: Array<IBookmarkData>;
+  bookmarks: Array<IBookmarkData> | undefined;
   err?: string;
   statusCode: number;
   isLoading: boolean;
@@ -16,7 +16,7 @@ export interface IState {
 }
 
 const init: IUserAsync = {
-  bookmarks: [],
+  bookmarks: undefined,
   err: "",
   statusCode: 0,
   isLoading: false,

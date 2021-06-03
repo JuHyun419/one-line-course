@@ -28,7 +28,7 @@ export const useSearchBarSelectedPlatforms = (
 
   return useMemo(
     () =>
-      selectedPlatforms?.map(platform => (
+      selectedPlatforms.map(platform => (
         <li
           key={uuid()}
           className="searchBar--selected-platforms"
