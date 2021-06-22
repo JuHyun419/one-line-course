@@ -35,9 +35,7 @@ jobs: # job - 하나의 인스턴스에서 여러 Step을 그룹시켜 실행하
       # build
       - name: Build with Maven
         #run: mvn -B package --file back/pom.xml
-        run: |
-          chmod +x mvnw
-          ./mvnw clean package -Pprod
+        run: ./mvnw clean package -Pprod
 
       # time
       - name: Get Current Time
