@@ -114,6 +114,15 @@
 
 <br>
 
+## 📝 Posting
+  - [`AWS RDS 외부접속`](https://zzang9ha.tistory.com/325?category=954133)
+  - [`AWS EC2 인스턴스 생성하기`](https://zzang9ha.tistory.com/329?category=954133)
+  - [`AWS EC2 iptables 서버 포트포워딩(80 -> 8080)`](https://zzang9ha.tistory.com/331?category=954133)
+  - [`AWS EC2 서버 접속하기`](https://zzang9ha.tistory.com/338?category=954133)
+  - [`GitHub Action을 통한 Build 자동화(SpringBoot + Maven)`](https://zzang9ha.tistory.com/339?category=954133)
+
+<br>
+
 ## 📜 보완해야 할 부분(성능, 추가 기능, 코드 등)
   - ~환경 변수(application.properties) 관리(외부 노출 X)~
   - ~테스트 코드(통합 테스트, 단위 테스트) 추가~
