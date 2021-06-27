@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85a72cd2-23ec-46cc-9864-aff3793b8b47" name="Default Changelist" comment="feat: Add Jacoco &amp; Remove CORS tag">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="85a72cd2-23ec-46cc-9864-aff3793b8b47" name="Default Changelist" comment="docs: Update .idea directory">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/back/src/main/resources/application.properties" afterDir="false" />
     </list>
@@ -24,6 +23,10 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/30.1-jre/guava-30.1-jre.jar!/com/google/common/base/Preconditions.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.3.5/spring-webmvc-5.3.5.jar!/org/springframework/web/servlet/config/annotation/CorsRegistration.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="MavenImportPreferences">
     <option name="enabledProfiles">
@@ -48,6 +51,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Spring Boot.OnelineCourseApplication">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
@@ -128,7 +132,7 @@
       <workItem from="1624519348093" duration="2179000" />
       <workItem from="1624583409929" duration="2858000" />
       <workItem from="1624689737864" duration="1874000" />
-      <workItem from="1624782183803" duration="219000" />
+      <workItem from="1624782183803" duration="746000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add Jacoco &amp; Remove CORS tag">
       <created>1624583513249</created>
@@ -137,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624583513249</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="docs: Update .idea directory">
+      <created>1624782728893</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1624782728893</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +168,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: Add Jacoco &amp; Remove CORS tag" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add Jacoco &amp; Remove CORS tag" />
+    <MESSAGE value="docs: Update .idea directory" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs: Update .idea directory" />
   </component>
 </project>
