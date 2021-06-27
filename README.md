@@ -68,11 +68,15 @@
 
 <br>
 
-## ✨ 프로젝트 실행 방법
+## ✨ 프로젝트 실행 방법(설정 -> 애플리케이션 실행)
 ### 데이터베이스 및 스키마 설정
   - 먼저 application.properties 파일에 본인의 DB의 설정을 입력해야 합니다.
     - url, username, password 를 설정합니다.
-  - 스키마 설정은 로컬에 직접 설정 및 프로젝트 실행 시 자동으로 설정하는 두 가지 방법이 있습니다. (사진 참고)
+
+![image](https://user-images.githubusercontent.com/50076031/123538420-ccaa8100-d76f-11eb-922a-6229c8ed2168.png)
+
+
+  - 데이터베이스 스키마 설정은 로컬에 직접 설정 및 프로젝트 실행 시 자동으로 설정하는 두 가지 방법이 있습니다. (사진 참고)
     - src/main/resources 경로의 schema.sql 파일에 작성된 스키마를 직접 복사해서 로컬 DB에서 생성합니다.
     - application.properties 파일의 schema 주석 부분을 해제한 후 애플리케이션을 실행하면 스키마 설정이 됩니다.
 <br>
@@ -89,8 +93,15 @@
 <br>
 
 ### 프로젝트 실행하기
-  - 현재 API 서버인 스프링 부트 프로젝트 실행만 가능합니다.
-  - back 폴더의 프로젝트를 받으셔서 실행하시면 됩니다.
+
+```html
+$ git clone https://github.com/JuHyun419/one-line-course.git
+$ cd one-line-course/back
+$ ./mvnw clean package 
+$ cd target
+$ java -jar oneline-course-0.0.1-SNAPSHOT.jar 
+```
+
 <br>
 
 
