@@ -121,6 +121,7 @@
   - [`AWS EC2 iptables 서버 포트포워딩(80 -> 8080)`](https://zzang9ha.tistory.com/331?category=954133)
   - [`AWS EC2 서버 접속하기`](https://zzang9ha.tistory.com/338?category=954133)
   - [`GitHub Action을 통한 Build 자동화(SpringBoot + Maven)`](https://zzang9ha.tistory.com/339?category=954133)
+  - [`Spring Boot Maven profile 운영 & 개발 분리(AWS EC2)`](https://zzang9ha.tistory.com/348)
 
 <br>
 
