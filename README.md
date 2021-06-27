@@ -128,7 +128,7 @@
   - ~환경 변수(application.properties) 관리(외부 노출 X)~
   - ~테스트 코드(통합 테스트, 단위 테스트) 추가~
   - ~예외처리(Exception Handling) - 유저, 댓글, 강의 등등 추가~
-  - OAuth2 Front -> Back
+  - HTTP -> HTTPS 적용
   - CI/CD 적용
 
 <br><br>
