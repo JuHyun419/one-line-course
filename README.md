@@ -138,7 +138,7 @@ $ java -jar oneline-course-0.0.1-SNAPSHOT.jar
   - ~테스트 코드(통합 테스트, 단위 테스트) 추가~
   - ~예외처리(Exception Handling) - 유저, 댓글, 강의 등등 추가~
   - HTTP -> HTTPS 적용
-  - CI/CD 적용
+  - ~CI/CD 적용~
 
 <br><br>
 
@@ -163,5 +163,4 @@ $ java -jar oneline-course-0.0.1-SNAPSHOT.jar
   - https://leveloper.tistory.com/18
   - https://twofootdog.tistory.com/41
   - https://miniminis.github.io/2019/10/13/spring/springboot-deploy/
-
 
