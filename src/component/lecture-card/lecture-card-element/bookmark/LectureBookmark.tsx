@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIcon, USERID_SESSION_STORAGE_KEY } from "~/src/common";
 import { TCombinedStates } from "~/src/store";
@@ -16,38 +16,19 @@ interface ILectureBookmarkProps {
   isOnlyDisplay: boolean;
 }
 
-const LectureBookmark: React.FC<ILectureBookmarkProps> = props => (
-  <div className="lectureCard--bookmark">{makeBookmarkIcon(props)}</div>
-);
-
-const makeBookmarkIcon = ({
-  lectureId,
-  isOnlyDisplay = true,
-}: ILectureBookmarkProps) => {
+const LectureBookmark: React.FC<ILectureBookmarkProps> = ({
+                                                            lectureId,
+                                                            isOnlyDisplay = true
+                                                          }) => {
   const dispatch = useDispatch();
-  
-  const [isBookmarkEnabled, setIsBookmarkEnabled] = useState(false);
+  const [ isBookmarkEnabled, setIsBookmarkEnabled ] = useState(false);
 
-  const addBookmark = useCallback(
-    (userID: string, usedBookmark: IBookmarkData) =>
-      dispatch(initFetch_AddBookmark(userID, usedBookmark)),
-    []
-  );
-
-  const deleteBookmark = useCallback(
-    (targetBookmarkId: number) =>
-      dispatch(initFetch_RemoveBookmark(targetBookmarkId)),
-    []
-  );
-
-  const allMyBookmarks = useSelector(
-    (state: TCombinedStates) => state.userAsync_QueryAllMyBookmarks.bookmarks
-  );
-
-  const fetchUpdatedAllMyBookmarks = useCallback(
-    async (userID: string) => dispatch(initFetch_QueryAllMyBookmarks(userID)),
-    []
-  );
+  const addBookmark = (userID: string, usedBookmark: IBookmarkData) =>
+    dispatch(initFetch_AddBookmark(userID, usedBookmark));
+  const deleteBookmark = (targetBookmarkId: number) =>
+    dispatch(initFetch_RemoveBookmark(targetBookmarkId));
+  const allMyBookmarks = useSelector((state: TCombinedStates) => state.userAsync_QueryAllMyBookmarks.bookmarks);
+  const fetchUpdatedAllMyBookmarks = async (userID: string) => dispatch(initFetch_QueryAllMyBookmarks(userID));
 
   let usedBookmark: IBookmarkData = {
     lectureId: lectureId!,
@@ -83,13 +64,13 @@ const makeBookmarkIcon = ({
       // replace the previous bookmark as the current bookmark
       usedBookmark = prvBookmark;
 
-      console.log("automatically updated my bookmarks", usedBookmark);
+//      console.log("automatically updated my bookmarks", usedBookmark);
       // enable the icon
       setIsBookmarkEnabled(true);
     })();
-  }, [allMyBookmarks]);
+  }, [ allMyBookmarks ]);
 
-  const _addBookmark = useCallback(async () => {
+  const _addBookmark = async () => {
     if (isOnlyDisplay) {
       return;
     }
@@ -116,9 +97,9 @@ const makeBookmarkIcon = ({
     await addBookmark(userID, usedBookmark);
     await fetchUpdatedAllMyBookmarks(userID);
     // setIsUpdated(true);
-  }, [usedBookmark, allMyBookmarks]);
+  };
 
-  const _deleteBookmark = useCallback(async () => {
+  const _deleteBookmark = async () => {
     if (isOnlyDisplay) {
       return;
     }
@@ -136,34 +117,30 @@ const makeBookmarkIcon = ({
       return;
     }
 
-    const targetBookmarkId: number | undefined = allMyBookmarks.find(
-      (bookmark: IBookmarkData) => bookmark.lectureId === lectureId
-    )?.id;
-
+    const targetBookmarkId = allMyBookmarks.find((bookmark) => bookmark.lectureId === lectureId)?.id;
     if (targetBookmarkId === undefined) {
       return;
     }
 
-    console.log(targetBookmarkId, " will be deleted");
-
     await deleteBookmark(targetBookmarkId);
     await fetchUpdatedAllMyBookmarks(userID);
     // setIsUpdated(true);
-  }, [allMyBookmarks]);
+  };
 
-  const toggleBookmarkIcon = useCallback(() => {
+  const toggleBookmarkIcon = () => {
     if (isOnlyDisplay) {
       return;
     }
 
     if (isBookmarkEnabled) {
       _deleteBookmark();
-    } else {
+    }
+    else {
       _addBookmark();
     }
 
     setIsBookmarkEnabled(prv => !prv);
-  }, [isBookmarkEnabled, isOnlyDisplay, allMyBookmarks]);
+  };
 
   const BookmarkIcon_Disabled = getIcon(
     "Bookmark-Disabled",
@@ -177,7 +154,11 @@ const makeBookmarkIcon = ({
     fontSize: "2rem",
   });
 
-  return isBookmarkEnabled ? BookmarkIcon_Enabled! : BookmarkIcon_Disabled!;
+  return (
+    <div
+      className="lectureCard--bookmark">
+      {isBookmarkEnabled ? BookmarkIcon_Enabled : BookmarkIcon_Disabled}</div>
+  );
 };
 
 export default LectureBookmark;
